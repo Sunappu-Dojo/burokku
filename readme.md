@@ -1,6 +1,6 @@
-# Sunappu
+# Hatena Burokku
 
-[?]
+_トゲハテナブロック_ (hatena burokku) is japanese for [_interrogation block_ ⍰](https://www.mariowiki.com/%3F_Block).
 
 ## Development
 
