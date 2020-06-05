@@ -137,20 +137,11 @@ configCSS = {
 
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new CopyWebpackPlugin([
-      {
-        from: `${assets}/fonts/`,
-        to: thePath('public/fonts'),
-      },
-      {
-        from: `${assets}/manifest/`,
-        to: thePath('public'),
-      },
-      {
-        from: `${assets}/sfx/`,
-        to: thePath('public/sfx'),
-      },
-    ]),
+    new CopyWebpackPlugin({ patterns: [
+      { from: `${assets}/fonts/`, to: thePath('public/fonts') },
+      { from: `${assets}/manifest/`, to: thePath('public') },
+      { from: `${assets}/sfx/`, to: thePath('public/sfx') },
+    ]}),
     new CleanWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     new NotifierPlugin({ title: 'CSS', ...NotifierPluginOptions }),

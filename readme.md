@@ -1,6 +1,6 @@
 # Hatena Burokku
 
-_トゲハテナブロック_ (hatena burokku) is japanese for [_interrogation block_ ⍰](https://www.mariowiki.com/%3F_Block).
+_トゲハテナブロック_ (_hatena burokku_) is Japanese for [_interrogation block_ ⍰](https://www.mariowiki.com/%3F_Block).
 
 ## Development
 
