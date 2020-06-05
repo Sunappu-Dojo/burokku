@@ -1,0 +1,21 @@
+.⍰ {
+  @include dark {
+    --⍰-bg: hsl(28, 100%, 61%);
+    --⍰-primary: hsl(19, 88%, 43%);
+    --⍰-dark: hsl(7, 100%, 27%);
+  }
+
+  @media (--tablet-7) {
+    size: 2.4rem auto;
+  }
+
+  @media (--switch) {
+    width: 3.2rem;
+  }
+}
+
+@keyframes ⍰-hit {
+  10% { transform: translate3d(0, 0, 0); }
+  50% { transform: translate3d(0, calc(-50% * var(--⍰-hit-cx, 1)), 0); }
+  100% { transform: translate3d(0, 0, 0); }
+}

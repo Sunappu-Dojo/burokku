@@ -1,0 +1,15 @@
+$dark-colors: (
+  'primary': $white,
+  'bg': $bunker,
+  'accent': $bright-turquoise,
+  'btn-bg': $black-russian,
+);
+
+$dark-primary: map-get($dark-colors, 'primary');
+$dark-bg: map-get($dark-colors, 'bg');
+$dark-btn-bg: map-get($dark-colors, 'btn-bg');
+$dark-accent: map-get($dark-colors, 'accent');
+
+@mixin dark() {
+  @include theme('basic-black', '--dark') { @content; }
+}

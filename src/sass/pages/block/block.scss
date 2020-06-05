@@ -1,0 +1,32 @@
+// Media queries : ⍰ block size
+
+@include --w-from('block-scale', 10em); // 160px
+@include --h-from('block-scale-h', 10em); // 160px
+
+// Media queries: spacing around top bar and footer
+
+$block-bar: (
+  'block-bar-scale': 10em, // 160px
+  'block-bar-wide': 40em, // 640px
+);
+
+@include --w($block-bar);
+@include --h($block-bar);
+
+.block {
+  @media (--block-bar-scale) and (--h-block-bar-scale) {
+    --block-bar-space: calc(1rem + 3vmin);
+  }
+
+  @media (--block-bar-wide) and (--h-block-bar-wide) {
+    --block-bar-space: 3vmax;
+  }
+}
+
+// Page blocks
+
+@import 'bar';
+@import 'the-block';
+@import 'install';
+@import 'footer';
+@import 'no-js-message';

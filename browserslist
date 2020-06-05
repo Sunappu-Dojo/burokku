@@ -1,0 +1,14 @@
+# Countries set: https://canistop.net/b/ie/11?regions=be,fr,gb,nl,za,us,no,se,de,jp,ca,ie,kp
+
+Safari >= 11 # let
+ios_saf >= 11
+Samsung >= 10
+
+Firefox >= 60
+
+Chrome >= 58
+and_chr >= 58
+and_uc >= 11.8
+
+Opera >= 53
+Edge >= 17

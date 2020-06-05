@@ -1,0 +1,20 @@
+.wallet {
+  &:not(.wallet--on) {
+    display: none;
+  }
+}
+
+.wallet__amount {
+  padding-left: .25em;
+
+  font-family: monospace;
+
+  &::before {
+    content: 'x';
+    margin-right: .15em;
+  }
+}
+
+.wallet__icon {
+  size: .4em auto;
+}

@@ -1,0 +1,16 @@
+/* Oxygen, fontsquirrel.com, January 3, 2018
+
+  Light       300
+  Regular     400
+  Bold        700
+
+*/
+
+// Regular (400).
+@font-face {
+  font-family: 'Oxygen';
+  src: url('../../fonts/oxygen-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}

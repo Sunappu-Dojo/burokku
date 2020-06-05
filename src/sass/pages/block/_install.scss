@@ -1,0 +1,15 @@
+.app-install {
+  margin-left: auto;
+
+  transition: .5s;
+  transition-property: opacity, visibility;
+
+  &:not(.app-install--visible) {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

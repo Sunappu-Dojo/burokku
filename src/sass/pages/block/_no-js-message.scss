@@ -1,0 +1,12 @@
+.noscript {
+  position: absolute;
+  bottom: v(block-bar-space, 1rem);
+  left: v(block-bar-space, 1rem);
+
+  @supports (top: #{'max(0px)'}) {
+    bottom: #{'max(calc(var(--safe-bottom) + 1rem), var(--block-bar-space, 1rem))'};
+    left: #{'max(calc(var(--safe-left) + 1rem), var(--block-bar-space, 1rem))'};
+  }
+
+  margin: 0;
+}

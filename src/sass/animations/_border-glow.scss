@@ -1,0 +1,13 @@
+@keyframes border-glow {
+  0% {
+    border-color: v(astral);
+  }
+
+  50% {
+    border-color: v(turquoise);
+  }
+
+  100% {
+    border-color: v(astral);
+  }
+}

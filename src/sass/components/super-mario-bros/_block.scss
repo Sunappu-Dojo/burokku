@@ -1,0 +1,14 @@
+.⍰-ctn {
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.⍰__inner {
+
+  .⍰--hit & {
+    animation: ⍰-hit .2s;
+    --⍰-animation: none;
+  }
+}

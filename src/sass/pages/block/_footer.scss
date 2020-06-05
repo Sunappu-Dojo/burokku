@@ -1,0 +1,31 @@
+.footer {
+  position: absolute;
+  bottom: calc(var(--block-bar-space, 1rem) - 1rem);
+  right: calc(var(--block-bar-space, 1rem) - 1rem);
+
+  @supports (top: #{'max(0px)'}) {
+    bottom: #{'max(calc(var(--safe-bottom)), calc(var(--block-bar-space, 1rem) - 1rem))'};
+    right: #{'max(calc(var(--safe-right)), calc(var(--block-bar-space, 1rem) - 1rem))'};
+  }
+}
+
+.footer__link {
+  display: inline-flex;
+  padding: 1rem;
+
+  vertical-align: middle;
+  text-decoration: none;
+
+  opacity: .6;
+
+  transition: opacity .3s $in-out-quad;
+
+  @include all-but(1) {
+    margin-left: .25em;
+  }
+
+  &:hover,
+  &:focus {
+    opacity: 1;
+  }
+}
