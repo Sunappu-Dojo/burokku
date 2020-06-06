@@ -1,7 +1,7 @@
 .footer {
   position: absolute;
-  bottom: calc(var(--block-bar-space, 1rem) - 1rem);
-  right: calc(var(--block-bar-space, 1rem) - 1rem);
+  inset-block-end: calc(var(--block-bar-space, 1rem) - 1rem);
+  inset-inline-end: calc(var(--block-bar-space, 1rem) - 1rem);
 
   @supports (top: #{'max(0px)'}) {
     bottom: #{'max(calc(var(--safe-bottom)), calc(var(--block-bar-space, 1rem) - 1rem))'};
@@ -21,7 +21,7 @@
   transition: opacity .3s $in-out-quad;
 
   @include all-but(1) {
-    margin-left: .25em;
+    margin-inline-start: .25em;
   }
 
   &:hover,

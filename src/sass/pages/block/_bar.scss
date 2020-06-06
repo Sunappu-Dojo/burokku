@@ -1,8 +1,6 @@
 .block__bar {
   position: absolute;
-  top: v(block-bar-space, 1rem);
-  right: v(block-bar-space, 1rem);
-  left: v(block-bar-space, 1rem);
+  inset: v(block-bar-space, 1rem) v(block-bar-space, 1rem) auto;
 
   @supports (top: #{'max(0px)'}) {
     top: #{'max(calc(var(--safe-top) + 1rem), var(--block-bar-space, 1rem))'};

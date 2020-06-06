@@ -17,6 +17,6 @@
   size: calc(var(--⍰-size) / 2) auto;
 
   @media (--block-scale) and (--block-scale-h) {
-    min-width: calc(var(--⍰-min-size) / 2);
+    min-inline-size: calc(var(--⍰-min-size) / 2);
   }
 }
