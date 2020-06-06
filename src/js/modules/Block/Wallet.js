@@ -9,9 +9,9 @@ export default class Wallet {
    * Constructor
    */
   constructor() {
-    this.makeSounds()
 
     this.scoreBoardReady = false
+    this.makeSounds(true)
 
     this.fromBank().then(money => {
       this.coins = money
@@ -28,12 +28,13 @@ export default class Wallet {
 
     Sfx.play(this.coin, .1)
 
-    if (this.coins % 100 === 0) {
+    const is1UP = this.coins % 100 === 0
+    if (is1UP) {
       Sfx.play(this.oneUp, .2) // 1-UP 🍄
     }
 
     this.display()
-    this.makeSounds()
+    this.makeSounds(is1UP)
   }
 
   /**
@@ -78,8 +79,11 @@ export default class Wallet {
     return await idbGet('coins-amount').then(money => Number.isInteger(money) ? money : 0)
   }
 
-  makeSounds() {
+  makeSounds(is1UP = null) {
     this.coin = Sfx.makeFrom(SOUNDS.coin)
-    this.oneUp = Sfx.makeFrom(SOUNDS.oneUp)
+
+    if (is1UP) {
+      this.oneUp = Sfx.makeFrom(SOUNDS.oneUp)
+    }
   }
 }
