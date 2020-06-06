@@ -11,7 +11,6 @@ const resourcesToCache = [
 
   'css/block.css',
   'js/block.js',
-  'js/modules/block.js',
   'js/modules/service-worker.js',
 
   'sfx/smb-bump.flac',
