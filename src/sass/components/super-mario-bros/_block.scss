@@ -6,6 +6,7 @@
 }
 
 .⍰__inner {
+  padding: calc(var(--⍰-size) / 2);
 
   .⍰--hit & {
     animation: ⍰-hit .2s;

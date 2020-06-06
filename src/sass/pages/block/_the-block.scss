@@ -2,7 +2,7 @@
   --⍰-size: 20vmin;
   --⍰-min-size: 10rem;
 
-  transform: translate3d(0, calc(20vmin - 10%), 0);
+  transform: translate3d(0, calc(20vmin + var(--⍰-size) / 8 - 10%), 0);
 }
 
 .block__⍰ {
