@@ -8,7 +8,12 @@ export const SOUNDS = {
 
 export const CSS = {
   btn: '⍰-ctn',
+  btnInner: '⍰__inner',
   hit: '⍰--hit',
   hitAnimation: '⍰-hit',
+  coins: '⍰__coin-ctn',
+  flippingCoin: 'coin--flipping',
   coinsNumber: 'coins',
 }
+
+export const THROTTLE = 130

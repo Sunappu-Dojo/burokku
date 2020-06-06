@@ -5,7 +5,7 @@
   position: absolute;
   z-index: -1;
 
-  .⍰--hit & {
+  &.coin--flipping {
     --⍰-hit-cx: 8;
     animation: ⍰-hit .4s $out-quad .017s; // .017s = 1 frame at 60 fps
   }
