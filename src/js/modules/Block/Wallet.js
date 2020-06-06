@@ -12,13 +12,10 @@ export default class Wallet {
     this.makeSounds()
 
     this.scoreBoardReady = false
-    this.coins = 0
 
     this.fromBank().then(money => {
-      if (Number.isInteger(money)) {
-        this.coins = money
-        this.display()
-      }
+      this.coins = money
+      this.display()
     })
   }
 
@@ -78,7 +75,7 @@ export default class Wallet {
   async fromBank() {
     if (!('indexedDB') in window) { return 0 }
 
-    return idbGet('coins-amount')
+    return await idbGet('coins-amount').then(money => Number.isInteger(money) ? money : 0)
   }
 
   makeSounds() {
