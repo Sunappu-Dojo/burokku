@@ -21,7 +21,7 @@ const cssNanoOptions = { preset: ['default', { colormin: false }] }
 const purgeCssOptions = {
   content: [
     './public/index.html',
-    './resources/js/**/*.js',
+    './src/js/**/*.js',
   ],
   whitelistPatterns: [/⍰/],
 }
