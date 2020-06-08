@@ -1,11 +1,32 @@
 <svg width="512" height="512" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg" class="⍰">
     <style>
-    .⍰-bg { fill: hsl(0, 0%, 86%); }
-    .⍰-color { fill: hsl(0, 0%, 46%); }
+    .⍰ {
+        --⍰-bg: hsl(0, 0%, 86%);
+        --⍰-color: hsl(0, 0%, 46%);
+        --⍰-light-off: hsl(0, 0%, 31%);
+    }
 
     @media (prefers-color-scheme: dark) {
-        .⍰-bg { fill: hsl(28, 100%, 61%); }
-        .⍰-color { fill: hsl(19, 88%, 43%); }
+        .⍰ {
+            --⍰-bg: hsl(28, 100%, 61%);
+            --⍰-color: hsl(19, 88%, 43%);
+            --⍰-light-off: hsl(7, 100%, 27%);
+        }
+    }
+
+    .⍰-bg {
+        fill: var(--⍰-bg);
+        animation: ⍰-wink 5s steps(1, end) infinite;
+    }
+
+    .⍰-color { fill: var(--⍰-color); }
+
+    @keyframes ⍰-wink {
+        43% { fill: var(--⍰-bg); }
+        47% { fill: var(--⍰-color); }
+        50% { fill: var(--⍰-light-off); }
+        53% { fill: var(--⍰-color); }
+        56% { fill: var(--⍰-bg); }
     }
     </style>
     <rect y="32" width="512" height="480"/>
