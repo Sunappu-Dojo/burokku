@@ -25,8 +25,8 @@ $block-bar: (
 
 // Page blocks
 
-@import 'bar';
-@import 'the-block';
+@import 'top-bar';
 @import 'install';
+@import 'blocks/blocks';
 @import 'footer';
 @import 'no-js-message';
