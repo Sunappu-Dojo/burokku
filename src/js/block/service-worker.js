@@ -2,7 +2,7 @@
  * Service worker strategy: network first, fallback on cache.
  */
 
-const SW_VERSION = '1.1'
+const SW_VERSION = '1.2'
 const resourcesCacheKey = `cache-v${SW_VERSION}`
 
 const resourcesToCache = [
@@ -22,6 +22,7 @@ const resourcesToCache = [
 
   // Standard icons
   'favicon.svg',
+  'favicon-original.svg',
   'android-chrome-192x192.png',
   'android-chrome-512x512.png',
 
@@ -43,6 +44,8 @@ const resourcesToCache = [
   // Old stuff
   'favicon-32x32.png',
   'favicon-16x16.png',
+  'favicon-32x32-original.png',
+  'favicon-16x16-original.png',
 ]
 
 const createCaches = () =>
