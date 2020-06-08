@@ -1,5 +1,5 @@
 import Events from '../events/index'
-import ColorSchemes from '../modules/ColorSchemes'
+import watchColorSchemes from '../modules/ColorSchemes'
 import Block from '../modules/Block'
 
 const installBtnId = 'sw-install'
@@ -27,16 +27,12 @@ export default class {
 
   initPage() {
     this.initBlock()
-    this.initColorSchemes()
+    watchColorSchemes()
     this.initServiceWorker()
   }
 
   initBlock() {
     this.block = new Block()
-  }
-
-  initColorSchemes() {
-    this.colorSchemes = new ColorSchemes()
   }
 
   initServiceWorker() {
