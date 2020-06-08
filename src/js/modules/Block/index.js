@@ -41,7 +41,7 @@ export default class Block {
     this.btn.style.animation = null
   }
 
-  giveCoin(coin) {
+  throwCoin(coin) {
     coin.classList.add(CSS.flippingCoin)
     this.wallet.add(1)
   }
@@ -73,7 +73,7 @@ export default class Block {
     if (!coin) { return }
 
     this.bumpBlock()
-    this.giveCoin(coin)
+    this.throwCoin(coin)
   }
 
   onAnimationEnd({ animationName, target }) {
