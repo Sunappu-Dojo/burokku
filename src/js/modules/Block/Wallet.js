@@ -69,10 +69,10 @@ export default class Wallet {
   /**
    * Load money
    */
-  async fromBank() {
-    if (!('indexedDB') in window) { return 0 }
-
-    return await idbGet('coins-amount').then(money => Number.isInteger(money) ? money : 0)
+  fromBank() {
+    return ('indexedDB' in window)
+      ? idbGet('coins-amount').then(money => Number.isInteger(money) ? money : 0)
+      : 0
   }
 
   // SFX
