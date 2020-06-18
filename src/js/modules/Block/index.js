@@ -17,9 +17,10 @@ export default class Block {
   }
 
   bumpBlock() {
-    this.resetBump()
-    this.btn.classList.add(CSS.hit)
-    this.playSounds()
+    this.resetBump(() => {
+      this.btn.classList.add(CSS.hit)
+      this.playSounds()
+    })
   }
 
   throttleBump() {
@@ -31,14 +32,15 @@ export default class Block {
 
   /**
    * Reset bump animation
-   *
-   * https://medium.com/better-programming/how-to-restart-a-css-animation-with-javascript-and-what-is-the-dom-reflow-a86e8b6df00f
    */
-  resetBump() {
+  resetBump(callback) {
     this.btn.classList.remove(CSS.hit)
-    this.btn.style.animation = 'none'
-    this.btn.offsetHeight // trigger reflow
-    this.btn.style.animation = null
+    this.btn.style.setProperty('animation', 'none')
+
+    requestAnimationFrame(() => {
+      this.btn.style.removeProperty('animation')
+      requestAnimationFrame(callback)
+    })
   }
 
   throwCoin(coin) {
