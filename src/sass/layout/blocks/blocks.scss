@@ -1,22 +1,2 @@
-.block__⍰-ctn {
-  --⍰-size: 20vmin;
-  --⍰-min-size: 10rem;
-
-  transform: translate3d(0, calc(20vmin + var(--⍰-size) / 8 - 10%), 0);
-}
-
-.block__⍰ {
-  size: v(⍰-size);
-
-  @media (--block-scale) and (--block-scale-h) {
-    min-size: v(⍰-min-size);
-  }
-}
-
-.block__coin {
-  size: calc(var(--⍰-size) / 2) auto;
-
-  @media (--block-scale) and (--block-scale-h) {
-    min-inline-size: calc(var(--⍰-min-size) / 2);
-  }
-}
+@import 'ctn';
+@import 'block';

@@ -1,0 +1,13 @@
+.blocks {
+  size: 100%;
+  position: absolute;
+
+  display: grid;
+  grid-auto-columns: 100vw;
+  grid-auto-flow: column;
+
+  padding: 0 v(x-space) 2rem;
+
+  -webkit-overflow-scrolling: touch; // iOS free scroll (momentum). Maybe not needed anymore on iOS 13 (https://webkit.org/blog/9674/new-webkit-features-in-safari-13/)
+  overflow: hidden;
+}

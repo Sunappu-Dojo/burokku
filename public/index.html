@@ -47,96 +47,102 @@
     <meta name="twitter:image" content="https://block.sunappu.net/android-chrome-512x512.png">
 </head>
 
-<body class="block | flex-center">
+<body>
 
     <noscript>
         <p class="noscript | flex-center">Want some gold? Turn on JavaScript.</p>
     </noscript>
 
-    <main class="flex-center">
+    <main>
 
         <h1 class="visually-hidden">⍰</h1>
 
-        <!-- ⍰ -->
+        <div class="blocks" id="blocks">
 
-        <button class="block__⍰-ctn ⍰-ctn | flex-center noselect" type="button" autofocus>
-            <span class="visually-hidden">Jump!</span>
-            <span class="⍰__inner | flex-center">
-                <!-- ⍰ -->
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="21" height="21" class="block__⍰ ⍰">
-                    <style>
-                    .⍰ {
-                        --⍰-background: var(--⍰-bg, hsl(0, 0%, 86%));
-                        --⍰-color: var(--⍰-primary, hsl(0, 0%, 46%));
-                        --⍰-light-off: var(--⍰-dark, hsl(0, 0%, 31%));
-                        --⍰-anim: var(--⍰-animation, ⍰-wink);
-                    }
+            <!-- ⍰ SMB -->
 
-                    .⍰-color {
-                        fill: var(--⍰-color);
-                    }
+            <button class="block ⍰-ctn | flex-center noselect" type="button" autofocus>
+                <span class="visually-hidden">Jump!</span>
+                <span class="⍰__inner | flex-center">
+                    <!-- ⍰ -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="21" height="21" class="block__⍰ ⍰">
+                        <style>
+                        .⍰ {
+                            --⍰-background: var(--⍰-bg, hsl(0, 0%, 86%));
+                            --⍰-color: var(--⍰-primary, hsl(0, 0%, 46%));
+                            --⍰-light-off: var(--⍰-dark, hsl(0, 0%, 31%));
+                            --⍰-anim: var(--⍰-animation, ⍰-wink);
+                        }
 
-                    .⍰-bg {
-                        fill: var(--⍰-background);
-                        animation: var(--⍰-anim) 5s steps(1, end) infinite;
-                    }
+                        .⍰-color {
+                            fill: var(--⍰-color);
+                        }
 
-                    @keyframes ⍰-wink {
-                        43% { fill: var(--⍰-background); }
+                        .⍰-bg {
+                            fill: var(--⍰-background);
+                            animation: var(--⍰-anim) 5s steps(1, end) infinite;
+                        }
 
-                        47% { fill: var(--⍰-color); }
+                        @keyframes ⍰-wink {
+                            43% { fill: var(--⍰-background); }
 
-                        50% { fill: var(--⍰-light-off); }
+                            47% { fill: var(--⍰-color); }
 
-                        53% { fill: var(--⍰-color); }
+                            50% { fill: var(--⍰-light-off); }
 
-                        56% { fill: var(--⍰-background); }
-                    }
-                    </style>
-                    <rect y="32" width="512" height="480" />
-                    <rect x="32" y="32" width="448" height="448" class="⍰-bg" />
-                    <rect x="64" y="416" width="32" height="32" />
-                    <rect x="416" y="416" width="32" height="32" />
-                    <rect x="64" y="64" width="32" height="32" />
-                    <rect x="416" y="64" width="32" height="32" />
-                    <rect x="256" y="384" width="64" height="64" />
-                    <path d="M160 160v96h64v-96h96v96h-32v32h-32v64h64v-64h64V160h-32v-32H192v32h-32z" />
-                    <g class="⍰-color">
-                        <rect y="32" width="32" height="448" />
-                        <rect x="32" width="448" height="32" />
-                        <rect x="224" y="352" width="64" height="64" />
-                        <path d="M128 128v96h64v-96h96v96h-32v32h-32v64h64v-64h64V128h-32V96H160v32h-32z" />
-                    </g>
-                </svg>
+                            53% { fill: var(--⍰-color); }
 
-                <!-- Coins -->
-                <span class="⍰__coin-ctn | flex-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                        <use xlink:href="#coin-path"></use>
+                            56% { fill: var(--⍰-background); }
+                        }
+                        </style>
+                        <rect y="32" width="512" height="480" />
+                        <rect x="32" y="32" width="448" height="448" class="⍰-bg" />
+                        <rect x="64" y="416" width="32" height="32" />
+                        <rect x="416" y="416" width="32" height="32" />
+                        <rect x="64" y="64" width="32" height="32" />
+                        <rect x="416" y="64" width="32" height="32" />
+                        <rect x="256" y="384" width="64" height="64" />
+                        <path d="M160 160v96h64v-96h96v96h-32v32h-32v64h64v-64h64V160h-32v-32H192v32h-32z" />
+                        <g class="⍰-color">
+                            <rect y="32" width="32" height="448" />
+                            <rect x="32" width="448" height="32" />
+                            <rect x="224" y="352" width="64" height="64" />
+                            <path d="M128 128v96h64v-96h96v96h-32v32h-32v64h64v-64h64V128h-32V96H160v32h-32z" />
+                        </g>
+                    </svg>
+
+                    <!-- Coins -->
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-path"></use>
+                        </svg>
+                    </span>
+                </span>
                     </svg>
                 </span>
-                <span class="⍰__coin-ctn | flex-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                        <use xlink:href="#coin-path"></use>
-                    </svg>
-                </span>
-                <span class="⍰__coin-ctn | flex-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                        <use xlink:href="#coin-path"></use>
-                    </svg>
-                </span>
-                <span class="⍰__coin-ctn | flex-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                        <use xlink:href="#coin-path"></use>
-                    </svg>
-                </span>
-                <span class="⍰__coin-ctn | flex-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                        <use xlink:href="#coin-path"></use>
-                    </svg>
-                </span>
-            </span>
-        </button>
+            </button>
+
+        </div>
 
         <!-- Top bar : score and PWA install -->
 
