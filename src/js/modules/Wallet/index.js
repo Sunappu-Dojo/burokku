@@ -1,9 +1,9 @@
 import { get as idbGet, set as idbSet } from 'idb-keyval'
 import Sfx from '../../helpers/Sfx/index'
 
-import { SOUNDS, CSS } from './config'
+import { SOUNDS } from '../Block/config'
 
-export default class Wallet {
+class Wallet {
 
   get coins() {
     return this.money
@@ -37,6 +37,10 @@ export default class Wallet {
     this.display()
   }
 
+  onCoinThrow(coins) {
+    this.add(coins)
+  }
+
   /**
    * Show coins amount
    */
@@ -49,7 +53,7 @@ export default class Wallet {
    * Prepare money count display
    */
   prepareDisplay() {
-    this.output = document.getElementById(CSS.coinsNumber)
+    this.output = document.getElementById('coins')
     this.pageTitle = document.head.querySelector('title')
 
     document.getElementById('wallet').classList.add('wallet--on')
@@ -95,4 +99,8 @@ export default class Wallet {
       this.oneUp = Sfx.makeFrom(SOUNDS.oneUp)
     }
   }
+}
+
+export default function() {
+  return new Wallet()
 }

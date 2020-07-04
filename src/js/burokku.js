@@ -2,6 +2,7 @@ import initEvents from './events/index'
 import watchColorSchemes from './modules/ColorSchemes'
 import initBlocks from './modules/Blocks'
 import initNav from './modules/Nav'
+import initWallet from './modules/Wallet'
 
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
@@ -26,6 +27,7 @@ class Burokku {
     initEvents(this)
 
     this.blocks = initBlocks()
+    this.wallet = initWallet()
     this.nav = initNav()
 
     watchColorSchemes()

@@ -1,5 +1,4 @@
 import Sfx from '../../helpers/Sfx/index'
-import Wallet from './Wallet'
 
 import { SOUNDS, CSS, THROTTLE } from './config'
 
@@ -9,7 +8,6 @@ export default class Block {
     this.coins = this.btn.getElementsByClassName(CSS.coins)
 
     this.flippingCoins = document.getElementsByClassName(CSS.flippingCoin)
-    this.wallet = new Wallet()
 
     this.canBump = true
     this.canBumpTimer = null
@@ -46,7 +44,7 @@ export default class Block {
 
   throwCoin(coin) {
     coin.classList.add(CSS.flippingCoin)
-    this.wallet.add(1)
+    document.dispatchEvent(new CustomEvent('coinThrow', { detail: 1 }))
   }
 
   playSounds() {

@@ -13,6 +13,12 @@ class EventsManager {
     }
   }
 
+  onCoinThrow(e) {
+    if ('wallet' in this.app) {
+      this.app.wallet.onCoinThrow(e.detail)
+    }
+  }
+
   onTap(e) {
     if ('blocks' in this.app) {
       this.app.blocks.onTap(e)
@@ -49,6 +55,7 @@ class EventsManager {
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))
 
     document.addEventListener('blockChange', this.onBlockChange.bind(this))
+    document.addEventListener('coinThrow', this.onCoinThrow.bind(this))
   }
 }
 
