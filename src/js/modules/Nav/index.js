@@ -34,12 +34,16 @@ class Nav {
   set current(index) {
     currentIndex = index
     ctn.style.setProperty('--current', index)
-    document.dispatchEvent(new CustomEvent('blockChange', { detail: index }))
+    updateArrows()
+
+    document.dispatchEvent(new CustomEvent('blockChange', {
+      detail: index,
+      isEdge: prevBtn.disabled || nextBtn.disabled,
+    }))
   }
 
   constructor() {
     this.current = 0
-    updateArrows()
   }
 
   prev() { this.tap(prevBtn) }
@@ -49,7 +53,6 @@ class Nav {
     if (arrow.disabled) { return }
 
     this.current += parseInt(arrow.dataset.dir)
-    updateArrows()
   }
 
   onTap({ target }) {

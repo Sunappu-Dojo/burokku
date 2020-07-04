@@ -1,15 +1,21 @@
 import { captureEvent } from './optionsSupport'
 
-export default class {
+class EventsManager {
   constructor(app) {
     this.app = app
 
     this.init()
   }
 
+  onBlockChange(e) {
+    if ('blocks' in this.app) {
+      this.app.blocks.onBlockChange(e)
+    }
+  }
+
   onTap(e) {
-    if ('block' in this.app) {
-      this.app.block.onTap(e)
+    if ('blocks' in this.app) {
+      this.app.blocks.onTap(e)
     }
 
     if ('nav' in this.app) {
@@ -27,8 +33,8 @@ export default class {
   }
 
   onAnimationEnd(e) {
-    if ('block' in this.app) {
-      this.app.block.onAnimationEnd(e)
+    if ('blocks' in this.app) {
+      this.app.blocks.onAnimationEnd(e)
     }
   }
 
@@ -41,5 +47,11 @@ export default class {
     document.addEventListener('keyup', this.onKeyUp.bind(this))
 
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))
+
+    document.addEventListener('blockChange', this.onBlockChange.bind(this))
   }
+}
+
+export default function(app) {
+  return new EventsManager(app)
 }

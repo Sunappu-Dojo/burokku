@@ -4,9 +4,10 @@ import Wallet from './Wallet'
 import { SOUNDS, CSS, THROTTLE } from './config'
 
 export default class Block {
-  constructor() {
-    this.btn = document.getElementsByClassName(CSS.btn)[0]
-    this.coins = document.getElementsByClassName(CSS.coins)
+  constructor(id) {
+    this.btn = document.getElementById(id)
+    this.coins = this.btn.getElementsByClassName(CSS.coins)
+
     this.flippingCoins = document.getElementsByClassName(CSS.flippingCoin)
     this.wallet = new Wallet()
 

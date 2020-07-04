@@ -4,8 +4,8 @@
         "node": ">=8.0"
     },
     "scripts": {
-        "sw": "cross-env NODE_ENV=production npx babel src/js/block/service-worker.js --out-file public/block-service-worker.js",
-        "sw-watch": "cross-env NODE_ENV=development npx babel src/js/block/service-worker.js --watch --out-file public/block-service-worker.js",
+        "sw": "cross-env NODE_ENV=production npx babel src/js/service-worker.js --out-file public/block-service-worker.js",
+        "sw-watch": "cross-env NODE_ENV=development npx babel src/js/service-worker.js --watch --out-file public/block-service-worker.js",
         "dev": "npm run development && npm run sw",
         "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=webpack.config.js",
         "watch": "npm run development -- --watch",
