@@ -12,9 +12,18 @@ export default class {
       this.app.block.onTap(e)
     }
 
+    if ('nav' in this.app) {
+      this.app.nav.onTap(e)
+    }
+
     if ('sw' in this.app) {
       this.app.onTap(e)
     }
+  }
+
+  onKeyUp({ key }) {
+    if (key === 'ArrowLeft') { return this.app.nav.prev() }
+    if (key === 'ArrowRight') { return this.app.nav.next() }
   }
 
   onAnimationEnd(e) {
@@ -29,6 +38,7 @@ export default class {
     document.addEventListener('touchstart', () => {})
 
     document.addEventListener('click', this.onTap.bind(this), captureEvent)
+    document.addEventListener('keyup', this.onKeyUp.bind(this))
 
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))
   }

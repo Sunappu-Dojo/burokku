@@ -1,6 +1,7 @@
 import Events from '../events/index'
 import watchColorSchemes from '../modules/ColorSchemes'
 import Block from '../modules/Block'
+import initNav from '../modules/Nav'
 
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
@@ -26,13 +27,10 @@ export default class {
   }
 
   initPage() {
-    this.initBlock()
+    this.block = new Block()
+    this.nav = initNav()
     watchColorSchemes()
     this.initServiceWorker()
-  }
-
-  initBlock() {
-    this.block = new Block()
   }
 
   initServiceWorker() {
