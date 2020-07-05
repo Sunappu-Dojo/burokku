@@ -1,0 +1,30 @@
+.block {
+  --⍰-size: 20vmin;
+  --⍰-min-size: 10rem;
+
+  transform: translate(
+    calc(100% * var(--current, 0) * -1),
+    calc(20vmin + var(--⍰-size, 0) / 8 - 10%)
+  );
+
+  transition: .3s transform $in-out-quad;
+}
+
+.block__⍰ {
+  size: v(⍰-size);
+
+  @media (--block-scale) and (--block-scale-h) {
+    min-size: v(⍰-min-size);
+  }
+}
+
+.block__coin {
+  size: calc(var(--⍰-size) * var(--coin-w-cx, .5)) auto;
+
+  @media (--block-scale) and (--block-scale-h) {
+    min-inline-size: calc(var(--⍰-min-size) * var(--coin-w-cx, .5));
+  }
+}
+
+#smb { --coin-w-cx: .5; }
+#smb3 { --coin-w-cx: .6; }

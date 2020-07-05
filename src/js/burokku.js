@@ -1,11 +1,13 @@
-import Events from '../events/index'
-import watchColorSchemes from '../modules/ColorSchemes'
-import Block from '../modules/Block'
+import initBlocks from './modules/Blocks'
+import initEvents from './events/index'
+import initNav from './modules/Nav'
+import initWallet from './modules/Wallet'
+import watchColorSchemes from './modules/ColorSchemes'
 
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
 
-export default class {
+class Burokku {
   constructor() {
     this.doc = document.documentElement
 
@@ -22,22 +24,20 @@ export default class {
     this.doc.classList.remove('no-js')
     this.doc.classList.add('js')
 
-    let events = new Events(this)
-  }
+    initEvents(this)
 
-  initPage() {
-    this.initBlock()
+    this.blocks = initBlocks()
+    this.wallet = initWallet()
+    this.nav = initNav()
+
     watchColorSchemes()
-    this.initServiceWorker()
-  }
 
-  initBlock() {
-    this.block = new Block()
+    this.initServiceWorker()
   }
 
   initServiceWorker() {
     import(/* webpackChunkName: "modules/service-worker" */
-      '../modules/ServiceWorker').then(swModule => {
+      './modules/ServiceWorker').then(swModule => {
       const SW = swModule.default
 
       if (SW.getSupport()) {
@@ -52,3 +52,5 @@ export default class {
     })
   }
 }
+
+new Burokku()

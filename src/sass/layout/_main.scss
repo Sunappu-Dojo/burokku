@@ -13,7 +13,8 @@ $block-bar: (
 @include --w($block-bar);
 @include --h($block-bar);
 
-.block {
+body {
+
   @media (--block-bar-scale) and (--h-block-bar-scale) {
     --block-bar-space: calc(1rem + 3vmin);
   }
@@ -22,11 +23,3 @@ $block-bar: (
     --block-bar-space: 3vmax;
   }
 }
-
-// Page blocks
-
-@import 'bar';
-@import 'the-block';
-@import 'install';
-@import 'footer';
-@import 'no-js-message';

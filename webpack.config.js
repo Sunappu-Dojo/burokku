@@ -59,7 +59,7 @@ if (
 configJs = {
 
   entry: {
-    block: `./${assets}/js/block.js`,
+    burokku: `./${assets}/js/burokku.js`,
   },
 
   output: {

@@ -13,7 +13,6 @@ export const CSS = {
   hitAnimation: '⍰-hit',
   coins: '⍰__coin-ctn',
   flippingCoin: 'coin--flipping',
-  coinsNumber: 'coins',
 }
 
 export const THROTTLE = 130

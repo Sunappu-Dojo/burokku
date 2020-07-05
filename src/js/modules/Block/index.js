@@ -1,19 +1,22 @@
 import Sfx from '../../helpers/Sfx/index'
-import Wallet from './Wallet'
 
 import { SOUNDS, CSS, THROTTLE } from './config'
 
 export default class Block {
-  constructor() {
-    this.btn = document.getElementsByClassName(CSS.btn)[0]
-    this.coins = document.getElementsByClassName(CSS.coins)
+  constructor(id) {
+    this.btn = document.getElementById(id)
+    this.coins = this.btn.getElementsByClassName(CSS.coins)
+
     this.flippingCoins = document.getElementsByClassName(CSS.flippingCoin)
-    this.wallet = new Wallet()
 
     this.canBump = true
     this.canBumpTimer = null
 
     this.makeSounds()
+  }
+
+  focus() {
+    this.btn.focus()
   }
 
   bumpBlock() {
@@ -45,7 +48,7 @@ export default class Block {
 
   throwCoin(coin) {
     coin.classList.add(CSS.flippingCoin)
-    this.wallet.add(1)
+    document.dispatchEvent(new CustomEvent('coinThrow', { detail: 1 }))
   }
 
   playSounds() {
@@ -78,13 +81,19 @@ export default class Block {
     this.throwCoin(coin)
   }
 
-  onAnimationEnd({ animationName, target }) {
+  onAnimationEnd({ target }) {
     if (target.classList.contains(CSS.flippingCoin)) {
       return target.classList.remove(CSS.flippingCoin)
     }
 
     if (target.classList.contains(CSS.btnInner)) {
       return this.btn.classList.remove(CSS.hit)
+    }
+  }
+
+  onTransitionEnd({ target }) {
+    if (target === this.btn) {
+      this.focus()
     }
   }
 }

@@ -2,7 +2,7 @@
  * Service worker strategy: network first, fallback on cache.
  */
 
-const SW_VERSION = '1.2'
+const SW_VERSION = '1.3'
 const resourcesCacheKey = `cache-v${SW_VERSION}`
 
 const resourcesToCache = [
@@ -10,7 +10,7 @@ const resourcesToCache = [
   'site.webmanifest',
 
   'css/block.css',
-  'js/block.js',
+  'js/burokku.js',
   'js/modules/service-worker.js',
 
   'sfx/smb-bump.flac',
