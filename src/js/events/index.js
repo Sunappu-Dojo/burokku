@@ -64,6 +64,12 @@ class EventsManager {
     }
   }
 
+  onTransitionEnd(e) {
+    if ('blocks' in this.app) {
+      this.app.blocks.onTransitionEnd(e)
+    }
+  }
+
   init() {
 
     // add :hover support in iOS ¯\_(ツ)_/¯
@@ -73,6 +79,7 @@ class EventsManager {
     document.addEventListener('keyup', this.onKeyUp.bind(this))
 
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))
+    document.addEventListener('transitionend', this.onTransitionEnd.bind(this))
 
     document.addEventListener('walletDisplayReady', this.onWalletDisplayReady.bind(this))
     document.addEventListener('blockChange', this.onBlockChange.bind(this))

@@ -7,6 +7,7 @@ class Blocks {
   constructor() {
     this.items = [new Block(ctn.children[0].id)]
     this.active = this.items[0]
+    this.active.focus()
   }
 
   onWalletDisplayReady(coins) {
@@ -28,6 +29,10 @@ class Blocks {
 
   onAnimationEnd(e) {
     this.active.onAnimationEnd(e)
+  }
+
+  onTransitionEnd(e) {
+    this.active.onTransitionEnd(e)
   }
 
   /**

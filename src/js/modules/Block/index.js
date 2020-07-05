@@ -15,6 +15,10 @@ export default class Block {
     this.makeSounds()
   }
 
+  focus() {
+    this.btn.focus()
+  }
+
   bumpBlock() {
     this.resetBump(() => {
       this.btn.classList.add(CSS.hit)
@@ -84,6 +88,12 @@ export default class Block {
 
     if (target.classList.contains(CSS.btnInner)) {
       return this.btn.classList.remove(CSS.hit)
+    }
+  }
+
+  onTransitionEnd(e) {
+    if (e.target === this.btn) {
+      this.focus()
     }
   }
 }
