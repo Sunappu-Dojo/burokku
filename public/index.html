@@ -163,27 +163,38 @@
                             100% { transform: translate(100%, 0); }
                         }
                         </style>
+
+                        <!-- Backgrounds -->
                         <rect x="32" y="32" width="448" height="448" fill="#ea9e22"/>
                         <rect x="32" y="32" width="448" height="32" fill="#ffccc5"/>
                         <rect x="32" y="64" width="32" height="416" fill="#ffccc5"/>
+
+                        <!-- Screws -->
                         <g fill="#000">
                             <rect x="64" y="416" width="32" height="32"/>
                             <rect x="416" y="416" width="32" height="32"/>
                             <rect x="64" y="64" width="32" height="32"/>
                             <rect x="416" y="64" width="32" height="32"/>
                         </g>
-                        <g class="⍰-sign">
-                            <path d="M160 160h-32v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32v-32H160v32z" fill="#000"/>
-                            <rect x="224" y="352" width="96" height="64" fill="#000"/>
-                            <path d="M128 128H96v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32V96H128v32z" fill="#ffccc5"/>
-                            <rect x="192" y="320" width="96" height="64" fill="#ffccc5"/>
+
+                        <!-- ⍰ + mask -->
+                        <defs>
+                            <clipPath id="⍰-sign-clip">
+                                <rect x="32" y="32" width="448" height="448"/>
+                            </clipPath>
+                            <g id="⍰-sign-path">
+                                <path d="M160 160h-32v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32v-32H160v32z" fill="#000"/>
+                                <rect x="224" y="352" width="96" height="64" fill="#000"/>
+                                <path d="M128 128H96v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32V96H128v32z" fill="#ffccc5"/>
+                                <rect x="192" y="320" width="96" height="64" fill="#ffccc5"/>
+                            </g>
+                        </defs>
+                        <g clip-path="url(#⍰-sign-clip)">
+                            <use xlink:href="#⍰-sign-path" id="⍰-sign-one" class="⍰-sign"></use>
+                            <use xlink:href="#⍰-sign-path" id="⍰-sign-two" class="⍰-sign ⍰-sign--two"></use>
                         </g>
-                        <g class="⍰-sign ⍰-sign--two">
-                            <path d="M160 160h-32v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32v-32H160v32z" fill="#000"/>
-                            <rect x="224" y="352" width="96" height="64" fill="#000"/>
-                            <path d="M128 128H96v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32V96H128v32z" fill="#ffccc5"/>
-                            <rect x="192" y="320" width="96" height="64" fill="#ffccc5"/>
-                        </g>
+
+                        <!-- Outline -->
                         <rect x="16" y="16" width="480" height="480" stroke="#000" stroke-width="32"/>
                     </svg>
 
