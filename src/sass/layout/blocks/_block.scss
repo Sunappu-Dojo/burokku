@@ -1,10 +1,10 @@
 .block {
-  --block-size: 20vmin;
-  --block-min-size: 10rem;
+  --⍰-size: 20vmin;
+  --⍰-min-size: 10rem;
 
   transform: translate(
     calc(100% * var(--current, 0) * -1),
-    calc(20vmin + var(--block-size) / 8 - 10%)
+    calc(20vmin + var(--⍰-size, 0) / 8 - 10%)
   );
 
   scroll-snap-align: center;
@@ -13,21 +13,20 @@
 }
 
 .block__⍰ {
-  size: v(block-size);
+  size: v(⍰-size);
 
   @media (--block-scale) and (--block-scale-h) {
-    min-size: v(block-min-size);
+    min-size: v(⍰-min-size);
   }
 }
 
 .block__coin {
-  size: calc(var(--block-size) * var(--cx, .5)) auto;
+  size: calc(var(--⍰-size) * var(--coin-w-cx, .5)) auto;
 
   @media (--block-scale) and (--block-scale-h) {
-    min-inline-size: calc(var(--block-min-size) * var(--cx, .5));
+    min-inline-size: calc(var(--⍰-min-size) * var(--coin-w-cx, .5));
   }
-
 }
 
-#smb { --cx: .5; }
-#smb3 { --cx: .6; }
+#smb { --coin-w-cx: .5; }
+#smb3 { --coin-w-cx: .6; }
