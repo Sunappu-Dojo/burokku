@@ -1,8 +1,8 @@
-import initEvents from './events/index'
-import watchColorSchemes from './modules/ColorSchemes'
 import initBlocks from './modules/Blocks'
+import initEvents from './events/index'
 import initNav from './modules/Nav'
 import initWallet from './modules/Wallet'
+import watchColorSchemes from './modules/ColorSchemes'
 
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'

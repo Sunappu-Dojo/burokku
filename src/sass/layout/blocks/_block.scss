@@ -7,8 +7,6 @@
     calc(20vmin + var(--⍰-size, 0) / 8 - 10%)
   );
 
-  scroll-snap-align: center;
-
   transition: .3s transform $in-out-quad;
 }
 
