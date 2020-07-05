@@ -1,3 +1,4 @@
+import { get as idbGet, set as idbSet } from 'idb-keyval'
 import CSS from './config'
 
 const ctn = document.getElementById(CSS.ctn)
@@ -40,10 +41,14 @@ class Nav {
       detail: index,
       isEdge: prevBtn.disabled || nextBtn.disabled,
     }))
+
+    this.savePosition(index)
   }
 
   constructor() {
-    this.current = 0
+    this.loadPosition().then(position => {
+      this.current = position
+    })
   }
 
   prev() { this.tap(prevBtn) }
@@ -63,6 +68,24 @@ class Nav {
 
   update() {
     updateArrows()
+  }
+
+  /**
+   * Save position
+   */
+  savePosition(position) {
+    if ('indexedDB' in window) {
+      idbSet('current-block', position)
+    }
+  }
+
+  /**
+   * Load position
+   */
+  loadPosition() {
+    return ('indexedDB' in window)
+      ? idbGet('current-block').then(position => Number.isInteger(position) ? position : 0)
+      : 0
   }
 }
 
