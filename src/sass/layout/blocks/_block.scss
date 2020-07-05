@@ -1,11 +1,10 @@
 .block {
-  --⍰-size: 20vmin;
-  --⍰-min-size: 10rem;
+  --block-size: 20vmin;
+  --block-min-size: 10rem;
 
-  transform: translate3d(
+  transform: translate(
     calc(100% * var(--current, 0) * -1),
-    calc(20vmin + var(--⍰-size) / 8 - 10%),
-    0
+    calc(20vmin + var(--block-size) / 8 - 10%)
   );
 
   scroll-snap-align: center;
@@ -14,17 +13,21 @@
 }
 
 .block__⍰ {
-  size: v(⍰-size);
+  size: v(block-size);
 
   @media (--block-scale) and (--block-scale-h) {
-    min-size: v(⍰-min-size);
+    min-size: v(block-min-size);
   }
 }
 
 .block__coin {
-  size: calc(var(--⍰-size) / 2) auto;
+  size: calc(var(--block-size) * var(--cx, .5)) auto;
 
   @media (--block-scale) and (--block-scale-h) {
-    min-inline-size: calc(var(--⍰-min-size) / 2);
+    min-inline-size: calc(var(--block-min-size) * var(--cx, .5));
   }
+
 }
+
+#smb { --cx: .5; }
+#smb3 { --cx: .6; }

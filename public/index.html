@@ -61,7 +61,7 @@
 
             <!-- ⍰ SMB -->
 
-            <button class="block ⍰-ctn | flex-center noselect" type="button" autofocus>
+            <button id="smb" class="block ⍰-ctn | flex-center noselect" type="button" autofocus>
                 <span class="visually-hidden">Jump!</span>
                 <span class="⍰__inner | flex-center">
                     <!-- ⍰ -->
@@ -138,7 +138,81 @@
                         </svg>
                     </span>
                 </span>
+            </button>
+
+            <!-- ⍰ SMB 3 -->
+
+            <button id="smb3" class="block ⍰-ctn | flex-center noselect" type="button" autofocus>
+                <span class="visually-hidden">Jump!</span>
+                <span class="⍰__inner | flex-center">
+
+                    <!-- ⍰ -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="21" height="21" fill="none" class="block__⍰ ⍰-smb3">
+                        <style>
+                        .⍰-sign {
+                            animation: var(--⍰-smb3-animation, ⍰-smb3-wink) 1.7s steps(2, end) infinite;
+                        }
+
+                        .⍰-sign--two { animation-delay: -.85s; }
+
+                        @keyframes ⍰-smb3-wink {
+                            0% { transform: translate(-100%, 0); }
+                            25% { transform: translate(-50%, 0); }
+                            50% { transform: translate(0%, 0); }
+                            75% { transform: translate(50%, 0); }
+                            100% { transform: translate(100%, 0); }
+                        }
+                        </style>
+                        <rect x="32" y="32" width="448" height="448" fill="#ea9e22"/>
+                        <rect x="32" y="32" width="448" height="32" fill="#ffccc5"/>
+                        <rect x="32" y="64" width="32" height="416" fill="#ffccc5"/>
+                        <g fill="#000">
+                            <rect x="64" y="416" width="32" height="32"/>
+                            <rect x="416" y="416" width="32" height="32"/>
+                            <rect x="64" y="64" width="32" height="32"/>
+                            <rect x="416" y="64" width="32" height="32"/>
+                        </g>
+                        <g class="⍰-sign">
+                            <path d="M160 160h-32v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32v-32H160v32z" fill="#000"/>
+                            <rect x="224" y="352" width="96" height="64" fill="#000"/>
+                            <path d="M128 128H96v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32V96H128v32z" fill="#ffccc5"/>
+                            <rect x="192" y="320" width="96" height="64" fill="#ffccc5"/>
+                        </g>
+                        <g class="⍰-sign ⍰-sign--two">
+                            <path d="M160 160h-32v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32v-32H160v32z" fill="#000"/>
+                            <rect x="224" y="352" width="96" height="64" fill="#000"/>
+                            <path d="M128 128H96v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32V96H128v32z" fill="#ffccc5"/>
+                            <rect x="192" y="320" width="96" height="64" fill="#ffccc5"/>
+                        </g>
+                        <rect x="16" y="16" width="480" height="480" stroke="#000" stroke-width="32"/>
                     </svg>
+
+                    <!-- Coins -->
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="18" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smb3-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="18" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smb3-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="18" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smb3-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="18" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smb3-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" width="18" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smb3-path"></use>
+                        </svg>
+                    </span>
                 </span>
             </button>
 
@@ -210,6 +284,15 @@
             <rect x="183" y="109" width="36" height="293.3" fill="currentColor" />
             <rect x="74" y="109" width="36" height="293.3" class="coin-color" />
             <rect x="110" y="73" width="73.3" height="36" class="coin-color" />
+        </svg>
+
+        <svg id="coin-smb3-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M0 128v256h32v64h32v32h64v32h192v-32h64v-32h32v-64h32V128h-32V64h-32V32h-64V0H128v32H64v32H32v64H0z"/>
+            <path fill="#ffccc5" d="M64 160H32v192h32v64h32v32h160V32h-96v32H96v32H64v64z"/>
+            <path fill="#ea9e22" d="M96 160H64v192h32v64h32v32h32v32h96v-32h64v-32h32v-64h32V160h-32V96h-32V64H160v32H96v64z"/>
+            <path d="M160 96h128v320H160z"/>
+            <path fill="#ea9e22" d="M192 128h64v256h-64z"/>
+            <path fill="none" stroke="#ffccc5" stroke-width="32" d="M176 384V112h80"/>
         </svg>
 
         <!-- Twitter -->
