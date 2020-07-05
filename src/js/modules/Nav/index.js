@@ -1,7 +1,7 @@
 import CSS from './config'
 
 const ctn = document.getElementById(CSS.ctn)
-const blocksNb = document.getElementsByClassName(CSS.block).length
+const blocks = ctn.getElementsByClassName(CSS.block)
 
 // Navigation arrows
 const nav = document.getElementById(CSS.nav)
@@ -10,7 +10,7 @@ const nextBtn = nav.querySelector(`.${CSS.next}`)
 
 function updateArrows() {
   prevBtn.toggleAttribute('disabled', currentIndex == 0)
-  nextBtn.toggleAttribute('disabled', currentIndex == blocksNb - 1)
+  nextBtn.toggleAttribute('disabled', currentIndex == blocks.length - 1)
 }
 
 let currentIndex = 0
@@ -59,6 +59,10 @@ class Nav {
     if (!target.closest(`.${CSS.btn}`)) { return }
 
     this.tap(target)
+  }
+
+  update() {
+    updateArrows()
   }
 }
 

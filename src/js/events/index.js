@@ -19,6 +19,26 @@ class EventsManager {
     }
   }
 
+  onOneUp() {
+    if ('blocks' in this.app) {
+      this.app.blocks.onOneUp()
+    }
+
+    if ('nav' in this.app) {
+      this.app.nav.update()
+    }
+  }
+
+  onWalletDisplayReady(e) {
+    if ('blocks' in this.app) {
+      this.app.blocks.onWalletDisplayReady(e.detail)
+    }
+
+    if ('nav' in this.app) {
+      this.app.nav.update()
+    }
+  }
+
   onTap(e) {
     if ('blocks' in this.app) {
       this.app.blocks.onTap(e)
@@ -54,8 +74,10 @@ class EventsManager {
 
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))
 
+    document.addEventListener('walletDisplayReady', this.onWalletDisplayReady.bind(this))
     document.addEventListener('blockChange', this.onBlockChange.bind(this))
     document.addEventListener('coinThrow', this.onCoinThrow.bind(this))
+    document.addEventListener('oneUp', this.onOneUp.bind(this))
   }
 }
 

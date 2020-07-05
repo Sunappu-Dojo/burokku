@@ -58,7 +58,7 @@ class Wallet {
 
     document.getElementById('wallet').classList.add('wallet--on')
 
-    document.dispatchEvent(new CustomEvent('walletDisplayReady'))
+    document.dispatchEvent(new CustomEvent('walletDisplayReady', { detail: this.coins }))
   }
 
   /**
@@ -87,12 +87,13 @@ class Wallet {
     const isOneUp = this.coins % 100 === 0
     if (isOneUp) {
       Sfx.play(this.oneUp, .2) // 1-UP 🍄
+      document.dispatchEvent(new CustomEvent('oneUp'))
     }
 
     this.makeSounds(isOneUp)
   }
 
-  makeSounds(isOneUp = null) {
+  makeSounds(isOneUp = false) {
     this.coin = Sfx.makeFrom(SOUNDS.coin)
 
     if (isOneUp) {
