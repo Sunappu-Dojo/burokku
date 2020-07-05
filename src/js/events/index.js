@@ -53,7 +53,11 @@ class EventsManager {
     }
   }
 
-  onKeyUp({ key }) {
+  onKeyDown(e) {
+    if (e.key === 'Tab') { return this.app.nav.onTab(e) }
+  }
+
+  onKeyUp({ key, target }) {
     if (key === 'ArrowLeft') { return this.app.nav.prev() }
     if (key === 'ArrowRight') { return this.app.nav.next() }
   }
@@ -76,6 +80,7 @@ class EventsManager {
     document.addEventListener('touchstart', () => {})
 
     document.addEventListener('click', this.onTap.bind(this), captureEvent)
+    document.addEventListener('keydown', this.onKeyDown.bind(this))
     document.addEventListener('keyup', this.onKeyUp.bind(this))
 
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))

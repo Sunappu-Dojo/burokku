@@ -66,6 +66,19 @@ class Nav {
     this.tap(target)
   }
 
+  onTab(e) {
+    const adjacentEl =
+      e.shiftKey
+        ? e.target.previousElementSibling
+        : e.target.nextElementSibling
+
+    if (!adjacentEl || !adjacentEl.classList.contains('block')) { return }
+
+    e.preventDefault()
+
+    return e.shiftKey ? this.prev() : this.next()
+  }
+
   update() {
     updateArrows()
   }

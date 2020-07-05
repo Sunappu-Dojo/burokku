@@ -81,7 +81,7 @@ export default class Block {
     this.throwCoin(coin)
   }
 
-  onAnimationEnd({ animationName, target }) {
+  onAnimationEnd({ target }) {
     if (target.classList.contains(CSS.flippingCoin)) {
       return target.classList.remove(CSS.flippingCoin)
     }
@@ -91,8 +91,8 @@ export default class Block {
     }
   }
 
-  onTransitionEnd(e) {
-    if (e.target === this.btn) {
+  onTransitionEnd({ target }) {
+    if (target === this.btn) {
       this.focus()
     }
   }
