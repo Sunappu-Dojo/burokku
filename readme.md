@@ -14,3 +14,7 @@ _トゲハテナブロック_ (_hatena burokku_) is Japanese for [_interrogation
 - duplicate `.env.example` to `.env`
 - `npm i`
 - `npm run prod`
+
+## Special thanks
+
+Thanks to [themushroomkingdom.net](https://themushroomkingdom.net) and all the people running Nintendo fans sites since the previous century!
