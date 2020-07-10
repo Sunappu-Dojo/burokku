@@ -52,6 +52,7 @@
     size: 100%;
     position: absolute;
     inset: 0;
+    z-index: -1;
 
     pointer-events: none;
 
@@ -68,5 +69,11 @@
 }
 
 .arrow__svg {
-  margin-left: -.2em;
+  transform: translateX(-10%);
+
+  size: v(arrow-w, unset) auto;
+
+  @media (--mobile)   { --arrow-w: 1.2rem; }
+  @media (--tablet-7) { --arrow-w: 1.5rem; }
+  @media (--switch)   { --arrow-w: 1.8rem; }
 }
