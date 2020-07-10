@@ -55,6 +55,8 @@ class EventsManager {
 
   onKeyDown(e) {
     if (e.key === 'Tab') { return this.app.nav.onTab(e) }
+    if (e.key === ' ') { return this.app.blocks.onSpace(e) }
+    if (e.key === 'Enter') { return this.app.blocks.onEnter(e) }
   }
 
   onKeyUp({ key, target }) {

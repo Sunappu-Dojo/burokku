@@ -81,6 +81,33 @@ export default class Block {
     this.throwCoin(coin)
   }
 
+  /**
+   * onEnter differs from onSpace because:
+   * - Holding down Space doesn’t trigger repetition on a button, Enter does.
+   * - Pressing Enter on a link must follow it, Space doesn’t.
+   */
+
+  onEnter({ target }) {
+    if (
+      target == this.btn
+      || target.tagName == 'BUTTON'
+      || target.tagName == 'A'
+    ) {
+      return
+    }
+
+    this.focus()
+  }
+
+  onSpace({ target }) {
+    if (! (target === this.btn)) {
+      if (target.tagName === 'BUTTON') { return }
+      this.focus()
+    }
+
+    this.btn.dispatchEvent(new Event('click'))
+  }
+
   onAnimationEnd({ target }) {
     if (target.classList.contains(CSS.flippingCoin)) {
       return target.classList.remove(CSS.flippingCoin)
