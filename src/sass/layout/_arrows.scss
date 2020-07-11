@@ -20,6 +20,9 @@
 
 .arrow {
   size: 6rem 10rem;
+  min-block-size: 3rem;
+  max-block-size: 50vh;
+
   position: relative;
 
   pointer-events: auto;
@@ -73,7 +76,9 @@
 
   size: v(arrow-w, unset) auto;
 
-  @media (--mobile)   { --arrow-w: 1.2rem; }
-  @media (--tablet-7) { --arrow-w: 1.5rem; }
-  @media (--switch)   { --arrow-w: 1.8rem; }
+  @media (--block-scale-h) {
+    @media (--mobile)   { --arrow-w: 1.2rem; }
+    @media (--tablet-7) { --arrow-w: 1.5rem; }
+    @media (--switch)   { --arrow-w: 1.8rem; }
+  }
 }

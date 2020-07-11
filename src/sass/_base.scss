@@ -69,7 +69,8 @@ html {
   background: v(bg);
   color: v(primary);
 
-  @media (--mobile) {
+  // block-scale-h is defined in layout/_main.scss, which is not ideal.
+  @media (--mobile) and (--block-scale-h) {
     font-size: 62.5%;
   }
 }
