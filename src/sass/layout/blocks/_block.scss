@@ -8,6 +8,10 @@
   );
 
   transition: .3s transform $in-out-quad;
+
+  @media (--no-motion) {
+    transition-duration: .001s;
+  }
 }
 
 .block__⍰ {

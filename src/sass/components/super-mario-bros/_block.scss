@@ -10,6 +10,8 @@
 
   .⍰--hit & {
     animation: ⍰-hit .2s;
+
+    // Inner animation of the blocks
     --⍰-animation: none;
     --⍰-smb3-animation: none;
   }

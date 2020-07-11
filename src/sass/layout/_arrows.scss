@@ -45,8 +45,10 @@
 
   &:active {
     &::after {
-      opacity: .3;
-      transition: none;
+      @media (--motion) {
+        opacity: .3;
+        transition: none;
+      }
     }
   }
 
