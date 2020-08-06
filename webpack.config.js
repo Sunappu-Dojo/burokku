@@ -142,7 +142,7 @@ configCSS = {
       { from: `${assets}/manifest/`, to: thePath('public') },
       { from: `${assets}/sfx/`, to: thePath('public/sfx') },
     ]}),
-    new CleanWebpackPlugin(),
+    // new CleanWebpackPlugin(),
     new FriendlyErrorsWebpackPlugin(),
     new NotifierPlugin({ title: 'CSS', ...NotifierPluginOptions }),
     new BrowserSyncPlugin({
