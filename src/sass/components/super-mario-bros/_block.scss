@@ -8,6 +8,11 @@
 .⍰__inner {
   padding: calc(var(--⍰-size) / 2);
 
+  @media (--no-motion) {
+    --⍰-animation: none;
+    --⍰-smb3-animation: none;
+  }
+
   .⍰--hit & {
     animation: ⍰-hit .2s;
 
