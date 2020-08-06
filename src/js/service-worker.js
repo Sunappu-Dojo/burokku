@@ -2,7 +2,7 @@
  * Service worker strategy: network first, fallback on cache.
  */
 
-const SW_VERSION = '1.3.2'
+const SW_VERSION = '1.3.3'
 const resourcesCacheKey = `cache-v${SW_VERSION}`
 
 const resourcesToCache = [
