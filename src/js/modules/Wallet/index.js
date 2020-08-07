@@ -46,7 +46,7 @@ class Wallet {
    */
   display() {
     this.output.innerHTML = this.coins
-    this.pageTitle.innerHTML = `x ${this.coins} • Sunappu ⍰`
+    this.pageTitle.innerHTML = `x ${this.coins} • Burokku`
   }
 
   /**
