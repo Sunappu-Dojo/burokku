@@ -2,7 +2,8 @@
  * Service worker strategy: network first, fallback on cache.
  */
 
-const SW_VERSION = '1.3.3'
+const SW_VERSION = '2.0'
+const NETWORK_TIMEOUT = 700
 const resourcesCacheKey = `cache-v${SW_VERSION}`
 
 const resourcesToCache = [
@@ -60,13 +61,20 @@ const flushOldCaches = () => caches.keys().then(keys => Promise.all(
 const putToCache = (cacheKey, request, response) =>
   caches.open(cacheKey).then(cache => cache.put(request, response))
 
-const respondWith = (e, url) =>
-  e.respondWith(fetch(url)
-    .then(response => response)
-    .catch(err =>
-      caches.match(url, { ignoreSearch: true }).then(response => response)
-    )
-  )
+const fromCache = url =>
+  caches.match(url, { ignoreSearch: true }).then(response => response)
+
+const fromNetwork = (request) => new Promise((resolve, reject) => {
+  const timer = setTimeout(reject, NETWORK_TIMEOUT)
+
+  fetch(request).then(response => {
+    clearTimeout(timer)
+    resolve(response)
+  }, reject)
+})
+
+const respondWith = e =>
+  e.respondWith(fromNetwork(e.request).catch(() => fromCache(e.request)))
 
 self.addEventListener('install', e =>
   e.waitUntil(createCaches().then(() => self.skipWaiting()))
@@ -76,4 +84,4 @@ self.addEventListener('activate', e =>
   e.waitUntil(flushOldCaches().then(() => self.clients.claim()))
 )
 
-self.addEventListener('fetch', e => respondWith(e, e.request))
+self.addEventListener('fetch', respondWith)
