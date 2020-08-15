@@ -17,6 +17,7 @@ class Blocks {
 
   onBlockChange(e) {
     this.active = this.items[e.detail]
+    this.active.onBlockChange()
   }
 
   /**

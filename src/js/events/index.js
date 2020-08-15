@@ -12,6 +12,10 @@ class EventsManager {
       this.app.blocks.onBlockChange(e)
       this.app.updateTitle()
     }
+
+    if ('wallet' in this.app) {
+      this.app.wallet.onBlockChange(e)
+    }
   }
 
   onCoinThrow(e) {
