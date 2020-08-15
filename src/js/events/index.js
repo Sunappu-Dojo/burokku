@@ -20,12 +20,14 @@ class EventsManager {
   }
 
   onOneUp() {
+    let blockAdded = false
+
     if ('blocks' in this.app) {
-      this.app.blocks.onOneUp()
+      blockAdded = this.app.blocks.onOneUp()
     }
 
-    if ('nav' in this.app) {
-      this.app.nav.update()
+    if (blockAdded && 'nav' in this.app) {
+      this.app.nav.onOneUp()
     }
   }
 
