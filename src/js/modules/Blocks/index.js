@@ -19,8 +19,13 @@ class Blocks {
     this.active = this.items[e.detail]
   }
 
+  /**
+   * Try to find and add a block one 1-Up.
+   *
+   * @return {boolean} true if a block has been found and added.
+   */
   onOneUp() {
-    this.add(1)
+    return !!this.add(1)
   }
 
   onTap(e) {
@@ -44,21 +49,27 @@ class Blocks {
   }
 
   /**
-   * Add bumpable blocks.
+   * Add block(s).
+   *
+   * @return {integer} Number of blocks added.
    */
   add(quantity = 1) {
     const targetNb = this.items.length + quantity
+    let blocksAdded = 0
 
     /**
-     * For each 1-UP, a hidden block from div#backlog become visible by being
-     * appended to div#blocks. This is repeated while:
+     * For each 1-UP, a hidden block from `div#backlog` become visible by being
+     * appended to `div#blocks`. This is repeated while:
      * 1. You have 1-UPs granting you new blocks.
      * 2. There are invisible blocks that can become visible.
      */
     while (this.items.length < targetNb && backlog.children.length > 0) {
       const { id } = ctn.appendChild(backlog.children[0])
       this.items.push(new Block(id))
+      blocksAdded++
     }
+
+    return blocksAdded
   }
 }
 
