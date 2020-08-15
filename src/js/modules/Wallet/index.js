@@ -46,7 +46,6 @@ class Wallet {
    */
   display() {
     this.output.innerHTML = this.coins
-    this.pageTitle.innerHTML = `x ${this.coins} • Burokku`
   }
 
   /**
@@ -54,7 +53,6 @@ class Wallet {
    */
   prepareDisplay() {
     this.output = document.getElementById('coins')
-    this.pageTitle = document.head.querySelector('title')
 
     document.getElementById('wallet').classList.add('wallet--on')
 
