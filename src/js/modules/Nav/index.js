@@ -54,16 +54,25 @@ class Nav {
   prev() { this.tap(prevBtn) }
   next() { this.tap(nextBtn) }
 
-  tap(arrow) {
-    if (arrow.disabled) { return }
+  last() {
+    this.current = blocks.length - 1
+  }
 
-    this.current += parseInt(arrow.dataset.dir)
+  tap(arrow) {
+    if (!arrow.disabled) {
+      this.current += parseInt(arrow.dataset.dir)
+    }
+  }
+
+  onOneUp() {
+    updateArrows()
+    setTimeout(() => this.last(), 600)
   }
 
   onTap({ target }) {
-    if (!target.closest(`.${CSS.btn}`)) { return }
-
-    this.tap(target)
+    if (target.closest(`.${CSS.btn}`)) {
+      this.tap(target)
+    }
   }
 
   onTab(e) {
