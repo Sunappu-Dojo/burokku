@@ -1,4 +1,4 @@
-import { captureEvent } from './optionsSupport'
+import { captureEvent } from '../helpers/EventListenerOptions'
 
 class EventsManager {
   constructor(app) {
