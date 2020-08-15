@@ -17,6 +17,8 @@ const resourcesToCache = [
   'sfx/smb-bump.flac',
   'sfx/smb-coin.flac',
   'sfx/smb-1up.flac',
+  'sfx/smw-coin.flac',
+  'sfx/smw-1up.flac',
 
   // Fonts
   'fonts/oxygen-regular.woff2',
