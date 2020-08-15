@@ -4,7 +4,10 @@ const audioContext = new AudioContext()
 import { getAudioFrom } from './helpers'
 
 /**
- * A static class to fetch and play sounds.
+ * A class with static methods that help fetching and playing sounds using the
+ * browser AudioContext API.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData
  *
  * Example:
  *
