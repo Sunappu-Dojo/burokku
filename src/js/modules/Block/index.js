@@ -1,6 +1,6 @@
 import Sfx from '../../helpers/Sfx/index'
 
-import { SOUNDS, CSS, THROTTLE } from './config'
+import { useSounds, SOUNDS, CSS, THROTTLE } from './config'
 
 export default class Block {
   constructor(id) {
@@ -58,6 +58,11 @@ export default class Block {
 
   makeSounds() {
     this.bump = Sfx.makeFrom(SOUNDS.bump)
+  }
+
+  onBlockChange() {
+    useSounds(this.btn.id)
+    this.makeSounds()
   }
 
   onTap({ target }) {

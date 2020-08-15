@@ -98,6 +98,10 @@ class Wallet {
       this.oneUp = Sfx.makeFrom(SOUNDS.oneUp)
     }
   }
+
+  onBlockChange() {
+    this.makeSounds(true)
+  }
 }
 
 export default function() {
