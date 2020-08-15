@@ -231,6 +231,92 @@
                 </span>
             </button>
 
+            <!-- ⍰ SMW -->
+
+            <button id="smw" data-game="Super Burokku World" class="block ⍰-ctn | flex-center noselect" type="button">
+                <span class="visually-hidden">Jump!</span>
+                <span class="⍰__inner | flex-center">
+
+                    <!-- ⍰ -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="21" height="21" fill="none" class="block__⍰ ⍰-smw">
+                        <style>
+                        .⍰-sign {
+                            animation: var(--⍰-smb3-animation, ⍰-smb3-wink) 1.7s steps(2, end) infinite;
+                        }
+
+                        .⍰-sign--two { animation-delay: -.85s; }
+
+                        @keyframes ⍰-smb3-wink {
+                            0% { transform: translate(-100%, 0); }
+                            25% { transform: translate(-50%, 0); }
+                            50% { transform: translate(0%, 0); }
+                            75% { transform: translate(50%, 0); }
+                            100% { transform: translate(100%, 0); }
+                        }
+                        </style>
+
+                        <!-- Outline -->
+                        <path fill="#000" d="M32 64H0v384h32v32h32v32h384v-32h32v-32h32V64h-32V32h-32V0H64v32H32v32z"/>
+
+                        <!-- Backgrounds -->
+                        <path fill="#885818" d="M32 416v32h32v32h384v-32h32V64h-32V32h-32v384H32z"/>
+                        <path fill="#d8a038" d="M64 416v32h352v-32h32V64h-32V32H64v32H32v352h32z"/>
+                        <path fill="#f8d820" d="M64 96v288h32v32h288v-32h32V96h-32V64H96v32H64z"/>
+
+                        <!-- Glow -->
+                        <path fill="#e8f0f8" d="M32 192h32v32H32z"/>
+                        <path fill="#e8f0f8" d="M64 160H32V64h32V32h96v32H96v32H64v64z"/>
+
+                        <!-- Eyes -->
+                        <path fill="#000" d="M160 160h32v128h-32z"/>
+                        <path fill="#000" d="M320 160h32v128h-32z"/>
+
+                        <!-- ⍰ + mask -->
+                        <defs>
+                            <clipPath id="⍰-sign-smw-clip">
+                                <rect x="32" y="32" width="448" height="448"/>
+                            </clipPath>
+                            <g id="⍰-sign-smw-path">
+                                <path fill="#000" d="M64 128v64h32v32h64v64h32v32h-32v64h32v32h96v-32h32v-64h-32v-32h64v-32h32v-32h32v-96h-32V96h-32V64H128v32H96v32H64z"/>
+                                <path fill="#e8f0f8" d="M192 320h96v64h-96z"/>
+                                <path fill="#e8f0f8" d="M96 128v64h96v-32h96v64h-96v64h96v-32h64v-32h32v-96h-32V96H128v32H96z"/>
+                            </g>
+                        </defs>
+                        <g clip-path="url(#⍰-sign-smw-clip)">
+                            <use xlink:href="#⍰-sign-smw-path" id="⍰-sign-smw-one" class="⍰-sign"></use>
+                            <use xlink:href="#⍰-sign-smw-path" id="⍰-sign-smw-two" class="⍰-sign ⍰-sign--two"></use>
+                        </g>
+                    </svg>
+
+                    <!-- Coins -->
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smw-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smw-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smw-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smw-path"></use>
+                        </svg>
+                    </span>
+                    <span class="⍰__coin-ctn | flex-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" width="15" height="21" class="coin block__coin">
+                            <use xlink:href="#coin-smw-path"></use>
+                        </svg>
+                    </span>
+                </span>
+            </button>
+
         </div>
 
         <!-- Game switcher -->
@@ -286,7 +372,7 @@
     <!-- SVG spritesheet -->
     <div style="display: none;">
 
-        <!-- Coin -->
+        <!-- Coins -->
         <svg id="coin-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" fill="none">
             <style>
             .coin { color: hsl(0, 0%, 0%); }
@@ -308,6 +394,16 @@
             <path d="M160 96h128v320H160z"/>
             <path fill="#ea9e22" d="M192 128h64v256h-64z"/>
             <path fill="none" stroke="#ffccc5" stroke-width="32" d="M176 384V112h80"/>
+        </svg>
+
+        <svg id="coin-smw-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512">
+            <path d="M32 128H0v256h32v64h32v32h64v32h128v-32h64v-32h32v-64h32V128h-32V64h-32V32h-64V0H128v32H64v32H32v64z"/>
+            <path fill="#d8a038" d="M128 64v416h128v-32h64v-64h32V128h-32V64H128z"/>
+            <path fill="#f8d820" d="M96 128H64v320h192v-32h32v-32h32V128h-32V64H128v32H96v32z"/>
+            <path fill="#f8f800" d="M96 128v288h160v-32h32V128h-32V96H128v32H96z"/>
+            <path fill="#f8d820" d="M192 128h32v256h-64v-64h32V128z"/>
+            <path d="M160 384h64v32h-64zM224 128h32v256h-32z"/>
+            <path fill="#e8f0f8" d="M128 128h32v256h-32zM160 96h64v32h-64zM128 32h128v32H128zM32 128h32v256H32zM128 64H64v64h32V96h32V64z"/>
         </svg>
 
         <!-- Twitter -->
