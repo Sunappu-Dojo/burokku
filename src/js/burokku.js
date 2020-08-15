@@ -10,8 +10,15 @@ const installBtnVisible = 'app-install--visible'
 class Burokku {
   constructor() {
     this.doc = document.documentElement
+    this.title = document.head.querySelector('title')
 
     this.init()
+  }
+
+  updateTitle() {
+    if (this.wallet.money) {
+      this.title.innerHTML = `x ${this.wallet.money} • ${this.blocks.active.btn.dataset.game}`
+    }
   }
 
   onTap({ target }) {
