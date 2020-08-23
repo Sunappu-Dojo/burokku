@@ -155,6 +155,7 @@ configCSS = {
       files: [
         'public/**/*.*',
       ],
+    }, {
       injectCss: true, // will work once PR merged: https://github.com/Va1/browser-sync-webpack-plugin/pull/79
     }),
   ],
