@@ -25,7 +25,7 @@ When adding a new block, sounds must be provided [in FLAC and WAV](#convert-wav-
 
 ### Sounds normalization
 
-Normalizing sounds means (in our case, but [there’s more](https://superuser.com/questions/323119/how-can-i-normalize-audio-using-ffmpeg/323127#323127)) aligning the maximum volume of several sounds, so that there’s no sound effect sounding too loud or too quiet compared to the others.
+Normalizing sounds means (in our case, but [there is](https://trac.ffmpeg.org/wiki/AudioVolume) [more](https://superuser.com/questions/323119/how-can-i-normalize-audio-using-ffmpeg/323127#323127)) aligning the maximum volume of several sounds, so that there’s no sound effect sounding too loud or too quiet compared to the others.
 
 First, run `ffmpeg -i my-sound.wav -filter:a volumedetect -f null /dev/null` to detect the volume profile ([official doc](https://ffmpeg.org/ffmpeg-filters.html#volumedetect)) on your audio files. The audio profile of a file could be:
 
