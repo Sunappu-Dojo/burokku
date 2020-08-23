@@ -2,7 +2,7 @@
  * Service worker strategy: network first, fallback on cache.
  */
 
-const SW_VERSION = '2.1'
+const SW_VERSION = '2.2'
 const NETWORK_TIMEOUT = 700
 const resourcesCacheKey = `cache-v${SW_VERSION}`
 
@@ -17,6 +17,7 @@ const resourcesToCache = [
   'sfx/smb-bump.flac',
   'sfx/smb-coin.flac',
   'sfx/smb-1up.flac',
+  'sfx/smw-bump.flac',
   'sfx/smw-coin.flac',
   'sfx/smw-1up.flac',
 

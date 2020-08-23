@@ -28,7 +28,7 @@ const SOUND_LIBRARY = {
     oneUp: '/sfx/smb-1up.' + format,
   },
   smw: {
-    bump: null,
+    bump: '/sfx/smw-bump.' + format,
     coin: '/sfx/smw-coin.' + format,
     oneUp: '/sfx/smw-1up.' + format,
   },
