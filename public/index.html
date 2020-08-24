@@ -114,27 +114,27 @@
                     <!-- Coins -->
                     <span class="⍰__coin-ctn | flex-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                            <use xlink:href="#coin-path"></use>
+                            <use xlink:href="#coin-smb-path"></use>
                         </svg>
                     </span>
                     <span class="⍰__coin-ctn | flex-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                            <use xlink:href="#coin-path"></use>
+                            <use xlink:href="#coin-smb-path"></use>
                         </svg>
                     </span>
                     <span class="⍰__coin-ctn | flex-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                            <use xlink:href="#coin-path"></use>
+                            <use xlink:href="#coin-smb-path"></use>
                         </svg>
                     </span>
                     <span class="⍰__coin-ctn | flex-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                            <use xlink:href="#coin-path"></use>
+                            <use xlink:href="#coin-smb-path"></use>
                         </svg>
                     </span>
                     <span class="⍰__coin-ctn | flex-center">
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin block__coin">
-                            <use xlink:href="#coin-path"></use>
+                            <use xlink:href="#coin-smb-path"></use>
                         </svg>
                     </span>
                 </span>
@@ -342,8 +342,8 @@
 
             <!-- Coin amount -->
             <section id="wallet" class="block__wallet wallet | flex-center noselect">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin wallet__icon">
-                    <use xlink:href="#coin-path"></use>
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" width="15" height="21" class="coin wallet__icon" id="wallet-coin">
+                    <use xlink:href="#coin-smb-path" id="wallet-coin-use"></use>
                 </svg>
                 <output id="coins" class="wallet__amount"></output>
             </section>
@@ -373,7 +373,7 @@
     <div style="display: none;">
 
         <!-- Coins -->
-        <svg id="coin-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" fill="none">
+        <svg id="coin-smb-path" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 366 512" fill="none">
             <style>
             .coin { color: hsl(0, 0%, 0%); }
             .coin-color { fill: hsl(0, 56%, 52%) }

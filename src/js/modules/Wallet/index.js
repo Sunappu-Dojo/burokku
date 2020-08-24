@@ -53,6 +53,8 @@ class Wallet {
    */
   prepareDisplay() {
     this.output = document.getElementById('coins')
+    this.coinIcon = document.getElementById('wallet-coin')
+    this.coinIconPath = document.getElementById('wallet-coin-use')
 
     document.getElementById('wallet').classList.add('wallet--on')
 
@@ -99,8 +101,21 @@ class Wallet {
     }
   }
 
-  onBlockChange() {
+  onBlockChange({ btn: { id }, coins }) {
     this.makeSounds(true)
+
+    // Update coin path and dimensions
+    const {
+      viewBox: { value: viewBox },
+      width: { value: w },
+      height: { value: h },
+    } = coins[0].querySelector('svg').attributes
+
+    this.coinIconPath.setAttribute('xlink:href', `#coin-${id}-path`)
+
+    this.coinIcon.setAttribute('viewBox', viewBox)
+    this.coinIcon.setAttribute('width', w)
+    this.coinIcon.setAttribute('height', h)
   }
 }
 
