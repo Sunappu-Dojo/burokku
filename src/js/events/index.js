@@ -14,7 +14,7 @@ class EventsManager {
     }
 
     if ('wallet' in this.app) {
-      this.app.wallet.onBlockChange(e)
+      this.app.wallet.onBlockChange(this.app.blocks.active)
     }
   }
 
