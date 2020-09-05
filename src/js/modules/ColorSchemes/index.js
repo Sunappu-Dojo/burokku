@@ -22,6 +22,7 @@ const getSchemeName = media => media
   .replace('(prefers-color-scheme: ', '')
   .replace(')', '')
 
+
 /**
  * Push app icons at end of <head>, telling the browser to pick among them.
  */
