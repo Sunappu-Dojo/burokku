@@ -28,7 +28,7 @@ function detectSupport(option) {
  * Creates an event listener options object with its 3 properties.
  */
 const createEventListenerOptions = function({ capture = false, passive = true, once = false } = {}) {
-  return support.capture ? { capture, passive, once } : capture
+  return support.capture ? Object.freeze({ capture, passive, once }) : capture
 }
 
 // Detect support.
