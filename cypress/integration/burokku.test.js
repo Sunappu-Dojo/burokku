@@ -12,3 +12,10 @@ describe('Initialization', () => {
   ))
 })
 
+describe('Block', () => {
+  it('hits the block', () => { cy.contains('Jump!').click() })
+
+  it('puts a coin in the wallet', () => cy.get('.wallet__amount').then(el =>
+    expect(walletValue(el)).to.be.equal(1)
+  ))
+})
