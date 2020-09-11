@@ -11,7 +11,7 @@ const groupedIcons = []
 /**
  * Create a list (array) of unique MediaQueryList.
  */
-const getColorSchemesMQFrom = elems => Array.from(new Set(elems.map(el => el.media))).map(media => matchMedia(media))
+const getColorSchemesMQFrom = elems => Array.from(new Set(elems.map(el => el.media)), matchMedia)
 
 /**
  * Extract color scheme name from MQ
