@@ -127,6 +127,7 @@ configCSS = {
           { loader: 'css-loader', options: { importLoaders: 2, url: false, sourceMap: true } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
           { loader: 'sass-loader', options: {
+            implementation: require('node-sass'),
             sassOptions: { outputStyle: 'expanded' },
             sourceMap: true
           }},
