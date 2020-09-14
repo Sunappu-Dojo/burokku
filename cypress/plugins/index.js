@@ -20,6 +20,5 @@ const dotenvPlugin = require('cypress-dotenv')
  *   `config` is the resolved Cypress config
  */
 module.exports = (on, config) => {
-  config = dotenvPlugin(config)
-  return config
+  return dotenvPlugin(config)
 }
