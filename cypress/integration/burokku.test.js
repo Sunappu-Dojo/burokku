@@ -8,14 +8,18 @@ describe('Initialization', () => {
 
   it('has at least one block', () => cy.contains('Jump!'))
 
-  it('has only one visible block')
+  it('has only one visible block', () =>
+    cy.get('#blocks .block').should('have.length', 1)
+  )
 
   it('has an empty wallet', () =>
     cy.get('.wallet__amount')
       .then(el => expect(walletValue(el)).to.be.equal(0))
   )
 
-  it('has no visible navigation arrows')
+  it('has no visible navigation arrows', () =>
+    cy.get('#nav .arrow[disabled]').should('have.length', 2)
+  )
 })
 
 describe('Block', () => {
