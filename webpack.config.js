@@ -1,12 +1,9 @@
-/* TODO:
- * - split this file in several config files
- */
-
 const webpack = require('webpack')
 
 // env
 const env = require('dotenv').config().parsed
 const isProd = process.env.NODE_ENV === 'production'
+const mode = isProd ? 'production' : 'development'
 
 // path
 const path = require('path')
@@ -15,11 +12,11 @@ const assets = 'src'
 
 // plugins: folder cleaning
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 
 // plugins: reload & cli output
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const NotifierPlugin = require('webpack-build-notifier')
 
 // plugins: CSS & JS
@@ -42,11 +39,11 @@ const NotifierPluginOptions = {
 let browserSyncHttps = false
 
 if (
-  process.env.VALET_HTTPS === 'true'
-  && typeof(process.env.VALET_USER) === 'string'
-  && process.env.VALET_CERTIFICATES_PATH
+  env.VALET_HTTPS === 'true'
+  && typeof(env.VALET_USER) === 'string'
+  && env.VALET_CERTIFICATES_PATH
 ) {
-  let certificatesPath = `/Users/${process.env.VALET_USER}/${process.env.VALET_CERTIFICATES_PATH}/${process.env.MIX_BS_LOCAL_URL.substring(8)}`
+  let certificatesPath = `/Users/${env.VALET_USER}/${env.VALET_CERTIFICATES_PATH}/${env.MIX_BS_LOCAL_URL.substring(8)}`
 
   browserSyncHttps = {
     key: `${certificatesPath}.key`,
@@ -63,29 +60,23 @@ configJs = {
   },
 
   output: {
-    filename: '[name].js',
+    chunkFilename: '[name].js',
     path: thePath('public/js'),
     publicPath: '/js/',
   },
 
-  module: {
-    rules: [
-      {
-        test: /\.js$/,
-        exclude: /node_modules/,
-        loader: 'babel-loader'
-      },
-    ]
+  optimization: {
+    minimize: isProd,
   },
 
   plugins: [
-    new FriendlyErrorsWebpackPlugin(),
+    new FriendlyErrorsPlugin(),
     new NotifierPlugin({ title: 'JS', ...NotifierPluginOptions }),
   ],
 
-  mode: process.env.NODE_ENV,
+  mode,
 
-  devtool: isProd ? 'source-map' : 'cheap-eval-source-map',
+  devtool: isProd ? 'source-map' : 'eval-cheap-source-map',
 
   devServer: {
     quiet: true,
@@ -138,21 +129,21 @@ configCSS = {
 
   plugins: [
     new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new CopyWebpackPlugin({ patterns: [
+    new CopyPlugin({ patterns: [
       { from: `${assets}/fonts/`, to: thePath('public/fonts') },
       { from: `${assets}/manifest/`, to: thePath('public') },
       { from: `${assets}/sfx/`, to: thePath('public/sfx') },
     ]}),
     // new CleanWebpackPlugin(),
-    new FriendlyErrorsWebpackPlugin(),
+    new FriendlyErrorsPlugin(),
     new NotifierPlugin({ title: 'CSS', ...NotifierPluginOptions }),
     new BrowserSyncPlugin({
       https: browserSyncHttps,
-      host: process.env.MIX_BS_HOST,
-      proxy: process.env.MIX_BS_LOCAL_URL,
-      browser: process.env.MIX_BS_BROWSER,
-      open: process.env.MIX_BS_OPEN,
-      logPrefix: process.env.APP_NAME,
+      host: env.MIX_BS_HOST,
+      proxy: env.MIX_BS_LOCAL_URL,
+      browser: env.MIX_BS_BROWSER,
+      open: env.MIX_BS_OPEN,
+      logPrefix: env.APP_NAME,
       files: [
         'public/**/*.*',
       ],
@@ -161,7 +152,7 @@ configCSS = {
     }),
   ],
 
-  mode: process.env.NODE_ENV,
+  mode,
 
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
 

@@ -1,7 +1,6 @@
 {
     "comments": true,
     "presets": [["@babel/preset-modules", { "loose": true }]], // https://github.com/babel/preset-modules#options
-    "plugins": ["@babel/plugin-syntax-dynamic-import"],
     "env":
     {
         "production": { "presets": ["minify"] }
