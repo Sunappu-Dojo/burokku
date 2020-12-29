@@ -16,7 +16,7 @@ const CopyPlugin = require('copy-webpack-plugin')
 
 // plugins: reload & cli output
 const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
-const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const FriendlyErrorsPlugin = require('@soda/friendly-errors-webpack-plugin')
 const NotifierPlugin = require('webpack-build-notifier')
 
 // plugins: CSS & JS
@@ -63,6 +63,16 @@ configJs = {
     chunkFilename: '[name].js',
     path: thePath('public/js'),
     publicPath: '/js/',
+  },
+
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel-loader'
+      },
+    ]
   },
 
   optimization: {

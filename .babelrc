@@ -1,8 +1,13 @@
 {
     "comments": true,
-    "presets": [["@babel/preset-modules", { "loose": true }]], // https://github.com/babel/preset-modules#options
-    "env":
-    {
-        "production": { "presets": ["minify"] }
-    }
+    "presets": [
+        [
+            "@babel/preset-env",
+            {
+                "bugfixes": true,
+                "loose": true,
+                // "debug": true,
+            }
+        ]
+    ],
 }
