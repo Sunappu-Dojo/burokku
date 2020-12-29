@@ -13,9 +13,7 @@ class EventsManager {
       this.app.updateTitle()
     }
 
-    if ('wallet' in this.app) {
-      this.app.wallet.onBlockChange(this.app.blocks.active)
-    }
+    this.app.wallet?.onBlockChange(this.app.blocks.active)
   }
 
   onCoinThrow(e) {
@@ -26,35 +24,21 @@ class EventsManager {
   }
 
   onOneUp() {
-    let blockAdded = false
+    const blockAdded = this.app.blocks?.onOneUp() || false
 
-    if ('blocks' in this.app) {
-      blockAdded = this.app.blocks.onOneUp()
-    }
-
-    if (blockAdded && 'nav' in this.app) {
-      this.app.nav.onOneUp()
+    if (blockAdded) {
+      this.app.nav?.onOneUp()
     }
   }
 
   onWalletDisplayReady(e) {
-    if ('blocks' in this.app) {
-      this.app.blocks.onWalletDisplayReady(e.detail)
-    }
-
-    if ('nav' in this.app) {
-      this.app.nav.update()
-    }
+    this.app.blocks?.onWalletDisplayReady(e.detail)
+    this.app.nav?.update()
   }
 
   onTap(e) {
-    if ('blocks' in this.app) {
-      this.app.blocks.onTap(e)
-    }
-
-    if ('nav' in this.app) {
-      this.app.nav.onTap(e)
-    }
+    this.app.blocks?.onTap(e)
+    this.app.nav?.onTap(e)
 
     if ('sw' in this.app) {
       this.app.onTap(e)
@@ -73,15 +57,11 @@ class EventsManager {
   }
 
   onAnimationEnd(e) {
-    if ('blocks' in this.app) {
-      this.app.blocks.onAnimationEnd(e)
-    }
+    this.app.blocks?.onAnimationEnd(e)
   }
 
   onTransitionEnd(e) {
-    if ('blocks' in this.app) {
-      this.app.blocks.onTransitionEnd(e)
-    }
+    this.app.blocks?.onTransitionEnd(e)
   }
 
   init() {

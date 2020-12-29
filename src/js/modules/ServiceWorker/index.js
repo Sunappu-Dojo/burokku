@@ -37,10 +37,7 @@ export default class ServiceWorker {
       if (choice.outcome != 'accepted') { return }
 
       this.defferedInstallPrompt = null
-
-      if ('onInstall' in this.options) {
-        this.options.onInstall()
-      }
+      this.options.onInstall?.()
     })
   }
 
