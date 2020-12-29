@@ -24,7 +24,7 @@ function fetchAndReturnBuffer(url) {
  * Returns audio node from URL.
  */
 async function decodeAudioUrl(url) {
-  if (!(url in buffers)) {
+  if (! (url in buffers)) {
     buffers[url] = await fetchAndReturnBuffer(url)
   }
 

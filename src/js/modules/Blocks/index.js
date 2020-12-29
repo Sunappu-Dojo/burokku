@@ -21,7 +21,7 @@ class Blocks {
   }
 
   /**
-   * Try to find and add a block one 1-Up.
+   * Try to find and add a block on 1-Up.
    *
    * @return {boolean} true if a block has been found and added.
    */

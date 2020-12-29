@@ -1,6 +1,6 @@
 import { get as idbGet, set as idbSet } from 'idb-keyval'
-import Sfx from '../../helpers/Sfx/index'
 import { setAttributes }  from '../../helpers/Dom'
+import Sfx                from '../../helpers/Sfx/index'
 
 import { SOUNDS } from '../Block/config'
 

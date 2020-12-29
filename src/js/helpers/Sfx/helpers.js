@@ -15,7 +15,7 @@ function fetchAndReturnBuffer(url) {
 export async function getAudioFrom(url) {
 
   // Fetch and store audio bytes.
-  if (!(url in buffers)) {
+  if (! (url in buffers)) {
     buffers[url] = await fetchAndReturnBuffer(url)
   }
 

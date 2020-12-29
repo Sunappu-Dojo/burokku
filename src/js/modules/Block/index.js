@@ -67,7 +67,7 @@ export default class Block {
 
   onTap({ target }) {
     if (
-      !this.canBump
+      ! this.canBump
       || target != this.btn
       || this.flippingCoins.length == this.coins.length
     ) {
@@ -80,7 +80,7 @@ export default class Block {
     const coin = Array.from(this.coins)
       .find(coinEl => !coinEl.classList.contains(CSS.flippingCoin))
 
-    if (!coin) { return }
+    if ( !coin) { return }
 
     this.bumpBlock()
     this.throwCoin(coin)
