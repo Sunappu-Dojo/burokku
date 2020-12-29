@@ -1,5 +1,6 @@
 import { get as idbGet, set as idbSet } from 'idb-keyval'
 import Sfx from '../../helpers/Sfx/index'
+import { setAttributes }  from '../../helpers/Dom'
 
 import { SOUNDS } from '../Block/config'
 
@@ -113,9 +114,11 @@ class Wallet {
 
     this.coinIconPath.setAttribute('xlink:href', `#coin-${id}-path`)
 
-    this.coinIcon.setAttribute('viewBox', viewBox)
-    this.coinIcon.setAttribute('width', w)
-    this.coinIcon.setAttribute('height', h)
+    setAttributes(this.coinIcon, {
+      viewBox,
+      width: w,
+      height: h,
+    })
   }
 }
 
