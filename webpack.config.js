@@ -1,5 +1,3 @@
-const webpack = require('webpack')
-
 // env
 const env = require('dotenv').config().parsed
 const isProd = process.env.NODE_ENV === 'production'
@@ -23,7 +21,7 @@ const NotifierPlugin = require('webpack-build-notifier')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 // Notifications options
-const NotifierPluginOptions = {
+const notifierPluginOptions = {
   logo: thePath('src/manifest/android-chrome-192x192.png'),
   sound: false,
   notifyOptions: { timeout: 2 },
@@ -51,7 +49,7 @@ if (
   }
 }
 
-/* JS */
+/* MAIN */
 
 configJs = {
 
@@ -60,7 +58,7 @@ configJs = {
   },
 
   output: {
-    chunkFilename: '[name].js',
+    filename: '[name].js?id=[contenthash]',
     path: thePath('public/js'),
     publicPath: '/js/',
   },
@@ -77,11 +75,21 @@ configJs = {
 
   optimization: {
     minimize: isProd,
+
+    /**
+     * For now, we’ll don’t let Webpack automatically split chunks
+     * (https://webpack.js.org/plugins/split-chunks-plugin/#defaults).
+     *
+     * Instead, dynamic import is used. We’ll see later if should be
+     * reconsidered or not. See also:
+     * https://blog.logrocket.com/guide-performance-optimization-webpack/
+     */
+    splitChunks: false,
   },
 
   plugins: [
     new FriendlyErrorsPlugin(),
-    new NotifierPlugin({ title: 'JS', ...NotifierPluginOptions }),
+    new NotifierPlugin({ title: 'JS', ...notifierPluginOptions }),
   ],
 
   mode,
@@ -97,12 +105,12 @@ configJs = {
   },
 
   stats: {
-    children: false,
-    entrypoints: false,
-    excludeAssets: /^((?!\.js$).)*$/,
-    hash: false,
     modules: false,
     version: false,
+    // excludeAssets: [
+    //   /.*\.(ico|jpg|png|svg|webmanifest|xml)$/, // Web Manifest and icons
+    //   /.*\.map$/, // Sourcemaps
+    // ],
   },
 }
 
@@ -116,6 +124,7 @@ configCSS = {
 
   output: {
     path: thePath('public/css'),
+    publicPath: '/css/', // currently required (https://github.com/shellscape/webpack-manifest-plugin/issues/229)
   },
 
   module: {
@@ -134,32 +143,21 @@ configCSS = {
           }},
         ],
       },
+      // {
+      //   test: /\.(jpg|png)$/,
+      //   include: thePath(`${assets}/img`),
+      //   type: 'asset/resource',
+      // },
     ]
   },
 
   plugins: [
-    new MiniCssExtractPlugin({ filename: '[name].css' }),
-    new CopyPlugin({ patterns: [
-      { from: `${assets}/fonts/`, to: thePath('public/fonts') },
-      { from: `${assets}/manifest/`, to: thePath('public') },
-      { from: `${assets}/sfx/`, to: thePath('public/sfx') },
-    ]}),
-    // new CleanWebpackPlugin(),
-    new FriendlyErrorsPlugin(),
-    new NotifierPlugin({ title: 'CSS', ...NotifierPluginOptions }),
-    new BrowserSyncPlugin({
-      https: browserSyncHttps,
-      host: env.MIX_BS_HOST,
-      proxy: env.MIX_BS_LOCAL_URL,
-      browser: env.MIX_BS_BROWSER,
-      open: env.MIX_BS_OPEN,
-      logPrefix: env.APP_NAME,
-      files: [
-        'public/**/*.*',
-      ],
-    }, {
-      injectCss: true, // will work once PR merged: https://github.com/Va1/browser-sync-webpack-plugin/pull/79
+    new MiniCssExtractPlugin({ filename: '[name].css?id=[fullhash]' }),
+    new CleanWebpackPlugin({
+      cleanOnceBeforeBuildPatterns: ['**/*', '!index.html'],
     }),
+    new FriendlyErrorsPlugin(),
+    new NotifierPlugin({ title: 'CSS', ...notifierPluginOptions }),
   ],
 
   mode,
@@ -175,13 +173,39 @@ configCSS = {
   },
 
   stats: {
-    children: false,
     entrypoints: false,
-    excludeAssets: /^((?!\.css$).)*$/,
-    hash: false,
+    excludeAssets: [
+      /.*\.(ico|jpg|png|svg|webmanifest|xml)$/, // Web Manifest and icons
+      /.*\.woff2/, // fonts
+      /.*\.js/, // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/85
+    ],
     modules: false,
     version: false,
   },
 }
+
+/* Others without entry point, so we push them to the previous config. */
+
+configCSS.plugins.push(
+  new CopyPlugin({ patterns: [
+      { from: `${assets}/fonts/`, to: thePath('public/fonts') },
+      { from: `${assets}/manifest/`, to: thePath('public') },
+      { from: `${assets}/sfx/`, to: thePath('public/sfx') },
+  ]}),
+  new BrowserSyncPlugin({
+    https: browserSyncHttps,
+    host: env.MIX_BS_HOST,
+    proxy: env.MIX_BS_LOCAL_URL,
+    browser: env.MIX_BS_BROWSER,
+    open: env.MIX_BS_OPEN,
+    logPrefix: env.APP_NAME,
+    files: [
+      'public/**/*.*',
+      'src/**/*.*',
+    ],
+  }, {
+    injectCss: true, // should work once PR merged: https://github.com/Va1/browser-sync-webpack-plugin/pull/79
+  }),
+)
 
 module.exports = [configCSS, configJs]

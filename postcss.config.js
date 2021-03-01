@@ -23,7 +23,7 @@ const purgeCssOptions = {
     './public/index.html',
     './src/js/**/*.js',
   ],
-  whitelistPatterns: [/⍰/],
+  safelist: [/⍰/],
 }
 
 module.exports = ({ options, env }) => ({
