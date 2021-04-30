@@ -51,7 +51,7 @@ class Burokku {
         const installBtn = document.getElementById(installBtnId)
 
         this.sw = new SW({
-          installBtnId: installBtnId,
+          installBtnId,
           initInstallPrompt: () => installBtn.classList.add(installBtnVisible),
           onInstall: () => installBtn.classList.remove(installBtnVisible),
         })
