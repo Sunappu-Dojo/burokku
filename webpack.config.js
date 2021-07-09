@@ -32,6 +32,12 @@ const notifierPluginOptions = {
     ${errorCount} ${status}${errorCount === 1 ? '' : 's'} – ${filepath.replace(thePath() + '/', '')}`,
 }
 
+// ESLint Options
+const esLintPluginOptions = {
+  fix: env.ES_LINT_AUTOFIX == 'true',
+  formatter: env.ES_LINT_FORMATTER,
+}
+
 /* BrowserSync HTTPS with Laravel Valet
  *
  * BrowserSync HTTPS: https://www.browsersync.io/docs/options#option-https
@@ -92,10 +98,7 @@ configJs = {
   },
 
   plugins: [
-    new EsLintPlugin({
-      fix: env.ES_LINT_AUTOFIX == 'true',
-      formatter: env.ES_LINT_FORMATTER,
-    }),
+    new EsLintPlugin(esLintPluginOptions),
     new FriendlyErrorsPlugin(),
     new NotifierPlugin({ title: 'JS', ...notifierPluginOptions }),
   ],

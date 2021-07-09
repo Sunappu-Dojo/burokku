@@ -15,7 +15,9 @@
         "production": "node_modules/webpack/bin/webpack.js --node-env=production --config=webpack.config.js",
         "test": "npx cypress run",
         "test-gui": "npx exec cypress open",
-        "test-watch": "npx nodemon -e html,js,css,scss --ignore 'src/' --exec cypress run"
+        "test-watch": "npx nodemon -e html,js,css,scss --ignore 'src/' --exec cypress run",
+        "lint": "npx eslint src/js/**/*",
+        "lint-fix": "npx eslint src/js/**/* --fix"
     },
     "dependencies": {
         "idb-keyval": "^5",
