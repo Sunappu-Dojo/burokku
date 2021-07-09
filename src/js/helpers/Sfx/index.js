@@ -20,7 +20,7 @@ export default class Sfx {
    * Returns ready-to-play sound from URL.
    */
   static makeFrom(url) {
-    if (! url) { return null }
+    if (!url) { return null }
 
     const source = audioContext.createBufferSource()
 
@@ -40,7 +40,7 @@ export default class Sfx {
    * Play sound at given time.
    */
   static play(bufferSourceNode, delayInSeconds = 0) {
-    if (! bufferSourceNode) { return }
+    if (!bufferSourceNode) { return }
 
     if (audioContext.state === 'suspended') {
       audioContext.resume()

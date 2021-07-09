@@ -67,7 +67,7 @@ export default class Block {
 
   onTap({ target }) {
     if (
-      ! this.canBump
+      !this.canBump
       || target != this.btn
       || this.flippingCoins.length == this.coins.length
     ) {
@@ -105,7 +105,7 @@ export default class Block {
   }
 
   onSpace({ target }) {
-    if (! (target === this.btn)) {
+    if (!(target === this.btn)) {
       if (target.tagName === 'BUTTON') { return }
       this.focus()
     }
