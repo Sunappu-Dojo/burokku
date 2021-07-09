@@ -43,7 +43,7 @@ const setThemeColor = () => {
  * Update UI, fire event.
  */
 const onColorSchemeChange = e => {
-  if (! e.matches) { return }
+  if (!e.matches) { return }
 
   setFavicon(groupedIcons[e.media])
   setThemeColor()

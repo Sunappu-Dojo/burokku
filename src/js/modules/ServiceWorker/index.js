@@ -11,7 +11,7 @@ export default class ServiceWorker {
   }
 
   install() {
-    if (! navigator.serviceWorker.controller) {
+    if (!navigator.serviceWorker.controller) {
       navigator.serviceWorker.register('/block-service-worker.js')
     }
   }
@@ -29,7 +29,7 @@ export default class ServiceWorker {
   }
 
   addToHome() {
-    if (! this.defferedInstallPrompt) { return }
+    if (!this.defferedInstallPrompt) { return }
 
     this.defferedInstallPrompt.prompt()
 

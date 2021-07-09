@@ -59,7 +59,7 @@ class Nav {
   }
 
   tap(arrow) {
-    if (! arrow.disabled) {
+    if (!arrow.disabled) {
       this.current += parseInt(arrow.dataset.dir)
     }
   }
@@ -81,7 +81,7 @@ class Nav {
         ? e.target.previousElementSibling
         : e.target.nextElementSibling
 
-    if (! adjacentEl || ! adjacentEl.classList.contains('block')) { return }
+    if (!adjacentEl || !adjacentEl.classList.contains('block')) { return }
 
     e.preventDefault()
 
