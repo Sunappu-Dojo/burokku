@@ -25,7 +25,10 @@ const notifierPluginOptions = {
   logo: thePath('src/manifest/android-chrome-192x192.png'),
   sound: false,
   notifyOptions: { timeout: 2 },
-  messageFormatter: (error, filepath) => filepath,
+
+  // Errors/warnings format. Example: “3 errors – resources/sass/oh-no.scss”
+  messageFormatter: (error, filepath, status, errorCount) => `
+    ${errorCount} ${status}${errorCount === 1 ? '' : 's'} – ${filepath.replace(thePath() + '/', '')}`,
 }
 
 /* BrowserSync HTTPS with Laravel Valet
@@ -49,7 +52,7 @@ if (
   }
 }
 
-/* MAIN */
+/* JS */
 
 configJs = {
 
@@ -68,7 +71,7 @@ configJs = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
     ]
   },
