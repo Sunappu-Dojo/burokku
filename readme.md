@@ -8,7 +8,10 @@ _トゲハテナブロック_ (_hatena burokku_) is Japanese for [_interrogation
 - `npm i && npm run dev`
 - `npm run watch`
 - (service worker watch, optional) `npm run sw-watch`
-- tests: `npx cypress open` or `npm run cypress-watch`
+- tests:
+    - `npx run test`
+    - `npm run test-watch`
+    - `npx run test-gui` for Cypress GUI
 
 ## Production
 

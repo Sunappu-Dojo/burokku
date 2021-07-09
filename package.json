@@ -14,6 +14,7 @@
         "prod": "npm run production && npm run sw",
         "production": "node_modules/webpack/bin/webpack.js --node-env=production --config=webpack.config.js",
         "test": "npx cypress run",
+        "test-gui": "npx exec cypress open",
         "test-watch": "npx nodemon -e html,js,css,scss --ignore 'src/' --exec cypress run"
     },
     "dependencies": {
