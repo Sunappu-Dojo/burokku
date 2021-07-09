@@ -13,7 +13,8 @@
         "hot": "node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --config=webpack.config.js",
         "prod": "npm run production && npm run sw",
         "production": "node_modules/webpack/bin/webpack.js --node-env=production --config=webpack.config.js",
-        "cypress-watch": "npx nodemon -e html,js,css,scss --ignore 'src/' --exec cypress run"
+        "test": "npx cypress run",
+        "test-watch": "npx nodemon -e html,js,css,scss --ignore 'src/' --exec cypress run"
     },
     "dependencies": {
         "idb-keyval": "^5",
