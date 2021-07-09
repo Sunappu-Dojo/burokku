@@ -19,6 +19,7 @@ const NotifierPlugin = require('webpack-build-notifier')
 
 // plugins: CSS & JS
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const EsLintPlugin = require('eslint-webpack-plugin');
 
 // Notifications options
 const notifierPluginOptions = {
@@ -91,6 +92,10 @@ configJs = {
   },
 
   plugins: [
+    new EsLintPlugin({
+      fix: env.ES_LINT_AUTOFIX == 'true',
+      formatter: env.ES_LINT_FORMATTER,
+    }),
     new FriendlyErrorsPlugin(),
     new NotifierPlugin({ title: 'JS', ...notifierPluginOptions }),
   ],

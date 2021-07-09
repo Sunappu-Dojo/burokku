@@ -38,6 +38,8 @@
         "dotenv": "^8",
         "double-dash.scss": "^0.7.1",
         "easings.scss": "^0.3",
+        "eslint": "^7.30.0",
+        "eslint-webpack-plugin": "^2.5.4",
         "family.scss": "^1.0",
         "hsl.scss": "^1.0.1",
         "mini-css-extract-plugin": "^2",
