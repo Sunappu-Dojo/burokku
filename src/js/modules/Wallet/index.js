@@ -107,18 +107,13 @@ class Wallet {
 
     // Update coin path and dimensions
     const {
-      viewBox: { value: viewBox },
-      width: { value: w },
-      height: { value: h },
+      width: { value: width },
+      height: { value: height },
     } = coins[0].querySelector('svg').attributes
 
     this.coinIconPath.setAttribute('xlink:href', `#coin-${id}-path`)
 
-    setAttributes(this.coinIcon, {
-      viewBox,
-      width: w,
-      height: h,
-    })
+    setAttributes(this.coinIcon, { width, height })
   }
 }
 
