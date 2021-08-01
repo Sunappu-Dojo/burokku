@@ -39,7 +39,7 @@
         "cypress": "^7",
         "cypress-dotenv": "^1.2.2",
         "dotenv": "^8",
-        "double-dash.scss": "^0.7.1",
+        "double-dash.scss": "^0.8",
         "easings.scss": "^0.3",
         "eslint": "^7.30.0",
         "eslint-webpack-plugin": "^2.5.4",
