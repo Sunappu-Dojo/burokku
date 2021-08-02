@@ -1,6 +1,7 @@
 import initBlocks from './modules/Blocks'
 import initEvents from './events/index'
 import initNav from './modules/Nav'
+import volume from './modules/Volume'
 import initWallet from './modules/Wallet'
 import watchColorSchemes from './modules/ColorSchemes'
 
@@ -36,6 +37,7 @@ class Burokku {
     this.blocks = initBlocks()
     this.wallet = initWallet()
     this.nav = initNav()
+    this.volume = volume
 
     watchColorSchemes()
 

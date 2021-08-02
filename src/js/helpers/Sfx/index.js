@@ -1,7 +1,9 @@
+import { getAudioFrom } from './helpers'
+
 const AudioContext = window.AudioContext || window.webkitAudioContext
 const audioContext = new AudioContext()
-
-import { getAudioFrom } from './helpers'
+const volume = audioContext.createGain()
+let volumeLevel = 1
 
 /**
  * A class with static methods that help fetching and playing sounds using the
@@ -29,7 +31,8 @@ export default class Sfx {
       // Consume audio node and attach it to the output
       audioContext.decodeAudioData(audioData, decodedData => {
         source.buffer = decodedData
-        source.connect(audioContext.destination)
+        source.connect(volume)
+        volume.connect(audioContext.destination)
       })
     })
 
@@ -42,10 +45,17 @@ export default class Sfx {
   static play(bufferSourceNode, delayInSeconds = 0) {
     if (!bufferSourceNode) { return }
 
+    // Get Sound level
+    volume.gain.value = volumeLevel
+
     if (audioContext.state === 'suspended') {
       audioContext.resume()
     }
 
     bufferSourceNode.start(audioContext.currentTime + delayInSeconds)
+  }
+
+  static setVolume(level) {
+    volumeLevel = level
   }
 }
