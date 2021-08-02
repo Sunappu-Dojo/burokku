@@ -145,7 +145,12 @@ configCSS = {
         include: thePath(`${assets}/sass`),
         use: [
           MiniCssExtractPlugin.loader,
-          { loader: 'css-loader', options: { importLoaders: 2, url: false, sourceMap: true } },
+          { loader: 'css-loader', options: {
+            importLoaders: 2,
+            url: false,
+            sourceMap: true,
+            modules: false
+          } },
           { loader: 'postcss-loader', options: { sourceMap: true } },
           { loader: 'sass-loader', options: {
             implementation: require('node-sass'),
