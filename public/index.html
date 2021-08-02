@@ -353,6 +353,30 @@
             <button class="app-install cta cta--small" id="sw-install" type="button">Install</button>
         </div>
 
+        <!-- Sound control -->
+
+        <div class="sound-ctn | flex-center">
+            <button class="sound sound--on" id="sound" type="button" title="Mute">
+                <span class="visually-hidden" id="sound-label">Mute</span>
+                <svg
+                    viewBox="0 0 30 25" width="24" height="20"
+                    fill="none" stroke="currentColor"
+                    stroke-width="2.67" stroke-linecap="round"
+                >
+                    <style>
+                        .sound.sound--on .sound__cross { display: none; }
+                        .sound:not(.sound--on) .sound__wave { display: none; }
+                    </style>
+                    <path d="M2 16.61V8.72c0-.77.6-1.39 1.33-1.39h4.78a1.3 1.3 0 00.95-.4l4-4.52c.84-.88 2.27-.26 2.27.98v18.55c0 1.25-1.45 1.86-2.28.97l-4-4.5A1.3 1.3 0 008.1 18H3.33C2.6 18 2 17.38 2 16.61z"/>
+                    <g class="sound__wave">
+                        <path d="M20.67 8c1.77 2.37 1.77 6.96 0 9.33"/>
+                        <path d="M24.67 3.33a12.89 12.89 0 010 18.67"/>
+                    </g>
+                    <path class="sound__cross" d="M20.33 16.67l8-8m0 8l-8-8"/>
+                </svg>
+            </button>
+        </div>
+
     </main>
 
     <!-- Links -->

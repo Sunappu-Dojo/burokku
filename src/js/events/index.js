@@ -39,6 +39,7 @@ class EventsManager {
   onTap(e) {
     this.app.blocks?.onTap(e)
     this.app.nav?.onTap(e)
+    this.app.volume?.onTap(e)
 
     if ('sw' in this.app) {
       this.app.onTap(e)
@@ -54,6 +55,7 @@ class EventsManager {
   onKeyUp({ key, target }) {
     if (key === 'ArrowLeft') { return this.app.nav.prev() }
     if (key === 'ArrowRight') { return this.app.nav.next() }
+    if (key === 'm') { return this.app.volume.toggle() }
   }
 
   onAnimationEnd(e) {
