@@ -3,6 +3,7 @@
         "es2021": true
     },
     // "extends": "eslint:recommended",
+    "parser": "@babel/eslint-parser", // needed for support of class private members
     "parserOptions": {
         "sourceType": "module",
         "ecmaFeatures": {
