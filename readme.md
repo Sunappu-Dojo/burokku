@@ -6,7 +6,7 @@ _トゲハテナブロック_ (_hatena burokku_) is Japanese for [_interrogation
 
 - duplicate `.env.example` to `.env` and edit it.
 - `npm i && npm run dev`
-- `npm run watch`
+- `npm run serve` to start developing
 - (service worker watch, optional) `npm run sw-watch`
 - tests:
     - `npx run test`

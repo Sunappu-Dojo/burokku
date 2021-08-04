@@ -12,8 +12,7 @@ const assets = 'src'
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
 
-// plugins: reload & cli output
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin')
+// plugins: cli output
 const FriendlyErrorsPlugin = require('@soda/friendly-errors-webpack-plugin')
 const NotifierPlugin = require('webpack-build-notifier')
 
@@ -38,28 +37,9 @@ const esLintPluginOptions = {
   formatter: env.ES_LINT_FORMATTER,
 }
 
-/* BrowserSync HTTPS with Laravel Valet
- *
- * BrowserSync HTTPS: https://www.browsersync.io/docs/options#option-https
- * Laravel Valet HTTPS: https://laravel.com/docs/5.7/valet#securing-sites
- */
-
-let browserSyncHttps = false
-
-if (
-  env.VALET_HTTPS === 'true'
-  && typeof(env.VALET_USER) === 'string'
-  && env.VALET_CERTIFICATES_PATH
-) {
-  let certificatesPath = `/Users/${env.VALET_USER}/${env.VALET_CERTIFICATES_PATH}/${env.MIX_BS_LOCAL_URL.substring(8)}`
-
-  browserSyncHttps = {
-    key: `${certificatesPath}.key`,
-    cert: `${certificatesPath}.crt`,
-  }
-}
-
-/* JS */
+/*********/
+/* 1. JS */
+/*********/
 
 configJs = {
 
@@ -107,10 +87,6 @@ configJs = {
 
   devtool: isProd ? 'source-map' : 'eval-cheap-source-map',
 
-  devServer: {
-    quiet: true,
-  },
-
   performance: {
     hints: false,
   },
@@ -125,7 +101,10 @@ configJs = {
   },
 }
 
-/* CSS */
+/**********/
+/* 2. CSS */
+/**********/
+
 
 configCSS = {
 
@@ -180,10 +159,6 @@ configCSS = {
 
   devtool: isProd ? 'source-map' : 'cheap-module-source-map',
 
-  devServer: {
-    quiet: true,
-  },
-
   performance: {
     hints: false,
   },
@@ -200,7 +175,11 @@ configCSS = {
   },
 }
 
-/* Others without entry point, so we push them to the previous config. */
+/******************/
+/* 3. Other files */
+/******************/
+
+// Other files without entry point, so we push them to the previous config.
 
 configCSS.plugins.push(
   new CopyPlugin({ patterns: [
@@ -208,20 +187,76 @@ configCSS.plugins.push(
       { from: `${assets}/manifest/`, to: thePath('public') },
       { from: `${assets}/sfx/`, to: thePath('public/sfx') },
   ]}),
-  new BrowserSyncPlugin({
-    https: browserSyncHttps,
-    host: env.MIX_BS_HOST,
-    proxy: env.MIX_BS_LOCAL_URL,
-    browser: env.MIX_BS_BROWSER,
-    open: env.MIX_BS_OPEN,
-    logPrefix: env.APP_NAME,
-    files: [
-      'public/**/*.*',
-      'src/**/*.*',
-    ],
-  }, {
-    injectCss: true, // should work once PR merged: https://github.com/Va1/browser-sync-webpack-plugin/pull/79
-  }),
 )
+
+/************************/
+/* 4. Local development */
+/************************/
+
+/**
+ * HTTPS for webpack-dev-server with Laravel Valet (macOS users)
+ * Laravel Valet HTTPS: https://laravel.com/docs/5.7/valet#securing-sites
+ */
+
+let devServerHttps = false
+
+if (
+  env.VALET_HTTPS === 'true'
+  && typeof(env.VALET_USER) === 'string'
+  && env.VALET_CERTIFICATES_PATH
+) {
+  let certificatesPath = `/Users/${env.VALET_USER}/${env.VALET_CERTIFICATES_PATH}/${env.LOCAL_URL.substring(8)}`
+
+  devServerHttps = {
+    key: `${certificatesPath}.key`,
+    cert: `${certificatesPath}.crt`,
+  }
+}
+
+/**
+ * Open in browser (or don’t).
+ */
+const openInBrowser = env.LOCAL_BROWSER ? {
+  // target: ["first.html", `http://localhost:8080/second.html`],
+  app: {
+    name: env.LOCAL_BROWSER,
+  },
+} : false
+
+const isLocalhost = env.LOCAL_HOST == ('localhost' || '127.0.0.1')
+
+/**
+ * webpack-dev-server settings
+ *
+ * https://github.com/webpack/webpack-dev-server/blob/master/migration-v4.md
+ */
+configCSS.devServer = {
+  host: env.LOCAL_HOST,
+  port: isLocalhost ? 3000 : 'auto',
+  https: devServerHttps,
+  proxy: {
+    "*": {
+      target: env.LOCAL_URL,
+      secure: false,
+    },
+  },
+  devMiddleware: {
+    publicPath: thePath('public'),
+    writeToDisk: true,
+  },
+  hot: true,
+  // hot: 'only',
+  client: {
+    logging: "error",
+    overlay: false,
+    progress: true,
+  },
+  open: openInBrowser,
+  watchFiles: [ // other files than assets
+    'app/**/*.php',
+    'resources/**/*.php',
+      'public/**/*.*',
+  ],
+}
 
 module.exports = [configCSS, configJs]
