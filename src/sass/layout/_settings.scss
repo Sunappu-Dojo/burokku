@@ -1,4 +1,4 @@
-.sound-ctn {
+.settings {
   position: absolute;
   inset-block-end: calc(var(--block-bar-space, 1rem) - 1rem);
   inset-inline-start: calc(var(--block-bar-space, 1rem) - 1rem);
@@ -7,16 +7,24 @@
     bottom: #{'max(calc(var(--safe-bottom)), calc(var(--block-bar-space, 1rem) - 1rem))'};
     left: #{'max(calc(var(--safe-left)), calc(var(--block-bar-space, 1rem) - 1rem))'};
   }
+}
 
-  &:not(:hover):not(:focus-within) {
-    .sound--on {
+.setting {
+  size: 4.4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity .3s $in-out-quad;
+
+  &:not(:hover):not(:focus) {
+    &.setting--on {
       opacity: .6;
     }
   }
 }
 
-.sound {
-  size: 4.4rem;
-
-  transition: opacity .3s $in-out-quad;
+.setting--not-supported {
+  display: none;
 }
