@@ -22,7 +22,7 @@ class Volume {
     Sfx.setVolume(this.#level)
 
     // Update UI
-    soundBtn.classList.toggle('sound--on', level)
+    soundBtn.classList.toggle('setting--on', level)
     soundBtn.setAttribute('title', soundLabels[this.#level])
     soundLabelEl.innerHTML = soundLabels[this.#level]
   }
