@@ -24,6 +24,8 @@ class EventsManager {
   }
 
   onOneUp() {
+    this.app.wallet?.onOneUp()
+
     const blockAdded = this.app.blocks?.onOneUp() || false
 
     if (blockAdded) {

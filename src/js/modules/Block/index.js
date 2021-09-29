@@ -1,4 +1,5 @@
-import Sfx from '../../helpers/Sfx/index'
+import Rumble from '../../helpers/Rumble'
+import Sfx    from '../../helpers/Sfx'
 
 import { useSounds, SOUNDS, CSS, THROTTLE } from './config'
 
@@ -22,6 +23,7 @@ export default class Block {
   bumpBlock() {
     this.resetBump(() => {
       this.btn.classList.add(CSS.hit)
+      this.vibrate()
       this.playSounds()
     })
   }
@@ -49,6 +51,10 @@ export default class Block {
   throwCoin(coin) {
     coin.classList.add(CSS.flippingCoin)
     document.dispatchEvent(new CustomEvent('coinThrow', { detail: 1 }))
+  }
+
+  vibrate() {
+    Rumble.vibrate([40, 230, 10])
   }
 
   playSounds() {
