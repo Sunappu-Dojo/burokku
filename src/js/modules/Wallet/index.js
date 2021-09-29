@@ -1,6 +1,7 @@
 import { get as idbGet, set as idbSet } from 'idb-keyval'
 import { setAttributes }  from '../../helpers/Dom'
-import Sfx                from '../../helpers/Sfx/index'
+import Rumble             from '../../helpers/Rumble'
+import Sfx                from '../../helpers/Sfx'
 
 import { SOUNDS } from '../Block/config'
 
@@ -40,6 +41,16 @@ class Wallet {
 
   onCoinThrow(coins) {
     this.add(coins)
+  }
+
+  onOneUp() {
+    /**
+     * Delay the vibration a bit, otherwise it may not start because the
+     * vibration following the block bump is already running.
+     *
+     *
+     */
+    setTimeout(() => Rumble.vibrate([120, 0, 120, 0, 120]), 180)
   }
 
   /**
