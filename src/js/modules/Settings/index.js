@@ -17,7 +17,7 @@ export default class Setting {
   }
 
   get enabled() { return Boolean(this.#enabled) }
-  get supported() { return Boolean(this.#supported) }
+  get supported() { return this.#supported }
 
   onTap(e) {
     if (e.composedPath().includes(this.btn)) {
