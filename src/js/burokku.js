@@ -1,7 +1,7 @@
 import initBlocks from './modules/Blocks'
 import initEvents from './events/index'
 import initNav from './modules/Nav'
-import volume from './modules/Volume'
+import volume from './modules/Settings/volume'
 import initWallet from './modules/Wallet'
 import watchColorSchemes from './modules/ColorSchemes'
 

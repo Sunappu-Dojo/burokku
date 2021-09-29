@@ -11,15 +11,23 @@ let volumeLevel = 1
  *
  * https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData
  *
- * Example:
+ * Examples:
  *
  * const mySound = Sfx.makeFrom('my/sound/url.mp3')
  * Sfx.play(mySound) // or Sfx.play(mysound, 2)
+ *
+ * Sfx.setVolume(0) // no more sound
+ * Sfx.setVolume(.5) // sound volume is 50%
+ * Sfx.setVolume(1) // sound volume is 100%
  */
 export default class Sfx {
 
   /**
    * Returns ready-to-play sound from URL.
+   *
+   * @param {string} url The URL of the sound resource.
+   *
+   * @returns {AudioBufferSourceNode}
    */
   static makeFrom(url) {
     if (!url) { return null }
@@ -41,6 +49,11 @@ export default class Sfx {
 
   /**
    * Play sound at given time.
+   *
+   * @param {AudioBufferSourceNode} bufferSourceNode
+   * @param {number=} delay Delay before the sound is played, in seconds.
+   *
+   * @returns {void}
    */
   static play(bufferSourceNode, delayInSeconds = 0) {
     if (!bufferSourceNode) { return }
@@ -55,7 +68,14 @@ export default class Sfx {
     bufferSourceNode.start(audioContext.currentTime + delayInSeconds)
   }
 
-  static setVolume(level) {
+  /**
+   * Control the sound volume.
+   *
+   * @param {number=} level Sound volume between 0 and 1.
+   *
+   * @returns {void}
+   */
+  static setVolume(level = 1) {
     volumeLevel = level
   }
 }
