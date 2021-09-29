@@ -353,9 +353,32 @@
             <button class="app-install cta cta--small" id="sw-install" type="button">Install</button>
         </div>
 
-        <!-- Sound control -->
+        <div class="settings | flex-center">
 
-        <div class="sound-ctn | flex-center">
+            <!-- Rumble control -->
+
+            <button class="setting setting--on setting--not-supported" id="rumble" type="button" title="Disable vibrations">
+                <span class="visually-hidden" id="rumble-label">Disable vibrations</span>
+
+                <!-- Icon inspired from https://github.com/tabler/tabler-icons / device-mobile-vibration -->
+                <svg
+                    viewBox="0 0 30 26" width="23" height="20"
+                    fill="none" stroke="currentColor"
+                    stroke-width="2.67" stroke-linecap="round"
+                >
+                    <style>
+                        .setting--on .rumble__cross { display: none; }
+                    </style>
+                    <path d="M20.33 2.33H9.67c-.74 0-1.34.6-1.34 1.34v18.66c0 .74.6 1.34 1.34 1.34h10.66c.74 0 1.34-.6 1.34-1.34V3.67c0-.74-.6-1.34-1.34-1.34Z"/>
+                    <path d="M15 19.67v.01"/>
+                    <path d="M28.67 5 26 9l2.67 4L26 17l2.67 4"/>
+                    <path d="M1.33 5 4 9l-2.67 4L4 17l-2.67 4"/>
+                    <line class="rumble__cross" x1="1.5" y1="24.5" x2="28.11" y2="1.5" />
+                  </svg>
+            </button>
+
+            <!-- Sound control -->
+
             <button class="setting setting--on" id="sound" type="button" title="Mute">
                 <span class="visually-hidden" id="sound-label">Mute</span>
                 <svg

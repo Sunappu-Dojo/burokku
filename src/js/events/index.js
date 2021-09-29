@@ -40,6 +40,7 @@ class EventsManager {
     this.app.blocks?.onTap(e)
     this.app.nav?.onTap(e)
     this.app.volume?.onTap(e)
+    this.app.rumble?.onTap(e)
 
     if ('sw' in this.app) {
       this.app.onTap(e)
