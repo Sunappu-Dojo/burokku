@@ -44,7 +44,7 @@
         "family.scss": "^1.0",
         "hsl.scss": "^1.0.1",
         "mini-css-extract-plugin": "^2",
-        "node-sass": "^6",
+        "node-sass": "^7",
         "nodemon": "^2.0.4",
         "postcss": "^8.2.4",
         "postcss-loader": "^6",
