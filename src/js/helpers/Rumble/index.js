@@ -60,5 +60,5 @@ export default class Rumble {
    *
    * @returns {boolean}
    */
-   static isSupported = () => supported
+  static isSupported = () => supported
 }

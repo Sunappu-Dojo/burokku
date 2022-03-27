@@ -18,7 +18,7 @@ const thePath = (path = '') => resolve(__dirname, path)
 
 // ESLint Options
 const esLintOptions = {
-  cache: true, // cache is cleaned on `npm install`
+  cache: false, // cache is cleaned on `npm install`
   cacheStrategy: 'content',
   fix: env.ES_LINT_AUTOFIX == 'true',
   formatter: env.ES_LINT_FORMATTER ?? 'stylish',
