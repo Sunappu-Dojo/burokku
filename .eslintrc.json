@@ -1,11 +1,14 @@
 {
+    "root": true,
     "env": {
         "es2021": true
     },
+    "ignorePatterns": ["src/public/**/*"],
     // "extends": "eslint:recommended",
     "parser": "@babel/eslint-parser", // needed for support of class private members
     "parserOptions": {
         "sourceType": "module",
+        "ecmaVersion": 12,
         "ecmaFeatures": {
             "impliedStrict": true
         }
@@ -14,7 +17,7 @@
     "rules": {
         "indent": [2, 2, { "SwitchCase": 1 }],
         "linebreak-style": [2, "unix"],
-        "quotes": [2, "single"],
+        "quotes": [2, "single", { "allowTemplateLiterals": true }],
         "semi": [2, "never"],
 
         "array-bracket-spacing": [2, "never"],
