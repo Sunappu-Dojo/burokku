@@ -1,16 +1,17 @@
-const postcssPresetEnv = require('postcss-preset-env');
-const postcssSafeArea = require('postcss-safe-area');
-const postcssShortSize = require('postcss-short-size');
-const cssNano = require('cssnano');
+const postcssPresetEnv = require('postcss-preset-env')
+const postcssSafeArea = require('postcss-safe-area')
+const postcssShortSize = require('postcss-short-size')
+const cssNano = require('cssnano')
 const purgecss = require('@fullhuman/postcss-purgecss')
 
 const postcssPresetEnvOptions = {
   stage: 0,
   features: {
-    // https://github.com/csstools/postcss-preset-env/blob/master/src/lib/plugins-by-id.js
+    // https://github.com/csstools/postcss-plugins/blob/main/plugin-packs/postcss-preset-env/src/plugins/plugins-by-id.mjs
     'all-property': false,
     'color-functional-notation': false,
     'focus-within-pseudo-class': false,
+    'focus-visible-pseudo-class': false,
     'logical-properties-and-values': { dir: 'ltr' },
     'prefers-color-scheme-query': false,
   },
@@ -20,7 +21,7 @@ const cssNanoOptions = { preset: ['default', { colormin: false }] }
 
 const purgeCssOptions = {
   content: [
-    './public/index.html',
+    './src/index.html',
     './src/js/**/*.js',
   ],
   safelist: [/⍰/],

@@ -2,22 +2,29 @@
 
 _トゲハテナブロック_ (_hatena burokku_) is Japanese for [_interrogation block_ ⍰](https://www.mariowiki.com/%3F_Block).
 
-## Development
+## Building the app
 
-- duplicate `.env.example` to `.env` and edit it.
-- `npm i && npm run dev`
-- `npm run serve` to start developing
-- (service worker watch, optional) `npm run sw-watch`
-- tests:
-    - `npx run test`
-    - `npm run test-watch`
-    - `npx run test-gui` for Cypress GUI
+The app is in `/src`. Assets called by the app needs to be compiled using some front-end tooling, detailed below.
 
-## Production
+### Development
 
-- duplicate `.env.example` to `.env`
-- `npm i`
-- `npm run prod`
+1. Duplicate `.env.example` to `.env` and edit it.
+2. Run `npm install` (Node > 12.13) to install all the required packages and tools.
+3. Run `npm run dev` and open the URL returned by the CLI.
+
+Note: the Service Worker is broken while developing. Ignore it and check it using the [production](#production) mode.
+
+### Production
+
+1. Duplicate `.env.example` to `.env` and edit it.
+2. Run `npm install` (Node > 12.13) to install all the required packages and tools.
+3. Run `npm run build` to compile the app. The compiled app goes in `/public`.
+4. Run `npm run preview` to preview it on your machine.
+
+### Various
+
+- Files in `/src/public` are copied as is (respecting the directory structure in `/src/public`) in the build directory.
+- Lint JavaScript: `npm run lint` to scan for errors or `npm run lint-fix` to try an automatic fix.
 
 ## Some audio operations with ffmpeg
 

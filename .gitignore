@@ -1,7 +1,4 @@
-/public/*
-!/public/index.html
-
+.eslintcache
 .env
 /node_modules
-
-/cypress/videos
+/public

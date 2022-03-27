@@ -30,8 +30,7 @@ class Burokku {
   }
 
   init() {
-    this.doc.classList.remove('no-js')
-    this.doc.classList.add('js')
+    this.doc.classList.replace('no-js', 'js')
 
     initEvents(this)
 
@@ -47,8 +46,7 @@ class Burokku {
   }
 
   initServiceWorker() {
-    import(/* webpackChunkName: "modules/service-worker" */
-      './modules/ServiceWorker').then(swModule => {
+    import('./modules/service-worker').then(swModule => {
       const SW = swModule.default
 
       if (SW.getSupport()) {
