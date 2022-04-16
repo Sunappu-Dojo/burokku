@@ -60,6 +60,22 @@
 
         <h1 class="visually-hidden">⍰</h1>
 
+        <!-- Top bar : score and PWA install -->
+
+        <div class="block__bar | flex-center">
+
+            <!-- Coin amount -->
+            <section id="wallet" class="block__wallet wallet | flex-center">
+                <svg width="15" height="21" class="coin wallet__icon" id="wallet-coin" aria-hidden="true">
+                    <use xlink:href="#coin-smb-path" id="wallet-coin-use"/>
+                </svg>
+                <output id="coins" class="wallet__amount"></output>
+            </section>
+
+            <!-- PWA install -->
+            <button class="app-install cta cta--small" id="sw-install" type="button">Install</button>
+        </div>
+
         <div class="blocks" id="blocks">
 
             <!-- ⍰ SMB -->
@@ -338,22 +354,6 @@
                 </svg>
             </button>
         </nav>
-
-        <!-- Top bar : score and PWA install -->
-
-        <div class="block__bar | flex-center">
-
-            <!-- Coin amount -->
-            <section id="wallet" class="block__wallet wallet | flex-center">
-                <svg width="15" height="21" class="coin wallet__icon" id="wallet-coin">
-                    <use xlink:href="#coin-smb-path" id="wallet-coin-use"/>
-                </svg>
-                <output id="coins" class="wallet__amount"></output>
-            </section>
-
-            <!-- PWA install -->
-            <button class="app-install cta cta--small" id="sw-install" type="button">Install</button>
-        </div>
 
         <div class="settings | flex-center">
 
