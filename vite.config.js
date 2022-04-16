@@ -1,5 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+
+// We stick to vite-plugin-eslint 1.3 as long as 1.4 requires ESLint 7.
 import eslintPlugin from 'vite-plugin-eslint'
 
 // env
