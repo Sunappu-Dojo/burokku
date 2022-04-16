@@ -1,20 +1,19 @@
 .wallet {
+  font-family: monospace;
+
   &:not(.wallet--on) {
     display: none;
   }
 }
 
-.wallet__amount {
-  padding-inline-start: .25em;
-
-  font-family: monospace;
-
-  &::before {
-    content: 'x';
-    margin-inline-end: .15em;
-  }
-}
-
 .wallet__icon {
   size: auto .6em;
+  padding-inline-end: .25em;
+}
+
+.wallet__amount {
+  &::before {
+    content: '×';
+    margin-inline-end: .12em;
+  }
 }
