@@ -35,7 +35,7 @@
         "postcss-short-size": "^4.0",
         "sass": "^1.49",
         "v.scss": "^1.2.1",
-        "vite": "~2.8.0",
-        "vite-plugin-eslint": "~1.3.0"
+        "vite": "^2",
+        "vite-plugin-eslint": "^1.5"
     }
 }
