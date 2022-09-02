@@ -1,5 +1,6 @@
 .block__bar {
   position: absolute;
+  z-index: 1;
   inset: v(block-bar-space, 1rem) v(block-bar-space, 1rem) auto;
 
   @supports (top: #{'max(0px)'}) {
