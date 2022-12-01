@@ -24,7 +24,7 @@
         "cssnano": "^5",
         "dotenv": "^16",
         "double-dash.scss": "^0.8",
-        "easings.scss": "^0.3",
+        "easings.scss": "^1.0",
         "eslint": "^8",
         "eslint-formatter-codeframe": "^7.32.1",
         "family.scss": "^1.0",
