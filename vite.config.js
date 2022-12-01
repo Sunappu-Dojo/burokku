@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 
+import browserslistToEsbuild from 'browserslist-to-esbuild'
 import eslintPlugin from 'vite-plugin-eslint'
 
 // env
@@ -34,6 +35,7 @@ export default defineConfig({
     emptyOutDir: true,
     cssCodeSplit: false,
     polyfillModulePreload: false,
+    target: browserslistToEsbuild(),
     rollupOptions: {
       input: {
         'js/burokku': thePath('./src/index.html'),
