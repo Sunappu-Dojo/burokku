@@ -1,6 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-
+import { createHtmlPlugin } from 'vite-plugin-html'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import eslintPlugin from 'vite-plugin-eslint'
 
@@ -26,6 +26,19 @@ const esLintOptions = {
   formatter: env.ES_LINT_FORMATTER ?? 'stylish',
 }
 
+const htmlOptions = {
+  minify: {
+    collapseWhitespace: true,
+    keepClosingSlash: false,
+    removeComments: true,
+    // removeRedundantAttributes: true,
+    // removeScriptTypeAttributes: true,
+    // removeStyleLinkTypeAttributes: true,
+    // useShortDoctype: true,
+    // minifyCSS: true,
+  },
+}
+
 export default defineConfig({
   root: 'src',
 
@@ -34,8 +47,10 @@ export default defineConfig({
     outDir: `../${outDir}`,
     emptyOutDir: true,
     cssCodeSplit: false,
-    polyfillModulePreload: false,
     target: browserslistToEsbuild(),
+    modulePreload: {
+      polyfill: false,
+    },
     rollupOptions: {
       input: {
         'js/burokku': thePath('./src/index.html'),
@@ -68,6 +83,7 @@ export default defineConfig({
 
   plugins: [
     ...(isProd ? [] : [eslintPlugin(esLintOptions)]),
+    ...(isProd ? [] : [createHtmlPlugin(htmlOptions)]),
   ],
 
   server: {
