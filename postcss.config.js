@@ -13,6 +13,9 @@ const postcssPresetEnvOptions = {
     'focus-within-pseudo-class': false,
     'focus-visible-pseudo-class': false,
     'logical-properties-and-values': { dir: 'ltr' },
+
+    // https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#options
+    'nested-calc': { preserve: false },
     'prefers-color-scheme-query': false,
   },
 }

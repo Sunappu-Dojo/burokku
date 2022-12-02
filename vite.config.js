@@ -4,7 +4,17 @@ import { createHtmlPlugin } from 'vite-plugin-html'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import eslintPlugin from 'vite-plugin-eslint'
 
-// env
+/**
+ * Parses .env file, using `dotenv`.
+ *
+ * We could use `loadEnv` (from 'vite'), but it exposes too much system values.
+ * Despite being used by vite under the hood, `dotenv` is among the project
+ * dev dependencies due to a version difference: Vite sticks to v14.3.2
+ * while the project uses v16.x.
+ *
+ * https://github.com/vitejs/vite/blob/main/packages/vite/package.json#L91
+ * https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md
+ */
 const env = require('dotenv').config().parsed
 const isProd = env?.NODE_ENV === 'production'
 
@@ -12,10 +22,10 @@ let outDir = env?.APP_BUILD_DIR || 'public'
 
 // Prevents to output app files outside of the project root.
 if (outDir.includes('../')) {
-  throw new Error('APP_BUILD_DIR (in the .env file) can’t point to an upper-level directory. Remove all `../`.')
+  throw new Error('APP_BUILD_DIR (in the .env file) can’t be outside of the app root directory. Remove all `../` from `APP_BUILD_DIR`.')
 }
 
-// helper to root project path
+// Shortcut to project root path
 const thePath = (path = '') => resolve(__dirname, path)
 
 // ESLint Options
@@ -46,7 +56,7 @@ export default defineConfig({
     envDir: './',
     outDir: `../${outDir}`,
     emptyOutDir: true,
-    cssCodeSplit: false,
+    cssCodeSplit: false, // might be reconsidered when app evolves
     target: browserslistToEsbuild(),
     modulePreload: {
       polyfill: false,
