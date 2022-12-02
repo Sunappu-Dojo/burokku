@@ -6,9 +6,9 @@ import eslintPlugin from 'vite-plugin-eslint'
 
 // env
 const env = require('dotenv').config().parsed
-const isProd = env.NODE_ENV === 'production'
+const isProd = env?.NODE_ENV === 'production'
 
-let outDir = env.APP_BUILD_DIR || 'public'
+let outDir = env?.APP_BUILD_DIR || 'public'
 
 // Prevents to output app files outside of the project root.
 if (outDir.includes('../')) {
@@ -22,8 +22,8 @@ const thePath = (path = '') => resolve(__dirname, path)
 const esLintOptions = {
   cache: false, // cache is cleaned on `npm install`
   cacheStrategy: 'content',
-  fix: env.ES_LINT_AUTOFIX == 'true',
-  formatter: env.ES_LINT_FORMATTER ?? 'stylish',
+  fix: env?.ES_LINT_AUTOFIX == 'true',
+  formatter: env?.ES_LINT_FORMATTER ?? 'stylish',
 }
 
 const htmlOptions = {
@@ -87,6 +87,6 @@ export default defineConfig({
   ],
 
   server: {
-    open: env.BROWSER_OPEN == 'true',
+    open: env?.BROWSER_OPEN == 'true',
   },
 })
