@@ -1,4 +1,4 @@
-const head = document.head
+import { doc, head } from '../../helpers/Dom'
 
 const themeColor = head.querySelector('meta[name="theme-color"]')
 
@@ -34,7 +34,7 @@ const setFavicon = icons => icons.forEach(icon => {
  * Update theme colors
  */
 const setThemeColor = () => {
-  const color = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim()
+  const color = getComputedStyle(doc).getPropertyValue('--bg').trim()
   themeColor.setAttribute('content', color)
 }
 

@@ -6,13 +6,12 @@ import rumble from './modules/Settings/rumble'
 import initWallet from './modules/Wallet'
 import watchColorSchemes from './modules/ColorSchemes'
 
+import { doc } from './helpers/Dom'
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
 
 class Burokku {
   constructor() {
-    this.doc = document.documentElement
-
     this.init()
   }
 
@@ -29,7 +28,7 @@ class Burokku {
   }
 
   init() {
-    this.doc.classList.replace('no-js', 'js')
+    doc.classList.replace('no-js', 'js')
 
     initEvents(this)
 
