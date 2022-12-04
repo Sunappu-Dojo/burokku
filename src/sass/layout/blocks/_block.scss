@@ -1,3 +1,6 @@
+@use '../../abstract' as *;
+@use '../../variables' as *;
+
 .block {
   --⍰-size: 20vmin;
   --⍰-min-size: 10rem;

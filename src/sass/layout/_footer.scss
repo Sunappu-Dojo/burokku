@@ -1,3 +1,6 @@
+@use '../abstract' as *;
+@use '../variables' as *;
+
 .footer {
   position: absolute;
   inset-block-end: calc(var(--block-bar-space, 1rem) - 1rem);

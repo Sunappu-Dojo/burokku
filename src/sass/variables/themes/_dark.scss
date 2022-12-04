@@ -1,3 +1,6 @@
+@use '../_colors.scss' as *;
+@use '../../abstract' as *;
+
 $dark-colors: (
   'primary': $white,
   'bg': $bunker,
@@ -10,6 +13,6 @@ $dark-bg: map-get($dark-colors, 'bg');
 $dark-btn-bg: map-get($dark-colors, 'btn-bg');
 $dark-accent: map-get($dark-colors, 'accent');
 
-@mixin dark() {
+@mixin dark {
   @include theme('basic-black', '--dark') { @content; }
 }

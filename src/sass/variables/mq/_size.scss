@@ -1,3 +1,5 @@
+@use 'double-dash.scss' as mq;
+
 $global-w: (
   'mobile': 20em, // 320px
   'tablet-7': 37.5em, // 600px
@@ -12,8 +14,8 @@ $global-h: (
   'switch': 45em, // 720px
 );
 
-@include --w($global-w);
-@include --h($global-h);
+@include mq.w($global-w);
+@include mq.h($global-h);
 
-@include --w-is('switch', map-get($global-w, 'switch'), 'is-');
-@include --h-is('switch', map-get($global-h, 'switch'), 'h-is-');
+@include mq.w-is('switch', map-get($global-w, 'switch'), 'is-');
+@include mq.h-is('switch', map-get($global-h, 'switch'), 'h-is-');

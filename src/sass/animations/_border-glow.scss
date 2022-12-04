@@ -1,3 +1,5 @@
+@use 'v.scss' as *;
+
 @keyframes border-glow {
   0% {
     border-color: v(astral);

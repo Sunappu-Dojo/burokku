@@ -1,3 +1,7 @@
+// Abstract (mixins and functions)
+@use './abstract' as *;
+@use './variables' as *;
+
 :root {
   --primary: #{$dark-primary};
   --bg: #{$dark-bg};

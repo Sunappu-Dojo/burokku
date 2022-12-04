@@ -1,3 +1,5 @@
+@use 'v.scss' as *;
+
 .noscript {
   position: absolute;
   inset-block-end: v(block-bar-space, 1rem);

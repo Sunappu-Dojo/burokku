@@ -1,3 +1,6 @@
+@use 'v.scss' as *;
+@use '../variables' as *;
+
 .arrows {
   position: absolute;
   inset: 50% v(block-bar-space, 1rem) unset;
