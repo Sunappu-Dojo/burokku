@@ -1,4 +1,4 @@
-import { doc, head } from '../../helpers/Dom'
+import { doc, head } from '../helpers/Document'
 
 const themeColor = head.querySelector('meta[name="theme-color"]')
 

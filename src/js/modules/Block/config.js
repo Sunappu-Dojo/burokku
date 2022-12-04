@@ -22,17 +22,15 @@ const SOUND_LIBRARY = {
     coin: '/sfx/smb-coin.' + format,
     oneUp: '/sfx/smb-1up.' + format,
   },
-  smb3: {
-    bump: '/sfx/smb-bump.' + format,
-    coin: '/sfx/smb-coin.' + format,
-    oneUp: '/sfx/smb-1up.' + format,
-  },
   smw: {
     bump: '/sfx/smw-bump.' + format,
     coin: '/sfx/smw-coin.' + format,
     oneUp: '/sfx/smw-1up.' + format,
   },
 }
+
+// Super Mario Bros. (NES) and Super Mario Bros. 3 (NES) use the same sounds.
+SOUND_LIBRARY.smb3 = SOUND_LIBRARY.smb
 
 export let SOUNDS = SOUND_LIBRARY.smb
 

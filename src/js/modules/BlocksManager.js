@@ -1,4 +1,4 @@
-import Block from '../Block'
+import Block from './Block'
 
 const ctn = document.getElementById('blocks')
 const backlog = document.getElementById('backlog')
@@ -27,26 +27,6 @@ class Blocks {
    */
   onOneUp() {
     return !!this.add(1)
-  }
-
-  onTap(e) {
-    this.active.onTap(e)
-  }
-
-  onEnter(e) {
-    this.active.onEnter(e)
-  }
-
-  onSpace(e) {
-    this.active.onSpace(e)
-  }
-
-  onAnimationEnd(e) {
-    this.active.onAnimationEnd(e)
-  }
-
-  onTransitionEnd(e) {
-    this.active.onTransitionEnd(e)
   }
 
   /**

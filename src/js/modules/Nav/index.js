@@ -27,6 +27,9 @@ let currentIndex = 0
  * - .current : index of current block
  */
 class Nav {
+  constructor() {
+    this.loadPosition().then(position => this.current = position)
+  }
 
   get current() {
     return currentIndex
@@ -43,12 +46,6 @@ class Nav {
     }))
 
     this.savePosition(index)
-  }
-
-  constructor() {
-    this.loadPosition().then(position => {
-      this.current = position
-    })
   }
 
   prev() { this.tap(prevBtn) }

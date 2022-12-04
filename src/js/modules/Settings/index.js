@@ -16,8 +16,13 @@ export default class Setting {
     this.btn.classList.remove('setting--not-supported')
   }
 
-  get enabled() { return Boolean(this.#enabled) }
-  get supported() { return this.#supported }
+  get enabled() {
+    return Boolean(this.#enabled)
+  }
+
+  get supported() {
+    return this.#supported
+  }
 
   onTap(e) {
     if (e.composedPath().includes(this.btn)) {

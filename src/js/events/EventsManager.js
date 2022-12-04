@@ -39,10 +39,10 @@ class EventsManager {
   }
 
   onTap(e) {
-    this.app.blocks?.onTap(e)
+    this.app.blocks?.active.onTap(e)
     this.app.nav?.onTap(e)
-    this.app.volume?.onTap(e)
-    this.app.rumble?.onTap(e)
+    this.app.settings.volume?.onTap(e)
+    this.app.settings.rumble?.onTap(e)
 
     if ('sw' in this.app) {
       this.app.onTap(e)
@@ -51,22 +51,22 @@ class EventsManager {
 
   onKeyDown(e) {
     if (e.key === 'Tab') { return this.app.nav.onTab(e) }
-    if (e.key === ' ') { return this.app.blocks.onSpace(e) }
-    if (e.key === 'Enter') { return this.app.blocks.onEnter(e) }
+    if (e.key === ' ') { return this.app.blocks.active.onSpace(e) }
+    if (e.key === 'Enter') { return this.app.blocks.active.onEnter(e) }
   }
 
   onKeyUp({ key, target }) {
     if (key === 'ArrowLeft') { return this.app.nav.prev() }
     if (key === 'ArrowRight') { return this.app.nav.next() }
-    if (key === 'm') { return this.app.volume.toggle() }
+    if (key === 'm') { return this.app.settings.volume.toggle() }
   }
 
   onAnimationEnd(e) {
-    this.app.blocks?.onAnimationEnd(e)
+    this.app.blocks?.active.onAnimationEnd(e)
   }
 
   onTransitionEnd(e) {
-    this.app.blocks?.onTransitionEnd(e)
+    this.app.blocks?.active.onTransitionEnd(e)
   }
 
   init() {

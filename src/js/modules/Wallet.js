@@ -1,24 +1,12 @@
 import { get as idbGet, set as idbSet } from 'idb-keyval'
-import { setAttributes }  from '../../helpers/Dom'
-import Rumble             from '../../helpers/Rumble'
-import Sfx                from '../../helpers/Sfx'
+import { setAttributes }  from '../helpers/Document'
+import Rumble             from '../helpers/Rumble'
+import Sfx                from '../helpers/Sfx'
 
-import { SOUNDS } from '../Block/config'
+import { SOUNDS } from './Block/config'
 
 class Wallet {
 
-  get coins() {
-    return this.money
-  }
-
-  set coins(value) {
-    this.money = value
-    this.toBank(value)
-  }
-
-  /**
-   * Constructor
-   */
   constructor() {
     this.makeSounds(true)
 
@@ -27,6 +15,15 @@ class Wallet {
       this.prepareDisplay()
       this.display()
     })
+  }
+
+  get coins() {
+    return this.money
+  }
+
+  set coins(value) {
+    this.money = value
+    this.toBank(value)
   }
 
   /**

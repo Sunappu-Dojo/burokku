@@ -1,5 +1,5 @@
-import { doc }                  from './helpers/Dom'
-import initEvents               from './events/index'
+import { doc }                  from './helpers/Document'
+import initEvents               from './events/EventsManager'
 
 import {
   initBlocks, initNav, initWallet,
@@ -35,8 +35,7 @@ class Burokku {
     this.blocks = initBlocks()
     this.wallet = initWallet()
     this.nav = initNav()
-    this.rumble = rumble
-    this.volume = volume
+    this.settings = { rumble, volume }
 
     watchColorSchemes()
 
