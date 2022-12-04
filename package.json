@@ -12,6 +12,7 @@
         "postinstall": "rm -f .eslintcache"
     },
     "dependencies": {
+        "easings.scss": "^1",
         "idb-keyval": "^6",
         "normalize.css": "^8.0"
     },
@@ -24,8 +25,7 @@
         "browserslist-to-esbuild": "^1.2.0",
         "cssnano": "^5",
         "dotenv": "^16",
-        "double-dash.scss": "^0.8",
-        "easings.scss": "^0.3",
+        "double-dash.scss": "^1",
         "eslint": "^8",
         "eslint-formatter-codeframe": "^7.32.1",
         "family.scss": "^1.0",
