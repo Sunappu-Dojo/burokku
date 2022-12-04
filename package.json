@@ -13,7 +13,7 @@
     },
     "dependencies": {
         "easings.scss": "^1",
-        "idb-keyval": "^6",
+        "idb-keyval": "6.1.0",
         "normalize.css": "^8.0"
     },
     "devDependencies": {
@@ -33,7 +33,7 @@
         "postcss": "^8.2.4",
         "postcss-preset-env": "^7",
         "postcss-short-size": "^4.0",
-        "sass": "^1.49",
+        "sass": "^1.54",
         "v.scss": "^1.2.1",
         "vite": "^3.2.4",
         "vite-plugin-eslint": "^1.8",
