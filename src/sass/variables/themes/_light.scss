@@ -1,3 +1,6 @@
+@use '../_colors.scss' as *;
+@use '../../abstract' as *;
+
 $light-colors: (
   'primary': $bunker,
   'bg': $lily-white,
@@ -10,6 +13,6 @@ $light-bg: map-get($light-colors, 'bg');
 $light-btn-bg: map-get($light-colors, 'btn-bg');
 $light-accent: map-get($light-colors, 'accent');
 
-@mixin light() {
+@mixin light {
   @include theme('basic-white', '--light') { @content; }
 }

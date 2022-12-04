@@ -1,3 +1,5 @@
+@use '../variables' as *;
+
 .⍰ {
   @include dark {
     --⍰-bg: hsl(28, 100%, 61%);

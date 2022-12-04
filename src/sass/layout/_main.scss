@@ -1,7 +1,10 @@
+@use 'double-dash.scss' as mq;
+@use '../abstract' as *;
+
 // Media queries : ⍰ block size
 
-@include --w-from('block-scale', 10em); // 160px
-@include --h-from('block-scale-h', 10em); // 160px
+@include mq.w-from('block-scale', 10em); // 160px
+@include mq.h-from('block-scale-h', 10em); // 160px
 
 // Media queries: spacing around top bar and footer
 
@@ -10,8 +13,8 @@ $block-bar: (
   'block-bar-wide': 40em, // 640px
 );
 
-@include --w($block-bar);
-@include --h($block-bar);
+@include mq.w($block-bar);
+@include mq.h($block-bar);
 
 body {
 
