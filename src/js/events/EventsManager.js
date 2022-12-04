@@ -70,6 +70,9 @@ class EventsManager {
     this.app.blocks?.active.onTransitionEnd(e)
   }
 
+  onModeChange(e) {
+  }
+
   init() {
 
     // add :hover support in iOS ¯\_(ツ)_/¯
@@ -86,6 +89,7 @@ class EventsManager {
     document.addEventListener('blockChange', this.onBlockChange.bind(this))
     document.addEventListener('coinThrow', this.onCoinThrow.bind(this))
     document.addEventListener('oneUp', this.onOneUp.bind(this))
+    document.addEventListener('modechange', this.onModeChange.bind(this))
   }
 }
 
