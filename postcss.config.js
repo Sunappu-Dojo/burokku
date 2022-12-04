@@ -1,5 +1,4 @@
 const postcssPresetEnv = require('postcss-preset-env')
-const postcssSafeArea = require('postcss-safe-area')
 const postcssShortSize = require('postcss-short-size')
 const cssNano = require('cssnano')
 const purgecss = require('@fullhuman/postcss-purgecss')
@@ -33,7 +32,6 @@ const purgeCssOptions = {
 module.exports = ({ options, env }) => ({
   plugins: [
     postcssShortSize(),
-    postcssSafeArea(),
     postcssPresetEnv(postcssPresetEnvOptions),
     env === 'production' ? cssNano(cssNanoOptions) : false,
     env === 'production' ? purgecss(purgeCssOptions) : false,
