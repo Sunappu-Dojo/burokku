@@ -1,12 +1,12 @@
-import initBlocks from './modules/Blocks'
-import initEvents from './events/index'
-import initNav from './modules/Nav'
-import volume from './modules/Settings/volume'
-import rumble from './modules/Settings/rumble'
-import initWallet from './modules/Wallet'
-import watchColorSchemes from './modules/ColorSchemes'
+import { doc }                  from './helpers/Dom'
+import initEvents               from './events/index'
 
-import { doc } from './helpers/Dom'
+import {
+  initBlocks, initNav, initWallet,
+  rumble, volume,
+  watchColorSchemes
+}                               from './modules'
+
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
 
