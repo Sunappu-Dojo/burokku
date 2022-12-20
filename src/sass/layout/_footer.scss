@@ -38,9 +38,9 @@
 }
 
 .footer__svg--code {
-  @media (--mobile)   { --svg-w: 2.4rem; }
+  @media (--mobile) { --svg-w: 2.4rem; }
 }
 
-.footer__svg--twitter {
-  @media (--mobile)   { --svg-w: 2.3rem; }
+.footer__svg--mastodon {
+  @media (--mobile) { --svg-w: 1.7rem; }
 }
