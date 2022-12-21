@@ -1,8 +1,7 @@
-import { get as idbGet, set as idbSet } from 'idb-keyval'
-import { setAttributes }      from '../helpers/Document'
-import Rumble                 from '../helpers/Rumble'
-import Sfx                    from '../helpers/Sfx'
-import { indexedDBAvailable } from '../helpers/Storage'
+import { setAttributes }  from '../helpers/Document'
+import Rumble             from '../helpers/Rumble'
+import Sfx                from '../helpers/Sfx'
+import { idbGet, idbSet } from '../helpers/Storage'
 
 import { SOUNDS } from './Block/config'
 
@@ -75,18 +74,14 @@ class Wallet {
    * Save money
    */
   toBank(value) {
-    if (indexedDBAvailable) {
-      idbSet('coins-amount', value)
-    }
+    idbSet('coins-amount', value)
   }
 
   /**
    * Load money
    */
   fromBank() {
-    return indexedDBAvailable
-      ? idbGet('coins-amount').then(money => Number.isInteger(money) ? money : 0)
-      : Promise.resolve(0)
+    return idbGet('coins-amount', 0)
   }
 
   // SFX
