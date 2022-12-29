@@ -1,4 +1,5 @@
-import { get as idbGet, set as idbSet } from 'idb-keyval'
+// import { idbGet, idbSet } from '../../helpers/Storage'
+import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
 import CSS from './config'
 
 const ctn = document.getElementById(CSS.ctn)
@@ -93,18 +94,14 @@ class Nav {
    * Save position
    */
   savePosition(position) {
-    if ('indexedDB' in window) {
-      idbSet('current-block', position)
-    }
+    idbSet('current-block', position)
   }
 
   /**
    * Load position
    */
   loadPosition() {
-    return ('indexedDB' in window)
-      ? idbGet('current-block').then(position => Number.isInteger(position) ? position : 0)
-      : 0
+    return idbGet('current-block', 0)
   }
 }
 

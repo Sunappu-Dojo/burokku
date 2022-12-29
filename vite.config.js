@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
+import { viteSingleFile } from 'vite-plugin-singlefile'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import eslintPlugin from 'vite-plugin-eslint'
 
@@ -36,6 +37,7 @@ const esLintOptions = {
   formatter: env?.ES_LINT_FORMATTER ?? 'stylish',
 }
 
+// HTML plugin option (https://github.com/vbenjs/vite-plugin-html#parameter-description)
 const htmlOptions = {
   minify: {
     collapseWhitespace: true,
@@ -47,6 +49,14 @@ const htmlOptions = {
     // useShortDoctype: true,
     // minifyCSS: true,
   },
+}
+
+// Inline assets (https://github.com/richardtallent/vite-plugin-singlefile#config)
+const singleFileOptions = {
+  useRecommendedBuildConfig: false,
+  inlinePattern: [
+    'js/helpers/Storage/idbDetect.js',
+  ],
 }
 
 export default defineConfig({
@@ -61,9 +71,14 @@ export default defineConfig({
     modulePreload: {
       polyfill: false,
     },
+    define: {
+      idbAvailable: 'idbAvailable',
+      idbAvailabilityDetected: 'idbAvailabilityDetected',
+    },
     rollupOptions: {
       input: {
         'js/burokku': thePath('./src/index.html'),
+        'js/helpers/Storage/idbDetect': thePath('./src/js/helpers/Storage/idbDetect.js'),
         'block-service-worker': thePath('./src/js/service-worker.js'),
       },
       output: {
@@ -94,6 +109,7 @@ export default defineConfig({
   plugins: [
     ...(isProd ? [] : [eslintPlugin(esLintOptions)]),
     ...(isProd ? [] : [createHtmlPlugin(htmlOptions)]),
+    ...(isProd ? [] : [viteSingleFile(singleFileOptions)]),
   ],
 
   server: {

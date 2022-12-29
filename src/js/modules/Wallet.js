@@ -1,7 +1,8 @@
-import { get as idbGet, set as idbSet } from 'idb-keyval'
 import { setAttributes }  from '../helpers/Document'
 import Rumble             from '../helpers/Rumble'
 import Sfx                from '../helpers/Sfx'
+// import { idbGet, idbSet } from '../helpers/Storage'
+import { idbGet, idbSet } from '../helpers/Storage/idbLegacy'
 
 import { SOUNDS } from './Block/config'
 
@@ -74,18 +75,14 @@ class Wallet {
    * Save money
    */
   toBank(value) {
-    if ('indexedDB' in window) {
-      idbSet('coins-amount', value)
-    }
+    idbSet('coins-amount', value)
   }
 
   /**
    * Load money
    */
   fromBank() {
-    return ('indexedDB' in window)
-      ? idbGet('coins-amount').then(money => Number.isInteger(money) ? money : 0)
-      : 0
+    return idbGet('coins-amount', 0)
   }
 
   // SFX
