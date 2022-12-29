@@ -1,3 +1,4 @@
+import { clamp }          from '../../helpers/Math'
 // import { idbGet, idbSet } from '../../helpers/Storage'
 import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
 import CSS from './config'
@@ -28,8 +29,10 @@ let currentIndex = 0
  * - .current : index of current block
  */
 class Nav {
-  constructor() {
-    this.loadPosition().then(position => this.current = position)
+  constructor(maxPosition) {
+    this.loadPosition(maxPosition).then(position =>
+      this.current = position
+    )
   }
 
   get current() {
@@ -100,11 +103,12 @@ class Nav {
   /**
    * Load position
    */
-  loadPosition() {
-    return idbGet('current-block', 0)
+  async loadPosition(maxPosition = 0) {
+    // It might be useful to clamp during dev.
+    return clamp(await idbGet('current-block', maxPosition), 0, maxPosition)
   }
 }
 
-export default function() {
-  return new Nav()
+export default function(maxPosition = 0) {
+  return new Nav(maxPosition)
 }

@@ -40,9 +40,9 @@ class Blocks {
 
     /**
      * For each 1-UP, a hidden block from `div#backlog` become visible by being
-     * appended to `div#blocks`. This is repeated while:
-     * 1. You have 1-UPs granting you new blocks.
-     * 2. There are invisible blocks that can become visible.
+     * appended to `div#blocks`. This is repeated…
+     * 1. … while you have 1-UPs granting you new blocks…
+     * 2. … and until there are invisible blocks that can become visible.
      */
     while (this.items.length < targetNb && backlog.children.length > 0) {
       const { id } = ctn.appendChild(backlog.children[0])
