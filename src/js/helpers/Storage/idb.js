@@ -9,21 +9,19 @@ import { get, set, createStore } from 'idb-keyval'
  * - Firefox with cookies disabled (tested in Firefox 108)
  * - Safari with cookies disabled (tested in Safari 16.2)
  *
+ * The detection requires support of top-level `await`, starting at Safari 15.
+ * For broader browsers support, use `src/js/helpers/Storage/idbLegacy.js`.
+ *
+ * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#browser_compatibility
+ *
  * @type {boolean}
  */
 let idbAvailable = false
 
-/**
- * This code requires support of top-level `await`, which starts at Safari 15.
- *
- * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#browser_compatibility
- */
 try {
   await get('coins-amount')
   idbAvailable = true
-} catch (err) {
-  console.info('indexedDB not available, data won’t be saved.')
-}
+} catch (err) {}
 
 /**
  * Retrieve an item from a default IndexedDB storage.

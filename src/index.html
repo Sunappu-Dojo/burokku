@@ -9,6 +9,13 @@
     <meta name="viewport" content="width=device-width, maximum-scale=1, viewport-fit=cover">
     <meta name="supported-color-schemes" content="dark light only"> <!-- macOS 10.14.4 compat -->
     <meta name="color-scheme" content="dark light only">
+    <script>
+      // Declaring globals here prevents their renaming at compile time.
+      // Documentation: src/js/helpers/StorageDetect.js
+      let idbAvailable = false
+      let idbAvailabilityDetected = false
+    </script>
+    <script src="/js/helpers/Storage/idbDetect.js"></script>
 
     <script type="module" src="/js/burokku.js"></script>
     <link rel="stylesheet" href="/sass/block.scss">

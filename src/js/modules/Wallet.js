@@ -1,7 +1,8 @@
 import { setAttributes }  from '../helpers/Document'
 import Rumble             from '../helpers/Rumble'
 import Sfx                from '../helpers/Sfx'
-import { idbGet, idbSet } from '../helpers/Storage'
+// import { idbGet, idbSet } from '../helpers/Storage'
+import { idbGet, idbSet } from '../helpers/Storage/idbLegacy'
 
 import { SOUNDS } from './Block/config'
 

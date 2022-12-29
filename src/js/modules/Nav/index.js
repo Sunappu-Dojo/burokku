@@ -1,4 +1,5 @@
-import { idbGet, idbSet } from '../../helpers/Storage'
+// import { idbGet, idbSet } from '../../helpers/Storage'
+import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
 import CSS from './config'
 
 const ctn = document.getElementById(CSS.ctn)
