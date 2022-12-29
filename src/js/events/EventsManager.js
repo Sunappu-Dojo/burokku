@@ -1,4 +1,5 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
+import { initNav } from '../modules'
 
 class EventsManager {
   constructor(app) {
@@ -35,7 +36,7 @@ class EventsManager {
 
   onWalletDisplayReady(e) {
     this.app.blocks?.onWalletDisplayReady(e.detail)
-    this.app.nav?.update()
+    this.app.nav = initNav(Math.floor(e.detail / 100))
   }
 
   onTap(e) {
