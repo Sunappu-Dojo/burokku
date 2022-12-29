@@ -1,4 +1,5 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
+import Mode from '../mode'
 import { initNav } from '../modules'
 
 class EventsManager {
@@ -40,6 +41,7 @@ class EventsManager {
   }
 
   onTap(e) {
+    Mode.onTap(e)
     this.app.blocks?.active.onTap(e)
     this.app.nav?.onTap(e)
     this.app.settings.volume?.onTap(e)

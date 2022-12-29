@@ -37,3 +37,32 @@
   border-radius: .5rem;
   border-width: .2rem;
 }
+
+.cta--hollow {
+  &:not(:hover):not(:focus) {
+    border-color: v(primary);
+    animation: none;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.cta--on-hover {
+  background: none;
+  border-color: transparent;
+  outline: .1rem solid v(bg);
+  outline-offset: -.5rem;
+
+  animation: none;
+
+  &:hover,
+  &:focus {
+    background: v(btn-bg);
+
+    @media (--motion) {
+      animation: border-glow 1s linear infinite;
+    }
+  }
+}

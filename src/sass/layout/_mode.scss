@@ -1,0 +1,15 @@
+.mode-selector {
+  position: absolute;
+  inset-block-end: calc(var(--block-bar-space, 1rem) - .6rem);
+  left: 50%;
+
+  transform: translateX(-50%);
+
+  @supports (top: #{'max(0px)'}) {
+    bottom: #{'max(calc(var(--safe-bottom)), calc(var(--block-bar-space, 1rem) - .6rem))'};
+  }
+
+  ::first-letter {
+    text-transform: uppercase;
+  }
+}

@@ -5,9 +5,22 @@ const modeRoutes = {
   pomodoro: '?pomodoro',
 }
 
+const route = (name = mode) => modeRoutes[name]
+
+const toggleBtn = document.getElementById('mode')
+
 const isPomodoro = () => new URL(location.href).searchParams.get('pomodoro') != null
 
 export default class Mode {
+  static onTap(e) {
+    if (e.target == toggleBtn) {
+      this.set(!isPomodoro() ? 'pomodoro' : 'classic')
+
+      // After the first interaction with the button, make it less prominent.
+      toggleBtn.classList.replace('cta--hollow', 'cta--on-hover')
+    }
+  }
+
   static setFromUrl() {
     this.set(isPomodoro() ? 'pomodoro' : 'classic')
   }
@@ -17,12 +30,12 @@ export default class Mode {
   }
 
   static set(newMode) {
-    if (mode = newMode || !Object.keys(modeRoutes).includes(newMode)) {
-      return
-    }
+    if (mode == newMode || !route(newMode)) { return }
 
+    document.documentElement.classList.replace(`mode-${mode}`, `mode-${newMode}`)
     mode = newMode
-    history.replaceState({}, '', modeRoutes[mode])
+    toggleBtn.innerHTML = mode
+    history.replaceState({}, '', route(mode))
 
     document.dispatchEvent(new CustomEvent('modechange', { detail: { mode } }))
   }
