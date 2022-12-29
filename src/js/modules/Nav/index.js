@@ -46,7 +46,7 @@ class Nav {
 
     document.dispatchEvent(new CustomEvent('blockChange', {
       detail: index,
-      isEdge: prevBtn.disabled || nextBtn.disabled,
+      isEdge: prevBtn.disabled || nextBtn.disabled, // @todo: why this prop?
     }))
 
     this.savePosition(index)
