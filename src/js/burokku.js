@@ -45,7 +45,7 @@ class Burokku {
   }
 
   initServiceWorker() {
-    import('./modules/service-worker').then(swModule => {
+    import('./modules/ServiceWorker').then(swModule => {
       const SW = swModule.default
 
       if (SW.getSupport()) {
