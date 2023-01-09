@@ -1,6 +1,6 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
-import Mode from '../mode'
 import { initNav } from '../modules'
+import { ModeSelector } from '../modules'
 
 class EventsManager {
   constructor(app) {
@@ -12,10 +12,10 @@ class EventsManager {
   onBlockChange(e) {
     if ('blocks' in this.app) {
       this.app.blocks.onBlockChange(e)
-      this.app.updateTitle()
     }
 
     this.app.wallet?.onBlockChange(this.app.blocks.active)
+    this.app.updateTitle()
   }
 
   onCoinThrow(e) {
@@ -41,7 +41,6 @@ class EventsManager {
   }
 
   onTap(e) {
-    Mode.onTap(e)
     this.app.blocks?.active.onTap(e)
     this.app.nav?.onTap(e)
     this.app.settings.volume?.onTap(e)
@@ -50,6 +49,7 @@ class EventsManager {
     if ('sw' in this.app) {
       this.app.onTap(e)
     }
+    ModeSelector.onTap()
   }
 
   onKeyDown(e) {

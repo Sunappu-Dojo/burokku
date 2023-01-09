@@ -3,12 +3,18 @@
 .cta {
   size: 28rem 4.7rem;
 
+  display: inline-grid;
+  grid-auto-flow: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+
   font-size: 2rem;
 
   background: v(btn-bg);
-  border: v(accent) solid .3rem;
+  border: v(btn-border, accent, null) solid .3rem;
   border-radius: .8rem;
-  color: v(btn-primary);
+  color: v(btn-color);
 
   @media (--motion) {
     animation: border-glow 3s linear infinite;
@@ -40,18 +46,15 @@
 
 .cta--hollow {
   &:not(:hover):not(:focus) {
-    border-color: v(primary);
+    --btn-border: var(--primary);
     animation: none;
-
-    &::before {
-      content: none;
-    }
   }
 }
 
+// Turn a hollow button into a button without border when applied.
 .cta--on-hover {
-  background: none;
-  border-color: transparent;
+  --btn-bg: none;
+  --btn-border: transparent;
   outline: .1rem solid v(bg);
   outline-offset: -.5rem;
 
@@ -59,7 +62,7 @@
 
   &:hover,
   &:focus {
-    background: v(btn-bg);
+    --btn-bg: var(--btn-bg);
 
     @media (--motion) {
       animation: border-glow 1s linear infinite;

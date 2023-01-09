@@ -1,10 +1,10 @@
 import { doc }                  from './helpers/Document'
 import initEvents               from './events/EventsManager'
-import Mode                     from './mode'
 
 import {
   initBlocks, initWallet,
   rumble, volume,
+  ModeSelector,
   watchColorSchemes
 }                               from './modules'
 
@@ -37,7 +37,7 @@ class Burokku {
     this.wallet = initWallet()
     this.settings = { rumble, volume }
 
-    Mode.setFromUrl()
+    ModeSelector.setFromUrl()
 
     watchColorSchemes()
 
