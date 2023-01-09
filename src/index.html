@@ -83,13 +83,34 @@
 
             <!-- PWA install -->
             <button class="app-install cta cta--small" id="sw-install" type="button">Install</button>
+
+            <!-- Like on Nintendo Store (i) icon. -->
+            <button class="menu__toggle | HOPcta HOPcta--small HOPcta--hollow" id="menu-toggle-btn" type="button">
+                <span class="visually-hidden">menu</span>
+                <!-- menu -->
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M13.164 1H4.83596C2.71609 1 1 2.71609 1 4.83597V13.164C1 15.2839 2.71609 17 4.83596 17H13.164C15.2839 17 17 15.2839 17 13.164V4.83597C17 2.71609 15.2839 1 13.164 1Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M6 7.45454V5.77273L6.82443 5H11.3588L12 5.63636V7.63637L11.5 8H10L9 9V10" stroke="currentColor" stroke-width="1.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M9 13.9092C9.55228 13.9092 10 13.4615 10 12.9092C10 12.3569 9.55228 11.9092 9 11.9092C8.44772 11.9092 8 12.3569 8 12.9092C8 13.4615 8.44772 13.9092 9 13.9092Z" fill="currentColor"></path>
+                </svg>
+            </button>
+
+            <!-- Menu -->
+            <div id="?" class="menu">
+
+                <h2 class="visually-hidden">Menu</h2>
+
+                <!-- Mode -->
+                <div class="mode-selector">
+                    <h3 class="mode-selector__title">Mode</h3>
+
                     <button class="mode-btn | cta cta--on-hover cta--small" data-mode="classic" type="button">
                         Classic
                     </button>
 
                     <button class="mode-btn | cta cta--on-hover cta--small" data-mode="pomodoro" type="button">
                         Pomodoro
-                        <svg viewBox="0 0 18 16" width="18" height="16" fill="currentColor">
+                        <svg class="menu__svg" viewBox="0 0 18 16" width="18" height="16" fill="currentColor">
                             <path d="M8.5 1a1 1 0 0 1 1-1c3.2 0 6.17 1.98 7.4 4.94a8.07 8.07 0 0 1-1.74 8.72 8.07 8.07 0 0 1-8.72 1.73A8.07 8.07 0 0 1 1.5 8c0-.54.46-1 1-1s1 .46 1 1c0 2.4 1.49 4.62 3.7 5.54 2.22.92 4.84.4 6.54-1.3a6.05 6.05 0 0 0 1.3-6.54A6.05 6.05 0 0 0 9.5 2a1 1 0 0 1-1-1Z"/>
                             <path d="M5.4 9.45c.24-.49.03-1.1-.45-1.34l-2-1a1.02 1.02 0 0 0-1.35.44c-.24.48-.04 1.1.45 1.35l2 1c.5.24 1.1.03 1.34-.45Z"/>
                             <path d="M7.5 1.5c0 .54-.46 1-1 1s-1-.46-1-1 .46-1 1-1 1 .46 1 1ZM5 3c0 .54-.46 1-1 1s-1-.46-1-1 .46-1 1-1 1 .46 1 1ZM3.5 5.5c0 .54-.46 1-1 1s-1-.46-1-1 .46-1 1-1 1 .46 1 1Z"/>
@@ -97,6 +118,9 @@
                             <path d="M13.5 8a1 1 0 0 1-1 1h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 1 1Z"/>
                         </svg>
                     </button>
+                </div>
+            </div>
+
         </div>
 
         <div class="blocks" id="blocks">

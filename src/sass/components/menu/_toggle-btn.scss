@@ -1,0 +1,21 @@
+@use '../../variables' as *;
+
+.menu__toggle {
+  /*
+   * The same distance (this custom property) is used for button padding and
+   * as negative margin in order to maintain visual alignment with other
+   * other items (blocks navigation, menu settings…).
+   */
+  --menu-toggle-x-padding: 1rem;
+
+  margin-inline: 2rem calc(v(menu-toggle-x-padding) * -1);
+  padding: .3rem v(menu-toggle-x-padding);
+
+  transition: .5s;
+  transition-property: opacity, visibility;
+
+  &:not(.menu__toggle--visible) {
+    visibility: hidden;
+    opacity: 0;
+  }
+}

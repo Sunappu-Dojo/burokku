@@ -1,0 +1,29 @@
+@use '../../abstract' as *;
+@use '../../variables' as *;
+
+.menu {
+  max-width: 30rem;
+  position: absolute;
+  z-index: 1;
+
+  // put the menu 1rem away from its toggle button
+  inset: calc(100% + 1rem) 0 unset unset;
+  padding: 2rem;
+
+  overflow-y: auto;
+
+  background: v(bg);
+  border: .1rem solid v(grey);
+  border-radius: .4rem;
+  opacity: v(menu-visible, 0);
+  visibility: v(menu-visibility, hidden);
+
+  transform: translateX(calc(v(menu-visible, 0) * -2rem + 2rem));
+
+  transition: v(menu-transition-duration, .2s) $in-out-quad;
+  transition-property: v(menu-transition-properties, 'opacity, transform');
+
+  @media (--no-motion) {
+    transition-duration: .001s;
+  }
+}

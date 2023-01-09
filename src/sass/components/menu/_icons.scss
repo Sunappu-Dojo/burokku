@@ -1,0 +1,13 @@
+@use '../../abstract' as *;
+
+.menu__svg {
+  size: v(svg-w, unset) auto;
+}
+
+.menu__svg--code {
+  @media (--mobile) { --svg-w: 2.4rem; }
+}
+
+.menu__svg--mastodon {
+  @media (--mobile) { --svg-w: 1.7rem; }
+}

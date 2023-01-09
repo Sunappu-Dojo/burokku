@@ -1,12 +1,12 @@
-import { doc }                  from './helpers/Document'
-import initEvents               from './events/EventsManager'
+import { doc }    from './helpers/Document'
+import initEvents from './events/EventsManager'
 
 import {
-  initBlocks, initWallet,
-  rumble, volume,
   ModeSelector,
+  initBlocks, initMenu, initWallet,
+  rumble, volume, // settings
   watchColorSchemes
-}                               from './modules'
+}                 from './modules'
 
 const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
@@ -35,6 +35,7 @@ class Burokku {
 
     this.blocks = initBlocks()
     this.wallet = initWallet()
+    this.menu = initMenu()
     this.settings = { rumble, volume }
 
     ModeSelector.setFromUrl()

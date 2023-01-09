@@ -1,0 +1,13 @@
+@use 'toggle-btn';
+@use 'ctn';
+@use 'mode-selector';
+
+:root {
+  --menu-transition-duration: .2s;
+}
+
+.menu-visible {
+  --menu-visible: 1;
+  --menu-visibility: visible;
+  --menu-transition-properties: opacity, transform, visibility;
+}

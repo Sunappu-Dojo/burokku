@@ -38,6 +38,7 @@ class EventsManager {
   onWalletDisplayReady(e) {
     this.app.blocks?.onWalletDisplayReady(e.detail)
     this.app.nav = initNav(Math.floor(e.detail / 100))
+    this.app.menu.onWalletDisplayReady(e.detail)
   }
 
   onTap(e) {
@@ -49,10 +50,12 @@ class EventsManager {
     if ('sw' in this.app) {
       this.app.onTap(e)
     }
-    ModeSelector.onTap()
+    ModeSelector.onTap(e)
+    this.app.menu.onTap(e)
   }
 
   onKeyDown(e) {
+    if (e.key === 'Escape') { return this.app.menu.onEscape(e) }
     if (e.key === 'Tab') { return this.app.nav.onTab(e) }
     if (e.key === ' ') { return this.app.blocks.active.onSpace(e) }
     if (e.key === 'Enter') { return this.app.blocks.active.onEnter(e) }

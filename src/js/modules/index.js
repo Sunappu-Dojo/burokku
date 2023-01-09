@@ -1,5 +1,6 @@
 export { default as ModeSelector } from './ModeSelector'
 export { default as initBlocks } from './BlocksManager'
+export { default as initMenu } from './Menu'
 export { default as initNav } from './Nav'
 export { default as initWallet } from './Wallet'
 export { default as volume } from './Settings/volume'
