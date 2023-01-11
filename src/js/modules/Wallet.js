@@ -11,6 +11,7 @@ import { SOUNDS } from './Block/config'
 const MAX_COINS = 999_999
 
 class Wallet {
+  #enabled = false
 
   constructor() {
     this.makeSounds(true)
@@ -32,10 +33,22 @@ class Wallet {
     document.dispatchEvent(new CustomEvent('walletBalanceUpdate', { detail: value }))
   }
 
+  get isEnabled() { return this.#enabled }
+
+  enable() {
+    this.#enabled = true
+  }
+
+  disable() {
+    this.#enabled = false
+  }
+
   /**
    * Please capitalism.
    */
   add(coins = 1) {
+    if (!this.#enabled) { return }
+
     this.coins += coins
 
     this.playSounds()
@@ -43,6 +56,8 @@ class Wallet {
   }
 
   onCoinThrow(coins) {
+    if (!this.#enabled) { return }
+
     this.add(coins)
   }
 

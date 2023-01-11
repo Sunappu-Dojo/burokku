@@ -48,9 +48,12 @@ export default class Block {
     })
   }
 
-  throwCoin(coin) {
+  throwCoin(coin, dispatchEvent = true) {
     coin.classList.add(CSS.flippingCoin)
-    document.dispatchEvent(new CustomEvent('coinThrow', { detail: 1 }))
+
+    if (dispatchEvent) {
+      document.dispatchEvent(new CustomEvent('coinThrow', { detail: 1 }))
+    }
   }
 
   vibrate() {
@@ -71,7 +74,7 @@ export default class Block {
     this.makeSounds()
   }
 
-  onTap({ target }) {
+  onTap({ target, isTrusted }) {
     if (
       !this.canBump
       || target != this.btn
@@ -80,6 +83,11 @@ export default class Block {
       return
     }
 
+    /**
+     * In addition to giving a good feeling to the app, it prevents to hit the
+     * block twice when pressing space because space triggers `keydown` and
+     * `keydown` successively. It would feel bad without bump throttling.
+     */
     this.throttleBump()
 
     // Get first available coin.
@@ -89,7 +97,7 @@ export default class Block {
     if (!coin) { return }
 
     this.bumpBlock()
-    this.throwCoin(coin)
+    this.throwCoin(coin, isTrusted)
   }
 
   /**
@@ -110,13 +118,14 @@ export default class Block {
     this.focus()
   }
 
-  onSpace({ target }) {
-    if (!(target === this.btn)) {
-      if (target.tagName === 'BUTTON') { return }
+  onSpace(e) {
+    if (!(e.target === this.btn)) {
+      if (e.target.tagName === 'BUTTON') { return }
       this.focus()
     }
 
-    this.btn.dispatchEvent(new Event('click'))
+    // hit the block
+    this.onTap(e)
   }
 
   onAnimationEnd({ target }) {

@@ -1,0 +1,11 @@
+.timer {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-size: 2em;
+
+  html:not(.mode-pomodoro) & {
+    display: none;
+  }
+}

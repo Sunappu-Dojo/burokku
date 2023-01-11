@@ -1,6 +1,8 @@
 import { doc }    from './helpers/Document'
 import initEvents from './events/EventsManager'
 
+import { Classic, Pomodoro } from './modes'
+
 import {
   ModeSelector,
   initBlocks, initMenu, initWallet,
@@ -12,14 +14,19 @@ const installBtnId = 'sw-install'
 const installBtnVisible = 'app-install--visible'
 
 class Burokku {
+  #game
+
   constructor() {
+    this.modes = {
+      classic: Classic,
+      pomodoro: Pomodoro,
+    }
+
     this.init()
   }
 
   updateTitle() {
-    if (this.wallet.money) {
-      document.title = `x ${this.wallet.money} • ${this.blocks.active.btn.dataset.game}`
-    }
+    this.game.updateTitle()
   }
 
   onTap({ target }, stop) {
@@ -40,10 +47,19 @@ class Burokku {
     this.settings = { rumble, volume }
 
     ModeSelector.setFromUrl()
+    if (!this.game) {
+      this.initGame()
+    }
 
     watchColorSchemes()
 
     this.initServiceWorker()
+  }
+
+  initGame() {
+    this.game?.destroy()
+    this.game = new this.modes[ModeSelector.selected](this)
+    this.game.init()
   }
 
   initServiceWorker() {

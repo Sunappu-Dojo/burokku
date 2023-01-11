@@ -19,10 +19,7 @@ class EventsManager {
   }
 
   onCoinThrow(e) {
-    if ('wallet' in this.app) {
-      this.app.wallet.onCoinThrow(e.detail)
-      this.app.updateTitle()
-    }
+    this.app.game?.onCoinThrow(e.detail)
   }
 
   onOneUp() {
@@ -87,8 +84,8 @@ class EventsManager {
   onKeyDown(e) {
     if (e.key === 'Escape') { return this.app.menu.onEscape(e) }
     if (e.key === 'Tab') { return this.app.nav.onTab(e) }
-    if (e.key === ' ') { return this.app.blocks.active.onSpace(e) }
-    if (e.key === 'Enter') { return this.app.blocks.active.onEnter(e) }
+    if (e.key === ' ') { return this.app.game.onSpace?.(e) }
+    if (e.key === 'Enter') { return this.app.game.onEnter?.(e) }
   }
 
   onKeyUp({ key }) {
@@ -106,6 +103,8 @@ class EventsManager {
   }
 
   onModeChange(e) {
+    this.app.initGame()
+    this.app.updateTitle()
   }
 
   init() {
@@ -126,6 +125,24 @@ class EventsManager {
     document.addEventListener('coinThrow', this.onCoinThrow.bind(this))
     document.addEventListener('oneUp', this.onOneUp.bind(this))
     document.addEventListener('modechange', this.onModeChange.bind(this))
+  }
+
+  destroy() {
+    console.log('destroy events')
+
+    document.removeEventListener('click', this.onTap.bind(this), captureEvent)
+    document.removeEventListener('keydown', this.onKeyDown.bind(this))
+    document.removeEventListener('keyup', this.onKeyUp.bind(this))
+
+    document.removeEventListener('animationend', this.onAnimationEnd.bind(this))
+    document.removeEventListener('transitionend', this.onTransitionEnd.bind(this))
+
+    document.removeEventListener('walletBalanceUpdate', this.onWalletBalanceUpdate.bind(this))
+    document.removeEventListener('walletDisplayReady', this.onWalletDisplayReady.bind(this))
+    document.removeEventListener('blockChange', this.onBlockChange.bind(this))
+    document.removeEventListener('coinThrow', this.onCoinThrow.bind(this))
+    document.removeEventListener('oneUp', this.onOneUp.bind(this))
+    document.removeEventListener('modechange', this.onModeChange.bind(this))
   }
 }
 
