@@ -10,6 +10,13 @@ export const btns = Object.fromEntries(
 )
 
 /**
+ * Focus mode button
+ *
+ * @param {Mode} mode
+ */
+export const focusBtn = mode => btns[mode].focus()
+
+/**
  * Mark mode button as selected or unselected.
  *
  * @param {Mode} mode

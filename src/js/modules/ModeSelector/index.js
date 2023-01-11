@@ -5,6 +5,7 @@ import {
   DEFAULT_MODE,
   route,
   isPomodoro,
+  focusBtn,
   toggleBtn
 } from './utils'
 
@@ -47,5 +48,12 @@ export default class ModeSelector {
     // Update history and dispatch `modechange` event.
     history.replaceState({}, '', route(mode))
     document.dispatchEvent(new CustomEvent('modechange', { detail: { mode } }))
+  }
+
+  /**
+   * Moves the focus to the mode selector.
+   */
+  static focus() {
+    focusBtn(this.#mode)
   }
 }
