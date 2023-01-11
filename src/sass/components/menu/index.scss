@@ -1,6 +1,9 @@
 @use 'toggle-btn';
 @use 'ctn';
 @use 'mode-selector';
+@use 'icons';
+@use 'links';
+@use 'separator';
 
 :root {
   --menu-transition-duration: .2s;
