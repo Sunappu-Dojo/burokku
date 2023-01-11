@@ -40,7 +40,7 @@ class Menu {
     this.toggle(false)
   }
 
-  onTap(e) {
+  onTap(e, stop) {
     const eventPath = e.composedPath()
 
     // toggle button
@@ -54,6 +54,7 @@ class Menu {
     // outside of the menu
     if (!eventPath.includes(this.#$menu) && this.open) {
       this.close()
+      stop()
     }
   }
 

@@ -22,9 +22,10 @@ class Burokku {
     }
   }
 
-  onTap({ target }) {
+  onTap({ target }, stop) {
     if (target.id === installBtnId) {
-      this.sw.addToHome()
+      this.sw?.addToHome()
+      stop()
     }
   }
 

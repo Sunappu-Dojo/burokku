@@ -46,16 +46,42 @@ class EventsManager {
   }
 
   onTap(e) {
-    this.app.blocks?.active.onTap(e)
-    this.app.nav?.onTap(e)
-    this.app.settings.volume?.onTap(e)
-    this.app.settings.rumble?.onTap(e)
+    /**
+     * Approach for these events:
+     * - runs a sequence of events handlers until a handler stops the chain;
+     * - each event is given a `stop` function allowing to… stop the chain.
+     *
+     * Each event handler is responsible of deciding or not to interrupt the
+     * chain. It is useful for cases like “click outside” (close a menu,
+     * for example), where you don’t want another “element” that can
+     * be clicked to trigger an interaction while a menu is open.
+     *
+     * @todo: Consider switching from `this.app.module` to a module, like for
+     * `ModeSelector`): let’s try this, then evaluate if switching back to
+     * the commented code below is better.
+     */
+    const sequence = [
+      this.app.menu,
+      ModeSelector,
+      this.app.blocks?.active,
+      this.app.nav,
+      this.app.settings.volume,
+      this.app.settings.rumble,
+      this.app,
+    ]
 
-    if ('sw' in this.app) {
-      this.app.onTap(e)
-    }
-    ModeSelector.onTap(e)
-    this.app.menu.onTap(e)
+    const stop = () => e.shouldStop = true
+
+    /**
+     * Bind the module to its onTap and runs the sequence of events.
+     * Using `every` exit the “loop” if an handler runs `stop()`.
+     */
+    sequence
+      .map(module => module?.onTap.bind(module))
+      .every(handler => {
+        handler(e, stop)
+        return !e.shouldStop
+      })
   }
 
   onKeyDown(e) {
@@ -65,7 +91,7 @@ class EventsManager {
     if (e.key === 'Enter') { return this.app.blocks.active.onEnter(e) }
   }
 
-  onKeyUp({ key, target }) {
+  onKeyUp({ key }) {
     if (key === 'ArrowLeft') { return this.app.nav.prev() }
     if (key === 'ArrowRight') { return this.app.nav.next() }
     if (key === 'm') { return this.app.settings.volume.toggle() }
