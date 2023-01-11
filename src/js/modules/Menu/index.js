@@ -90,6 +90,7 @@ class Menu {
   }
 
   onWalletDisplayReady = this.initToggle
+  onWalletBalanceUpdate = this.initToggle
 }
 
 export default function() {

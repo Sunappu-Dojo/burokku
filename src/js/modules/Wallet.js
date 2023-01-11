@@ -29,6 +29,7 @@ class Wallet {
   set coins(value) {
     this.money = value
     this.toBank(value)
+    document.dispatchEvent(new CustomEvent('walletBalanceUpdate', { detail: value }))
   }
 
   /**
@@ -49,8 +50,6 @@ class Wallet {
     /**
      * Delay the vibration a bit, otherwise it may not start because the
      * vibration following the block bump is already running.
-     *
-     *
      */
     setTimeout(() => Rumble.vibrate([120, 0, 120, 0, 120]), 180)
   }

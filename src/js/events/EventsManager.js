@@ -35,6 +35,10 @@ class EventsManager {
     }
   }
 
+  onWalletBalanceUpdate(e) {
+    this.app.menu.onWalletBalanceUpdate(e.detail)
+  }
+
   onWalletDisplayReady(e) {
     this.app.blocks?.onWalletDisplayReady(e.detail)
     this.app.nav = initNav(Math.floor(e.detail / 100))
@@ -90,6 +94,7 @@ class EventsManager {
     document.addEventListener('animationend', this.onAnimationEnd.bind(this))
     document.addEventListener('transitionend', this.onTransitionEnd.bind(this))
 
+    document.addEventListener('walletBalanceUpdate', this.onWalletBalanceUpdate.bind(this))
     document.addEventListener('walletDisplayReady', this.onWalletDisplayReady.bind(this))
     document.addEventListener('blockChange', this.onBlockChange.bind(this))
     document.addEventListener('coinThrow', this.onCoinThrow.bind(this))
