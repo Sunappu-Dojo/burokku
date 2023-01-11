@@ -17,7 +17,7 @@ Note: the Service Worker is broken while developing. Ignore it and check it usin
 ### Production
 
 1. Duplicate `.env.example` to `.env` and edit it.
-2. Run `npm install` (Node > 12.13) to install all the required packages and tools.
+2. Run `npm install` (Node > 14.18) to install all the required packages and tools.
 3. Run `npm run build` to compile the app. The compiled app goes in `/public`.
 4. Run `npm run preview` to preview it on your machine.
 
