@@ -24,6 +24,7 @@ const resourcesToCache = [
 
   // Fonts
   'fonts/oxygen-regular.woff2',
+  'fonts/oxygen-mono-ciphers-and-multiply-sign.woff2',
 
   // Standard icons
   'favicon.svg',
