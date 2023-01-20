@@ -2,9 +2,6 @@
 @use '../../variables' as *;
 
 .block {
-  --⍰-size: 20vmin;
-  --⍰-min-size: 10rem;
-
   transform: translate(
     calc(100% * var(--current, 0) * -1),
     calc(20vmin + var(--⍰-size, 0) / 8 - 10%)
