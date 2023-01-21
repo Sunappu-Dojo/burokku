@@ -73,6 +73,7 @@ export default class Pomodoro {
     this.#timer = null
     this.#bumpTimer = null
     this.#time = this.#duration
+    $timeLeft.innerHTML = this.#time
     this.status = 'stopped'
   }
 
