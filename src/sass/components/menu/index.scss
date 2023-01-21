@@ -5,12 +5,7 @@
 @use 'links';
 @use 'separator';
 
-:root {
-  --menu-transition-duration: .2s;
-}
-
 .menu-visible {
   --menu-visible: 1;
   --menu-visibility: visible;
-  --menu-transition-properties: opacity, transform, visibility;
 }

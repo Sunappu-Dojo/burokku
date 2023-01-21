@@ -20,8 +20,8 @@
 
   transform: translateX(calc(v(menu-visible, 0) * -2rem + 2rem));
 
-  transition: v(menu-transition-duration, .2s) $in-out-quad;
-  transition-property: v(menu-transition-properties, 'opacity, transform');
+  transition: .2s $in-out-quad;
+  transition-property: opacity, transform, visibility;
 
   @media (--no-motion) {
     transition-duration: .001s;
