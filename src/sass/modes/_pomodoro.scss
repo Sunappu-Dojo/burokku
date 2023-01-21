@@ -1,5 +1,13 @@
 @use '../variables/' as *;
 
+.mode-pomodoro {
+  --timer-y: -1em;
+  --timer-visible: 1;
+  --timer-visibility: visible;
+  --timer-transition-duration: .5s;
+  --timer-transition-timing: #{$out-quart};
+}
+
 .pomodoro-playing {
   // Block distance between the center of the screen and the edges (X or Y).
 
@@ -13,4 +21,8 @@
   --⍰-translate-x: var(--⍰-distance-from-center-to-edge);
   --⍰-translate-y: var(--⍰-distance-from-center-to-edge);
   --⍰-scale: .25;
+
+  // Move timer
+
+  --timer-y: 0
 }

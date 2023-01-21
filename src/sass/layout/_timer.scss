@@ -1,11 +1,28 @@
+@use '../abstract/' as *;
+@use '../variables/' as *;
+
 .timer {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
+  --timer-size: max(var(--⍰-size), var(--⍰-min-size));
 
-  font-size: 2em;
+  position: fixed;
+  inset: 0;
+  transform: translateY(v(timer-y, 0));
 
-  html:not(.mode-pomodoro) & {
-    display: none;
+  display: grid;
+  place-items: center;
+
+  font-size: v(timer-size);
+  line-height: 1;
+
+  pointer-events: none;
+
+  opacity: v(timer-visible, 0);
+  visibility: v(timer-visibility, hidden);
+
+  transition: v(timer-transition-duration, .2s) v(timer-transition-timing, $in-out-quad);
+  transition-property: opacity, transform, visibility;
+
+  @media (--no-motion) {
+    transition-duration: .001s;
   }
 }
