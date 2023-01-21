@@ -30,9 +30,7 @@ export default class Block {
 
   throttleBump() {
     this.canBump = false
-    this.canBumpTimer = setTimeout(() => {
-      this.canBump = true
-    }, THROTTLE)
+    this.canBumpTimer = setTimeout(() => this.canBump = true, THROTTLE)
   }
 
   /**
@@ -108,14 +106,11 @@ export default class Block {
 
   onEnter({ target }) {
     if (
-      target == this.btn
-      || target.tagName == 'BUTTON'
-      || target.tagName == 'A'
+      target != this.btn
+      && !['A', 'BUTTON'].includes(target.tagName)
     ) {
-      return
+      this.focus()
     }
-
-    this.focus()
   }
 
   onSpace(e) {

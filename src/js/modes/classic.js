@@ -1,4 +1,6 @@
 export default class Classic {
+  // name = 'classic'
+
   constructor(app) {
     this.app = app
   }

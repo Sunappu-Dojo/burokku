@@ -15,6 +15,8 @@ const MARIO_SECOND = {
 }
 
 export default class Pomodoro {
+  // name = 'pomodoro'
+
   #timer = null
   #bumpTimer = null
   #time = 0
@@ -34,6 +36,11 @@ export default class Pomodoro {
       doc.classList.add(`pomodoro-${this.#status}`)
     }
   }
+
+  // // unused for now…
+  // get progress() {
+  //   return this.#time / this.#duration
+  // }
 
   constructor(app) {
     this.app = app

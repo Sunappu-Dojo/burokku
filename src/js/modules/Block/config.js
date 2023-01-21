@@ -7,7 +7,6 @@ export const CSS = {
   btn: '⍰-ctn',
   btnInner: '⍰__inner',
   hit: '⍰--hit',
-  hitAnimation: '⍰-hit',
   coins: '⍰__coin-ctn',
   flippingCoin: 'coin--flipping',
 }
