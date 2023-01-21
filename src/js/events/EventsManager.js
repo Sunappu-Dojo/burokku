@@ -82,10 +82,18 @@ class EventsManager {
   }
 
   onKeyDown(e) {
-    if (e.key === 'Escape') { return this.app.menu.onEscape(e) }
     if (e.key === 'Tab') { return this.app.nav.onTab(e) }
     if (e.key === ' ') { return this.app.game.onSpace?.(e) }
     if (e.key === 'Enter') { return this.app.game.onEnter?.(e) }
+
+    // @todo: improve Escape sequence with a stop function (?)
+    if (e.key === 'Escape') {
+      if (this.app.game?.status == 'playing') {
+        // this.app.game?.onEscape()
+        return this.app.game.pause()
+      }
+      return this.app.menu.onEscape(e)
+    }
   }
 
   onKeyUp({ key }) {

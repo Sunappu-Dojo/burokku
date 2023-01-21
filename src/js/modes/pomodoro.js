@@ -118,6 +118,10 @@ export default class Pomodoro {
     }
   }
 
+  onEscape() {
+    this.pause()
+  }
+
   updateTitle() {
     document.title = `${this.#time.toString().padStart(3, 0)} • ${this.app.blocks.active.btn.dataset.game}`
   }
