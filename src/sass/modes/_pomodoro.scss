@@ -1,0 +1,16 @@
+@use '../variables/' as *;
+
+.pomodoro-playing {
+  // Block distance between the center of the screen and the edges (X or Y).
+
+  --⍰-distance-from-center-to-edge: calc(
+    50% - var(--⍰-size, 0) / 2 /* move the block along the viewport edge */
+    - var(--block-bar-space) /* apply UI padding */
+  );
+
+  // Move the block to the bottom right edges and scale it down to ~4 rem.
+
+  --⍰-translate-x: var(--⍰-distance-from-center-to-edge);
+  --⍰-translate-y: var(--⍰-distance-from-center-to-edge);
+  --⍰-scale: .25;
+}

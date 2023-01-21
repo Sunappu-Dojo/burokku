@@ -1,4 +1,9 @@
+import { doc } from '../helpers/Document'
+
+const DEFAULT_DURATION = 1000
+
 const $timeLeft = document.getElementById('time-left')
+$timeLeft.innerHTML = DEFAULT_DURATION
 
 /**
  * The real duration between countdown ticks in the games, in milliseconds.
@@ -13,8 +18,22 @@ export default class Pomodoro {
   #timer = null
   #bumpTimer = null
   #time = 0
+  #duration = DEFAULT_DURATION
   #interval = 1000
   #status = 'stopped'
+
+  get status() {
+    return this.#status
+  }
+
+  set status(status) {
+    doc.classList.remove(`pomodoro-${this.#status}`)
+    this.#status = status
+
+    if (status.length) {
+      doc.classList.add(`pomodoro-${this.#status}`)
+    }
+  }
 
   constructor(app) {
     this.app = app
@@ -28,16 +47,17 @@ export default class Pomodoro {
     this.reset()
     this.#timer = setInterval(this.tick.bind(this), this.#interval)
     this.#bumpTimer = setInterval(this.bump.bind(this), MARIO_SECOND.smb)
-    this.#status = 'playing'
+    this.status = 'playing'
     this.display()
   }
 
   pause() {
-
+    this.status = 'paused'
   }
 
   stop() {
     this.reset()
+    this.status = ''
   }
 
   reset() {
@@ -45,8 +65,8 @@ export default class Pomodoro {
     clearInterval(this.#bumpTimer)
     this.#timer = null
     this.#bumpTimer = null
-    this.#time = 10
-    this.#status = 'stopped'
+    this.#time = this.#duration
+    this.status = 'stopped'
   }
 
   bump() {
@@ -89,11 +109,11 @@ export default class Pomodoro {
         break
 
       case 'playing':
-        this.#status = 'paused'
+        this.status = 'paused'
         break
 
       case 'paused':
-        this.#status = 'playing'
+        this.status = 'playing'
         break
     }
   }
