@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import legacy from '@vitejs/plugin-legacy'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import eslintPlugin from 'vite-plugin-eslint'
-
 /**
  * Parses .env file, using `dotenv`.
  *
@@ -43,11 +43,6 @@ const htmlOptions = {
     collapseWhitespace: true,
     keepClosingSlash: false,
     removeComments: true,
-    // removeRedundantAttributes: true,
-    // removeScriptTypeAttributes: true,
-    // removeStyleLinkTypeAttributes: true,
-    // useShortDoctype: true,
-    // minifyCSS: true,
   },
 }
 
@@ -108,6 +103,7 @@ export default defineConfig({
 
   plugins: [
     ...(isProd ? [] : [eslintPlugin(esLintOptions)]),
+    ...(isProd ? [] : [legacy()]),
     ...(isProd ? [] : [createHtmlPlugin(htmlOptions)]),
     ...(isProd ? [] : [viteSingleFile(singleFileOptions)]),
   ],
