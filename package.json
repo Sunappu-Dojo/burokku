@@ -33,7 +33,7 @@
         "postcss": "^8.2.4",
         "postcss-preset-env": "^8",
         "postcss-short-size": "^4.0",
-        "sass": "^1.54",
+        "sass": "^1.58",
         "terser": "^5.16.1",
         "v.scss": "^1.2.1",
         "vite": "^4",
