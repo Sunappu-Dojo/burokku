@@ -24,7 +24,7 @@
         "@fullhuman/postcss-purgecss": "^5",
         "@vitejs/plugin-legacy": "^4.0.1",
         "browserslist-to-esbuild": "^1.2.0",
-        "cssnano": "^5",
+        "cssnano": "^6",
         "double-dash.scss": "^1",
         "eslint": "^8",
         "eslint-formatter-codeframe": "^7.32.1",
