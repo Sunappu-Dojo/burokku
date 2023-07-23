@@ -1,4 +1,4 @@
-@use 'v.scss' as *;
+@use '../abstract' as *;
 
 .block__bar {
   position: absolute;
@@ -14,5 +14,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
 
+  @include no-js {
+    display: none;
+  }
+}

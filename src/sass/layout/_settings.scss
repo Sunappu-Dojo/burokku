@@ -1,3 +1,4 @@
+@use '../abstract' as *;
 @use '../variables' as *;
 
 .settings {
@@ -8,6 +9,10 @@
   @supports (top: #{'max(0px)'}) {
     bottom: #{'max(calc(var(--safe-bottom)), calc(var(--block-bar-space, 1rem) - 1rem))'};
     left: #{'max(calc(var(--safe-left)), calc(var(--block-bar-space, 1rem) - 1rem))'};
+  }
+
+  @include no-js {
+    display: none;
   }
 }
 
