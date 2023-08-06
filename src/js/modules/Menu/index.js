@@ -3,10 +3,10 @@ import { rAF } from '../../helpers/Window'
 import ModeSelector from '../ModeSelector'
 
 const menuToggleVisible = 'menu__toggle--visible'
-const menuToggleGlow = 'menu__toggle--glow'
+const menuToggleAppears = 'menu__toggle--appears'
 
 const COINS_REQUIRED = 5
-const shouldGlowMenuIcon = coins => coins < 150
+const shouldPlayMenuIconAppearAnimation = coins => coins < 150
 
 class Menu {
   #$btn = document.getElementById('menu-toggle-btn')
@@ -30,6 +30,7 @@ class Menu {
     this.#isOpen = isOpen
     doc.classList.toggle('menu-visible', isOpen)
     this.#$btn.setAttribute('aria-expanded', isOpen)
+    this.#$btn.classList.remove(menuToggleAppears)
 
     // Focus active block
     if (!isOpen) {
@@ -44,7 +45,7 @@ class Menu {
   initToggle(coins = 0) {
     if (coins < COINS_REQUIRED || this.#ready) { return }
 
-    this.#$btn.classList.toggle(menuToggleGlow, shouldGlowMenuIcon(coins))
+    this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
     this.#$btn.classList.add(menuToggleVisible)
     this.#ready = true
   }

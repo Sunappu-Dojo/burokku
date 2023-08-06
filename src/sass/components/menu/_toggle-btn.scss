@@ -34,15 +34,8 @@
 }
 
 // animates the button icon when it appears.
-.menu__toggle--glow {
-  --menu-toggle-glowing: running;
-  animation: maintain-opacity-1 1s 5; // force `opacity: 1` during animation
-}
-
-// Icon
-
-.menu__toggleIcon {
-  @media (--motion) {
-    animation: color-glow 1s 5 var(--menu-toggle-glowing, paused);
-  }
+.menu__toggle--appears {
+  animation:
+    color-glow 1s 5,
+    maintain-opacity-1 1s 5; // force `opacity: 1` during animation
 }
