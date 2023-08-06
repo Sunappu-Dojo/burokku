@@ -3,13 +3,11 @@
 .block__bar {
   position: absolute;
   z-index: 1;
-  inset: v(block-bar-space, 1rem) v(block-bar-space, 1rem) auto;
-
-  @supports (top: #{'max(0px)'}) {
-    top: #{'max(calc(var(--safe-top) + 1rem), var(--block-bar-space, 1rem))'};
-    right: #{'max(calc(var(--safe-right) + 1rem), var(--block-bar-space, 1rem))'};
-    left: #{'max(calc(var(--safe-left) + 1rem), var(--block-bar-space, 1rem))'};
-  }
+  inset:
+    max(v(safe-top) + 1rem, v(block-bar-space, 1rem))
+    max(v(safe-right) + 1rem, v(block-bar-space, 1rem))
+    auto
+    max(v(safe-left) + 1rem, v(block-bar-space, 1rem));
 
   display: flex;
   justify-content: space-between;

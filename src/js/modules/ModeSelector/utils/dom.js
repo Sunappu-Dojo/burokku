@@ -1,3 +1,7 @@
+/**
+ * @type {import('../types')}
+ */
+
 import { CSS } from '../config'
 
 /**
@@ -17,7 +21,7 @@ export const btns = Object.fromEntries(
 export const focusBtn = mode => btns[mode].focus()
 
 /**
- * Mark mode button as selected or unselected.
+ * Select or unselect mode button.
  *
  * @param {Mode} mode
  * @param {boolean} [selected=undefined]

@@ -9,6 +9,7 @@ import { SOUNDS } from './Block/config'
 
 // Those kind of limits exist in videogames, right?
 const MAX_COINS = 999_999
+const IDB_COINS = 'coins-amount'
 
 class Wallet {
   #enabled = false
@@ -92,16 +93,12 @@ class Wallet {
   /**
    * Save money
    */
-  toBank(value) {
-    idbSet('coins-amount', value)
-  }
+  toBank = value => idbSet(IDB_COINS, value)
 
   /**
    * Load money
    */
-  async fromBank() {
-    return clamp(await idbGet('coins-amount', 0), 0, MAX_COINS)
-  }
+  fromBank = async () => clamp(await idbGet(IDB_COINS, 0), 0, MAX_COINS)
 
   // SFX
 

@@ -4,6 +4,9 @@
  * used in the app. When Safari will move forward, the way this file
  * structures and uses `decodeAudioUrl` will be a better choice.
  * Please note helpers are not extracted from this file yet.
+ *
+ * ⚠️ The code in this file is not on par with index.js.
+ * No change needed before dropping iOS Safari 14.4.
  */
 
 const AudioContext = window.AudioContext || window.webkitAudioContext
@@ -32,7 +35,7 @@ async function decodeAudioUrl(url) {
   const audioData = buffers[url].slice(0)
 
   /**
-   * Promise-based syntax, not supported in Safari.
+   * Promise-based syntax, supported starting Safari 14.1 (macOS) or 14.5 (iOS).
    *
    * https://developer.mozilla.org/en-US/docs/Web/API/BaseAudioContext/decodeAudioData#New_promise-based_syntax
    */

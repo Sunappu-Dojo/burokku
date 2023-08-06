@@ -1,4 +1,5 @@
 import { doc } from '../../helpers/Document'
+import { rAF } from '../../helpers/Window'
 import ModeSelector from '../ModeSelector'
 
 const menuToggleVisible = 'menu__toggle--visible'
@@ -78,9 +79,7 @@ class Menu {
         if (e.propertyName == 'visibility') {
           document.removeEventListener('transitionstart', focus)
 
-          requestAnimationFrame(() => requestAnimationFrame(() => {
-            ModeSelector.focus()
-          }))
+          rAF(() => rAF(() => ModeSelector.focus()))
         }
       }
 

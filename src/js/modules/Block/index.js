@@ -1,5 +1,6 @@
 import Rumble from '../../helpers/Rumble'
 import Sfx    from '../../helpers/Sfx'
+import { rAF } from '../../helpers/Window'
 
 import { useSounds, SOUNDS, CSS, THROTTLE } from './config'
 
@@ -40,9 +41,9 @@ export default class Block {
     this.btn.classList.remove(CSS.hit)
     this.btn.style.setProperty('animation', 'none')
 
-    requestAnimationFrame(() => {
+    rAF(() => {
       this.btn.style.removeProperty('animation')
-      requestAnimationFrame(callback)
+      rAF(callback)
     })
   }
 

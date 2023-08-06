@@ -8,8 +8,8 @@
    */
   --menu-toggle-x-padding: 1rem;
 
-  margin-inline: 2rem calc(v(menu-toggle-x-padding) * -1);
-  padding: .3rem v(menu-toggle-x-padding);
+  margin-inline: 2rem calc(var(--menu-toggle-x-padding) * -1);
+  padding: .3rem var(--menu-toggle-x-padding);
 
   transition: .5s;
   transition-property: opacity, visibility;

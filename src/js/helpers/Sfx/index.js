@@ -1,6 +1,11 @@
 import { getAudioFrom } from './helpers'
 
+// @todo: remove when Safari 14.4 is deprecated
 const AudioContext = window.AudioContext || window.webkitAudioContext
+
+/**
+ * @type {AudioContext} audioContext
+ */
 const audioContext = new AudioContext()
 const volume = audioContext.createGain()
 let volumeLevel = 1
@@ -73,9 +78,7 @@ export default class Sfx {
    *
    * @param {number=} level Sound volume between 0 and 1.
    *
-   * @returns {void}
+   * @returns {number}
    */
-  static setVolume(level = 1) {
-    volumeLevel = level
-  }
+  static setVolume = (level = 1) => volumeLevel = level
 }

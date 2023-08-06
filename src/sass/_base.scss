@@ -3,6 +3,9 @@
 @use './variables' as *;
 
 :root {
+
+  // colors
+
   --primary: #{$dark-primary};
   --bg: #{$dark-bg};
   --accent: #{$dark-accent};
@@ -26,17 +29,12 @@
     --btn-bg: #{$light-btn-bg};
   }
 
-  --safe-top: var(--safe-area-top, 0);
-  --safe-right: var(--safe-area-right, 0);
-  --safe-bottom: var(--safe-area-bottom, 0);
-  --safe-left: var(--safe-area-left, 0);
+  // sizes
 
-  @supports (top: env(safe-area-inset-top, 0)) {
-    --safe-area-top: env(safe-area-inset-top, 0);
-    --safe-area-right: env(safe-area-inset-right, 0);
-    --safe-area-bottom: env(safe-area-inset-bottom, 0);
-    --safe-area-left: env(safe-area-inset-left, 0);
-  }
+  --safe-top: env(safe-area-inset-top, 0);
+  --safe-right: env(safe-area-inset-right, 0);
+  --safe-bottom: env(safe-area-inset-bottom, 0);
+  --safe-left: env(safe-area-inset-left, 0);
 }
 
 *,
@@ -56,11 +54,11 @@
   color: v(bg);
 }
 
-// @TODO: refine focus (likely by element)
-:focus {
-  outline: .1rem solid currentColor;
-  outline-offset: .25em;
-}
+// // @TODO: refine focus (likely by element)
+// :focus {
+//   outline: .1rem solid currentColor;
+//   outline-offset: .25em;
+// }
 
 /* HTML & BODY */
 

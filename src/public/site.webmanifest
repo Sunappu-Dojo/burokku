@@ -1,4 +1,5 @@
 {
+    "$schema": "https://json.schemastore.org/web-manifest-combined.json",
     "name": "Burokku • Block • Bloc",
     "short_name": "Burokku",
     "start_url": "/",

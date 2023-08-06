@@ -81,6 +81,8 @@ class EventsManager {
       })
   }
 
+  /** @param {KeyboardEvent} e */
+
   onKeyDown(e) {
     if (e.key === 'Tab') { return this.app.nav.onTab(e) }
     if (e.key === ' ') { return this.app.game.onSpace?.(e) }
@@ -92,9 +94,11 @@ class EventsManager {
         // this.app.game?.onEscape()
         return this.app.game.pause()
       }
-      return this.app.menu.onEscape(e)
+      return this.app.menu.onEscape()
     }
   }
+
+  /** @param {KeyboardEvent} */
 
   onKeyUp({ key }) {
     if (key === 'ArrowLeft') { return this.app.nav.prev() }
