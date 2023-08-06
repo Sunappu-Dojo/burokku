@@ -24,7 +24,7 @@ class Burokku {
   }
 
   updateTitle() {
-    this.game.updateTitle()
+    document.title = this.game.getTitle()
   }
 
   onTap({ target }, stop) {

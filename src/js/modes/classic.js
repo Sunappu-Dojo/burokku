@@ -15,7 +15,7 @@ export default class Classic {
 
   onCoinThrow(coins) {
     this.app.wallet.onCoinThrow(coins)
-    this.updateTitle()
+    this.app.updateTitle()
   }
 
   onSpace(e) {
@@ -26,9 +26,9 @@ export default class Classic {
     this.app.blocks.active.onEnter(e)
   }
 
-  updateTitle() {
+  getTitle() {
     if (this.app.wallet.isEnabled) {
-      document.title = `x ${this.app.wallet.money} • ${this.app.blocks.active.btn.dataset.game}`
+      return `× ${this.app.wallet.money} • ${this.app.blocks.active.btn.dataset.game}`
     }
   }
 }
