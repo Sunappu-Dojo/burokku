@@ -5,9 +5,8 @@ import { Classic, Pomodoro } from './modes'
 
 import {
   ModeSelector,
-  initBlocks, initMenu, initWallet,
+  initBlocks, initColorSchemes, initMenu, initWallet,
   rumble, volume, // settings
-  watchColorSchemes
 }                 from './modules'
 
 const installBtnId = 'sw-install'
@@ -43,15 +42,14 @@ class Burokku {
 
     this.blocks = initBlocks()
     this.wallet = initWallet()
-    this.menu = initMenu()
+    this.menu = initMenu(this)
+    this.colorSchemes = initColorSchemes(this)
     this.settings = { rumble, volume }
 
     ModeSelector.setFromUrl()
     if (!this.game) {
       this.initGame()
     }
-
-    watchColorSchemes()
 
     this.initServiceWorker()
   }

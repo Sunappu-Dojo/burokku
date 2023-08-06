@@ -7,7 +7,6 @@ export default class Classic {
 
   init() {
     this.app.wallet.enable()
-    this.app.blocks.active.focus()
   }
 
   destroy() {

@@ -2,15 +2,31 @@
 @use '../../variables' as *;
 
 .menu {
-  max-width: 30rem;
+  // shift vertical position by parent (`.block__bar`) height + additional gap
+  --menu-y: calc(100% + 1rem);
+
+  min-inline-size: 22.7rem;
+  max-size:
+    30rem /* menu max-width */
+
+    /* menu max-height = viewport height minus space around, or 50rem */
+    min(
+      100 * v(1dvh)
+        - max(v(safe-top) + 1rem, v(block-bar-space, 1rem)) /* UI top padding */
+        - v(menu-y) /* menu shifted Y position */
+        - 1rem /* additional space to balance the menu in the layout */
+        - max(v(safe-bottom) + 1rem, v(block-bar-space, 1rem)), /* UI bottom padding */
+      50rem
+    );
+
   position: absolute;
   z-index: 1;
+  inset: var(--menu-y) 0 unset unset; // menu 1rem away from its toggle button
 
-  // put the menu 1rem away from its toggle button
-  inset: calc(100% + 1rem) 0 unset unset;
   padding: 2rem;
 
   overflow-y: auto;
+  scrollbar-gutter: stable;
 
   background: v(bg);
   border: .1rem solid v(grey);

@@ -14,6 +14,13 @@
   transition: .5s;
   transition-property: opacity, visibility;
 
+  // Lower button opacity when not on it nor in the menu.
+  html:not(.menu-visible) & {
+    &:not(:hover):not(:focus) {
+      opacity: .6;
+    }
+  }
+
   &:not(.menu__toggle--visible) {
     visibility: hidden;
     opacity: 0;

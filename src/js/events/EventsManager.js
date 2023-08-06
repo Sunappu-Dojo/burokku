@@ -60,6 +60,7 @@ class EventsManager {
     const sequence = [
       this.app.menu,
       ModeSelector,
+      this.app.colorSchemes,
       this.app.blocks?.active,
       this.app.nav,
       this.app.settings.volume,
@@ -119,6 +120,14 @@ class EventsManager {
     this.app.updateTitle()
   }
 
+  onMenuVisibilityChange(e) {
+    this.app.colorSchemes.onMenuVisibilityChange(e)
+  }
+
+  // onColorSchemeChange(e) {
+  //   this.app.colorSchemes.onColorSchemeChange(e)
+  // }
+
   init() {
 
     // add :hover support in iOS ¯\_(ツ)_/¯
@@ -137,6 +146,8 @@ class EventsManager {
     document.addEventListener('coinThrow', this.onCoinThrow.bind(this))
     document.addEventListener('oneUp', this.onOneUp.bind(this))
     document.addEventListener('modechange', this.onModeChange.bind(this))
+    document.addEventListener('menuVisibility', this.onMenuVisibilityChange.bind(this))
+    // document.addEventListener('colorSchemeChange', this.onColorSchemeChange.bind(this))
   }
 
   destroy() {

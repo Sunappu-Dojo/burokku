@@ -1,9 +1,12 @@
 @use 'toggle-btn';
 @use 'ctn';
-@use 'mode-selector';
 @use 'icons';
-@use 'links';
+
+@use 'mode-selector';
+@use 'color-scheme-selector';
+
 @use 'separator';
+@use 'links';
 
 .menu-visible {
   --menu-visible: 1;

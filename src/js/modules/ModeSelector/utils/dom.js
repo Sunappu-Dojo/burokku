@@ -30,4 +30,5 @@ export const toggleBtn = (mode, selected = undefined) => {
   // btns[mode].disabled = selected
   btns[mode].classList.toggle('cta--hollow', selected)
   btns[mode].classList.toggle('cta--on-hover', !selected)
+  btns[mode].setAttribute('aria-current', selected)
 }

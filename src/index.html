@@ -65,7 +65,7 @@
 
         <h1 class="visually-hidden">⍰</h1>
 
-        <!-- Top bar : score and PWA install -->
+        <!-- Top bar : score, PWA install, menu -->
 
         <div class="block__bar | flex-center">
 
@@ -80,14 +80,14 @@
             <!-- PWA install -->
             <button class="app-install cta cta--small" id="sw-install" type="button">Install</button>
 
-            <!-- Like on Nintendo Store (i) icon. -->
-            <button class="menu__toggle | HOPcta HOPcta--small HOPcta--hollow" id="menu-toggle-btn" type="button">
+            <!-- Toggle menu -->
+            <button class="menu__toggle" id="menu-toggle-btn" type="button" aria-controls="?" aria-expanded="false">
                 <span class="visually-hidden">menu</span>
-                <!-- menu -->
+                <!-- Nintendo Store (i) icon. -->
                 <svg aria-hidden="true" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M13.164 1H4.83596C2.71609 1 1 2.71609 1 4.83597V13.164C1 15.2839 2.71609 17 4.83596 17H13.164C15.2839 17 17 15.2839 17 13.164V4.83597C17 2.71609 15.2839 1 13.164 1Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M6 7.45454V5.77273L6.82443 5H11.3588L12 5.63636V7.63637L11.5 8H10L9 9V10" stroke="currentColor" stroke-width="1.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"></path>
-                    <path d="M9 13.9092C9.55228 13.9092 10 13.4615 10 12.9092C10 12.3569 9.55228 11.9092 9 11.9092C8.44772 11.9092 8 12.3569 8 12.9092C8 13.4615 8.44772 13.9092 9 13.9092Z" fill="currentColor"></path>
+                    <path d="M13.16 1H4.84A3.83 3.83 0 0 0 1 4.84v8.32A3.83 3.83 0 0 0 4.84 17h8.32A3.83 3.83 0 0 0 17 13.16V4.84A3.83 3.83 0 0 0 13.16 1Z" stroke="currentColor" stroke-width="2" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M6 7.45V5.77L6.82 5h4.54l.64.64v2l-.5.36H10L9 9v1" stroke="currentColor" stroke-width="1.75" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="12.9" r="1" fill="currentColor"/>
                 </svg>
             </button>
 
@@ -114,6 +114,54 @@
                             <path d="M13.5 8a1 1 0 0 1-1 1h-3a1 1 0 0 1 0-2h3a1 1 0 0 1 1 1Z"/>
                         </svg>
                     </button>
+                </div>
+
+                <hr class="menu__separator">
+
+                <!-- Color scheme -->
+                <div class="color-scheme" id="color-scheme">
+                    <h3 class="visually-hidden">Color scheme</h3>
+
+                    <div class="color-scheme-selector">
+                        <button class="color-scheme__btn | cta cta--on-hover cta--small" id="color-scheme-toggle" type="button">
+                            <span class="color-scheme__btn__inner">
+                                <span class="visually-hidden">Change color schemes</span>
+                                <span class="color-scheme__icon__ctn">
+                                    <span class="color-scheme__icon color-scheme__icon--light" data-theme-name="light">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 49 49"
+                                            width="25" height="25"
+                                            class="svg svg__sun"
+                                        >
+                                            <circle class="sun__core" cx="24.5" cy="24.5" r="11.5" fill="currentColor"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 0;" x1="24.5" x2="24.5" y2="9" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 1;" x1="24.5" y1="40" x2="24.5" y2="49" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 2;" x1="49" y1="24.5" x2="40" y2="24.5" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 3;" x1="9" y1="24.5" y2="24.5" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 4;" x1="41.8" y1="7.2" x2="35.5" y2="13.5" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 5;" x1="13.5" y1="35.5" x2="7.2" y2="41.8" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 6;" x1="41.8" y1="41.8" x2="35.5" y2="35.5" stroke="currentColor" stroke-width="3"/>
+                                            <line class="sun__beam" style="--sun-beam-index: 7;" x1="13.5" y1="13.5" x2="7.2" y2="7.2" stroke="currentColor" stroke-width="3"/>
+                                        </svg>
+                                    </span>
+                                    <span class="color-scheme__icon color-scheme__icon--dark" data-theme-name="dark">
+                                        <svg
+                                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 51 53"
+                                            width="23" height="22"
+                                            class="svg svg__moon"
+                                            fill="none"
+                                        >
+                                            <path d="M49 34.2a19.2 19.2 0 0 1-12.2 4.4 19.7 19.7 0 0 1-19.5-19.9c0-7 3.6-13.2 9-16.7h-.2C12.8 2 2 13 2 26.5A24.3 24.3 0 0 0 26.1 51c10.7 0 19.7-7 22.9-16.8z" fill="currentColor" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+                                        </svg>
+                                    </span>
+                                </span>
+                            </span>
+                        </button>
+                        <span class="color-scheme__name" id="color-scheme-status" aria-atomic="true">
+                            <span class="visually-hidden">Current color scheme:</span>
+                            <span id="color-scheme-current-label"></span>
+                        </span>
+                    </div>
                 </div>
 
                 <hr class="menu__separator">
