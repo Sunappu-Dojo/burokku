@@ -3,8 +3,10 @@ import { rAF } from '../../helpers/Window'
 import ModeSelector from '../ModeSelector'
 
 const menuToggleVisible = 'menu__toggle--visible'
+const menuToggleGlow = 'menu__toggle--glow'
 
 const COINS_REQUIRED = 5
+const shouldGlowMenuIcon = coins => coins < 150
 
 class Menu {
   #$btn = document.getElementById('menu-toggle-btn')
@@ -42,6 +44,7 @@ class Menu {
   initToggle(coins = 0) {
     if (coins < COINS_REQUIRED || this.#ready) { return }
 
+    this.#$btn.classList.toggle(menuToggleGlow, shouldGlowMenuIcon(coins))
     this.#$btn.classList.add(menuToggleVisible)
     this.#ready = true
   }

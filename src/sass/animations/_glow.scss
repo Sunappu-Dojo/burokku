@@ -5,3 +5,9 @@
    50% { border-color: v(turquoise); }
   100% { border-color: v(astral); }
 }
+
+@keyframes color-glow {
+    0% { color: v(astral); }
+   50% { color: v(turquoise); }
+  100% { color: v(astral); }
+}
