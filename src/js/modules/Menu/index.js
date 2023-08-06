@@ -57,9 +57,9 @@ class Menu {
     this.toggle(false)
   }
 
-    /**
-     * @todo: add condition: if Pomodoro runs, don’t close it on block hit.
-     */
+  /**
+   * @todo: add condition: if Pomodoro runs, don’t close it on block hit.
+   */
   focusMenu() {
     /**
      * Move the focus to the mode selector when the menu opens. Due to a
