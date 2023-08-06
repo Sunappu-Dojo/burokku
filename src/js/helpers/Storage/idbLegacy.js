@@ -15,7 +15,7 @@
  * 2. We can’t rely on `idb-keyval` existing code for the detection.
  */
 
-import { get, set, createStore } from 'idb-keyval'
+import { get, set, del, createStore } from 'idb-keyval'
 
 /**
  * Retrieve an item from a default IndexedDB storage.
@@ -51,4 +51,18 @@ const idbSet = (key, value, customStore = undefined) =>
     ? Promise.resolve()
     : set(key, value, customStore).catch(err => console.error(err) && Promise.resolve())
 
-export { idbGet, idbSet, createStore }
+/**
+ * Delete an item in an IndexedDB default storage.
+ *
+ * It always returns a Promise resolving to void. Never rejects, never throws.
+ *
+ * @param {IDBValidKey} key IndexedDB key to delete.
+ * @param {import('idb-keyval').UseStore} [customStore=undefined] `idb-keyval` custom store.
+ * @returns {Promise<void>} Nothing.
+ */
+const idbDel = (key, customStore = undefined) =>
+  idbAvailabilityDetected && !idbAvailable
+    ? Promise.resolve()
+    : del(key, customStore).catch(err => console.error(err) && Promise.resolve())
+
+export { idbGet, idbSet, idbDel, createStore }

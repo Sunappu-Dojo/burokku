@@ -1,4 +1,4 @@
-import { get, set, createStore } from 'idb-keyval'
+import { get, set, del, createStore } from 'idb-keyval'
 
 /**
  * Availability of IndexedDB.
@@ -56,4 +56,17 @@ const idbSet = (key, value, customStore = undefined) => idbAvailable
   ? set(key, value, customStore).catch(err => console.error(err) && Promise.resolve())
   : Promise.resolve()
 
-export { idbAvailable, idbGet, idbSet, createStore }
+/**
+ * Delete an item in an IndexedDB default storage.
+ *
+ * It always returns a Promise resolving to void. Never rejects, never throws.
+ *
+ * @param {IDBValidKey} key IndexedDB key to delete.
+ * @param {import('idb-keyval').UseStore} [customStore=undefined] `idb-keyval` custom store.
+ * @returns {Promise<void>} Nothing.
+ */
+const idbDel = (key, customStore = undefined) => idbAvailable
+  ? del(key, customStore).catch(err => console.error(err) && Promise.resolve())
+  : Promise.resolve()
+
+export { idbAvailable, idbGet, idbSet, idbDel, createStore }
