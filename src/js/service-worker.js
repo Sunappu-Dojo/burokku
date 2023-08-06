@@ -13,7 +13,7 @@ const resourcesToCache = [
 
   'css/block.css',
   'js/burokku.js',
-  'js/modules/service-worker.js',
+  'js/modules/ServiceWorker.js',
 
   'sfx/smb-bump.flac',
   'sfx/smb-coin.flac',
