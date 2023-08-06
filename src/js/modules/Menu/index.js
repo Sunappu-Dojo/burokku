@@ -40,15 +40,15 @@ class Menu {
   }
 
   initToggle(coins = 0) {
-    if (this.#ready) { return }
+    if (coins < COINS_REQUIRED || this.#ready) { return }
 
-    if (coins >= COINS_REQUIRED) {
-      this.#$btn.classList.add(menuToggleVisible)
-      this.#ready = true
-    }
+    this.#$btn.classList.add(menuToggleVisible)
+    this.#ready = true
   }
 
   toggle(shouldOpen = !this.open) {
+    if (!this.#ready) { return }
+
     this.open = shouldOpen
     document.dispatchEvent(new CustomEvent('menuVisibility', { detail: shouldOpen }))
   }
