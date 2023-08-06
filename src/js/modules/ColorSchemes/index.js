@@ -89,11 +89,11 @@ class ColorSchemes {
   set(newScheme = 'auto') {
     doc.classList.remove(cssThemeSet, CSS[this.#applied])
 
-    const oldScheme = this.#current
+    const previousScheme = this.#current
     this.#current = newScheme
 
     setFavicons(this.#applied)
-    setMetaThemeColor(newScheme, oldScheme)
+    setMetaThemeColor(newScheme, previousScheme)
 
     if (newScheme != 'auto') {
       doc.classList.add(cssThemeSet, CSS[this.#applied])

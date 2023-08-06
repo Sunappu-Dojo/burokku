@@ -11,11 +11,10 @@ let previousScheme = null
 
 /**
  * Push app icons at end of `<head>`: it tells the browser to pick among them.
- * @todo Should receive `previousScheme, scheme` to avoid DOM manipulation.
  *
  * @param {AppColorScheme} colorScheme
  */
-export const setFavicons = (colorScheme) => {
+export const setFavicons = colorScheme => {
   if (colorScheme == previousScheme) { return }
 
   appIcons[colorScheme].forEach(icon => {

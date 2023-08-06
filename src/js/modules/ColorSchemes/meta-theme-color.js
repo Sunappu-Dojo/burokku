@@ -11,11 +11,11 @@ export const themeColors = groupElementsByColorScheme(Array.from($themeColors))
  * Manage `<meta name="theme-color">`, assuming all have a `media` attribute.
  *
  * @param {SystemColorScheme} newScheme
- * @param {SystemColorScheme} oldScheme
+ * @param {SystemColorScheme} previousScheme
  *
  */
-export const setMetaThemeColor = (newScheme, oldScheme) => {
-  if (newScheme == oldScheme) { return }
+export const setMetaThemeColor = (newScheme, previousScheme) => {
+  if (newScheme == previousScheme) { return }
 
   // Remove all `<meta name="theme-color">` elements.
 
