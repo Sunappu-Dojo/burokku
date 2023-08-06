@@ -1,7 +1,7 @@
 import { doc }    from './helpers/Document'
 import initEvents from './events/EventsManager'
 
-import { Classic } from './modes'
+import { Classic, Pomodoro } from './modes'
 
 import {
   ModeSelector,
@@ -18,6 +18,7 @@ class Burokku {
   constructor() {
     this.modes = {
       classic: Classic,
+      pomodoro: Pomodoro,
     }
 
     this.init()

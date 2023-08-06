@@ -4,9 +4,14 @@ import './types'
 import {
   DEFAULT_MODE,
   route,
+  isPomodoro,
+  focusBtn,
+  toggleBtn
 } from './utils'
 
 // Initialize default button
+
+toggleBtn(DEFAULT_MODE, true)
 
 export default class ModeSelector {
   static #mode = DEFAULT_MODE
@@ -22,7 +27,7 @@ export default class ModeSelector {
   }
 
   static setFromUrl() {
-    this.select('classic')
+    this.select(isPomodoro() ? 'pomodoro' : 'classic')
   }
 
   /**
@@ -31,6 +36,10 @@ export default class ModeSelector {
    */
   static select(mode) {
     if (this.#mode == mode || !route(mode)) { return }
+
+    // Update buttons status
+    toggleBtn(this.#mode, false)
+    toggleBtn(mode, true)
 
     // Update states
     doc.classList.replace(`mode-${this.#mode}`, `mode-${mode}`)
@@ -45,7 +54,6 @@ export default class ModeSelector {
    * Moves the focus to the mode selector.
    */
   static focus() {
-    document.getElementById('color-scheme-toggle').focus()
-    // focusBtn(this.#mode)
+    focusBtn(this.#mode)
   }
 }
