@@ -1,4 +1,5 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
+import { isFullscreen } from '../helpers/MediaQueries'
 import { initNav } from '../modules'
 import { ModeSelector } from '../modules'
 
@@ -91,7 +92,19 @@ class EventsManager {
 
     // @todo: improve Escape sequence with a stop function (?)
     if (e.key === 'Escape') {
+
       if (this.app.game?.status == 'playing') {
+
+        /**
+         * Prevent leaving the fullscreen during Pomodoro.
+         *
+         * @todo: should be a more elegant system to decide if full screen
+         * should be prevented or not.
+         */
+        if (isFullscreen()) {
+          e.preventDefault()
+        }
+
         // this.app.game?.onEscape()
         return this.app.game.pause()
       }
