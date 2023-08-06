@@ -1,0 +1,10 @@
+.mode-settings {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.8rem;
+}
+
+.mode-settings__title {
+  font-size: 1.8rem;
+  font-weight: 400;
+}
