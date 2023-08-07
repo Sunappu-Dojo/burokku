@@ -1,6 +1,5 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
-import legacy from '@vitejs/plugin-legacy'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
@@ -104,7 +103,6 @@ export default defineConfig({
 
   plugins: [
     ...(isProd ? [] : [eslintPlugin(esLintOptions)]),
-    ...(isProd ? [] : [legacy()]),
     ...(isProd ? [] : [createHtmlPlugin(htmlOptions)]),
     ...(isProd ? [] : [viteSingleFile(singleFileOptions)]),
   ],
