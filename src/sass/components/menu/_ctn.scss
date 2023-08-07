@@ -21,7 +21,7 @@
 
   position: absolute;
   z-index: 1;
-  inset: var(--menu-y) 0 unset unset; // menu 1rem away from its toggle button
+  inset: v(menu-y) 0 auto auto; // menu 1rem away from its toggle button
 
   padding: 2rem;
 

@@ -6,7 +6,7 @@
   inset:
     50%
     max(v(safe-right), 1rem)
-    unset
+    auto
     max(v(safe-left), 1rem);
 
   transform: translateY(-50%);
