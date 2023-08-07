@@ -26,7 +26,7 @@
   padding: 2rem;
 
   overflow-y: auto;
-  scrollbar-gutter: stable;
+  // scrollbar-gutter: stable; // currently create a gap
 
   background: v(bg);
   border: .1rem solid v(grey);
