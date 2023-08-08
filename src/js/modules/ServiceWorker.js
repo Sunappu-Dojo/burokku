@@ -6,9 +6,7 @@ export default class ServiceWorker {
     this.init()
   }
 
-  static getSupport() {
-    return 'serviceWorker' in navigator
-  }
+  static isSupported = 'serviceWorker' in navigator
 
   install() {
     if (!navigator.serviceWorker.controller) {

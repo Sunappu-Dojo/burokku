@@ -60,18 +60,15 @@ class Burokku {
   }
 
   initServiceWorker() {
-    import('./modules/ServiceWorker').then(swModule => {
-      const SW = swModule.default
+    import('./modules/ServiceWorker').then(({ default: SW }) => {
+      if (!SW.isSupported) { return }
 
-      if (SW.getSupport()) {
-        const installBtn = document.getElementById(installBtnId)
+      const installBtn = document.getElementById(installBtnId)
 
-        this.sw = new SW({
-          installBtnId,
-          initInstallPrompt: () => installBtn.classList.add(installBtnVisible),
-          onInstall: () => installBtn.classList.remove(installBtnVisible),
-        })
-      }
+      this.sw = new SW({
+        initInstallPrompt: () => installBtn.classList.add(installBtnVisible),
+        onInstall: () => installBtn.remove()
+      })
     })
   }
 }
