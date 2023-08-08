@@ -45,8 +45,10 @@ class Menu {
   initToggle(coins = 0) {
     if (coins < COINS_REQUIRED || this.#ready) { return }
 
-    doc.classList.add(menuToggleVisible)
-    this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
+    setTimeout(() => {
+      doc.classList.add(menuToggleVisible)
+      this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
+    }, 200)
 
     this.#ready = true
   }
