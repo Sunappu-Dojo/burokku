@@ -1,8 +1,25 @@
+@use '../abstract' as *;
+@use '../variables' as *;
+
 .app-install {
   margin-inline-start: auto;
 
-  transition: .5s;
-  transition-property: opacity, visibility;
+  // shift the element position until the menu toggle button appears…
+  translate: v(app-install-x, calc(
+
+    /* gap between element and menu button */
+    2rem
+
+    /* menu button padding (between its edge and icon) */
+    + v(menu-toggle-x-padding)
+
+    /* menu button icon size */
+    + 1.8rem
+  ));
+
+  transition:
+    opacity .5s $in-out-quad,
+    translate .5s $out-circ .18s;
 
   &:not(.app-install--visible) {
     visibility: hidden;

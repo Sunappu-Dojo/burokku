@@ -2,7 +2,7 @@ import { doc } from '../../helpers/Document'
 import { rAF } from '../../helpers/Window'
 import ModeSelector from '../ModeSelector'
 
-const menuToggleVisible = 'menu__toggle--visible'
+const menuToggleVisible = 'menu-toggle-visible'
 const menuToggleAppears = 'menu__toggle--appears'
 
 const COINS_REQUIRED = 5
@@ -45,8 +45,9 @@ class Menu {
   initToggle(coins = 0) {
     if (coins < COINS_REQUIRED || this.#ready) { return }
 
+    doc.classList.add(menuToggleVisible)
     this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
-    this.#$btn.classList.add(menuToggleVisible)
+
     this.#ready = true
   }
 
