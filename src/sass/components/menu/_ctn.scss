@@ -21,12 +21,12 @@
 
   position: absolute;
   z-index: 1;
-  inset: v(menu-y) 0 auto auto; // menu 1rem away from its toggle button
+  inset: v(menu-y) 0 auto auto; // menu is `1rem` away from its toggle button
 
   padding: 2rem;
 
   overflow-y: auto;
-  // scrollbar-gutter: stable; // currently create a gap
+  // scrollbar-gutter: stable; // currently creates a gap
 
   background: v(bg);
   border: .1rem solid v(grey);

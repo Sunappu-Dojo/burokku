@@ -6,7 +6,7 @@
   /*
    * The same distance (this custom property) is used for button padding and
    * as negative margin in order to maintain visual alignment with other
-   * other items (blocks navigation, menu settings…).
+   * items (blocks navigation, menu settings…).
    */
    --menu-toggle-x-padding: 1rem;
 }
@@ -46,7 +46,6 @@
   }
 }
 
-// animates the button icon when it appears.
 .menu__toggle--appears {
   @media (--motion) {
     animation:

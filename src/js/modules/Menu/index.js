@@ -45,6 +45,7 @@ class Menu {
   initToggle(coins = 0) {
     if (coins < COINS_REQUIRED || this.#ready) { return }
 
+    // Delay menu appearance: sometimes layout is not fully ready.
     setTimeout(() => {
       doc.classList.add(menuToggleVisible)
       this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
