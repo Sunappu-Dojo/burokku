@@ -1,7 +1,12 @@
+@use 'v.scss' as *;
+@use '../../variables/' as *;
+
 .wallet {
-  &:not(.wallet--on) {
-    display: none;
-  }
+  opacity: v(wallet-visible, 0);
+  visibility: v(wallet-visibility, hidden);
+
+  transition: v(wallet-transition-duration, .2s) v(wallet-transition-timing, $in-out-quad);
+  transition-property: opacity, visibility;
 }
 
 .wallet__icon {

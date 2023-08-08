@@ -9,8 +9,10 @@ import { SOUNDS } from './Block/config'
 
 // Those kind of limits exist in videogames, right?
 const MAX_COINS = 999_999
+const IDB_COINS = 'coins-amount'
 
 class Wallet {
+  #enabled = false
 
   constructor() {
     this.makeSounds(true)
@@ -29,12 +31,25 @@ class Wallet {
   set coins(value) {
     this.money = value
     this.toBank(value)
+    document.dispatchEvent(new CustomEvent('walletBalanceUpdate', { detail: value }))
+  }
+
+  get isEnabled() { return this.#enabled }
+
+  enable() {
+    this.#enabled = true
+  }
+
+  disable() {
+    this.#enabled = false
   }
 
   /**
    * Please capitalism.
    */
   add(coins = 1) {
+    if (!this.#enabled) { return }
+
     this.coins += coins
 
     this.playSounds()
@@ -42,6 +57,8 @@ class Wallet {
   }
 
   onCoinThrow(coins) {
+    if (!this.#enabled) { return }
+
     this.add(coins)
   }
 
@@ -49,8 +66,6 @@ class Wallet {
     /**
      * Delay the vibration a bit, otherwise it may not start because the
      * vibration following the block bump is already running.
-     *
-     *
      */
     setTimeout(() => Rumble.vibrate([120, 0, 120, 0, 120]), 180)
   }
@@ -78,16 +93,12 @@ class Wallet {
   /**
    * Save money
    */
-  toBank(value) {
-    idbSet('coins-amount', value)
-  }
+  toBank = value => idbSet(IDB_COINS, value)
 
   /**
    * Load money
    */
-  async fromBank() {
-    return clamp(await idbGet('coins-amount', 0), 0, MAX_COINS)
-  }
+  fromBank = async () => clamp(await idbGet(IDB_COINS, 0), 0, MAX_COINS)
 
   // SFX
 

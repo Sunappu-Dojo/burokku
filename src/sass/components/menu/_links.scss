@@ -1,0 +1,24 @@
+@use '../../variables' as *;
+
+.menu__links {
+  margin-block: -.5rem -1rem;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.menu__linksItem {
+  font-size: 2rem;
+}
+
+.menu__link {
+  display: inline-flex;
+  size: 4.4rem;
+
+  transition: opacity .3s $in-out-quad;
+
+  &:not(:hover):not(:focus) {
+    opacity: .6;
+  }
+}

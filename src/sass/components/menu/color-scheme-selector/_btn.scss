@@ -1,0 +1,19 @@
+.color-scheme__btn {
+  padding: .2rem;
+
+  // increase button interactive area to encompass color scheme name
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+  }
+}
+
+.color-scheme__btn__inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+
+  overflow: hidden;
+}

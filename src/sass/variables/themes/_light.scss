@@ -10,8 +10,8 @@ $light-colors: (
 
 $light-primary: map-get($light-colors, 'primary');
 $light-bg: map-get($light-colors, 'bg');
-$light-btn-bg: map-get($light-colors, 'btn-bg');
 $light-accent: map-get($light-colors, 'accent');
+$light-btn-bg: map-get($light-colors, 'btn-bg');
 
 @mixin light {
   @include theme('basic-white', '--light') { @content; }

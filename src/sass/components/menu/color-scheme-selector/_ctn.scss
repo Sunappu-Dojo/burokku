@@ -1,0 +1,10 @@
+.color-scheme {
+  position: relative;
+}
+
+.color-scheme-selector {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr auto;
+  place-items: center;
+}

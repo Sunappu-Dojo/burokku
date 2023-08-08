@@ -6,6 +6,7 @@
   z-index: -1;
 
   &.coin--flipping {
+    --⍰-scale: 1; // should remain 1: the scale is handled at parent level
     --⍰-hit-cx: 8;
     animation: ⍰-hit .4s $out-quad .017s; // .017s = 1 frame at 60 fps
   }

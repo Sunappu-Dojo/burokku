@@ -2,12 +2,12 @@
 @use '../../variables' as *;
 
 .block {
-  --⍰-size: 20vmin;
-  --⍰-min-size: 10rem;
+  /* put current block in viewport */
+  --⍰-base-translate-x: calc(-100% * var(--current, 0));
 
   transform: translate(
-    calc(100% * var(--current, 0) * -1),
-    calc(20vmin + var(--⍰-size, 0) / 8 - 10%)
+    calc(v(⍰-base-translate-x) + v(⍰-translate-x, 0px)),
+    v(⍰-translate-y, 0px)
   );
 
   transition: .3s transform $in-out-quad;

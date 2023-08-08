@@ -1,0 +1,55 @@
+@use '../../variables' as *;
+
+// Button
+
+:root {
+  /*
+   * The same distance (this custom property) is used for button padding and
+   * as negative margin in order to maintain visual alignment with other
+   * items (blocks navigation, menu settings…).
+   */
+   --menu-toggle-x-padding: 1rem;
+}
+
+.menu-toggle-visible {
+  --menu-toggle-opacity: .6; // same value as settings button (e.g. sound)
+  --app-install-x: 0;
+}
+
+.menu__toggle {
+  margin-inline: 2rem calc(var(--menu-toggle-x-padding) * -1);
+  padding: .3rem var(--menu-toggle-x-padding);
+
+  // Lower button opacity when not on it or when the menu is closed.
+  opacity: calc(1 * var(--menu-visible, var(--menu-toggle-opacity, 0)));
+
+  transform-origin: center center;
+
+  transition:
+    opacity .5s $in-out-quad,
+    rotate 1s $out-back,
+    scale 1s $out-back,
+    translate 1s $out-back;
+
+  &:is(:hover, :focus) {
+    --menu-toggle-opacity: 1;
+  }
+
+  html:not(.menu-toggle-visible) & {
+    visibility: hidden;
+
+    @media (--motion) {
+      rotate: y -540deg;
+      scale: .2;
+      translate: 120%;
+    }
+  }
+}
+
+.menu__toggle--appears {
+  @media (--motion) {
+    animation:
+      color-glow 1s 5,
+      maintain-opacity-1 1s 5 .5s; // force `opacity: 1` during animation
+  }
+}

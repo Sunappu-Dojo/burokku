@@ -82,16 +82,14 @@ class Nav {
         ? e.target.previousElementSibling
         : e.target.nextElementSibling
 
-    if (!adjacentEl || !adjacentEl.classList.contains('block')) { return }
+    if (!adjacentEl?.classList.contains('block')) { return }
 
     e.preventDefault()
 
     return e.shiftKey ? this.prev() : this.next()
   }
 
-  update() {
-    updateArrows()
-  }
+  update = updateArrows
 
   /**
    * Save position

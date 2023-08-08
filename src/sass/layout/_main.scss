@@ -16,8 +16,7 @@ $block-bar: (
 @include mq.w($block-bar);
 @include mq.h($block-bar);
 
-body {
-
+:root {
   @media (--block-bar-scale) and (--h-block-bar-scale) {
     --block-bar-space: calc(1rem + 3vmin);
   }

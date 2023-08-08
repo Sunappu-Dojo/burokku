@@ -3,9 +3,13 @@
 
 .arrows {
   position: absolute;
-  inset: 50% v(block-bar-space, 1rem) unset;
+  inset:
+    50%
+    max(v(safe-right), 1rem)
+    auto
+    max(v(safe-left), 1rem);
 
-  transform: translate(0, -50%);
+  transform: translateY(-50%);
 
   display: flex;
   justify-content: space-between;
@@ -14,11 +18,6 @@
   pointer-events: none;
 
   font-size: 0;
-
-  @supports (top: #{'max(0px)'}) {
-    right: #{'max(var(--safe-right), 1rem)'};
-    left: #{'max(var(--safe-left), 1rem)'};
-  }
 }
 
 .arrow {

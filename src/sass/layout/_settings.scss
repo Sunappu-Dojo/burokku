@@ -2,13 +2,14 @@
 @use '../variables' as *;
 
 .settings {
-  position: absolute;
-  inset-block-end: calc(var(--block-bar-space, 1rem) - 1rem);
-  inset-inline-start: calc(var(--block-bar-space, 1rem) - 1rem);
+  --settings-inset: calc(var(--block-bar-space, 1rem) - 1rem);
 
-  @supports (top: #{'max(0px)'}) {
-    bottom: #{'max(calc(var(--safe-bottom)), calc(var(--block-bar-space, 1rem) - 1rem))'};
-    left: #{'max(calc(var(--safe-left)), calc(var(--block-bar-space, 1rem) - 1rem))'};
+  position: absolute;
+  inset-block-end: max(v(safe-bottom), v(settings-inset));
+  inset-inline-start: max(v(safe-left), v(settings-inset));
+
+  @include no-js {
+    display: none;
   }
 
   @include no-js {
