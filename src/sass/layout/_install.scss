@@ -17,9 +17,13 @@
     + 1.8rem
   ));
 
-  transition:
-    opacity .5s $in-out-quad,
-    translate .5s $out-circ .18s;
+  transition: opacity .5s $in-out-quad;
+
+  @media (--motion) {
+    transition:
+      opacity .5s $in-out-quad,
+      translate .5s $out-circ .18s;
+  }
 
   &:not(.app-install--visible) {
     visibility: hidden;
