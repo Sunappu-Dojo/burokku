@@ -7,7 +7,7 @@ import ModeSelector from '../ModeSelector'
 const menuToggleVisible = 'menu-toggle-visible'
 const menuToggleAppears = 'menu__toggle--appears'
 
-let neverInteracted = false
+let neverInteracted = !(await idbGet('menu-already-interacted', false))
 
 const COINS_REQUIRED = 5
 
@@ -56,8 +56,6 @@ class Menu {
 
     // Delay menu appearance: sometimes layout is not fully ready.
     setTimeout(async () => {
-      neverInteracted = !(await idbGet('menu-already-interacted', false))
-
       doc.classList.add(menuToggleVisible)
       this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
     }, 200)
