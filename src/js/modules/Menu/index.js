@@ -1,12 +1,17 @@
 import { doc } from '../../helpers/Document'
+// import { idbGet, idbSet } from '../../helpers/Storage/idb'
+import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
 import { rAF } from '../../helpers/Window'
 import ModeSelector from '../ModeSelector'
 
 const menuToggleVisible = 'menu-toggle-visible'
 const menuToggleAppears = 'menu__toggle--appears'
 
+let neverInteracted = false
+
 const COINS_REQUIRED = 5
-const shouldPlayMenuIconAppearAnimation = coins => coins < 150
+
+const shouldPlayMenuIconAppearAnimation = coins => coins < 150 && neverInteracted
 
 class Menu {
   #$btn = document.getElementById('menu-toggle-btn')
@@ -22,6 +27,10 @@ class Menu {
    * @todo: Use `inert` as focus trap (still awaiting for browser support).
    */
   set open(isOpen) {
+    if (neverInteracted) {
+      idbSet('menu-already-interacted', true)
+    }
+
     if (isOpen) {
       this.focusMenu()
       this.#$menu.scrollTo(0, 0) // reset scroll to top
@@ -46,7 +55,9 @@ class Menu {
     if (coins < COINS_REQUIRED || this.#ready) { return }
 
     // Delay menu appearance: sometimes layout is not fully ready.
-    setTimeout(() => {
+    setTimeout(async () => {
+      neverInteracted = !(await idbGet('menu-already-interacted', false))
+
       doc.classList.add(menuToggleVisible)
       this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
     }, 200)
