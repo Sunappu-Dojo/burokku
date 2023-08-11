@@ -20,11 +20,11 @@ $transform-transition: v(menu-toggle-transform-duration, 0s) $out-back;
 }
 
 .menu__toggle {
-  margin-inline: 2rem calc(var(--menu-toggle-x-padding) * -1);
-  padding: .3rem var(--menu-toggle-x-padding);
+  margin-inline: 2rem calc(v(menu-toggle-x-padding) * -1);
+  padding: .3rem v(menu-toggle-x-padding);
 
   // Lower button opacity when not on it or when the menu is closed.
-  opacity: calc(1 * var(--menu-visible, var(--menu-toggle-opacity, 0)));
+  opacity: calc(1 * v(menu-visible, menu-toggle-opacity, 0));
 
   transform-origin: center center;
 

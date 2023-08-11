@@ -26,10 +26,10 @@
 }
 
 .block__coin {
-  size: calc(var(--⍰-size) * var(--coin-w-cx, .5)) auto;
+  size: calc(v(⍰-size) * v(coin-w-cx, .5)) auto;
 
   @media (--block-scale) and (--block-scale-h) {
-    min-inline-size: calc(var(--⍰-min-size) * var(--coin-w-cx, .5));
+    min-inline-size: calc(v(⍰-min-size) * v(coin-w-cx, .5));
   }
 }
 

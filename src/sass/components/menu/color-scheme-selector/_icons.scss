@@ -1,4 +1,5 @@
 @use '../../../variables' as *;
+@use '../../../abstract' as *;
 
 .color-scheme__icon__ctn {
   position: relative;
@@ -79,8 +80,8 @@
 
       transition-delay: calc(
         (
-          var(--sun-beam-base-delay)
-          + var(--sun-beam-index, 1) * var(--sun-beam-split-delay)
+          v(sun-beam-base-delay)
+          + v(sun-beam-index, 1) * v(sun-beam-split-delay)
         )
         * 1s
       );
