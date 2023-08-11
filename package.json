@@ -4,8 +4,8 @@
         "node": ">=14.18"
     },
     "scripts": {
-        "dev": "vite --mode=development",
-        "build": "vite build --mode=production",
+        "dev": "vite",
+        "build": "vite build",
         "preview": "vite preview",
         "lint": "npx eslint src/js/**/*",
         "lint-fix": "npx eslint src/js/**/* --fix",
