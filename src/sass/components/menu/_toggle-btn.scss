@@ -1,4 +1,7 @@
 @use '../../variables' as *;
+@use '../../abstract' as *;
+
+$transform-transition: v(menu-toggle-transform-duration, 0s) $out-back;
 
 // Button
 
@@ -17,19 +20,20 @@
 }
 
 .menu__toggle {
-  margin-inline: 2rem calc(var(--menu-toggle-x-padding) * -1);
-  padding: .3rem var(--menu-toggle-x-padding);
+  margin-inline: 2rem calc(v(menu-toggle-x-padding) * -1);
+  padding: .3rem v(menu-toggle-x-padding);
 
   // Lower button opacity when not on it or when the menu is closed.
-  opacity: calc(1 * var(--menu-visible, var(--menu-toggle-opacity, 0)));
+  opacity: calc(1 * v(menu-visible, menu-toggle-opacity, 0));
 
   transform-origin: center center;
 
+  // transition: opacity .5s $in-out-quad;
   transition:
     opacity .5s $in-out-quad,
-    rotate 1s $out-back,
-    scale 1s $out-back,
-    translate 1s $out-back;
+    rotate $transform-transition,
+    scale $transform-transition,
+    translate $transform-transition;
 
   &:is(:hover, :focus) {
     --menu-toggle-opacity: 1;
@@ -48,6 +52,8 @@
 
 .menu__toggle--appears {
   @media (--motion) {
+    --menu-toggle-transform-duration: 1s;
+
     animation:
       color-glow 1s 5,
       maintain-opacity-1 1s 5 .5s; // force `opacity: 1` during animation
