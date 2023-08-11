@@ -1,6 +1,5 @@
 import { clamp }          from '../../helpers/Math'
-// import { idbGet, idbSet } from '../../helpers/Storage'
-import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
+import { idbGet, idbSet } from '../../helpers/Storage'
 import CSS from './config'
 
 const ctn = document.getElementById(CSS.ctn)

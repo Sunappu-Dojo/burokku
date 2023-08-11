@@ -1,6 +1,5 @@
 import { doc } from '../../helpers/Document'
-// import { idbGet, idbSet } from '../../helpers/Storage/idb'
-import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
+import { idbGet, idbSet } from '../../helpers/Storage'
 import { rAF } from '../../helpers/Window'
 import ModeSelector from '../ModeSelector'
 
