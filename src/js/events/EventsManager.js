@@ -2,34 +2,33 @@ import { captureEvent } from '../helpers/EventListenerOptions'
 import { isFullscreen } from '../utils/MediaQueries'
 import { colorSchemes, initNav, menu, rumble, volume, wallet } from '../modules'
 import { ModeSelector } from '../modules'
+import app from '../App'
 
 class EventsManager {
-  constructor(app) {
-    this.app = app
-
+  constructor() {
     this.init()
   }
 
   onBlockChange(e) {
-    if ('blocks' in this.app) {
-      this.app.blocks.onBlockChange(e)
+    if ('blocks' in app) {
+      app.blocks.onBlockChange(e)
     }
 
-    wallet?.onBlockChange(this.app.blocks.active)
-    this.app.updateTitle()
+    wallet?.onBlockChange(app.blocks.active)
+    app.updateTitle()
   }
 
   onCoinThrow(e) {
-    this.app.game?.onCoinThrow(e.detail)
+    app.game?.onCoinThrow(e.detail)
   }
 
   onOneUp() {
     wallet?.onOneUp()
 
-    const blockAdded = this.app.blocks?.onOneUp() || false
+    const blockAdded = app.blocks?.onOneUp() || false
 
     if (blockAdded) {
-      this.app.nav?.onOneUp()
+      app.nav?.onOneUp()
     }
   }
 
@@ -38,8 +37,8 @@ class EventsManager {
   }
 
   onWalletDisplayReady(e) {
-    this.app.blocks?.onWalletDisplayReady(e.detail)
-    this.app.nav = initNav(Math.floor(e.detail / 100))
+    app.blocks?.onWalletDisplayReady(e.detail)
+    app.nav = initNav(Math.floor(e.detail / 100))
     menu.onWalletDisplayReady(e.detail)
   }
 
@@ -54,19 +53,19 @@ class EventsManager {
      * for example), where you don’t want another “element” that can
      * be clicked to trigger an interaction while a menu is open.
      *
-     * @todo: Consider switching from `this.app.module` to a module, like for
-     * `ModeSelector`): let’s try this, then evaluate if switching back to
+     * @todo: Consider switching from `app.module` to a module, like for
+     * `ModeSelector`): let’s try this, then evaluate if switching to
      * the commented code below is better.
      */
     const sequence = [
       menu,
       ModeSelector,
       colorSchemes,
-      this.app.blocks?.active,
-      this.app.nav,
+      app.blocks?.active,
+      app.nav,
       volume,
       rumble,
-      this.app,
+      app,
     ]
 
     const stop = () => e.shouldStop = true
@@ -86,14 +85,14 @@ class EventsManager {
   /** @param {KeyboardEvent} e */
 
   onKeyDown(e) {
-    if (e.key === 'Tab') { return this.app.nav.onTab(e) }
-    if (e.key === ' ') { return this.app.game.onSpace?.(e) }
-    if (e.key === 'Enter') { return this.app.game.onEnter?.(e) }
+    if (e.key === 'Tab') { return app.nav.onTab(e) }
+    if (e.key === ' ') { return app.game.onSpace?.(e) }
+    if (e.key === 'Enter') { return app.game.onEnter?.(e) }
 
     // @todo: improve Escape sequence with a stop function (?)
     if (e.key === 'Escape') {
 
-      if (this.app.game?.status == 'playing') {
+      if (app.game?.status == 'playing') {
 
         /**
          * Prevent leaving the fullscreen during Pomodoro.
@@ -105,8 +104,8 @@ class EventsManager {
           e.preventDefault()
         }
 
-        // this.app.game?.onEscape()
-        return this.app.game.pause()
+        // app.game?.onEscape()
+        return app.game.pause()
       }
       return menu.onEscape()
     }
@@ -115,22 +114,22 @@ class EventsManager {
   /** @param {KeyboardEvent} */
 
   onKeyUp({ key }) {
-    if (key === 'ArrowLeft') { return this.app.nav.prev() }
-    if (key === 'ArrowRight') { return this.app.nav.next() }
+    if (key === 'ArrowLeft') { return app.nav.prev() }
+    if (key === 'ArrowRight') { return app.nav.next() }
     if (key === 'm') { return volume.toggle() }
   }
 
   onAnimationEnd(e) {
-    this.app.blocks?.active.onAnimationEnd(e)
+    app.blocks?.active.onAnimationEnd(e)
   }
 
   onTransitionEnd(e) {
-    this.app.blocks?.active.onTransitionEnd(e)
+    app.blocks?.active.onTransitionEnd(e)
   }
 
   onModeChange(e) {
-    this.app.initGame()
-    this.app.updateTitle()
+    app.initGame()
+    app.updateTitle()
   }
 
   onMenuVisibilityChange(e) {
@@ -182,6 +181,6 @@ class EventsManager {
   }
 }
 
-export default function(app) {
-  return new EventsManager(app)
+export default function() {
+  return new EventsManager()
 }

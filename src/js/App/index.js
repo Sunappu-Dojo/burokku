@@ -1,5 +1,4 @@
 import { doc }          from '../helpers/Document'
-import initEvents       from '../events/EventsManager'
 import { isSupported }  from '../utils/ServiceWorker/support'
 import { isStandalone } from '../utils/MediaQueries'
 
@@ -52,8 +51,6 @@ class Burokku {
 
   init() {
     doc.classList.replace('no-js', 'js')
-
-    initEvents(this)
 
     this.blocks = initBlocks()
 

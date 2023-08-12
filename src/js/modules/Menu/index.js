@@ -1,3 +1,4 @@
+import app from '../../App'
 import { doc } from '../../helpers/Document'
 import { idbGet, idbSet } from '../../helpers/Storage'
 import { rAF } from '../../helpers/Window'
@@ -42,12 +43,8 @@ class Menu {
 
     // Focus active block
     if (!isOpen) {
-      this.app.blocks.active.focus()
+      app.blocks.active.focus()
     }
-  }
-
-  constructor(app) {
-    this.app = app
   }
 
   initToggle(coins = 0) {
@@ -75,9 +72,6 @@ class Menu {
     this.toggle(false)
   }
 
-    /**
-     * @todo: add condition: if Pomodoro runs, don’t close it on block hit.
-     */
   focusMenu() {
     /**
      * Move the focus to the mode selector when the menu opens. Due to a
@@ -114,6 +108,9 @@ class Menu {
       return this.toggle()
     }
 
+    /**
+     * @todo: add condition: if Pomodoro runs, don’t close it on block hit.
+     */
     // outside of the menu
     if (!eventPath.includes(this.#$menu) && this.open) {
       this.close()
@@ -128,4 +125,4 @@ class Menu {
 
 export let menu
 
-export const initMenu = app => menu = new Menu(app)
+export const initMenu = () => menu = new Menu()
