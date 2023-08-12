@@ -9,9 +9,10 @@ import {
   rumble, volume, // settings
 }                 from '../modules'
 import { isSupported } from '../utils/ServiceWorker/support'
+import { isStandalone } from '../utils/MediaQueries'
 
-const installBtnId = 'sw-install'
-const installBtnVisible = 'app-install--visible'
+let installBtn = document.getElementById('sw-install')
+const removeInstallButton = () => installBtn = installBtn?.remove()
 
 /** @type {Function | undefined} addToHome Show the website “install” prompt. */
 let addToHome
@@ -19,12 +20,16 @@ let addToHome
 const initServiceWorker = () => {
   if (!isSupported) { return }
 
-  import('../utils/ServiceWorker').then(({ initServiceWorker }) => {
-    const installBtn = document.getElementById(installBtnId)
+  import('../utils/ServiceWorker').then(({ register, setupAppInstall }) => {
+    register('/block-service-worker.js')
 
-    addToHome = initServiceWorker('/block-service-worker.js', {
-      initPrompt: () => installBtn.classList.add(installBtnVisible),
-      onInstall: () => installBtn.remove(),
+    // Setup add to home screen. A `standalone` app already went there.
+
+    if (isStandalone()) { return removeInstallButton() }
+
+    addToHome = setupAppInstall({
+      initPrompt: () => installBtn.classList.add('app-install--visible'),
+      onInstall: removeInstallButton,
     })
   })
 }
@@ -46,7 +51,7 @@ class Burokku {
   }
 
   onTap({ target }, stop) {
-    if (target.id === installBtnId) {
+    if (target === installBtn) {
       addToHome()
       stop()
     }

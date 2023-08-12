@@ -1,5 +1,5 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
-import { isFullscreen } from '../helpers/MediaQueries'
+import { isFullscreen } from '../utils/MediaQueries'
 import { initNav } from '../modules'
 import { ModeSelector } from '../modules'
 

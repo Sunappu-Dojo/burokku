@@ -7,6 +7,8 @@
 export const setupAppInstall = ({ initPrompt, onInstall }) => {
   waitInstallPrompt(initPrompt)
 
+  window.addEventListener('appinstalled', onInstall, { once: true })
+
   return () => promptForInstall(onInstall)
 }
 
