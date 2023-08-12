@@ -142,6 +142,9 @@ class ColorSchemes {
   // }
 }
 
-export default function(app) {
-  return new ColorSchemes(app)
+let colorSchemes
+export const initColorSchemes = app => colorSchemes = new ColorSchemes(app)
+
+export default function() {
+  return colorSchemes
 }

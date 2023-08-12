@@ -1,6 +1,6 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
 import { isFullscreen } from '../utils/MediaQueries'
-import { initNav, rumble, volume } from '../modules'
+import { colorSchemes, initNav, rumble, volume } from '../modules'
 import { ModeSelector } from '../modules'
 
 class EventsManager {
@@ -61,7 +61,7 @@ class EventsManager {
     const sequence = [
       this.app.menu,
       ModeSelector,
-      this.app.colorSchemes,
+      colorSchemes(),
       this.app.blocks?.active,
       this.app.nav,
       volume,
@@ -134,11 +134,11 @@ class EventsManager {
   }
 
   onMenuVisibilityChange(e) {
-    this.app.colorSchemes.onMenuVisibilityChange(e)
+    colorSchemes().onMenuVisibilityChange(e)
   }
 
   // onColorSchemeChange(e) {
-  //   this.app.colorSchemes.onColorSchemeChange(e)
+  //   colorSchemes().onColorSchemeChange(e)
   // }
 
   init() {
