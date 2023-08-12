@@ -4,11 +4,7 @@ import { isSupported }  from '../utils/ServiceWorker/support'
 import { isStandalone } from '../utils/MediaQueries'
 
 import { Classic, Pomodoro } from '../modes'
-
-import {
-  ModeSelector,
-  initBlocks, initWallet
-} from '../modules'
+import { ModeSelector, initBlocks } from '../modules'
 
 let installBtn = document.getElementById('sw-install')
 const removeInstallButton = () => installBtn = installBtn?.remove()
@@ -60,7 +56,6 @@ class Burokku {
     initEvents(this)
 
     this.blocks = initBlocks()
-    this.wallet = initWallet()
 
     ModeSelector.setFromUrl()
     if (!this.game) {

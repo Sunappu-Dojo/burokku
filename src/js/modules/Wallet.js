@@ -136,6 +136,6 @@ class Wallet {
   }
 }
 
-export default function() {
-  return new Wallet()
-}
+export let wallet
+
+export const initWallet = app => wallet = new Wallet(app)

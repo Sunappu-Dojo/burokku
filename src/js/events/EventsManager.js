@@ -1,6 +1,6 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
 import { isFullscreen } from '../utils/MediaQueries'
-import { colorSchemes, initNav, menu, rumble, volume } from '../modules'
+import { colorSchemes, initNav, menu, rumble, volume, wallet } from '../modules'
 import { ModeSelector } from '../modules'
 
 class EventsManager {
@@ -15,7 +15,7 @@ class EventsManager {
       this.app.blocks.onBlockChange(e)
     }
 
-    this.app.wallet?.onBlockChange(this.app.blocks.active)
+    wallet?.onBlockChange(this.app.blocks.active)
     this.app.updateTitle()
   }
 
@@ -24,7 +24,7 @@ class EventsManager {
   }
 
   onOneUp() {
-    this.app.wallet?.onOneUp()
+    wallet?.onOneUp()
 
     const blockAdded = this.app.blocks?.onOneUp() || false
 

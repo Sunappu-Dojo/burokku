@@ -1,3 +1,5 @@
+import { wallet } from '../modules'
+
 export default class Classic {
   // name = 'classic'
 
@@ -6,15 +8,15 @@ export default class Classic {
   }
 
   init() {
-    this.app.wallet.enable()
+    wallet.enable()
   }
 
   destroy() {
-    this.app.wallet.disable()
+    wallet.disable()
   }
 
   onCoinThrow(coins) {
-    this.app.wallet.onCoinThrow(coins)
+    wallet.onCoinThrow(coins)
     this.app.updateTitle()
   }
 
@@ -27,8 +29,8 @@ export default class Classic {
   }
 
   getTitle() {
-    if (this.app.wallet.isEnabled) {
-      return `× ${this.app.wallet.money} • ${this.app.blocks.active.btn.dataset.game}`
+    if (wallet.isEnabled) {
+      return `× ${wallet.money} • ${this.app.blocks.active.btn.dataset.game}`
     }
   }
 }
