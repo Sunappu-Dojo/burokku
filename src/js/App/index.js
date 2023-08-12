@@ -3,7 +3,12 @@ import { isSupported }  from '../utils/ServiceWorker/support'
 import { isStandalone } from '../utils/MediaQueries'
 
 import { Classic, Pomodoro } from '../modes'
-import { ModeSelector, initBlocks } from '../modules'
+import { ModeSelector } from '../modules'
+
+const modes = {
+  classic: Classic,
+  pomodoro: Pomodoro,
+}
 
 let installBtn = document.getElementById('sw-install')
 const removeInstallButton = () => installBtn = installBtn?.remove()
@@ -31,13 +36,6 @@ const initServiceWorker = () => {
 class Burokku {
   #game
 
-  constructor() {
-    this.modes = {
-      classic: Classic,
-      pomodoro: Pomodoro,
-    }
-  }
-
   updateTitle() {
     document.title = this.game.getTitle()
   }
@@ -52,8 +50,6 @@ class Burokku {
   init() {
     doc.classList.replace('no-js', 'js')
 
-    this.blocks = initBlocks()
-
     ModeSelector.setFromUrl()
     if (!this.game) {
       this.initGame()
@@ -64,7 +60,7 @@ class Burokku {
 
   initGame() {
     this.game?.destroy()
-    this.game = new this.modes[ModeSelector.selected](this)
+    this.game = new modes[ModeSelector.selected](this)
     this.game.init()
   }
 }

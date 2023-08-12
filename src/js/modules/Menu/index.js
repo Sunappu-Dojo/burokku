@@ -2,6 +2,7 @@ import app from '../../App'
 import { doc } from '../../helpers/Document'
 import { idbGet, idbSet } from '../../helpers/Storage'
 import { rAF } from '../../helpers/Window'
+import { blocks } from '../BlocksManager'
 import ModeSelector from '../ModeSelector'
 
 const menuToggleVisible = 'menu-toggle-visible'
@@ -43,7 +44,7 @@ class Menu {
 
     // Focus active block
     if (!isOpen) {
-      app.blocks.active.focus()
+      blocks.active.focus()
     }
   }
 

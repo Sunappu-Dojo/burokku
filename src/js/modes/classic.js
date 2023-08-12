@@ -1,5 +1,5 @@
 import app from '../App'
-import { wallet } from '../modules'
+import { blocks, wallet } from '../modules'
 
 export default class Classic {
   // name = 'classic'
@@ -18,16 +18,16 @@ export default class Classic {
   }
 
   onSpace(e) {
-    app.blocks.active.onSpace(e)
+    blocks.active.onSpace(e)
   }
 
   onEnter(e) {
-    app.blocks.active.onEnter(e)
+    blocks.active.onEnter(e)
   }
 
   getTitle() {
     if (wallet.isEnabled) {
-      return `× ${wallet.money} • ${app.blocks.active.btn.dataset.game}`
+      return `× ${wallet.money} • ${blocks.active.btn.dataset.game}`
     }
   }
 }

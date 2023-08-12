@@ -6,9 +6,9 @@ const ctn = document.getElementById(CSS.ctn)
 const blocks = ctn.getElementsByClassName(CSS.block)
 
 // Navigation arrows
-const nav = document.getElementById(CSS.nav)
-const prevBtn = nav.querySelector(`.${CSS.prev}`)
-const nextBtn = nav.querySelector(`.${CSS.next}`)
+const $nav = document.getElementById(CSS.nav)
+const prevBtn = $nav.querySelector(`.${CSS.prev}`)
+const nextBtn = $nav.querySelector(`.${CSS.next}`)
 
 function updateArrows() {
   prevBtn.toggleAttribute('disabled', currentIndex == 0)
@@ -106,6 +106,6 @@ class Nav {
   }
 }
 
-export default function(maxPosition = 0) {
-  return new Nav(maxPosition)
-}
+export let nav
+
+export const initNav = (maxPosition = 0) => nav = new Nav(maxPosition)

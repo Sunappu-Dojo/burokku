@@ -1,8 +1,8 @@
-import { captureEvent } from '../helpers/EventListenerOptions'
-import { isFullscreen } from '../utils/MediaQueries'
-import { colorSchemes, initNav, menu, rumble, volume, wallet } from '../modules'
-import { ModeSelector } from '../modules'
 import app from '../App'
+import { captureEvent } from '../helpers/EventListenerOptions'
+import { ModeSelector, blocks, colorSchemes, menu, nav, rumble, volume, wallet } from '../modules'
+import { initNav } from '../modules/Nav'
+import { isFullscreen } from '../utils/MediaQueries'
 
 class EventsManager {
   constructor() {
@@ -10,11 +10,8 @@ class EventsManager {
   }
 
   onBlockChange(e) {
-    if ('blocks' in app) {
-      app.blocks.onBlockChange(e)
-    }
-
-    wallet?.onBlockChange(app.blocks.active)
+    blocks?.onBlockChange(e)
+    wallet?.onBlockChange(blocks.active)
     app.updateTitle()
   }
 
@@ -25,10 +22,10 @@ class EventsManager {
   onOneUp() {
     wallet?.onOneUp()
 
-    const blockAdded = app.blocks?.onOneUp() || false
+    const blockAdded = blocks?.onOneUp() || false
 
     if (blockAdded) {
-      app.nav?.onOneUp()
+      nav?.onOneUp()
     }
   }
 
@@ -37,8 +34,8 @@ class EventsManager {
   }
 
   onWalletDisplayReady(e) {
-    app.blocks?.onWalletDisplayReady(e.detail)
-    app.nav = initNav(Math.floor(e.detail / 100))
+    blocks?.onWalletDisplayReady(e.detail)
+    initNav(Math.floor(e.detail / 100))
     menu.onWalletDisplayReady(e.detail)
   }
 
@@ -61,8 +58,8 @@ class EventsManager {
       menu,
       ModeSelector,
       colorSchemes,
-      app.blocks?.active,
-      app.nav,
+      blocks?.active,
+      nav,
       volume,
       rumble,
       app,
@@ -85,7 +82,7 @@ class EventsManager {
   /** @param {KeyboardEvent} e */
 
   onKeyDown(e) {
-    if (e.key === 'Tab') { return app.nav.onTab(e) }
+    if (e.key === 'Tab') { return nav.onTab(e) }
     if (e.key === ' ') { return app.game.onSpace?.(e) }
     if (e.key === 'Enter') { return app.game.onEnter?.(e) }
 
@@ -114,17 +111,17 @@ class EventsManager {
   /** @param {KeyboardEvent} */
 
   onKeyUp({ key }) {
-    if (key === 'ArrowLeft') { return app.nav.prev() }
-    if (key === 'ArrowRight') { return app.nav.next() }
+    if (key === 'ArrowLeft') { return nav.prev() }
+    if (key === 'ArrowRight') { return nav.next() }
     if (key === 'm') { return volume.toggle() }
   }
 
   onAnimationEnd(e) {
-    app.blocks?.active.onAnimationEnd(e)
+    blocks?.active.onAnimationEnd(e)
   }
 
   onTransitionEnd(e) {
-    app.blocks?.active.onTransitionEnd(e)
+    blocks?.active.onTransitionEnd(e)
   }
 
   onModeChange(e) {

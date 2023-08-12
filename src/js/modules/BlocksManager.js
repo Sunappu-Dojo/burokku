@@ -53,6 +53,6 @@ class Blocks {
   }
 }
 
-export default function() {
-  return new Blocks()
-}
+export let blocks
+
+export const initBlocks = () => blocks = new Blocks()
