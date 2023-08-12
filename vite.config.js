@@ -26,9 +26,6 @@ if (outDir.includes('../')) {
   throw new Error('APP_BUILD_DIR (in the .env file) can’t be outside of the app root directory. Remove all `../` from `APP_BUILD_DIR`.')
 }
 
-// Shortcut to project root path
-const thePath = (path = '') => resolve(__dirname, path)
-
 // ESLint Options
 const esLintOptions = {
   cache: false, // cache is cleaned on `npm install`
@@ -72,9 +69,10 @@ export default defineConfig({
     },
     rollupOptions: {
       input: {
-        'js/burokku': thePath('./src/index.html'),
-        'js/helpers/Storage/idbDetect': thePath('./src/js/helpers/Storage/idbDetect.js'),
-        'block-service-worker': thePath('./src/js/service-worker.js'),
+        'js/burokku': resolve('./src/index.html'),
+        'js/helpers/Storage/idbDetect': resolve('./src/js/helpers/Storage/idbDetect.js'),
+        'js/utils/ServiceWorker': resolve('./src/js/utils/ServiceWorker/index.js'),
+        'block-service-worker': resolve('./src/js/service-worker.js'),
       },
       output: {
         // Preserve filenames, needed for Service Worker.

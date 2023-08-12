@@ -1,0 +1,83 @@
+import { doc }    from '../helpers/Document'
+import initEvents from '../events/EventsManager'
+
+import { Classic, Pomodoro } from '../modes'
+
+import {
+  ModeSelector,
+  initBlocks, initColorSchemes, initMenu, initWallet,
+  rumble, volume, // settings
+}                 from '../modules'
+import { isSupported } from '../utils/ServiceWorker/support'
+
+const installBtnId = 'sw-install'
+const installBtnVisible = 'app-install--visible'
+
+/** @type {Function | undefined} addToHome Show the website “install” prompt. */
+let addToHome
+
+const initServiceWorker = () => {
+  if (!isSupported) { return }
+
+  import('../utils/ServiceWorker').then(({ initServiceWorker }) => {
+    const installBtn = document.getElementById(installBtnId)
+
+    addToHome = initServiceWorker('/block-service-worker.js', {
+      initPrompt: () => installBtn.classList.add(installBtnVisible),
+      onInstall: () => installBtn.remove(),
+    })
+  })
+}
+
+class Burokku {
+  #game
+
+  constructor() {
+    this.modes = {
+      classic: Classic,
+      pomodoro: Pomodoro,
+    }
+
+    this.init()
+  }
+
+  updateTitle() {
+    document.title = this.game.getTitle()
+  }
+
+  onTap({ target }, stop) {
+    if (target.id === installBtnId) {
+      addToHome()
+      stop()
+    }
+  }
+
+  init() {
+    doc.classList.replace('no-js', 'js')
+
+    initEvents(this)
+
+    this.blocks = initBlocks()
+    this.wallet = initWallet()
+    this.menu = initMenu(this)
+    this.colorSchemes = initColorSchemes(this)
+    this.settings = { rumble, volume }
+
+    ModeSelector.setFromUrl()
+    if (!this.game) {
+      this.initGame()
+    }
+
+    initServiceWorker()
+  }
+
+  initGame() {
+    this.game?.destroy()
+    this.game = new this.modes[ModeSelector.selected](this)
+    this.game.init()
+  }
+}
+
+const app = new Burokku()
+
+export default app
