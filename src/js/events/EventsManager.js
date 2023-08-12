@@ -1,6 +1,6 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
 import { isFullscreen } from '../utils/MediaQueries'
-import { initNav } from '../modules'
+import { initNav, rumble, volume } from '../modules'
 import { ModeSelector } from '../modules'
 
 class EventsManager {
@@ -64,8 +64,8 @@ class EventsManager {
       this.app.colorSchemes,
       this.app.blocks?.active,
       this.app.nav,
-      this.app.settings.volume,
-      this.app.settings.rumble,
+      volume,
+      rumble,
       this.app,
     ]
 
@@ -117,7 +117,7 @@ class EventsManager {
   onKeyUp({ key }) {
     if (key === 'ArrowLeft') { return this.app.nav.prev() }
     if (key === 'ArrowRight') { return this.app.nav.next() }
-    if (key === 'm') { return this.app.settings.volume.toggle() }
+    if (key === 'm') { return volume.toggle() }
   }
 
   onAnimationEnd(e) {
