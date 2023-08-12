@@ -1,5 +1,6 @@
 /** @type {import('./types')} */
 
+import { menu } from '..'
 import { doc, setAttributes }             from '../../helpers/Document'
 import { idbDel, idbGet, idbSet }         from '../../helpers/Storage'
 
@@ -49,9 +50,7 @@ class ColorSchemes {
   /**
    * Prepare UI (app icons, theme-color) and watch color scheme change.
    */
-  constructor(app) {
-    this.app = app
-
+  constructor() {
     Object.entries(themeColors)
       .map(([schemeName, elems]) => ({
         schemeName,
@@ -113,7 +112,7 @@ class ColorSchemes {
    */
   ariaAnnounce() {
     setAttributes($nameLiveRegion, {
-      role: this.app.menu.open ? 'status' : null
+      role: menu.open ? 'status' : null
     })
   }
 
@@ -142,9 +141,6 @@ class ColorSchemes {
   // }
 }
 
-let colorSchemes
-export const initColorSchemes = app => colorSchemes = new ColorSchemes(app)
+export let colorSchemes
 
-export default function() {
-  return colorSchemes
-}
+export const initColorSchemes = () => colorSchemes = new ColorSchemes()

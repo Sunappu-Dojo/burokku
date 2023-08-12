@@ -7,9 +7,8 @@ import { Classic, Pomodoro } from '../modes'
 
 import {
   ModeSelector,
-  initBlocks, initMenu, initWallet
+  initBlocks, initWallet
 } from '../modules'
-import { initColorSchemes } from '../modules/ColorSchemes'
 
 let installBtn = document.getElementById('sw-install')
 const removeInstallButton = () => installBtn = installBtn?.remove()
@@ -42,8 +41,6 @@ class Burokku {
       classic: Classic,
       pomodoro: Pomodoro,
     }
-
-    this.init()
   }
 
   updateTitle() {
@@ -64,8 +61,6 @@ class Burokku {
 
     this.blocks = initBlocks()
     this.wallet = initWallet()
-    this.menu = initMenu(this)
-    initColorSchemes(this)
 
     ModeSelector.setFromUrl()
     if (!this.game) {

@@ -1,6 +1,6 @@
 import { captureEvent } from '../helpers/EventListenerOptions'
 import { isFullscreen } from '../utils/MediaQueries'
-import { colorSchemes, initNav, rumble, volume } from '../modules'
+import { colorSchemes, initNav, menu, rumble, volume } from '../modules'
 import { ModeSelector } from '../modules'
 
 class EventsManager {
@@ -34,13 +34,13 @@ class EventsManager {
   }
 
   onWalletBalanceUpdate(e) {
-    this.app.menu.onWalletBalanceUpdate(e.detail)
+    menu.onWalletBalanceUpdate(e.detail)
   }
 
   onWalletDisplayReady(e) {
     this.app.blocks?.onWalletDisplayReady(e.detail)
     this.app.nav = initNav(Math.floor(e.detail / 100))
-    this.app.menu.onWalletDisplayReady(e.detail)
+    menu.onWalletDisplayReady(e.detail)
   }
 
   onTap(e) {
@@ -59,9 +59,9 @@ class EventsManager {
      * the commented code below is better.
      */
     const sequence = [
-      this.app.menu,
+      menu,
       ModeSelector,
-      colorSchemes(),
+      colorSchemes,
       this.app.blocks?.active,
       this.app.nav,
       volume,
@@ -108,7 +108,7 @@ class EventsManager {
         // this.app.game?.onEscape()
         return this.app.game.pause()
       }
-      return this.app.menu.onEscape()
+      return menu.onEscape()
     }
   }
 
@@ -134,11 +134,11 @@ class EventsManager {
   }
 
   onMenuVisibilityChange(e) {
-    colorSchemes().onMenuVisibilityChange(e)
+    colorSchemes.onMenuVisibilityChange(e)
   }
 
   // onColorSchemeChange(e) {
-  //   colorSchemes().onColorSchemeChange(e)
+  //   colorSchemes.onColorSchemeChange(e)
   // }
 
   init() {

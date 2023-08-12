@@ -126,6 +126,6 @@ class Menu {
   onWalletBalanceUpdate = this.initToggle
 }
 
-export default function(app) {
-  return new Menu(app)
-}
+export let menu
+
+export const initMenu = app => menu = new Menu(app)
