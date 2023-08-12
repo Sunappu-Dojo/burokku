@@ -1,5 +1,4 @@
-import app from '../App'
-import { blocks, wallet } from '../modules'
+import { blocks, game, wallet } from '../modules'
 
 export default class Classic {
   // name = 'classic'
@@ -14,7 +13,7 @@ export default class Classic {
 
   onCoinThrow(coins) {
     wallet.onCoinThrow(coins)
-    app.updateTitle()
+    game.updateTitle()
   }
 
   onSpace(e) {

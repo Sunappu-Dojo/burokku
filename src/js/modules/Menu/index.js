@@ -1,4 +1,3 @@
-import app from '../../App'
 import { doc } from '../../helpers/Document'
 import { idbGet, idbSet } from '../../helpers/Storage'
 import { rAF } from '../../helpers/Window'

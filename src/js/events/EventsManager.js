@@ -1,7 +1,7 @@
-import app from '../App'
 import { captureEvent } from '../helpers/EventListenerOptions'
-import { ModeSelector, blocks, colorSchemes, menu, nav, rumble, volume, wallet } from '../modules'
+import { ModeSelector, blocks, colorSchemes, game, menu, nav, rumble, volume, wallet } from '../modules'
 import { initNav } from '../modules/Nav'
+import { serviceWorkerHandlers } from '../modules/ServiceWorker'
 import { isFullscreen } from '../utils/MediaQueries'
 
 class EventsManager {
@@ -12,11 +12,10 @@ class EventsManager {
   onBlockChange(e) {
     blocks?.onBlockChange(e)
     wallet?.onBlockChange(blocks.active)
-    app.updateTitle()
   }
 
   onCoinThrow(e) {
-    app.game?.onCoinThrow(e.detail)
+    game?.onCoinThrow(e)
   }
 
   onOneUp() {
@@ -50,7 +49,7 @@ class EventsManager {
      * for example), where you don’t want another “element” that can
      * be clicked to trigger an interaction while a menu is open.
      *
-     * @todo: Consider switching from `app.module` to a module, like for
+     * @todo: Consider switching from `game.module` to a module, like for
      * `ModeSelector`): let’s try this, then evaluate if switching to
      * the commented code below is better.
      */
@@ -62,7 +61,7 @@ class EventsManager {
       nav,
       volume,
       rumble,
-      app,
+      serviceWorkerHandlers,
     ]
 
     const stop = () => e.shouldStop = true
@@ -83,13 +82,13 @@ class EventsManager {
 
   onKeyDown(e) {
     if (e.key === 'Tab') { return nav.onTab(e) }
-    if (e.key === ' ') { return app.game.onSpace?.(e) }
-    if (e.key === 'Enter') { return app.game.onEnter?.(e) }
+    if (e.key === ' ') { return game.onSpace?.(e) }
+    if (e.key === 'Enter') { return game.onEnter?.(e) }
 
     // @todo: improve Escape sequence with a stop function (?)
     if (e.key === 'Escape') {
 
-      if (app.game?.status == 'playing') {
+      if (game.game?.status == 'playing') {
 
         /**
          * Prevent leaving the fullscreen during Pomodoro.
@@ -101,8 +100,8 @@ class EventsManager {
           e.preventDefault()
         }
 
-        // app.game?.onEscape()
-        return app.game.pause()
+        // game.game?.onEscape()
+        return game.game.pause()
       }
       return menu.onEscape()
     }
@@ -125,8 +124,9 @@ class EventsManager {
   }
 
   onModeChange(e) {
-    app.initGame()
-    app.updateTitle()
+    console.log('mode change')
+    game.initGame()
+    game.updateTitle()
   }
 
   onMenuVisibilityChange(e) {
