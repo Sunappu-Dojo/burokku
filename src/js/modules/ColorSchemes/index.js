@@ -1,8 +1,8 @@
 /** @type {import('./types')} */
 
 import { menu } from '..'
-import { doc, setAttributes }             from '../../helpers/Document'
-import { idbDel, idbGet, idbSet }         from '../../helpers/Storage'
+import { doc, setAttributes }             from '../../utils/Document'
+import { idbDel, idbGet, idbSet }         from '../../utils/Storage'
 
 import { setFavicons }                    from './app-icons'
 import { setMetaThemeColor, themeColors } from './meta-theme-color'

@@ -1,7 +1,7 @@
 /**
- * This script is the same as `src/js/helpers/Storage/idb.js`, except:
+ * This script is the same as `./idb.js`, except:
  * - it doesn’t require support for top-level `await`;
- * - the IndexedDB detection part is in `src/js/helpers/Storage/idbDetect.js`.
+ * - the IndexedDB detection part is in `./idbDetect.js`.
  *
  * As a result, the detection of IndexedDB is done earlier (it doesn’t require
  * `idb-keyval`), but is asynchronous, meaning that when running a function

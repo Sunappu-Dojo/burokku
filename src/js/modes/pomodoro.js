@@ -1,4 +1,4 @@
-import { doc } from '../helpers/Document'
+import { doc }    from '../utils/Document'
 
 const DEFAULT_DURATION = 1000
 
@@ -42,9 +42,6 @@ export default class Pomodoro {
   //   return this.#time / this.#duration
   // }
 
-  constructor(app) {
-    this.app = app
-  }
 
   init() {
     this.reset()
@@ -79,7 +76,7 @@ export default class Pomodoro {
 
   bump() {
     if (this.#status == 'playing') {
-      this.app.blocks.active.btn.dispatchEvent(new Event('click'))
+      blocks.active.btn.dispatchEvent(new Event('click'))
     }
   }
 
@@ -99,7 +96,7 @@ export default class Pomodoro {
    */
   display() {
     $timeLeft.innerHTML = this.#time
-    this.updateTitle()
+    game.updateTitle()
   }
 
   toggle() {
@@ -130,7 +127,7 @@ export default class Pomodoro {
     this.pause()
   }
 
-  updateTitle() {
-    document.title = `${this.#time.toString().padStart(3, 0)} • ${this.app.blocks.active.btn.dataset.game}`
+  getTitle() {
+    return `${this.#time.toString().padStart(3, 0)} • ${blocks.active.btn.dataset.game}`
   }
 }

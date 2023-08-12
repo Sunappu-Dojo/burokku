@@ -1,6 +1,6 @@
-import { doc } from '../../helpers/Document'
-import { idbGet, idbSet } from '../../helpers/Storage'
-import { rAF } from '../../helpers/Window'
+import { doc } from '../../utils/Document'
+import { idbGet, idbSet } from '../../utils/Storage'
+import { rAF } from '../../utils/Window'
 import { blocks } from '../BlocksManager'
 import ModeSelector from '../ModeSelector'
 

@@ -1,5 +1,4 @@
 let enabled = true
-const supported = 'vibrate' in navigator
 
 /**
  * A class with static methods for easier vibrations management.
@@ -9,6 +8,7 @@ const supported = 'vibrate' in navigator
  *
  * Examples:
  *
+ * ```
  * // vibrate with force 50
  * Rumble.vibrate(50)
  *
@@ -16,32 +16,37 @@ const supported = 'vibrate' in navigator
  * Rumble.vibrate([50, 500, 100])
  *
  * // stop all vibrations
- * Rumble.vibrate() // or Rumble.vibrate([])
+ * Rumble.vibrate()
+ * Rumble.vibrate([])
  *
  * // Detect if the Vibration API if supported (theoretical)
- * Rumble.isSupported()
+ * Rumble.supported
  *
  * Rumble.toggle()        // toggle vibrations on/off
  * Rumble.toggle(true)    // no more vibrations
  * Rumble.toggle(false)   // vibrations are back
+ * ```
  */
 export default class Rumble {
+  static get supported() {
+    return 'vibrate' in navigator
+  }
 
   /**
    * Vibrate following a provided pattern.
    *
-   * @param {number|number[]} vibrationPattern A list of vibration forces (odd numbers) separated by pauses (even numbers).
+   * @param {VibratePattern} vibrationPattern A list of vibration forces (odd numbers) separated by pauses (even numbers).
    *
    * @returns {void}
    */
   static vibrate(vibrationPattern) {
-    if (supported && enabled) {
+    if (this.supported && enabled) {
       navigator.vibrate(vibrationPattern)
     }
   }
 
   /**
-   * Enable or disable vibrations
+   * Enable or disable vibrations.
    *
    * @param {boolean} state `true` to enable, `false` to disable
    *
@@ -54,11 +59,4 @@ export default class Rumble {
 
     enabled = state
   }
-
-  /**
-   * Check if the Vibration API is supported.
-   *
-   * @returns {boolean}
-   */
-  static isSupported = () => supported
 }

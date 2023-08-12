@@ -1,4 +1,4 @@
-import Sfx from '../../helpers/Sfx'
+import Sfx from '../../utils/Sfx'
 import Setting from '.'
 
 const soundBtnId = 'sound'

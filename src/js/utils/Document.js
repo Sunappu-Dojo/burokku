@@ -5,14 +5,15 @@ export const head = document.head
  * Bulk assign attributes. To remove an attribute, pass `null` or `undefined`.
  * https://github.com/meduzen/setAttributes
  *
- * @param {HTMLElement} el
+ * @param {HTMLElement} element
  * @param {Record<string, any>} attrs
  */
-export const setAttributes = (el, attrs) => {
+export const setAttributes = (element, attrs) => {
   Object.entries(attrs).forEach(([name, value]) => {
+    console.log(name, value)
     if (value == null) {
-      return el.removeAttribute(name)
+      return element.removeAttribute(name)
     }
-    el.setAttribute(name, value)
+    element.setAttribute(name, value)
   })
 }

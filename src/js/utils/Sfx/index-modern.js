@@ -17,11 +17,8 @@ const buffers = []
 /**
  * Fetches sound, returns ArrayBuffer.
  */
-function fetchAndReturnBuffer(url) {
-  return fetch(url)
-    .then(response => response.arrayBuffer())
-    .then(audioData => audioData)
-}
+const fetchAndReturnBuffer = url =>
+  fetch(url).then(response => response.arrayBuffer())
 
 /**
  * Returns audio node from URL.

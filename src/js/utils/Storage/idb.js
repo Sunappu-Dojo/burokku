@@ -10,7 +10,7 @@ import { get, set, del, createStore } from 'idb-keyval'
  * - Safari with cookies disabled (tested in Safari 16.2)
  *
  * The detection requires support of top-level `await`, starting at Safari 15.
- * For broader browsers support, use `src/js/helpers/Storage/idbLegacy.js`.
+ * For broader browsers support, use `./idbLegacy.js`.
  *
  * https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/await#browser_compatibility
  *

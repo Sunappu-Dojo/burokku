@@ -1,4 +1,4 @@
-import { doc } from '../../helpers/Document'
+import { doc } from '../../utils/Document'
 import { CSS } from './config'
 import './types'
 import {

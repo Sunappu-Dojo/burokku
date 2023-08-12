@@ -1,5 +1,5 @@
 import initEvents           from './events/EventsManager'
-import { doc }              from './helpers/Document'
+import { doc }              from './utils/Document'
 import { ModeSelector }     from './modules'
 import { initBlocks }       from './modules/BlocksManager'
 import { initColorSchemes } from './modules/ColorSchemes'
@@ -10,9 +10,9 @@ import { initWallet }       from './modules/Wallet'
 
 doc.classList.replace('no-js', 'js')
 
+initEvents()
 initBlocks()
 initWallet()
-initEvents()
 initMenu()
 initGame()
 ModeSelector.setFromUrl()

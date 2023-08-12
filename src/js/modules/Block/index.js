@@ -1,6 +1,6 @@
-import Rumble from '../../helpers/Rumble'
-import Sfx    from '../../helpers/Sfx'
-import { rAF } from '../../helpers/Window'
+import Rumble from '../../utils/Rumble'
+import Sfx    from '../../utils/Sfx'
+import { rAF } from '../../utils/Window'
 
 import { useSounds, SOUNDS, CSS, THROTTLE } from './config'
 

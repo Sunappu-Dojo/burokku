@@ -1,6 +1,6 @@
 /** @type {import('./types')} */
 
-import { head } from '../../helpers/Document'
+import { head } from '../../utils/Document'
 import { groupElementsByColorScheme } from './media-attribute'
 
 /** @type {NodeListOf<HTMLMetaElement>} `<meta>` with a `prefers-color-scheme` media attribute. */
