@@ -1,0 +1,32 @@
+[
+    {
+        "name": "Everything",
+        "path": "public",
+        "brotli": true
+    },
+    {
+        "name": "HTML",
+        "path": ["public/**/*.html"],
+        "brotli": true
+    },
+    {
+        "name": "CSS",
+        "path": ["public/**/*.css"],
+        "brotli": true
+    },
+    {
+        "name": "Fonts",
+        "path": ["public/fonts"],
+        "brotli": true
+    },
+    {
+        "name": "Sounds (FLAC)",
+        "path": ["public/sfx/*.flac"],
+        "brotli": true
+    },
+    {
+        "name": "Sounds (WAV)",
+        "path": ["public/sfx/*.wav"],
+        "brotli": true
+    }
+]
