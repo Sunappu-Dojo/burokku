@@ -21,6 +21,12 @@ Note: the Service Worker is broken while developing. Ignore it and check it usin
 3. Run `npm run build` to compile the app. The compiled app goes in `/public`.
 4. Run `npm run preview` to preview it on your machine.
 
+## Tests
+
+There’s currently no tests. Gonna work on it after the next big feature.
+
+External URLs are tested on merge requests using [Lychee](https://lychee.cli.rs) in a GitHub Action. To test URLs locally install Lychee and run `npm run test:absolute-links`.
+
 ### Various
 
 - Files in `/src/public` are copied as is (respecting the directory structure in `/src/public`) in the build directory.

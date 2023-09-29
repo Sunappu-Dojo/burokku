@@ -10,7 +10,8 @@
         "lint": "npx eslint src/js/**/*",
         "lint-fix": "npx eslint src/js/**/* --fix",
         "postinstall": "rm -f .eslintcache",
-        "size": "size-limit"
+        "size": "size-limit",
+        "test:absolute-links": "lychee src/index.html"
     },
     "dependencies": {
         "easings.scss": "^1",
