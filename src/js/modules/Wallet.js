@@ -74,7 +74,7 @@ class Wallet {
    * Show coins amount
    */
   display() {
-    this.output.innerHTML = this.coins
+    this.output.textContent = this.coins
   }
 
   /**
