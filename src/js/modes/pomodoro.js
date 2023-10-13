@@ -3,7 +3,7 @@ import { doc }    from '../utils/Document'
 const DEFAULT_DURATION = 1000
 
 const $timeLeft = document.getElementById('time-left')
-$timeLeft.innerHTML = DEFAULT_DURATION
+$timeLeft.textContent = DEFAULT_DURATION
 
 /**
  * The real duration between countdown ticks in the games, in milliseconds.
@@ -42,7 +42,6 @@ export default class Pomodoro {
   //   return this.#time / this.#duration
   // }
 
-
   init() {
     this.reset()
   }
@@ -70,7 +69,7 @@ export default class Pomodoro {
     this.#timer = null
     this.#bumpTimer = null
     this.#time = this.#duration
-    $timeLeft.innerHTML = this.#time
+    $timeLeft.textContent = this.#time
     this.status = 'stopped'
   }
 
@@ -95,7 +94,7 @@ export default class Pomodoro {
    * Show time left
    */
   display() {
-    $timeLeft.innerHTML = this.#time
+    $timeLeft.textContent = this.#time
     game.updateTitle()
   }
 
