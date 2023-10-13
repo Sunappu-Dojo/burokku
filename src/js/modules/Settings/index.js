@@ -36,7 +36,7 @@ export default class Setting {
     // Update UI
     this.btn.classList.toggle('setting--on', state)
     this.btn.setAttribute('title', this.labels[this.#enabled])
-    this.labelEl.innerHTML = this.labels[this.#enabled]
+    this.labelEl.textContent = this.labels[this.#enabled]
   }
 
   detectSupport(supported = true) {
