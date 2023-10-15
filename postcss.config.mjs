@@ -1,7 +1,7 @@
-const postcssPresetEnv = require('postcss-preset-env')
-const postcssShortSize = require('postcss-short-size')
-const cssNano = require('cssnano')
-const purgecss = require('@fullhuman/postcss-purgecss')
+import postcssPresetEnv from 'postcss-preset-env'
+import postcssShortSize from 'postcss-short-size'
+import cssNano from 'cssnano'
+import purgecss from '@fullhuman/postcss-purgecss'
 
 const postcssPresetEnvOptions = {
   stage: 0,
@@ -25,7 +25,7 @@ const purgeCssOptions = {
   safelist: [/⍰/],
 }
 
-module.exports = ({ options, env }) => ({
+export default ({ options, env }) => ({
   plugins: [
     postcssShortSize(),
     postcssPresetEnv(postcssPresetEnvOptions),
