@@ -1,5 +1,6 @@
 import { defineConfig } from 'vite'
 import { resolve } from 'path'
+import { config } from 'dotenv'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
@@ -16,7 +17,7 @@ import eslintPlugin from 'vite-plugin-eslint'
  * https://github.com/vitejs/vite/blob/main/packages/vite/package.json#L91
  * https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md
  */
-const env = require('dotenv').config().parsed
+const env = config().parsed
 const isProd = env?.NODE_ENV === 'production'
 
 let outDir = env?.APP_BUILD_DIR || 'public'
