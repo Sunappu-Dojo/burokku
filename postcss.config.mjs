@@ -1,5 +1,5 @@
 import postcssPresetEnv from 'postcss-preset-env'
-import postcssShortSize from 'postcss-short-size'
+import postcssSize from 'postcss-size'
 import cssNano from 'cssnano'
 import purgecss from '@fullhuman/postcss-purgecss'
 
@@ -27,7 +27,7 @@ const purgeCssOptions = {
 
 export default ({ options, env }) => ({
   plugins: [
-    postcssShortSize(),
+    postcssSize(),
     postcssPresetEnv(postcssPresetEnvOptions),
     env === 'production' ? cssNano(cssNanoOptions) : false,
     env === 'production' ? purgecss(purgeCssOptions) : false,

@@ -16,7 +16,8 @@
     "dependencies": {
         "easings.scss": "^1",
         "idb-keyval": "6.1.0",
-        "normalize.css": "^8.0"
+        "normalize.css": "^8.0",
+        "postcss-size": "^5.0.0"
     },
     "devDependencies": {
         "@babel/eslint-parser": "^7.19.1",
@@ -33,7 +34,6 @@
         "hsl.scss": "^1.0.1",
         "postcss": "^8.2.4",
         "postcss-preset-env": "^9",
-        "postcss-short-size": "^4.0",
         "sass": "^1.64",
         "size-limit": "^9.0.0",
         "v.scss": "^1.2.1",
