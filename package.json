@@ -4,9 +4,9 @@
         "node": ">=20.6"
     },
     "scripts": {
-        "dev": "vite --mode=development",
-        "build": "vite build --mode=production",
-        "preview": "vite preview",
+        "dev": "node --env-file=.env node_modules/vite/bin/vite --mode=development",
+        "build": "node --env-file=.env node_modules/vite/bin/vite build --mode=production",
+        "preview": "node --env-file=.env node_modules/vite/bin/vite preview",
         "lint": "npx eslint src/js/**/*",
         "lint-fix": "npx eslint src/js/**/* --fix",
         "postinstall": "rm -f .eslintcache",
