@@ -1,12 +1,12 @@
 {
     "private": true,
     "engines": {
-        "node": ">=14.18"
+        "node": ">=20.6"
     },
     "scripts": {
-        "dev": "vite",
-        "build": "vite build",
-        "preview": "vite preview",
+        "dev": "node --env-file=.env node_modules/vite/bin/vite",
+        "build": "node --env-file=.env node_modules/vite/bin/vite build",
+        "preview": "node --env-file=.env node_modules/vite/bin/vite preview",
         "lint": "npx eslint src/js/**/*",
         "lint-fix": "npx eslint src/js/**/* --fix",
         "postinstall": "rm -f .eslintcache",
@@ -33,7 +33,7 @@
         "hsl.scss": "^1.0.1",
         "postcss": "^8.2.4",
         "postcss-preset-env": "^9",
-        "postcss-short-size": "^4.0",
+        "postcss-size": "^5.0.0",
         "sass": "^1.64",
         "size-limit": "^9.0.0",
         "v.scss": "^1.2.1",

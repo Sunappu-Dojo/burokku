@@ -1,22 +1,11 @@
+import { resolve } from 'node:path'
+import { env } from 'node:process'
 import { defineConfig } from 'vite'
-import { resolve } from 'path'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
 import eslintPlugin from 'vite-plugin-eslint'
 
-/**
- * Parses .env file, using `dotenv`.
- *
- * We could use `loadEnv` (from 'vite'), but it exposes too much system values.
- * Despite being used by vite under the hood, `dotenv` is among the project
- * dev dependencies due to a version difference: Vite sticks to v14.3.2
- * while the project uses v16.x.
- *
- * https://github.com/vitejs/vite/blob/main/packages/vite/package.json#L91
- * https://github.com/motdotla/dotenv/blob/master/CHANGELOG.md
- */
-const env = require('dotenv').config().parsed
 const isProd = env?.NODE_ENV === 'production'
 
 let outDir = env?.APP_BUILD_DIR || 'public'
@@ -99,11 +88,11 @@ export default defineConfig({
     },
   },
 
-  plugins: [
-    ...(isProd ? [] : [eslintPlugin(esLintOptions)]),
-    ...(isProd ? [] : [createHtmlPlugin(htmlOptions)]),
-    ...(isProd ? [] : [viteSingleFile(singleFileOptions)]),
-  ],
+  plugins: isProd ? [
+    eslintPlugin(esLintOptions),
+    createHtmlPlugin(htmlOptions),
+    viteSingleFile(singleFileOptions),
+  ] : [],
 
   server: {
     open: env?.BROWSER_OPEN == 'true',
