@@ -3,6 +3,7 @@
     "engines": {
         "node": ">=20.6"
     },
+    "type": "module",
     "scripts": {
         "dev": "node --env-file=.env node_modules/vite/bin/vite",
         "build": "node --env-file=.env node_modules/vite/bin/vite build",
@@ -37,7 +38,7 @@
         "sass": "^1.69",
         "size-limit": "^11",
         "v.scss": "^1.2.1",
-        "vite": "^4",
+        "vite": "^5",
         "vite-plugin-eslint": "^1.8",
         "vite-plugin-html": "^3.2.0",
         "vite-plugin-singlefile": "^0.13.2"
