@@ -6,27 +6,26 @@
     },
     {
         "name": "HTML",
-        "path": ["public/**/*.html"],
-        "brotli": true
+        "path": ["public/**/*.html"]
     },
     {
         "name": "CSS",
         "path": ["public/**/*.css"],
-        "brotli": true
+        "brotli": false
     },
     {
         "name": "Fonts",
         "path": ["public/fonts"],
-        "brotli": true
+        "brotli": false
     },
     {
         "name": "Sounds (FLAC)",
         "path": ["public/sfx/*.flac"],
-        "brotli": true
+        "brotli": false
     },
     {
         "name": "Sounds (WAV)",
         "path": ["public/sfx/*.wav"],
-        "brotli": true
+        "brotli": false
     }
 ]
