@@ -10,8 +10,11 @@
     },
     {
         "name": "CSS",
-        "path": ["public/**/*.css"],
-        "brotli": false
+        "path": ["public/**/*.css"]
+    },
+    {
+        "name": "JS",
+        "path": ["public/**/*.js"]
     },
     {
         "name": "Fonts",
