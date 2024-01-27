@@ -42,7 +42,7 @@
         "vite": "^5",
         "vite-plugin-eslint": "^1.8",
         "vite-plugin-html": "^3.2.1",
-        "vite-plugin-singlefile": "^0.13.2"
+        "vite-plugin-singlefile": "^1.0"
     },
     "overrides": {
         "has": "npm:@nolyfill/has@latest"

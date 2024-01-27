@@ -25,7 +25,6 @@ const esLintOptions = {
 
 // HTML plugin option (https://github.com/vbenjs/vite-plugin-html#parameter-description)
 const htmlOptions = {
-  viteNext: true, // prevent deprecation messages output by Vite
   minify: {
     collapseWhitespace: true,
     keepClosingSlash: false,
