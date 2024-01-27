@@ -15,14 +15,12 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Check links
         uses: lycheeverse/lychee-action@v1.8.0
         with:
           args: 'https://block.sunappu.net'
-        env:
-          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
       - name: Create issue
         if: env.lychee_exit_code != 0
