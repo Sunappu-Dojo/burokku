@@ -26,7 +26,8 @@
         "@babel/preset-env": "^7.23",
         "@fullhuman/postcss-purgecss": "^5",
         "@size-limit/preset-app": "^11",
-        "browserslist-to-esbuild": "^1.2.0",
+        "browserslist": "^4.22.3",
+        "browserslist-to-esbuild": "^2.0.0",
         "cssnano": "^6",
         "double-dash.scss": "^1",
         "eslint": "^8",
@@ -41,6 +42,6 @@
         "vite": "^5",
         "vite-plugin-eslint": "^1.8",
         "vite-plugin-html": "^3.2.1",
-        "vite-plugin-singlefile": "^0.13.2"
+        "vite-plugin-singlefile": "^1.0"
     }
 }
