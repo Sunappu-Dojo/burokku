@@ -2,3 +2,6 @@
 .env
 /node_modules
 /public
+
+# Playwright
+/tests/results
