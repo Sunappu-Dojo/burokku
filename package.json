@@ -24,6 +24,7 @@
         "@babel/plugin-proposal-private-methods": "^7.14.5",
         "@babel/preset-env": "^7.23",
         "@fullhuman/postcss-purgecss": "^5",
+        "@rollup/plugin-eslint": "^9.0.5",
         "@size-limit/preset-app": "^11",
         "browserslist": "^4.22.2",
         "browserslist-to-esbuild": "^2.1.0",
@@ -40,11 +41,11 @@
         "size-limit": "^11.0.0",
         "v.scss": "^1.2.1",
         "vite": "^5",
-        "vite-plugin-eslint": "^1.8",
         "vite-plugin-html": "^3.2.1",
         "vite-plugin-singlefile": "^1.0"
     },
     "overrides": {
-        "has": "npm:@nolyfill/has@latest"
+        "has": "npm:@nolyfill/has@latest",
+        "hasown": "npm:@nolyfill/hasown@latest"
     }
 }
