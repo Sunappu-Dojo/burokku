@@ -4,7 +4,7 @@ import { defineConfig } from 'vite'
 import { createHtmlPlugin } from 'vite-plugin-html'
 import { viteSingleFile } from 'vite-plugin-singlefile'
 import browserslistToEsbuild from 'browserslist-to-esbuild'
-import eslintPlugin from 'vite-plugin-eslint'
+import eslintPlugin from '@rollup/plugin-eslint'
 
 const isProd = env?.NODE_ENV === 'production'
 
@@ -17,10 +17,11 @@ if (outDir.includes('../')) {
 
 // ESLint Options
 const esLintOptions = {
-  cache: false, // cache is cleaned on `npm install`
+  cache: true, // cache is cleaned on `npm install`
   cacheStrategy: 'content',
   fix: env?.ES_LINT_AUTOFIX == 'true',
   formatter: env?.ES_LINT_FORMATTER ?? 'stylish',
+  include: '**/*.+(js|ts)',
 }
 
 // HTML plugin option (https://github.com/vbenjs/vite-plugin-html#parameter-description)
@@ -42,6 +43,10 @@ const singleFileOptions = {
 
 export default defineConfig({
   root: 'src',
+
+  css: {
+    devSourcemap: true,
+  },
 
   build: {
     envDir: './',
@@ -88,10 +93,14 @@ export default defineConfig({
   },
 
   plugins: isProd ? [
-    eslintPlugin(esLintOptions),
     createHtmlPlugin(htmlOptions),
     viteSingleFile(singleFileOptions),
-  ] : [],
+  ] : [
+    {
+      ...eslintPlugin(esLintOptions),
+      enforce: 'pre',
+    },
+  ],
 
   server: {
     open: env?.BROWSER_OPEN == 'true',
