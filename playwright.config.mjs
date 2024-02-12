@@ -3,7 +3,7 @@ import { devices } from '@playwright/test'
 import { dateToKebab } from './tests/utils/date.mjs'
 import { isInvalidUrl } from './tests/utils/url.mjs'
 
-const baseURL = env.PW_BASE_URL
+const baseURL = env.PW_BASE_URL || 'http://localhost:4173'
 
 if (isInvalidUrl(baseURL)) {
   throw new Error(`PW_BASE_URL is not a valid URL: ${baseURL}`)
