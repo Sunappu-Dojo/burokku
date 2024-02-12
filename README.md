@@ -21,8 +21,6 @@ Note: the Service Worker is broken while developing. Ignore it and check it usin
 3. Run `npm run build` to compile the app. The compiled app goes in `/public`.
 4. Run `npm run preview` to preview it on your machine.
 
-## Tests
-
 ### Tests
 
 Tests use [Playwright](https://playwright.dev) and can be run with `npm test`. They can all run locally or in a GitHub action.
