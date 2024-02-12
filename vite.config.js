@@ -21,7 +21,7 @@ const esLintOptions = {
   cacheStrategy: 'content',
   fix: env?.ES_LINT_AUTOFIX == 'true',
   formatter: env?.ES_LINT_FORMATTER ?? 'stylish',
-  include: '**/*.+(js|ts)',
+  include: '**/*.+(js|mjs|ts)',
 }
 
 // HTML plugin option (https://github.com/vbenjs/vite-plugin-html#parameter-description)

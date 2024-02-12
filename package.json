@@ -8,11 +8,13 @@
         "dev": "node --env-file=.env node_modules/vite/bin/vite",
         "build": "node --env-file=.env node_modules/vite/bin/vite build",
         "preview": "node --env-file=.env node_modules/vite/bin/vite preview",
-        "lint": "npx eslint src/js/**/*",
-        "lint-fix": "npx eslint src/js/**/* --fix",
+        "lint": "npx eslint src/js/**/* tests/**/*.mjs",
+        "lint-fix": "npx eslint src/js/**/* tests/**/*.mjs --fix",
         "postinstall": "rm -f .eslintcache",
         "size": "size-limit",
-        "test:absolute-links": "lychee src/index.html"
+        "test": "node --env-file=.env node_modules/@playwright/test/cli test",
+        "test:absolute-links": "lychee src/index.html",
+        "test:ui": "node --env-file=.env node_modules/@playwright/test/cli test --ui"
     },
     "dependencies": {
         "easings.scss": "^1",
@@ -24,6 +26,7 @@
         "@babel/plugin-proposal-private-methods": "^7.14.5",
         "@babel/preset-env": "^7.23",
         "@fullhuman/postcss-purgecss": "^5",
+        "@playwright/test": "^1.41.2",
         "@rollup/plugin-eslint": "^9.0.5",
         "@size-limit/preset-app": "^11",
         "browserslist": "^4.22.2",
