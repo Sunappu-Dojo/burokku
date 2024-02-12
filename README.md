@@ -21,11 +21,27 @@ Note: the Service Worker is broken while developing. Ignore it and check it usin
 3. Run `npm run build` to compile the app. The compiled app goes in `/public`.
 4. Run `npm run preview` to preview it on your machine.
 
-## Tests
+### Tests
 
-There’s currently no tests. Gonna work on it after the next big feature.
+Tests use [Playwright](https://playwright.dev) and can be run with `npm test`. They can all run locally or in a GitHub action.
+
+Before running tests locally:
+- `npx playwright install` pulls the headless browsers used by the test;
+- (optional) set the test URL in the `PW_BASE_URL` entry of your `.env`.
+
+You can also play with Playwright GUI by running `npm run test:ui`.
 
 External URLs are tested on merge requests using [Lychee](https://lychee.cli.rs) in a GitHub Action. To test URLs locally install Lychee and run `npm run test:absolute-links`.
+
+#### Local tests results
+
+When running the tests locally, the results are in `/tests/results`:
+- `{timestamp}.json`: JSON report of the test suites;
+- `html/index.html`: HTML report of the latest test suites.
+
+#### GitHub Action tests results
+
+When running in a GitHub action, the “summary” view of the GitHub Action has an _artifact_ section at the very bottom. The artifact archive contains the same HTML report as in `html/index.html` when you run tests locally.
 
 ### Various
 
