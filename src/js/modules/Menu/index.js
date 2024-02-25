@@ -13,9 +13,10 @@ const IDB_MENU_ALREADY_INTERACTED = 'menu-already-interacted'
 let neverInteracted = false
 const shouldPlayMenuIconAppearAnimation = coins => coins < 150 && neverInteracted
 
+const $btn = document.getElementById('menu-toggle-btn')
+const $menu = document.getElementById('?')
+
 class Menu {
-  #$btn = document.getElementById('menu-toggle-btn')
-  #$menu = document.getElementById('?')
   #isOpen = false
   #ready = false
 
@@ -32,14 +33,14 @@ class Menu {
     }
 
     if (isOpen) {
-      this.focusMenu()
-      this.#$menu.scrollTo(0, 0) // reset scroll to top
+      this.#focusMenu()
+      $menu.scrollTo(0, 0) // reset menu scroll to top
     }
 
     this.#isOpen = isOpen
     doc.classList.toggle('menu-visible', isOpen)
-    this.#$btn.setAttribute('aria-expanded', isOpen)
-    this.#$btn.classList.remove(menuToggleAppears)
+    $btn.setAttribute('aria-expanded', isOpen)
+    $btn.classList.remove(menuToggleAppears)
 
     // Focus active block
     if (!isOpen) {
@@ -55,7 +56,7 @@ class Menu {
       neverInteracted = !(await idbGet(IDB_MENU_ALREADY_INTERACTED, false))
 
       doc.classList.add(menuToggleVisible)
-      this.#$btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
+      $btn.classList.toggle(menuToggleAppears, shouldPlayMenuIconAppearAnimation(coins))
     }, 200)
 
     this.#ready = true
@@ -72,7 +73,7 @@ class Menu {
     this.toggle(false)
   }
 
-  focusMenu() {
+  #focusMenu() {
     /**
      * Move the focus to the mode selector when the menu opens. Due to a
      * CSS transition on `visibility`, it can’t immediately be moved.
@@ -84,14 +85,13 @@ class Menu {
      * why we remove it in the handler, after focus.
      * Even `prefers-reduce-motion` is handled as
      * it gets a 0.001s `transition-duration`.
-     * `rAF` is for Safari, which sometimes
-     *  can’t focus on transition start.
      */
     if (!this.open) {
       function focus(e) {
         if (e.propertyName == 'visibility') {
           document.removeEventListener('transitionstart', focus)
 
+          // Workaround: Safari sometimes fail to focus on `transitionstart`.
           rAF(() => rAF(() => ModeSelector.focus()))
         }
       }
@@ -104,15 +104,16 @@ class Menu {
     const eventPath = e.composedPath()
 
     // toggle button
-    if (eventPath.includes(this.#$btn)) {
+    if (eventPath.includes($btn)) {
       return this.toggle()
     }
 
     /**
      * @todo: add condition: if Pomodoro runs, don’t close it on block hit.
      */
-    // outside of the menu
-    if (!eventPath.includes(this.#$menu) && this.open) {
+
+    // tap outside of the menu
+    if (!eventPath.includes($menu) && this.open) {
       this.close()
       stop()
     }
