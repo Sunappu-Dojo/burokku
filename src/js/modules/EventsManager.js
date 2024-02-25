@@ -1,6 +1,6 @@
-import { ModeSelector, blocks, colorSchemes, game, menu, nav, rumble, volume, wallet } from '../modules'
-import { initNav } from '../modules/Nav'
-import { serviceWorkerHandlers } from '../modules/ServiceWorker'
+import { ModeSelector, blocks, colorSchemes, game, menu, nav, rumble, volume, wallet } from '.'
+import { initNav } from './Nav'
+import { serviceWorkerHandlers } from './ServiceWorker'
 import { captureEvent } from '../utils/EventListenerOptions'
 import { isFullscreen } from '../utils/MediaQueries'
 
@@ -141,23 +141,25 @@ const init = () => {
   // document.addEventListener('colorSchemeChange', onColorSchemeChange)
 }
 
-const destroy = () => {
-  console.log('destroy events')
+// const destroy = () => {
+//   console.log('destroy events')
 
-  document.removeEventListener('click', onTap, captureEvent)
-  document.removeEventListener('keydown', onKeyDown)
-  document.removeEventListener('keyup', onKeyUp)
+//   document.removeEventListener('click', onTap, captureEvent)
+//   document.removeEventListener('keydown', onKeyDown)
+//   document.removeEventListener('keyup', onKeyUp)
 
-  document.removeEventListener('animationend', onAnimationEnd)
-  document.removeEventListener('transitionend', onTransitionEnd)
+//   document.removeEventListener('animationend', onAnimationEnd)
+//   document.removeEventListener('transitionend', onTransitionEnd)
 
-  document.removeEventListener('walletBalanceUpdate', onWalletBalanceUpdate)
-  document.removeEventListener('walletDisplayReady', onWalletDisplayReady)
-  document.removeEventListener('blockChange', onBlockChange)
-  document.removeEventListener('coinThrow', onCoinThrow)
-  document.removeEventListener('oneUp', onOneUp)
-  document.removeEventListener('modechange', onModeChange)
-}
+//   document.removeEventListener('walletBalanceUpdate', onWalletBalanceUpdate)
+//   document.removeEventListener('walletDisplayReady', onWalletDisplayReady)
+//   document.removeEventListener('blockChange', onBlockChange)
+//   document.removeEventListener('coinThrow', onCoinThrow)
+//   document.removeEventListener('oneUp', onOneUp)
+//   document.removeEventListener('modechange', onModeChange)
+//   document.removeEventListener('menuVisibility', onMenuVisibilityChange)
+//   document.removeEventListener('colorSchemeChange', onColorSchemeChange)
+// }
 
 export default function() {
   return init()

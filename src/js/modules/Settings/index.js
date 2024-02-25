@@ -2,10 +2,14 @@ export default class Setting {
   #enabled = true
   #supported = true
 
+  #$btn
+  #$labelEl
+  #labels
+
   constructor(ctnId, labelId, labels) {
-    this.btn = document.getElementById(ctnId)
-    this.labelEl = this.btn.querySelector(labelId)
-    this.labels = labels
+    this.#$btn = document.getElementById(ctnId)
+    this.#$labelEl = this.#$btn.querySelector(labelId)
+    this.#labels = labels
 
     this.detectSupport()
 
@@ -13,7 +17,7 @@ export default class Setting {
       return this.destroy()
     }
 
-    this.btn.classList.remove('setting--not-supported')
+    this.#$btn.classList.remove('setting--not-supported')
   }
 
   get enabled() {
@@ -25,7 +29,7 @@ export default class Setting {
   }
 
   onTap(e) {
-    if (e.composedPath().includes(this.btn)) {
+    if (e.composedPath().includes(this.#$btn)) {
       this.toggle()
     }
   }
@@ -34,9 +38,9 @@ export default class Setting {
     this.#enabled = Number(state)
 
     // Update UI
-    this.btn.classList.toggle('setting--on', state)
-    this.btn.setAttribute('title', this.labels[this.#enabled])
-    this.labelEl.textContent = this.labels[this.#enabled]
+    this.#$btn.classList.toggle('setting--on', state)
+    this.#$btn.setAttribute('title', this.#labels[this.#enabled])
+    this.#$labelEl.textContent = this.#labels[this.#enabled]
   }
 
   detectSupport(supported = true) {
@@ -44,6 +48,6 @@ export default class Setting {
   }
 
   destroy() {
-    this.btn.remove()
+    this.#$btn.remove()
   }
 }

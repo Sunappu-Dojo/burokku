@@ -1,14 +1,17 @@
-import createEventOptions from './helpers'
-
 /**
- * A bunch of event lister options objects. Default object:
+ * @file A bunch of event lister options objects.
  *
+ * Default object:
+ * ```
  * {
  *   capture: false,
  *   passive: true, // passive by default
  *   once: false
  * }
+ * ```
  */
+
+import createEventOptions from './helpers'
 
 export const passiveEvent = createEventOptions()
 export const activeEvent = createEventOptions({ passive: false })
