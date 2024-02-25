@@ -1,53 +1,85 @@
+// import { getAttributes } from '../../utils/Document'
 import Rumble from '../../utils/Rumble'
 import Sfx    from '../../utils/Sfx'
 import { rAF } from '../../utils/Window'
 
 import { useSounds, SOUNDS, CSS, THROTTLE } from './config'
 
+const $flippingCoins = document.getElementsByClassName(CSS.flippingCoin)
+
 export default class Block {
+  #$btn = null
+  #$coins = null
+
+  #coinSize = {}
+
+  #id
+  #canBump = true
+  #sfx
+
+  get id() {
+    return this.#id
+  }
+
+  get game() {
+    return this.#$btn.dataset.game
+  }
+
+  get coinSize() {
+    if (!this.#coinSize.width) {
+      // // Alternative implementation.
+      // this.#coinSize = getAttributes(this.#$coins[0].querySelector('svg'), 'width', 'height')
+
+      const { width: { value: width }, height: { value: height } } = this.#$coins[0].querySelector('svg').attributes
+      this.#coinSize = { width, height }
+    }
+
+    return this.#coinSize
+  }
+
   constructor(id) {
-    this.btn = document.getElementById(id)
-    this.coins = this.btn.getElementsByClassName(CSS.coins)
+    this.#id = id
+    this.#$btn = document.getElementById(id)
+    this.#$coins = this.#$btn.getElementsByClassName(CSS.coins)
 
-    this.flippingCoins = document.getElementsByClassName(CSS.flippingCoin)
-
-    this.canBump = true
-    this.canBumpTimer = null
-
-    this.makeSounds()
+    this.#makeSounds()
   }
 
   focus() {
-    this.btn.focus()
+    this.#$btn.focus()
   }
 
-  bumpBlock() {
-    this.resetBump(() => {
-      this.btn.classList.add(CSS.hit)
-      this.vibrate()
-      this.playSounds()
+  trigger() {
+    this.#$btn.dispatchEvent(new Event('click'))
+  }
+
+  #bumpBlock() {
+    this.#resetBump(() => {
+      this.#$btn.classList.add(CSS.hit)
+      this.#vibrate()
+      this.#playSounds()
     })
   }
 
-  throttleBump() {
-    this.canBump = false
-    this.canBumpTimer = setTimeout(() => this.canBump = true, THROTTLE)
+  #throttleBump() {
+    this.#canBump = false
+    setTimeout(() => this.#canBump = true, THROTTLE)
   }
 
   /**
    * Reset bump animation
    */
-  resetBump(callback) {
-    this.btn.classList.remove(CSS.hit)
-    this.btn.style.setProperty('animation', 'none')
+  #resetBump(callback) {
+    this.#$btn.classList.remove(CSS.hit)
+    this.#$btn.style.setProperty('animation', 'none')
 
     rAF(() => {
-      this.btn.style.removeProperty('animation')
+      this.#$btn.style.removeProperty('animation')
       rAF(callback)
     })
   }
 
-  throwCoin(coin, dispatchEvent = true) {
+  #throwCoin(coin, dispatchEvent = true) {
     coin.classList.add(CSS.flippingCoin)
 
     if (dispatchEvent) {
@@ -55,29 +87,29 @@ export default class Block {
     }
   }
 
-  vibrate() {
+  #makeSounds() {
+    this.#sfx = Sfx.makeFrom(SOUNDS.bump)
+  }
+
+  #playSounds() {
+    Sfx.play(this.#sfx)
+    this.#makeSounds()
+  }
+
+  #vibrate() {
     Rumble.vibrate([40, 230, 10])
   }
 
-  playSounds() {
-    Sfx.play(this.bump)
-    this.makeSounds()
-  }
-
-  makeSounds() {
-    this.bump = Sfx.makeFrom(SOUNDS.bump)
-  }
-
   onBlockChange() {
-    useSounds(this.btn.id)
-    this.makeSounds()
+    useSounds(this.#id)
+    this.#makeSounds()
   }
 
   onTap({ target, isTrusted }) {
     if (
-      !this.canBump
-      || target != this.btn
-      || this.flippingCoins.length == this.coins.length
+      !this.#canBump
+      || target != this.#$btn
+      || $flippingCoins.length == this.#$coins.length
     ) {
       return
     }
@@ -87,27 +119,35 @@ export default class Block {
      * block twice when pressing space because space triggers `keydown` and
      * `keydown` successively. It would feel bad without bump throttling.
      */
-    this.throttleBump()
+    this.#throttleBump()
 
     // Get first available coin.
-    const coin = Array.from(this.coins)
+    const coin = Array.from(this.#$coins)
       .find(coinEl => !coinEl.classList.contains(CSS.flippingCoin))
 
     if (!coin) { return }
 
-    this.bumpBlock()
-    this.throwCoin(coin, isTrusted)
+    this.#bumpBlock()
+    this.#throwCoin(coin, isTrusted)
   }
 
   /**
-   * onEnter differs from onSpace because:
-   * - Holding down Space doesn’t trigger repetition on a button, Enter does.
-   * - Pressing Enter on a link must follow it, Space doesn’t.
+   * Keyboard shortcuts: Enter, Space.
+   *
+   * Differences between Enter and Space:
+   * - holding down Enter triggers repetition on a button, but Space does not,
+   *   so we have to manually trigger it (using `onTap`) on Space press.
+   * - pressing Enter on a link must follow it, Space does not.
    */
 
   onEnter({ target }) {
+    /**
+     * Focus the block, unless…
+     * - it’s already focused;
+     * - the focus is already on a button or a link.
+     */
     if (
-      target != this.btn
+      target != this.#$btn
       && !['A', 'BUTTON'].includes(target.tagName)
     ) {
       this.focus()
@@ -115,7 +155,12 @@ export default class Block {
   }
 
   onSpace(e) {
-    if (!(e.target === this.btn)) {
+    /**
+     * Focus the block, unless…
+     * - it’s already focused;
+     * - the focus is already on a button.
+     */
+    if (e.target != this.#$btn) {
       if (e.target.tagName === 'BUTTON') { return }
       this.focus()
     }
@@ -124,18 +169,22 @@ export default class Block {
     this.onTap(e)
   }
 
+  /**
+   * Animation and transition events
+   */
+
   onAnimationEnd({ target }) {
     if (target.classList.contains(CSS.flippingCoin)) {
       return target.classList.remove(CSS.flippingCoin)
     }
 
     if (target.classList.contains(CSS.btnInner)) {
-      return this.btn.classList.remove(CSS.hit)
+      return this.#$btn.classList.remove(CSS.hit)
     }
   }
 
   onTransitionEnd({ target }) {
-    if (target === this.btn) {
+    if (target === this.#$btn) {
       this.focus()
     }
   }
