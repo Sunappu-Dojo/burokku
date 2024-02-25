@@ -25,8 +25,8 @@ export default class Classic {
   }
 
   getTitle() {
-    if (wallet.isEnabled) {
-      return `× ${wallet.money} • ${blocks.active.btn.dataset.game}`
+    if (wallet.enabled) {
+      return `× ${wallet.coins} • ${blocks.active.game}`
     }
   }
 }

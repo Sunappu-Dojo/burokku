@@ -12,6 +12,16 @@ const IDB_COINS = 'coins-amount'
 
 class Wallet {
   #enabled = false
+  #money = 0
+
+  #sfx = {
+    coin: null,
+    oneUp: null,
+  }
+
+  #$output = document.getElementById('coins')
+  #$coinIcon = document.getElementById('wallet-coin')
+  #$coinIconPath = document.getElementById('wallet-coin-use')
 
   constructor() {
     this.makeSounds(true)
@@ -24,16 +34,16 @@ class Wallet {
   }
 
   get coins() {
-    return this.money
+    return this.#money
   }
 
   set coins(value) {
-    this.money = value
+    this.#money = value
     this.toBank(value)
     document.dispatchEvent(new CustomEvent('walletBalanceUpdate', { detail: value }))
   }
 
-  get isEnabled() { return this.#enabled }
+  get enabled() { return this.#enabled }
 
   enable() {
     this.#enabled = true
@@ -73,17 +83,13 @@ class Wallet {
    * Show coins amount
    */
   display() {
-    this.output.textContent = this.coins
+    this.#$output.textContent = this.coins
   }
 
   /**
    * Prepare money count display
    */
   prepareDisplay() {
-    this.output = document.getElementById('coins')
-    this.coinIcon = document.getElementById('wallet-coin')
-    this.coinIconPath = document.getElementById('wallet-coin-use')
-
     document.getElementById('wallet').classList.add('wallet--on')
 
     document.dispatchEvent(new CustomEvent('walletDisplayReady', { detail: this.coins }))
@@ -102,11 +108,11 @@ class Wallet {
   // SFX
 
   playSounds() {
-    Sfx.play(this.coin, .1)
+    Sfx.play(this.#sfx.coin, .1)
 
     const isOneUp = this.coins % 100 === 0
     if (isOneUp) {
-      Sfx.play(this.oneUp, .2) // 1-UP 🍄
+      Sfx.play(this.#sfx.oneUp, .2) // 1-UP 🍄
       document.dispatchEvent(new CustomEvent('oneUp'))
     }
 
@@ -114,25 +120,21 @@ class Wallet {
   }
 
   makeSounds(isOneUp = false) {
-    this.coin = Sfx.makeFrom(SOUNDS.coin)
+    this.#sfx.coin = Sfx.makeFrom(SOUNDS.coin)
 
     if (isOneUp) {
-      this.oneUp = Sfx.makeFrom(SOUNDS.oneUp)
+      this.#sfx.oneUp = Sfx.makeFrom(SOUNDS.oneUp)
     }
   }
 
-  onBlockChange({ btn: { id }, coins }) {
+  onBlockChange({ id, coinSize }) {
     this.makeSounds(true)
 
     // Update coin path and dimensions
-    const {
-      width: { value: width },
-      height: { value: height },
-    } = coins[0].querySelector('svg').attributes
 
-    this.coinIconPath.setAttribute('xlink:href', `#coin-${id}-path`)
+    this.#$coinIconPath.setAttribute('xlink:href', `#coin-${id}-path`)
 
-    setAttributes(this.coinIcon, { width, height })
+    setAttributes(this.#$coinIcon, coinSize)
   }
 }
 
