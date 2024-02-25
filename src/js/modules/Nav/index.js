@@ -106,6 +106,7 @@ class Nav {
   }
 }
 
+/** @type {Nav} */
 export let nav
 
-export const initNav = (maxPosition = 0) => nav = new Nav(maxPosition)
+export const initNav = (maxPosition = 0) => nav ??= new Nav(maxPosition)

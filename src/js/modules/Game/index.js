@@ -43,6 +43,7 @@ class Game {
   }
 }
 
+/** @type {Game} */
 export let game
 
-export const initGame = () => game = new Game()
+export const initGame = () => game ??= new Game()

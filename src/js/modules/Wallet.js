@@ -138,6 +138,7 @@ class Wallet {
   }
 }
 
+/** @type {Wallet} */
 export let wallet
 
-export const initWallet = app => wallet = new Wallet(app)
+export const initWallet = app => wallet ??= new Wallet(app)

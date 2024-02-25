@@ -55,6 +55,7 @@ class Blocks {
   }
 }
 
+/** @type {Blocks} */
 export let blocks
 
-export const initBlocks = () => blocks = new Blocks()
+export const initBlocks = () => blocks ??= new Blocks()

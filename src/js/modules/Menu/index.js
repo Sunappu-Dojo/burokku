@@ -123,6 +123,7 @@ class Menu {
   onWalletBalanceUpdate = this.initToggle
 }
 
+/** @type {Menu} */
 export let menu
 
-export const initMenu = () => menu = new Menu()
+export const initMenu = () => menu ??= new Menu()

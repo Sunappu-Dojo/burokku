@@ -51,7 +51,8 @@ class ColorSchemes {
    * Prepare UI (app icons, theme-color) and watch color scheme change.
    */
   constructor() {
-    Object.entries(themeColors)
+    Object
+      .entries(themeColors)
       .map(([schemeName, elems]) => ({
         schemeName,
         schemeMQ: matchMedia(elems[0].media),
@@ -141,6 +142,7 @@ class ColorSchemes {
   // }
 }
 
+/** @type {ColorSchemes} */
 export let colorSchemes
 
-export const initColorSchemes = () => colorSchemes = new ColorSchemes()
+export const initColorSchemes = () => colorSchemes ??= new ColorSchemes()
