@@ -45,7 +45,7 @@
         "v.scss": "^1.2.1",
         "vite": "^5",
         "vite-plugin-html": "^3.2.1",
-        "vite-plugin-singlefile": "^1.0"
+        "vite-plugin-singlefile": "^2.0"
     },
     "overrides": {
         "has": "npm:@nolyfill/has@latest",
