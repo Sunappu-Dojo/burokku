@@ -1,6 +1,7 @@
+import './types'
+
 import { doc } from '../../utils/Document'
 import { CSS } from './config'
-import './types'
 import {
   DEFAULT_MODE,
   route,
@@ -22,19 +23,26 @@ export default class ModeSelector {
 
   static onTap(e) {
     if (e.target.classList.contains(CSS.btn)) {
-      this.select(e.target.dataset.mode)
+      this.#select(e.target.dataset.mode)
     }
   }
 
   static setFromUrl() {
-    this.select(isPomodoro() ? 'pomodoro' : 'classic')
+    this.#select(isPomodoro() ? 'pomodoro' : 'classic')
+  }
+
+  /**
+   * Moves the focus to the mode selector.
+   */
+  static focus() {
+    focusBtn(this.#mode)
   }
 
   /**
    * Select a mode.
    * @param {Mode} mode
    */
-  static select(mode) {
+  static #select(mode) {
     if (this.#mode == mode || !route(mode)) { return }
 
     // Update buttons status
@@ -48,12 +56,5 @@ export default class ModeSelector {
     // Update history and dispatch `modechange` event.
     history.replaceState({}, '', route(mode))
     document.dispatchEvent(new CustomEvent('modechange', { detail: { mode } }))
-  }
-
-  /**
-   * Moves the focus to the mode selector.
-   */
-  static focus() {
-    focusBtn(this.#mode)
   }
 }

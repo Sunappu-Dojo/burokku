@@ -1,1 +1,1 @@
-export const isSupported = 'serviceWorker' in navigator
+export const supported = 'serviceWorker' in navigator

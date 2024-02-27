@@ -9,37 +9,45 @@ const modes = {
 class Game {
   #game
 
+  get game() {
+    return this.#game
+  }
+
+  get status() {
+    return this.#game.status
+  }
+
   constructor() {
-    if (!this.game) {
+    if (!this.#game) {
       this.initGame()
     }
   }
 
-  updateTitle() {
-    document.title = this.game.getTitle()
+  initGame() {
+    this.#game?.destroy()
+    this.#game = new modes[ModeSelector.selected]()
+    this.#game.init()
   }
 
-  initGame() {
-    this.game?.destroy()
-    this.game = new modes[ModeSelector.selected](this)
-    this.game.init()
+  updateTitle() {
+    document.title = this.#game.getTitle()
   }
 
   onBlockChange(e) {
-    this.game?.onBlockChange?.()
+    this.#game?.onBlockChange?.()
     this.updateTitle()
   }
 
   onCoinThrow(e) {
-    this.game?.onCoinThrow(e.detail)
+    this.#game?.onCoinThrow(e.detail)
   }
 
   onSpace(e) {
-    this.game.onSpace?.(e)
+    this.#game.onSpace?.(e)
   }
 
   onEnter(e) {
-    this.game.onEnter?.(e)
+    this.#game.onEnter?.(e)
   }
 }
 

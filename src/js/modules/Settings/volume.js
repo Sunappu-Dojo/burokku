@@ -1,5 +1,5 @@
 import Sfx from '../../utils/Sfx'
-import Setting from '.'
+import Setting from './base-class'
 
 const soundBtnId = 'sound'
 const soundLabelIdSelector = '#sound-label'

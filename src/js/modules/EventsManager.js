@@ -40,10 +40,6 @@ const onTap = (e) => {
    * chain. It is useful for cases like “click outside” (close a menu,
    * for example), where you don’t want another “element” that can
    * be clicked to trigger an interaction while a menu is open.
-   *
-   * @todo: Consider switching from `game.module` to a module, like for
-   * `ModeSelector`): let’s try this, then evaluate if switching to
-   * the commented code below is better.
    */
   const sequence = [
     menu,
@@ -79,8 +75,7 @@ const onKeyDown = (e) => {
 
   // @todo: improve Escape sequence with a stop function (?)
   if (e.key === 'Escape') {
-
-    if (game.game?.status == 'playing') {
+    if (game.status == 'playing') {
 
       /**
        * Prevent leaving the fullscreen during Pomodoro.

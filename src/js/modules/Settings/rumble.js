@@ -1,5 +1,5 @@
 import Rumble from '../../utils/Rumble'
-import Setting from '.'
+import Setting from './base-class'
 
 const rumbleId = 'rumble'
 const rumbleLabelIdSelector = '#rumble-label'

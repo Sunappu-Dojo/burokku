@@ -17,11 +17,11 @@ const $btn = document.getElementById('menu-toggle-btn')
 const $menu = document.getElementById('?')
 
 class Menu {
-  #isOpen = false
   #ready = false
+  #open = false
 
   get open() {
-    return this.#isOpen
+    return this.#open
   }
 
   /**
@@ -37,7 +37,7 @@ class Menu {
       $menu.scrollTo(0, 0) // reset menu scroll to top
     }
 
-    this.#isOpen = isOpen
+    this.#open = isOpen
     doc.classList.toggle('menu-visible', isOpen)
     $btn.setAttribute('aria-expanded', isOpen)
     $btn.classList.remove(menuToggleAppears)

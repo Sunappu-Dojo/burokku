@@ -1,4 +1,4 @@
-import { isSupported }  from '../utils/ServiceWorker/support'
+import { supported }  from '../utils/ServiceWorker/support'
 import { isStandalone } from '../utils/MediaQueries'
 
 let installBtn = document.getElementById('sw-install')
@@ -8,7 +8,7 @@ const removeInstallButton = () => installBtn = installBtn?.remove()
 let addToHome
 
 export const initServiceWorker = () => {
-  if (!isSupported) { return }
+  if (!supported) { return }
 
   import('../utils/ServiceWorker').then(({ register, setupAppInstall }) => {
     register('/block-service-worker.js')
