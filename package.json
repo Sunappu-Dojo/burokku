@@ -29,7 +29,7 @@
         "@playwright/test": "^1.41.2",
         "@rollup/plugin-eslint": "^9.0.5",
         "@size-limit/preset-app": "^11",
-        "browserslist": "^4.22.2",
+        "browserslist": "^4.22.3",
         "browserslist-to-esbuild": "^2.1.0",
         "cssnano": "^6",
         "double-dash.scss": "^1",
