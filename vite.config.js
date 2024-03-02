@@ -69,18 +69,10 @@ export default defineConfig({
         'block-service-worker': resolve('./src/js/service-worker.js'),
       },
       output: {
-        // Preserve filenames, needed for Service Worker.
+        // Preserve filenames, needed for Service Worker caching.
         entryFileNames: '[name].js', // JS entries
-        chunkFileNames: 'js/modules/[name].js', // dynamic imports
+        chunkFileNames: 'js/modules/[name].js', // JS chunks
         assetFileNames: 'css/block.css', // other files (CSS only for now)
-
-        /**
-         * Prevent NPM packages to be extracted to a separate `vendor` chunks
-         * (loaded as `modulepreload`, unsupported by Firefox and Safari):
-         * - https://rollupjs.org/guide/en/#outputmanualchunks
-         * - https://github.com/vitejs/vite/discussions/2462
-         */
-        manualChunks: [],
       },
     },
   },
