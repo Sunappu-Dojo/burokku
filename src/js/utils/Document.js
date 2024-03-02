@@ -10,7 +10,6 @@ export const head = document.head
  */
 export const setAttributes = (element, attrs) => {
   Object.entries(attrs).forEach(([name, value]) => {
-    console.log(name, value)
     if (value == null) {
       return element.removeAttribute(name)
     }
