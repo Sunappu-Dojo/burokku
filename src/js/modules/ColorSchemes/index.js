@@ -1,8 +1,8 @@
 /** @type {import('./types')} */
 
-import { doc, setAttributes }             from '../../helpers/Document'
-// import { idbDel, idbGet, idbSet }         from '../../helpers/Storage/idb'
-import { idbDel, idbGet, idbSet }         from '../../helpers/Storage/idbLegacy'
+import { menu } from '..'
+import { doc, setAttributes }             from '../../utils/Document'
+import { idbDel, idbGet, idbSet }         from '../../utils/Storage'
 
 import { setFavicons }                    from './app-icons'
 import { setMetaThemeColor, themeColors } from './meta-theme-color'
@@ -50,10 +50,9 @@ class ColorSchemes {
   /**
    * Prepare UI (app icons, theme-color) and watch color scheme change.
    */
-  constructor(app) {
-    this.app = app
-
-    Object.entries(themeColors)
+  constructor() {
+    Object
+      .entries(themeColors)
       .map(([schemeName, elems]) => ({
         schemeName,
         schemeMQ: matchMedia(elems[0].media),
@@ -114,7 +113,7 @@ class ColorSchemes {
    */
   ariaAnnounce() {
     setAttributes($nameLiveRegion, {
-      role: this.app.menu.open ? 'status' : null
+      role: menu.open ? 'status' : null
     })
   }
 
@@ -143,6 +142,7 @@ class ColorSchemes {
   // }
 }
 
-export default function(app) {
-  return new ColorSchemes(app)
-}
+/** @type {ColorSchemes} */
+export let colorSchemes
+
+export const initColorSchemes = () => colorSchemes ??= new ColorSchemes()

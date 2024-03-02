@@ -1,4 +1,4 @@
-import { getAudioFrom } from './helpers'
+import { getAudioFrom } from './utils'
 
 // @todo: remove when Safari 14.4 is deprecated
 const AudioContext = window.AudioContext || window.webkitAudioContext
@@ -18,12 +18,14 @@ let volumeLevel = 1
  *
  * Examples:
  *
+ * ```
  * const mySound = Sfx.makeFrom('my/sound/url.mp3')
  * Sfx.play(mySound) // or Sfx.play(mysound, 2)
  *
  * Sfx.setVolume(0) // no more sound
  * Sfx.setVolume(.5) // sound volume is 50%
  * Sfx.setVolume(1) // sound volume is 100%
+ * ```
  */
 export default class Sfx {
 
@@ -66,7 +68,7 @@ export default class Sfx {
     // Get Sound level
     volume.gain.value = volumeLevel
 
-    if (audioContext.state === 'suspended') {
+    if (audioContext.state == 'suspended') {
       audioContext.resume()
     }
 
@@ -76,7 +78,7 @@ export default class Sfx {
   /**
    * Control the sound volume.
    *
-   * @param {number=} level Sound volume between 0 and 1.
+   * @param {number} [level=1] Sound volume between 0 and 1 (default).
    *
    * @returns {number}
    */

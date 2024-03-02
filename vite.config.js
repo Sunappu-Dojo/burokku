@@ -37,7 +37,7 @@ const htmlOptions = {
 const singleFileOptions = {
   useRecommendedBuildConfig: false,
   inlinePattern: [
-    'js/helpers/Storage/idbDetect.js',
+    'js/helpers/idbDetect.js',
   ],
 }
 
@@ -64,7 +64,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         'js/burokku': resolve('./src/index.html'),
-        'js/helpers/Storage/idbDetect': resolve('./src/js/helpers/Storage/idbDetect.js'),
+        'js/helpers/idbDetect': resolve('./src/js/helpers/idbDetect.js'),
+        'js/utils/ServiceWorker': resolve('./src/js/utils/ServiceWorker/index.js'),
         'block-service-worker': resolve('./src/js/service-worker.js'),
       },
       output: {

@@ -1,5 +1,5 @@
-import Rumble from '../../helpers/Rumble'
-import Setting from '.'
+import Rumble from '../../utils/Rumble'
+import Setting from './base-class'
 
 const rumbleId = 'rumble'
 const rumbleLabelIdSelector = '#rumble-label'
@@ -16,7 +16,7 @@ class RumbleSetting extends Setting {
   }
 
   detectSupport() {
-    super.detectSupport(Rumble.isSupported())
+    super.detectSupport(Rumble.supported)
   }
 }
 

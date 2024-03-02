@@ -11,13 +11,13 @@
     <meta name="color-scheme" content="dark light only">
 
     <!-- Detect IndexedDB availability. -->
-    <!-- Documentation: src/js/helpers/StorageDetect.js -->
+    <!-- Documentation: src/js/helpers/idbDetect.js -->
     <!-- Declaring globals here prevents their renaming at compile time. -->
     <script>
       let idbAvailable = false
       let idbAvailabilityDetected = false
     </script>
-    <script src="/js/helpers/Storage/idbDetect.js"></script>
+    <script src="/js/helpers/idbDetect.js"></script>
 
     <script type="module" src="/js/burokku.js"></script>
     <link rel="stylesheet" href="/sass/block.scss">

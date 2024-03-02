@@ -1,76 +1,18 @@
-import { doc }    from './helpers/Document'
-import initEvents from './events/EventsManager'
+import { initBlocks }       from './modules/BlocksManager'
+import { initColorSchemes } from './modules/ColorSchemes'
+import initEvents           from './modules/EventsManager'
+import { initGame }         from './modules/Game'
+import { initMenu }         from './modules/Menu'
+import { initServiceWorker } from './modules/ServiceWorker'
+import { initWallet }       from './modules/Wallet'
+import { doc }              from './utils/Document'
 
-import { Classic } from './modes'
+doc.classList.replace('no-js', 'js')
 
-import {
-  ModeSelector,
-  initBlocks, initColorSchemes, initMenu, initWallet,
-  rumble, volume, // settings
-}                 from './modules'
-
-const installBtnId = 'sw-install'
-const installBtnVisible = 'app-install--visible'
-
-class Burokku {
-  #game
-
-  constructor() {
-    this.modes = {
-      classic: Classic,
-    }
-
-    this.init()
-  }
-
-  updateTitle() {
-    document.title = this.game.getTitle()
-  }
-
-  onTap({ target }, stop) {
-    if (target.id === installBtnId) {
-      this.sw?.addToHome()
-      stop()
-    }
-  }
-
-  init() {
-    doc.classList.replace('no-js', 'js')
-
-    initEvents(this)
-
-    this.blocks = initBlocks()
-    this.wallet = initWallet()
-    this.menu = initMenu(this)
-    this.colorSchemes = initColorSchemes(this)
-    this.settings = { rumble, volume }
-
-    ModeSelector.setFromUrl()
-    if (!this.game) {
-      this.initGame()
-    }
-
-    this.initServiceWorker()
-  }
-
-  initGame() {
-    this.game?.destroy()
-    this.game = new this.modes[ModeSelector.selected](this)
-    this.game.init()
-  }
-
-  initServiceWorker() {
-    import('./modules/ServiceWorker').then(({ default: SW }) => {
-      if (!SW.isSupported) { return }
-
-      const installBtn = document.getElementById(installBtnId)
-
-      this.sw = new SW({
-        initInstallPrompt: () => installBtn.classList.add(installBtnVisible),
-        onInstall: () => installBtn.remove()
-      })
-    })
-  }
-}
-
-new Burokku()
+initEvents()
+initBlocks()
+initWallet()
+initMenu()
+initGame()
+initColorSchemes()
+initServiceWorker()

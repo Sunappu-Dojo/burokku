@@ -14,11 +14,10 @@ const fetchAndReturnBuffer = url =>
  * @param {string} url
  * @returns {Promise<ArrayBuffer>}
  */
-export async function getAudioFrom(url) {
+export const getAudioFrom = async url =>
 
   // Fetch and store audio bytes.
-  buffers[url] ??= await fetchAndReturnBuffer(url)
+  (buffers[url] ??= await fetchAndReturnBuffer(url))
 
   // Return a clone of the stored audio data.
-  return buffers[url].slice(0)
-}
+    .slice(0)

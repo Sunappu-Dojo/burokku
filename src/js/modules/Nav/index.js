@@ -1,19 +1,36 @@
-import { clamp }          from '../../helpers/Math'
-// import { idbGet, idbSet } from '../../helpers/Storage'
-import { idbGet, idbSet } from '../../helpers/Storage/idbLegacy'
+import { clamp }          from '../../utils/Math'
+import { idbGet, idbSet } from '../../utils/Storage'
 import CSS from './config'
 
-const ctn = document.getElementById(CSS.ctn)
-const blocks = ctn.getElementsByClassName(CSS.block)
+const $ctn = document.getElementById(CSS.ctn)
+const $blocks = $ctn.getElementsByClassName(CSS.block)
 
 // Navigation arrows
-const nav = document.getElementById(CSS.nav)
-const prevBtn = nav.querySelector(`.${CSS.prev}`)
-const nextBtn = nav.querySelector(`.${CSS.next}`)
+const $nav = document.getElementById(CSS.nav)
+const $prevBtn = $nav.querySelector(`.${CSS.prev}`)
+const $nextBtn = $nav.querySelector(`.${CSS.next}`)
 
+/**
+ * Update previous/next arrows
+ */
 function updateArrows() {
-  prevBtn.toggleAttribute('disabled', currentIndex == 0)
-  nextBtn.toggleAttribute('disabled', currentIndex == blocks.length - 1)
+  $prevBtn.toggleAttribute('disabled', currentIndex == 0)
+  $nextBtn.toggleAttribute('disabled', currentIndex == $blocks.length - 1)
+}
+
+/**
+ * Save position
+ */
+function savePosition(position) {
+  idbSet('current-block', position)
+}
+
+/**
+ * Load position
+ */
+async function loadPosition(maxPosition = 0) {
+  // It might be useful to clamp during dev.
+  return clamp(await idbGet('current-block', maxPosition), 0, maxPosition)
 }
 
 let currentIndex = 0
@@ -24,44 +41,42 @@ let currentIndex = 0
  *
  * - .prev() : navigate to previous block
  * - .next() : navigate to next block
- * - .tap(navigationButtonElement) : trigger a click on a navigation arrow
  * - .onTap(clickEvent) : handle navigation on navigation button click
- * - .current : index of current block
  */
 class Nav {
   constructor(maxPosition) {
-    this.loadPosition(maxPosition).then(position =>
-      this.current = position
+    loadPosition(maxPosition).then(position =>
+      this.#current = position
     )
   }
 
-  get current() {
+  get #current() {
     return currentIndex
   }
 
-  set current(index) {
+  set #current(index) {
     currentIndex = index
-    ctn.style.setProperty('--current', index)
+    $ctn.style.setProperty('--current', index)
     updateArrows()
 
     document.dispatchEvent(new CustomEvent('blockChange', {
       detail: index,
-      isEdge: prevBtn.disabled || nextBtn.disabled, // @todo: why this prop?
+      isEdge: $prevBtn.disabled || $nextBtn.disabled, // @todo: why this prop?
     }))
 
-    this.savePosition(index)
+    savePosition(index)
   }
 
-  prev() { this.tap(prevBtn) }
-  next() { this.tap(nextBtn) }
+  prev() { this.#tap($prevBtn) }
+  next() { this.#tap($nextBtn) }
 
   last() {
-    this.current = blocks.length - 1
+    this.#current = $blocks.length - 1
   }
 
-  tap(arrow) {
+  #tap(arrow) {
     if (!arrow.disabled) {
-      this.current += parseInt(arrow.dataset.dir)
+      this.#current += parseInt(arrow.dataset.dir)
     }
   }
 
@@ -72,11 +87,13 @@ class Nav {
 
   onTap({ target }) {
     if (target.closest(`.${CSS.btn}`)) {
-      this.tap(target)
+      this.#tap(target)
     }
   }
 
   onTab(e) {
+    // Check if previous/next focus is a block.
+
     const adjacentEl =
       e.shiftKey
         ? e.target.previousElementSibling
@@ -89,24 +106,10 @@ class Nav {
     return e.shiftKey ? this.prev() : this.next()
   }
 
-  update = updateArrows
-
-  /**
-   * Save position
-   */
-  savePosition(position) {
-    idbSet('current-block', position)
-  }
-
-  /**
-   * Load position
-   */
-  async loadPosition(maxPosition = 0) {
-    // It might be useful to clamp during dev.
-    return clamp(await idbGet('current-block', maxPosition), 0, maxPosition)
-  }
+  update = updateArrows // not sure it will be useful… (YAGNI)
 }
 
-export default function(maxPosition = 0) {
-  return new Nav(maxPosition)
-}
+/** @type {Nav} */
+export let nav
+
+export const initNav = (maxPosition = 0) => nav ??= new Nav(maxPosition)

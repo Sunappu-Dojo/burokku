@@ -1,34 +1,32 @@
+import { blocks, game, wallet } from '../modules'
+
 export default class Classic {
   // name = 'classic'
 
-  constructor(app) {
-    this.app = app
-  }
-
   init() {
-    this.app.wallet.enable()
+    wallet.enable()
   }
 
   destroy() {
-    this.app.wallet.disable()
+    wallet.disable()
   }
 
   onCoinThrow(coins) {
-    this.app.wallet.onCoinThrow(coins)
-    this.app.updateTitle()
+    wallet.onCoinThrow(coins)
+    game.updateTitle()
   }
 
   onSpace(e) {
-    this.app.blocks.active.onSpace(e)
+    blocks.active.onSpace(e)
   }
 
   onEnter(e) {
-    this.app.blocks.active.onEnter(e)
+    blocks.active.onEnter(e)
   }
 
   getTitle() {
-    if (this.app.wallet.isEnabled) {
-      return `× ${this.app.wallet.money} • ${this.app.blocks.active.btn.dataset.game}`
+    if (wallet.enabled) {
+      return `× ${wallet.coins} • ${blocks.active.game}`
     }
   }
 }

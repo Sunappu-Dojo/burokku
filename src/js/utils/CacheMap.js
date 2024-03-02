@@ -1,4 +1,8 @@
-// First-time written in https://github.com/DCMLab/reductive_analysis_app/commits/0e93a8b651c77e87786342b5152a47f65cc58c5c/src/js/new/utils/cache.js
+/**
+ * @file A cache system based on `Map`.
+ * Being packaged in https://github.com/meduzen/cachemap
+ * First-time written in https://github.com/DCMLab/reductive_analysis_app/commits/0e93a8b651c77e87786342b5152a47f65cc58c5c/src/js/new/utils/cache.js
+ */
 
 /**
  * An extension of Map to use it as a cache.

@@ -1,46 +1,34 @@
-export default class ServiceWorker {
-  constructor(options) {
-    this.options = options
-    this.defferedInstallPrompt = null
+import { supported }  from '../utils/ServiceWorker/support'
+import { isStandalone } from '../utils/MediaQueries'
 
-    this.init()
-  }
+let installBtn = document.getElementById('sw-install')
+const removeInstallButton = () => installBtn = installBtn?.remove()
 
-  static isSupported = 'serviceWorker' in navigator
+/** @type {Function | undefined} addToHome Show the website “install” prompt. */
+let addToHome
 
-  install() {
-    if (!navigator.serviceWorker.controller) {
-      navigator.serviceWorker.register('/block-service-worker.js')
+export const initServiceWorker = () => {
+  if (!supported) { return }
+
+  import('../utils/ServiceWorker').then(({ register, setupAppInstall }) => {
+    register('/block-service-worker.js')
+
+    // Setup add to home screen. A `standalone` app already went there.
+
+    if (isStandalone()) { return removeInstallButton() }
+
+    addToHome = setupAppInstall({
+      initPrompt: () => installBtn.classList.add('app-install--visible'),
+      onInstall: removeInstallButton,
+    })
+  })
+}
+
+export const serviceWorkerHandlers = {
+  onTap: ({ target }, stop) => {
+    if (target === installBtn) {
+      addToHome()
+      stop()
     }
-  }
-
-  // Delay “add to home screen” prompt.
-  waitInstallPrompt() {
-    window.addEventListener('beforeinstallprompt', e => {
-      e.preventDefault()
-      this.defferedInstallPrompt = e
-
-      if ('initInstallPrompt' in this.options) {
-        this.options.initInstallPrompt()
-      }
-    })
-  }
-
-  addToHome() {
-    if (!this.defferedInstallPrompt) { return }
-
-    this.defferedInstallPrompt.prompt()
-
-    this.defferedInstallPrompt.userChoice.then(choice => {
-      if (choice.outcome != 'accepted') { return }
-
-      this.defferedInstallPrompt = null
-      this.options.onInstall?.()
-    })
-  }
-
-  init() {
-    this.install()
-    this.waitInstallPrompt()
   }
 }
