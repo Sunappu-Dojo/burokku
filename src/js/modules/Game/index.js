@@ -1,9 +1,7 @@
-import { Classic, Pomodoro } from '../../modes'
-import { ModeSelector } from '..'
+import { Classic } from '../../modes'
 
 const modes = {
   classic: Classic,
-  pomodoro: Pomodoro,
 }
 
 class Game {
@@ -25,7 +23,7 @@ class Game {
 
   initGame() {
     this.#game?.destroy()
-    this.#game = new modes[ModeSelector.selected]()
+    this.#game = new modes.classic()
     this.#game.init()
   }
 

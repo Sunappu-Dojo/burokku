@@ -2,7 +2,6 @@ import { doc } from '../../utils/Document'
 import { idbGet, idbSet } from '../../utils/Storage'
 import { rAF } from '../../utils/Window'
 import { blocks } from '../BlocksManager'
-import ModeSelector from '../ModeSelector'
 
 const menuToggleVisible = 'menu-toggle-visible'
 const menuToggleAppears = 'menu__toggle--appears'
@@ -92,7 +91,7 @@ class Menu {
           document.removeEventListener('transitionstart', focus)
 
           // Workaround: Safari sometimes fail to focus on `transitionstart`.
-          rAF(() => rAF(() => ModeSelector.focus()))
+          rAF(() => rAF(() => $menu.querySelector('button').focus()))
         }
       }
 
@@ -107,10 +106,6 @@ class Menu {
     if (eventPath.includes($btn)) {
       return this.toggle()
     }
-
-    /**
-     * @todo: add condition: if Pomodoro runs, don’t close it on block hit.
-     */
 
     // tap outside of the menu
     if (!eventPath.includes($menu) && this.open) {

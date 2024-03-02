@@ -1,4 +1,3 @@
-import { ModeSelector }     from './modules'
 import { initBlocks }       from './modules/BlocksManager'
 import { initColorSchemes } from './modules/ColorSchemes'
 import initEvents           from './modules/EventsManager'
@@ -15,6 +14,5 @@ initBlocks()
 initWallet()
 initMenu()
 initGame()
-ModeSelector.setFromUrl()
 initColorSchemes()
 initServiceWorker()

@@ -1,8 +1,7 @@
-import { ModeSelector, blocks, colorSchemes, game, menu, nav, rumble, volume, wallet } from '.'
+import { blocks, colorSchemes, game, menu, nav, rumble, volume, wallet } from '.'
 import { initNav } from './Nav'
 import { serviceWorkerHandlers } from './ServiceWorker'
 import { captureEvent } from '../utils/EventListenerOptions'
-import { isFullscreen } from '../utils/MediaQueries'
 
 const onBlockChange = e => {
   blocks?.onBlockChange(e)
@@ -43,7 +42,6 @@ const onTap = (e) => {
    */
   const sequence = [
     menu,
-    ModeSelector,
     colorSchemes,
     blocks?.active,
     nav,
@@ -74,24 +72,7 @@ const onKeyDown = (e) => {
   if (e.key === 'Enter') { return game.onEnter?.(e) }
 
   // @todo: improve Escape sequence with a stop function (?)
-  if (e.key === 'Escape') {
-    if (game.status == 'playing') {
-
-      /**
-       * Prevent leaving the fullscreen during Pomodoro.
-       *
-       * @todo: should be a more elegant system to decide if full screen
-       * should be prevented or not.
-       */
-      if (isFullscreen()) {
-        e.preventDefault()
-      }
-
-      // game.game?.onEscape()
-      return game.game.pause()
-    }
-    return menu.onEscape()
-  }
+  if (e.key === 'Escape') { return menu.onEscape() }
 }
 
 /** @param {KeyboardEvent} */
