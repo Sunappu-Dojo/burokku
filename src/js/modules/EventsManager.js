@@ -1,4 +1,4 @@
-import { blocks, colorSchemes, game, menu, nav, rumble, volume, wallet } from '.'
+import { blocks, colorSchemes, game, getMenu, nav, rumble, volume, wallet } from '.'
 import { initNav } from './Nav'
 import { serviceWorkerHandlers } from './ServiceWorker'
 import { captureEvent } from '../utils/EventListenerOptions'
@@ -19,12 +19,12 @@ const onOneUp = () => {
   }
 }
 
-const onWalletBalanceUpdate = (e) => menu.onWalletBalanceUpdate(e.detail)
+const onWalletBalanceUpdate = (e) => getMenu()?.onWalletBalanceUpdate(e.detail)
 
 const onWalletDisplayReady = (e) => {
   blocks?.onWalletDisplayReady(e.detail)
   initNav(Math.floor(e.detail / 100))
-  menu.onWalletDisplayReady(e.detail)
+  getMenu()?.onWalletDisplayReady(e.detail)
 }
 
 const onCoinThrow = e => game?.onCoinThrow(e)
@@ -41,7 +41,7 @@ const onTap = (e) => {
    * be clicked to trigger an interaction while a menu is open.
    */
   const sequence = [
-    menu,
+    getMenu(),
     colorSchemes,
     blocks?.active,
     nav,
@@ -72,7 +72,7 @@ const onKeyDown = (e) => {
   if (e.key === 'Enter') { return game.onEnter?.(e) }
 
   // @todo: improve Escape sequence with a stop function (?)
-  if (e.key === 'Escape') { return menu.onEscape() }
+  if (e.key === 'Escape') { return getMenu()?.onEscape() }
 }
 
 /** @param {KeyboardEvent} */
@@ -91,7 +91,14 @@ const onModeChange = e => {
   game.updateTitle()
 }
 
-const onMenuVisibilityChange = e => colorSchemes.onMenuVisibilityChange(e)
+const onMenuVisibilityChange = e => {
+  colorSchemes.onMenuVisibilityChange(e)
+
+  // Focus active block on menu close.
+  if (!getMenu().open) {
+    blocks.active.focus()
+  }
+}
 
 // const onColorSchemeChange = (e) => colorSchemes.onColorSchemeChange(e)
 

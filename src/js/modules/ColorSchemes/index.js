@@ -1,6 +1,6 @@
 /** @type {import('./types')} */
 
-import { menu } from '..'
+import { getMenu } from '..'
 import { doc, setAttributes }             from '../../utils/Document'
 import { idbDel, idbGet, idbSet }         from '../../utils/Storage'
 
@@ -113,7 +113,7 @@ class ColorSchemes {
    */
   ariaAnnounce() {
     setAttributes($nameLiveRegion, {
-      role: menu.open ? 'status' : null
+      role: getMenu()?.open ? 'status' : null
     })
   }
 

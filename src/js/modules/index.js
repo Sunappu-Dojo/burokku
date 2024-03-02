@@ -1,7 +1,7 @@
 export { blocks } from './BlocksManager'
 export { colorSchemes } from './ColorSchemes'
 export { game } from './Game'
-export { menu } from './Menu'
+export { getMenu } from './Menu'
 export { nav } from './Nav'
 export { rumble, volume } from './Settings'
 export { wallet } from './Wallet'
