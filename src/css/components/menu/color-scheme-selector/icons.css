@@ -1,6 +1,3 @@
-@use '../../../variables' as *;
-@use '../../../abstract' as *;
-
 .color-scheme__icon__ctn {
   position: relative;
   size: 4rem;
@@ -21,10 +18,10 @@
 .color-scheme__icon--dark {
 
   @media (--motion) {
-    transition: transform 1.6s $in-out-quad;
+    transition: transform 1.6s var(--in-out-quad);
   }
 
-  @include light {
+  @media (--light) {
     transform: translate3d(50%, -100%, 0) rotate(20deg) scale(0);
 
     @media (--motion) {
@@ -38,14 +35,14 @@
 .color-scheme__icon--light {
 
   @media (--motion) {
-    transition: transform .6s $out-quad;
+    transition: transform .6s var(--out-quad);
   }
 
-  @include dark {
+  @media (--dark) {
     transform: translateY(4rem) scale(0);
 
     @media (--motion) {
-      transition: transform .8s $in-quad;
+      transition: transform .8s var(--in-quad);
     }
   }
 }
@@ -53,23 +50,23 @@
 .sun__core {
 
   @media (--motion) {
-    transition: transform .4s $in-out-quad .15s;
+    transition: transform .4s var(--in-out-quad) .15s;
   }
 
-  @include dark {
+  @media (--dark) {
     transform: scale(.3);
 
     @media (--motion) {
-      transition: transform .6s $out-quad .5s;
+      transition: transform .6s var(--out-quad) .5s;
     }
   }
 }
 
 .sun__beam {
 
-  @include light {
+  @media (--light) {
     @media (--motion) {
-      transition: transform .35s $out-back .5s;
+      transition: transform .35s var(--out-back) .5s;
 
       // stagger the transition of the sun beams
 
@@ -80,19 +77,19 @@
 
       transition-delay: calc(
         (
-          v(sun-beam-base-delay)
-          + v(sun-beam-index, 1) * v(sun-beam-split-delay)
+          var(--sun-beam-base-delay)
+          + var(--sun-beam-index, 1) * var(--sun-beam-split-delay)
         )
         * 1s
       );
     }
   }
 
-  @include dark {
+  @media (--dark) {
     transform: scale(.1);
 
     @media (--motion) {
-      transition: transform .6s $out-quad .5s;
+      transition: transform .6s var(--out-quad) .5s;
     }
   }
 }

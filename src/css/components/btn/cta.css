@@ -1,0 +1,123 @@
+.cta {
+  size: 28rem 4.7rem;
+
+  // display: inline-grid;
+  // grid-auto-flow: column;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 1rem;
+
+  font-size: 2rem;
+  user-select: none;
+
+  background: var(--btn-bg);
+  border: var(--turquoise) solid .3rem;
+  border-radius: .8rem;
+
+  @media (--motion) {
+    animation: border-glow 3s linear infinite;
+  }
+
+  @media (--tablet-7) {
+    height: 7.6rem;
+
+    font-size: 2.6rem;
+
+    border-width: .5rem;
+  }
+
+  // maybe remove @supports and don’t use :has…
+  @supports not selector(:has(:focus-visible)) {
+    &:is(
+    :hover,
+    :focus-visible,
+    :not(:focus-visible):focus-within // for `.cta > input[type=file]`
+    ) {
+      animation-duration: 1s;
+    }
+  }
+
+  @supports selector(:has(:focus-visible)) {
+    &:is(
+      :hover,
+      :has(:focus-visible) // does not work on regular hollow CTA
+    ) {
+      animation-duration: 1s;
+    }
+  }
+}
+
+.cta--small {
+  size: auto auto;
+  padding: .5em 2em;
+
+  font-size: 1.5rem;
+  // line-height: 1;
+
+  border-radius: .4rem;
+  border-width: .2rem;
+}
+
+.cta--hollow {
+  &:not(:hover, :focus-visible) {
+    border-color: var(--primary);
+    animation: none;
+
+    &::before {
+      content: none;
+    }
+  }
+}
+
+.cta--reverse {
+  position: relative;
+
+  background: var(--accent);
+  color: var(--btn-bg);
+
+  transition: background-color .15s var(--in-out-quad);
+
+  @media (--dark) {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+
+  &:not(:hover, :focus-visible) {
+    border-color: transparent;
+    animation: none;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  &:is(:hover, :focus-visible) {
+    background: var(--accent-pale);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    border: .1rem solid;
+    border-radius: .2rem;
+  }
+}
+
+.cta--on-hover {
+  background: none;
+  border-color: transparent;
+  outline: .1rem solid var(--bg);
+  outline-offset: -.5rem;
+
+  animation: none;
+
+  &:is(:hover, :focus-visible) {
+    background: var(--btn-bg);
+
+    @media (--motion) {
+      animation: border-glow 1s linear infinite;
+    }
+  }
+}

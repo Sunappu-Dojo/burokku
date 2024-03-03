@@ -1,0 +1,11 @@
+.menu__svg {
+  size: var(--svg-w, unset) auto;
+}
+
+.menu__svg--code {
+  @media (--phone) { --svg-w: 2.4rem; }
+}
+
+.menu__svg--mastodon {
+  @media (--phone) { --svg-w: 1.7rem; }
+}

@@ -1,0 +1,111 @@
+.tooltip-ctn {
+  position: relative;
+
+  /**
+   * Only showing the tooltip on focus or on hover – but not on both happening
+   * simultaneously – seems to give a better user experience. It allows the
+   * tooltip to gracefully disappear when its container has been activated.
+   */
+  &:hover:not(:focus-visible),
+  &:focus-visible:not(:hover) {
+    .tooltip {
+      opacity: 1;
+      visibility: visible;
+      transition-delay: var(--tooltip-delay, .3s);
+    }
+  }
+}
+
+.tooltip {
+  --tooltip-color: var(--accent);
+  --tooltip-bg: var(--btn-bg);
+  --tooltip-border: var(--btn-bg);
+
+  position: absolute;
+
+  padding: .2em .5em;
+
+  font-size: 1.4rem;
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+
+  background: var(--tooltip-bg);
+  border: .2rem solid var(--tooltip-border);
+  border-radius: .4rem; // (font-size * line-height + horizontal padding + border width) / 2
+  color: var(--tooltip-color);
+  filter: drop-shadow(0 0 .3rem hsl(0deg 0% 0% / .1));
+  opacity: 0;
+  visibility: hidden;
+
+  transition: opacity .3s ease .3s;
+  transition-property: opacity, visibility;
+
+  @media (--tablet-7) {
+    font-size: 1.5rem;
+  }
+
+  /**
+   * Tooltip notch, made with the CSS triangle technique
+   * (https://css-tricks.com/snippets/css/css-triangle)
+   *
+   * - before: outer triangle (border)
+   * - after: inner triangle (background)
+   */
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    inset:
+      var(--tooltip-notch-top, unset)
+      var(--tooltip-notch-right, unset)
+      var(--tooltip-notch-bottom, unset)
+      var(--tooltip-notch-left, unset);
+    transform:
+      translate(var(--tooltip-notch-x, 0), var(--tooltip-notch-y, 0))
+      rotate(var(--tooltip-notch-rotation, 0));
+    transform-origin: 50% 0%;
+  }
+
+  &::before {
+    border-top: 1rem solid var(--tooltip-border); // .625 = 10/16
+    border-right: 1rem solid transparent;
+    border-left: 1rem solid transparent;
+  }
+
+  &::after {
+    border-top: .7rem solid var(--tooltip-bg); // .4375 = 7/16
+    border-right: .7rem solid transparent;
+    border-left: .7rem solid transparent;
+  }
+}
+
+.tooltip--top-left {
+  bottom: calc(100% + 1rem);
+  right: 0%;
+
+  --tooltip-notch-bottom: 0;
+  --tooltip-notch-right: 2rem;
+  --tooltip-notch-x: 50%;
+  --tooltip-notch-y: 100%;
+}
+
+.tooltip--bottom-left {
+  top: calc(100% + 1rem);
+  right: 0%;
+
+  --tooltip-notch-top: 0;
+  --tooltip-notch-right: 2rem;
+  --tooltip-notch-x: 50%;
+  --tooltip-notch-rotation: 180deg;
+}
+
+.tooltip--left {
+  top: 50%;
+  right: calc(100% + 1rem);
+  transform: translateY(-50%);
+
+  --tooltip-notch-top: 50%;
+  --tooltip-notch-left: 100%;
+  --tooltip-notch-x: -50%;
+  --tooltip-notch-rotation: -90deg;
+}

@@ -1,6 +1,3 @@
-@use '../../abstract' as *;
-@use '../../variables' as *;
-
 .⍰-ctn {
   &:hover,
   &:focus {
@@ -9,10 +6,10 @@
 }
 
 .⍰__inner {
-  transform: scale(v(⍰-scale, 1));
+  transform: scale(var(--⍰-scale, 1));
   transform-origin: bottom right;
 
-  transition: .3s transform $in-out-quad;
+  transition: .3s transform var(--in-out-quad);
 
   @media (--no-motion) {
     --⍰-animation: none;

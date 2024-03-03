@@ -1,0 +1,19 @@
+.wallet {
+  opacity: var(--wallet-visible, 0);
+  visibility: var(--wallet-visibility, hidden);
+
+  transition: var(--wallet-transition-duration, .2s) var(--wallet-transition-timing, var(--in-out-quad));
+  transition-property: opacity, visibility;
+}
+
+.wallet__icon {
+  size: auto .6em;
+  padding-inline-end: .25em;
+}
+
+.wallet__amount {
+  &::before {
+    content: '×';
+    margin-inline-end: .12em;
+  }
+}
