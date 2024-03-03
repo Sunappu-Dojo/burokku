@@ -67,7 +67,7 @@
 
         <!-- Top bar : score, PWA install, menu -->
 
-        <div class="block__bar | flex-center">
+        <div class="block__bar | no-js-none flex-center">
 
             <!-- Coin amount -->
             <section id="wallet" class="block__wallet wallet | flex-center">
@@ -92,7 +92,7 @@
             </button>
 
             <!-- Menu -->
-            <div id="?" class="menu">
+            <div id="?" class="menu | reduced-motion">
 
                 <h2 class="visually-hidden">Menu</h2>
 
@@ -135,7 +135,7 @@
                                 </span>
                             </span>
                         </button>
-                        <span class="color-scheme__name" id="color-scheme-status" aria-atomic="true">
+                        <span class="color-scheme__name | nowrap" id="color-scheme-status" aria-atomic="true">
                             <span class="visually-hidden">Current color scheme:</span>
                             <span id="color-scheme-current-label"></span>
                         </span>
@@ -450,11 +450,11 @@
 
         <!-- Settings -->
 
-        <div class="settings | flex-center">
+        <div class="settings | no-js-none flex-center">
 
             <!-- Rumble control -->
 
-            <button class="setting setting--on setting--not-supported" id="rumble" type="button" title="Disable vibrations">
+            <button class="setting setting--on | none" id="rumble" type="button" title="Disable vibrations">
                 <span class="visually-hidden" id="rumble-label">Disable vibrations</span>
 
                 <!-- Icon inspired from https://github.com/tabler/tabler-icons / device-mobile-vibration -->

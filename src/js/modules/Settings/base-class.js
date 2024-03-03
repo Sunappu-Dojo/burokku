@@ -17,7 +17,8 @@ export default class Setting {
       return this.destroy()
     }
 
-    this.#$btn.classList.remove('setting--not-supported')
+    /** @todo: consider replacing this by the same animation as the Menu toggle button */
+    this.#$btn.classList.remove('none')
   }
 
   get enabled() {

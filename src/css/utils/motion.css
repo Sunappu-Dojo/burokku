@@ -1,0 +1,18 @@
+// https://m.nintendojo.fr/@tomayac@toot.cafe/110989258711458318
+.reduced-motion {
+  &,
+  &::before,
+  &::after {
+    @media (--reduced-motion) {
+      animation-delay: -1ms !important;
+      animation-duration: 1ms !important;
+      animation-iteration-count: 1 !important;
+
+      transition-duration: 1ms !important;
+      transition-delay: 1ms !important; // @todo check if negative could work
+
+      // background-attachment: initial !important;
+      // scroll-behavior: auto !important;
+    }
+  }
+}
