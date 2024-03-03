@@ -6,14 +6,16 @@
 
 */
 
-// Light (300).
-@font-face {
-  font-family: 'Oxygen';
-  src: url('../../fonts//oxygen-light.woff2') format('woff2');
-  font-weight: 300;
-  font-style: normal;
-  font-display: swap;
-}
+/* @todo: check why PurgeCSS doesn’t exclude it (unused) */
+
+// // Light (300).
+// @font-face {
+//   font-family: 'Oxygen';
+//   src: url('../../fonts//oxygen-light.woff2') format('woff2');
+//   font-weight: 300;
+//   font-style: normal;
+//   font-display: swap;
+// }
 
 // Regular (400).
 @font-face {
