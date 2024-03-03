@@ -12,7 +12,7 @@
   background: var(--bg);
   color: var(--primary);
 
-  @media (--phone) {
+  @media (--phone) and (--block-scale-h) {
     font-size: 62.5%;
   }
 }
