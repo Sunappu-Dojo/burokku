@@ -1,3 +1,5 @@
+/* @layer reset, defaults, patterns, components, utilities, overrides; */
 @import url(./fonts/index.css);
 @import url(./media-queries/index.css);
 @import url(./config/index.css);
+@import url(./base/index.css);
