@@ -1,3 +1,5 @@
+@charset "utf-8";
+
 /* @layer reset, defaults, patterns, components, utilities, overrides; */
 @import url(./fonts/index.css);
 @import url(./media-queries/index.css);
