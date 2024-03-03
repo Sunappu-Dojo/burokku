@@ -1,0 +1,59 @@
+// // Initial from Burokku
+
+// :root {
+//   // Black, grey, white
+//   $black-russian: hsl(220, 8%, 15%);
+//   $bunker: hsl(0, 0%, 18%);
+//   $jumbo: hsl(0, 0%, 53%);
+//   $lily-white: hsl(0, 0%, 92%);
+//   $white: hsl(0, 0%, 100%);
+
+//   // Accents
+//   $bright-turquoise: hsl(167, 100%, 50%);
+//   $ultramarine-blue: hsl(224, 88%, 57%);
+
+//   // Others
+//   $astral: hsl(207, 55%, 53%);
+//   $red: hsl(355, 100%, 45%);
+// }
+
+// Initial from Sunappu
+
+:root {
+
+  // Default theme: Basic black
+
+  --primary: hsl(0 0% 100%);
+  --bg: hsl(0 0% 18%);
+  --btn-bg: hsl(220 8% 15%);
+  --accent: hsl(167 100% 50%);
+  --accent-pale: hsl(170 84% 54%);
+
+  --grey: hsl(0 0% 53%);
+  --grey-separator: hsl(0 0% 92%);
+  --astral: hsl(207 55% 53%);
+  --dodger-blue: hsl(197 100% 55%);
+  --robins-egg-blue: hsl(183 100% 39%);
+  --turquoise: hsl(167 100% 50%);
+
+  // Basic black
+
+  @media (--dark) {
+    --primary: hsl(0 0% 100%);
+    --bg: hsl(0 0% 18%);
+    --btn-bg: hsl(220 8% 15%);
+    --accent: hsl(167 100% 50%);
+    --grey-separator: hsl(0 0% 22%);
+  }
+
+  // Basic white
+
+  @media (--light) {
+    --primary: hsl(0 0% 18%);
+    --bg: hsl(0 0% 97%);;
+    --btn-bg: hsl(0 0% 100%);
+    --accent: hsl(231 86% 57%);
+    --accent-pale: hsl(224 88% 57%);
+    --grey-separator: hsl(0 0% 100%);
+  }
+}
