@@ -3,3 +3,5 @@
 @import url(./media-queries/index.css);
 @import url(./config/index.css);
 @import url(./base/index.css);
+@import url(./animations/index.css); // @keyframes
+@import url(./icons/index.css);
