@@ -26,12 +26,18 @@ const postcssPresetEnvOptions = {
 
 const cssNanoOptions = { preset: ['default', { colormin: false }] }
 
+/** @type {import('@fullhuman/postcss-purgecss').UserDefinedOptions} */
 const purgeCssOptions = {
   content: [
     './src/index.html',
     './src/js/**/*.js',
   ],
-  safelist: [/⍰/],
+  safelist: [
+    /⍰/,
+    /:is/, // https://github.com/FullHuman/purgecss/issues/978
+    /:where/, // https://github.com/FullHuman/purgecss/issues/978
+    /:not/, // https://github.com/FullHuman/purgecss/issues/1197
+  ],
 }
 
 export default ({ options, env }) => ({
