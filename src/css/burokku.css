@@ -8,3 +8,7 @@
 @import url(./components/super-mario-bros/index.css);
 @import url(./components/menu/index.css);
 
+
+// The big things
+@import url(./layout/index.css);
+@import url(./modes/index.css);

@@ -1,0 +1,13 @@
+.block__bar {
+  position: absolute;
+  z-index: 1;
+  inset:
+    max(var(--safe-top) + 1rem, var(--block-bar-space, 1rem))
+    max(var(--safe-right) + 1rem, var(--block-bar-space, 1rem))
+    auto
+    max(var(--safe-left) + 1rem, var(--block-bar-space, 1rem));
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}

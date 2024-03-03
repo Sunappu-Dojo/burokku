@@ -1,9 +1,0 @@
-@use 'v.scss' as *;
-
-.noscript {
-  position: absolute;
-  inset-block-end: max(v(safe-bottom) + 1rem, v(block-bar-space, 1rem));
-  inset-inline-start: max(v(safe-left) + 1rem, v(block-bar-space, 1rem));
-
-  margin: 0;
-}

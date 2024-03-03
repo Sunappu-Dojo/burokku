@@ -1,5 +1,5 @@
-@use 'ctn';
-@use 'block';
+@import url(./ctn.css);
+@import url(./block.css);
 
 :root {
   --⍰-size: 20vmin;

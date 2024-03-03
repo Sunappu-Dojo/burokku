@@ -1,20 +1,15 @@
-@use 'double-dash.scss' as mq;
-@use '../abstract' as *;
-
 // Media queries : ⍰ block size
 
-@include mq.w-from('block-scale', 10em); // 160px
-@include mq.h-from('block-scale-h', 10em); // 160px
+@custom-media --block-scale (width >= 10em); // 160px
+@custom-media --block-scale-h (width >= 10em); // 160px
 
 // Media queries: spacing around top bar and footer
 
-$block-bar: (
-  'block-bar-scale': 10em, // 160px
-  'block-bar-wide': 40em, // 640px
-);
+@custom-media --block-bar-scale (width >= 10em); // 160px
+@custom-media --block-bar-wide (width >= 40em); // 640px
 
-@include mq.w($block-bar);
-@include mq.h($block-bar);
+@custom-media --h-block-bar-scale (height >= 10em); // 160px
+@custom-media --h-block-bar-wide (height >= 40em); // 640px
 
 :root {
   @media (--block-bar-scale) and (--h-block-bar-scale) {

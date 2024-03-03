@@ -1,8 +1,6 @@
-@use '../variables/' as *;
-
 .mode-classic {
   --wallet-visible: 1;
   --wallet-visibility: visible;
   --wallet-transition-duration: .5s;
-  --wallet-transition-timing: #{$out-quart};
+  --wallet-transition-timing: var(--out-quart);
 }

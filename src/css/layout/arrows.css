@@ -1,13 +1,10 @@
-@use 'v.scss' as *;
-@use '../variables' as *;
-
 .arrows {
   position: absolute;
   inset:
     50%
-    max(v(safe-right), 1rem)
+    max(var(--safe-right), 1rem)
     auto
-    max(v(safe-left), 1rem);
+    max(var(--safe-left), 1rem);
 
   transform: translateY(-50%);
 
@@ -29,7 +26,7 @@
 
   pointer-events: auto;
 
-  transition: opacity .6s $in-out-quad;
+  transition: opacity .6s var(--in-out-quad);
 
   &[disabled] {
     pointer-events: none;
@@ -63,11 +60,11 @@
 
     pointer-events: none;
 
-    background: v(accent);
+    background: var(--accent);
     border-radius: .1rem;
     opacity: 0;
 
-    transition: opacity .15s $in-out-quad;
+    transition: opacity .15s var(--in-out-quad);
   }
 }
 
@@ -78,10 +75,10 @@
 .arrow__svg {
   transform: translateX(-10%);
 
-  size: v(arrow-w, unset) auto;
+  size: var(--arrow-w, unset) auto;
 
   @media (--block-scale-h) {
-    @media (--mobile)   { --arrow-w: 1.2rem; }
+    @media (--phone)   { --arrow-w: 1.2rem; }
     @media (--tablet-7) { --arrow-w: 1.5rem; }
     @media (--switch)   { --arrow-w: 1.8rem; }
   }
