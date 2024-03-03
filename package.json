@@ -39,7 +39,6 @@
         "postcss-scss": "^4.0.9",
         "postcss-size": "^5.0.0",
         "size-limit": "^11.0.0",
-        "v.scss": "^1.2.1",
         "vite": "^5",
         "vite-plugin-html": "^3.2.1",
         "vite-plugin-singlefile": "^2.0"
