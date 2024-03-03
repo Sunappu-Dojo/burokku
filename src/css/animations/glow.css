@@ -1,0 +1,11 @@
+@keyframes border-glow {
+    0% { border-color: var(--astral); }
+   50% { border-color: var(--turquoise); }
+  100% { border-color: var(--astral); }
+}
+
+@keyframes color-glow {
+    0% { color: var(--astral); }
+   50% { color: var(--turquoise); }
+  100% { color: var(--astral); }
+}
