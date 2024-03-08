@@ -1,0 +1,18 @@
+// No background nor border color unless it gets hover or focus.
+
+.cta--on-hover {
+  background: none;
+  border-color: transparent;
+  outline: .1rem solid var(--bg);
+  outline-offset: -.5rem;
+
+  animation: none;
+
+  &:is(:hover, :focus-visible) {
+    background: var(--btn-bg);
+
+    @media (--motion) {
+      animation: border-glow 1s linear infinite;
+    }
+  }
+}

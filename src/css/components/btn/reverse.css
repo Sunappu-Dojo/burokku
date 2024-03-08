@@ -1,0 +1,37 @@
+// Background color is the same as the accent color, and the text is white.
+
+.cta--reverse {
+  position: relative;
+
+  background: var(--accent);
+  color: var(--btn-bg);
+
+  transition: background-color .15s var(--in-out-quad);
+
+  @media (--dark) {
+    -webkit-font-smoothing: subpixel-antialiased;
+    -moz-osx-font-smoothing: auto;
+  }
+
+  &:not(:hover, :focus-visible) {
+    border-color: transparent;
+    animation: none;
+
+    &::before {
+      content: none;
+    }
+  }
+
+  &:is(:hover, :focus-visible) {
+    background: var(--accent-pale);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+
+    border: .1rem solid;
+    border-radius: .2rem;
+  }
+}
