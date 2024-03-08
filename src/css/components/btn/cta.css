@@ -1,6 +1,7 @@
 .cta {
   size: 28rem 4.7rem;
 
+  // Not needed until we have a `.cta` containing both a text and an icon.
   // display: inline-grid;
   // grid-auto-flow: column;
   // justify-content: center;
@@ -58,6 +59,8 @@
   border-width: .2rem;
 }
 
+// Border color is the same as the text color.
+
 .cta--hollow {
   &:not(:hover, :focus-visible) {
     border-color: var(--primary);
@@ -68,6 +71,8 @@
     }
   }
 }
+
+// Background color is the same as the accent color, and the text is white.
 
 .cta--reverse {
   position: relative;
@@ -104,6 +109,8 @@
     border-radius: .2rem;
   }
 }
+
+// No background nor border color unless it gets hover or focus.
 
 .cta--on-hover {
   background: none;
