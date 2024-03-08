@@ -1,0 +1,26 @@
+// @todo: Split all these files to extract a config from them.
+
+@import url('all.css');
+@import url('html-and-body.css');
+@import url('headings.css');
+@import url('lists.css');
+@import url('separators.css');
+@import url('links.css');
+@import url('text.css');
+@import url('images.css');
+@import url('tables.css');
+@import url('forms.css');
+@import url('address.css');
+@import url('dialog.css');
+@import url('accessibility.css');
+
+/**
+ * Additional stuff that should be moved somewhere else
+ * and/or backported to other projects…
+ */
+
+ // @todo: refine focus by element
+:focus-visible {
+  outline: .1rem solid currentColor;
+  outline-offset: .25em;
+}

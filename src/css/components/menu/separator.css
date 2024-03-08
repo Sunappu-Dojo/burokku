@@ -1,0 +1,7 @@
+.menu__separator {
+  margin: 2rem -2rem;
+
+  border: none;
+  border-top: .1rem solid var(--grey);
+  opacity: .6;
+}

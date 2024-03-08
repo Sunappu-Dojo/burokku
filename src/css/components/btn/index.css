@@ -1,0 +1,7 @@
+@import url(./main.css);
+
+// Variants and modifiers. @todo: check if the order matters and what are possible combinations
+@import url(./small.css);
+@import url(./hollow.css);
+@import url(./reverse.css);
+@import url(./on-hover.css);

@@ -1,0 +1,19 @@
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  background-repeat: no-repeat;
+
+  // Remove grey highlight on links in iOS.
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+* {
+  touch-action: manipulation;
+}
+
+// @todo
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}

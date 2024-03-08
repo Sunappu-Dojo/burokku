@@ -1,0 +1,34 @@
+.block {
+  /* put current block in viewport */
+  --⍰-base-translate-x: calc(-100% * var(--current, 0));
+
+  transform: translate(
+    calc(var(--⍰-base-translate-x) + var(--⍰-translate-x, 0px)),
+    var(--⍰-translate-y, 0)
+  );
+
+  transition: .3s transform var(--in-out-quad);
+
+  @media (--no-motion) {
+    transition-duration: .001s;
+  }
+}
+
+.block__⍰ {
+  size: var(--⍰-size);
+
+  @media (--block-scale) and (--block-scale-h) {
+    min-size: var(--⍰-min-size);
+  }
+}
+
+.block__coin {
+  size: calc(var(--⍰-size) * var(--coin-w-cx, .5)) auto;
+
+  @media (--block-scale) and (--block-scale-h) {
+    min-inline-size: calc(var(--⍰-min-size) * var(--coin-w-cx, .5));
+  }
+}
+
+#smb { --coin-w-cx: .5; }
+#smb3 { --coin-w-cx: .6; }

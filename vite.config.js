@@ -72,7 +72,7 @@ export default defineConfig({
         // Preserve filenames, needed for Service Worker caching.
         entryFileNames: '[name].js', // JS entries
         chunkFileNames: 'js/modules/[name].js', // JS chunks
-        assetFileNames: 'css/block.css', // other files (CSS only for now)
+        assetFileNames: 'css/burokku.css', // other files (CSS only for now)
       },
     },
   },

@@ -1,0 +1,10 @@
+.cta--small {
+  size: auto auto;
+  padding: .5em 2em;
+
+  font-size: 1.5rem;
+  // line-height: 1;
+
+  border-radius: .4rem;
+  border-width: .2rem;
+}

@@ -1,0 +1,27 @@
+.text-inherit {
+  font-weight: inherit;
+  font-size: inherit;
+  line-height: inherit;
+
+  color: inherit;
+}
+
+.fs100p { font-size: 100%; }
+
+.f300 { font-weight: 300; }
+.f400 { font-weight: 400; }
+.f700 { font-weight: 700; }
+
+.underline { text-decoration: underline; }
+
+.monospace {
+  /**
+   * `tabular-nums` isn’t available with Oxygen:
+   * https://github.com/google/fonts/issues/1161
+   *
+   * So instead, Oxygen Mono is used (via `.monospace` utility).
+   * This is the only reason to use Oxygen Mono for now.
+   */
+  // font-variant-numeric: tabular-nums;
+  font-family: 'Oxygen Mono', monospace;
+}

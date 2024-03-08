@@ -1,5 +1,0 @@
-@mixin no-transition {
-  @media (--reduced-motion) {
-    transition: 0.001s !important;
-  }
-}

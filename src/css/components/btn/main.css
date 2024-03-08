@@ -1,0 +1,49 @@
+.cta {
+  size: 28rem 4.7rem;
+
+  // Not needed until we have a `.cta` containing both a text and an icon.
+  // display: inline-grid;
+  // grid-auto-flow: column;
+  // justify-content: center;
+  // align-items: center;
+  // gap: 1rem;
+
+  font-size: 2rem;
+  user-select: none;
+
+  background: var(--btn-bg);
+  border: var(--turquoise) solid .3rem;
+  border-radius: .8rem;
+
+  @media (--motion) {
+    animation: border-glow 3s linear infinite;
+  }
+
+  @media (--tablet-7) {
+    height: 7.6rem;
+
+    font-size: 2.6rem;
+
+    border-width: .5rem;
+  }
+
+  // maybe remove @supports and don’t use :has…
+  @supports not selector(:has(:focus-visible)) {
+    &:is(
+    :hover,
+    :focus-visible,
+    :not(:focus-visible):focus-within // for `.cta > input[type=file]`
+    ) {
+      animation-duration: 1s;
+    }
+  }
+
+  @supports selector(:has(:focus-visible)) {
+    &:is(
+      :hover,
+      :has(:focus-visible) // does not work on regular hollow CTA
+    ) {
+      animation-duration: 1s;
+    }
+  }
+}

@@ -1,0 +1,6 @@
+:where(a) {
+  color: var(--primary);
+  text-decoration: none;
+
+  * { pointer-events: none; }
+}

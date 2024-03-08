@@ -1,0 +1,26 @@
+.⍰-ctn {
+  &:hover,
+  &:focus {
+    outline: none;
+  }
+}
+
+.⍰__inner {
+  transform: scale(var(--⍰-scale, 1));
+  transform-origin: bottom right;
+
+  transition: .3s transform var(--in-out-quad);
+
+  @media (--no-motion) {
+    --⍰-animation: none;
+    --⍰-smb3-animation: none;
+  }
+
+  .⍰--hit & {
+    animation: ⍰-hit .2s;
+
+    // Inner animation of the blocks
+    --⍰-animation: none;
+    --⍰-smb3-animation: none;
+  }
+}

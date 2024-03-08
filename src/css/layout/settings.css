@@ -1,0 +1,23 @@
+.settings {
+  --settings-inset: calc(var(--block-bar-space, 1rem) - 1rem);
+
+  position: absolute;
+  inset-block-end: max(var(--safe-bottom), var(--settings-inset));
+  inset-inline-start: max(var(--safe-left), var(--settings-inset));
+}
+
+.setting {
+  size: 4.4rem;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  transition: opacity .3s var(--in-out-quad);
+
+  &:not(:hover):not(:focus) {
+    &.setting--on {
+      opacity: .6;
+    }
+  }
+}

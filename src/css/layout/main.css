@@ -1,0 +1,17 @@
+:root {
+  @media (--block-bar-scale) and (--h-block-bar-scale) {
+    --block-bar-space: calc(1rem + 3vmin);
+  }
+
+  @media (--block-bar-wide) and (--h-block-bar-wide) {
+    --block-bar-space: 3vmax;
+  }
+}
+
+// Prevent layout shift while the menu toggle button comes from off the screen.
+
+main {
+  position: relative;
+  height: 100%;
+  overflow-x: hidden;
+}

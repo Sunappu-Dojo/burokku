@@ -1,0 +1,10 @@
+@import url(./ctn.css);
+@import url(./block.css);
+
+:root {
+  --⍰-size: 20vmin;
+  --⍰-min-size: 10rem;
+
+  // A bit below the vertical center.
+  --⍰-translate-y: calc(20vmin + var(--⍰-size, 0) / 8 - 10%);
+}

@@ -1,0 +1,15 @@
+/* BLOCK */
+
+:where(blockquote) {
+  margin: 0;
+}
+
+/* INLINE */
+
+:where(b, strong) {
+  font-weight: bolder;
+}
+
+:where(small) {
+  font-size: 80%;
+}

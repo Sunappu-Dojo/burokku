@@ -1,0 +1,42 @@
+// Width
+
+@custom-media --before-phone (width < 20em); // 320px
+@custom-media --phone (width >= 20em); // 320px
+
+@custom-media --before-tablet-7 (width < 37.5em); // 600px
+@custom-media --tablet-7 (width >= 37.5em); // 600px
+
+@custom-media --before-tablet-9 (width < 56.25em); // 900px
+@custom-media --tablet-9 (width >= 56.25em); // 900px
+
+@custom-media --before-switch (width < 80em); // 1280px
+@custom-media --is-switch (width: 45em); // 1280px
+@custom-media --switch (width >= 80em); // 1280px
+
+// Height
+
+@custom-media --h-before-phone (height < 28.38em); // 454px
+@custom-media --h-phone (height >= 28.38em); // 454px
+
+@custom-media --h-before-tablet-7 (height < 50em); // 900px
+@custom-media --h-tablet-7 (height >= 50em); // 900px
+
+@custom-media --h-before-tablet-9 (height < 75em); // 1200px
+@custom-media --h-tablet-9 (height >= 75em); // 1200px
+
+@custom-media --h-before-switch (height < 45em); // 720px
+@custom-media --h-is-switch (height: 45em); // 720px
+@custom-media --h-switch (height >= 45em); // 720px
+
+// Media queries : ⍰ block size
+
+@custom-media --block-scale (width >= 10em); // 160px
+@custom-media --block-scale-h (height >= 10em); // 160px
+
+// Media queries: spacing around top bar and footer
+
+@custom-media --block-bar-scale (width >= 10em); // 160px
+@custom-media --block-bar-wide (width >= 40em); // 640px
+
+@custom-media --h-block-bar-scale (height >= 10em); // 160px
+@custom-media --h-block-bar-wide (height >= 40em); // 640px

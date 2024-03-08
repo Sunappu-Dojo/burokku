@@ -1,0 +1,39 @@
+.menu {
+  // shift vertical position by parent (`.block__bar`) height + additional gap
+  --menu-y: calc(100% + 1rem);
+
+  min-inline-size: 22.7rem;
+  max-size:
+    /* menu max-width */
+    30rem
+
+    /* menu max-height = viewport height minus space around, or 50rem */
+    min(
+      100 * var(--1dvh)
+        - max(var(--safe-top) + 1rem, var(--block-bar-space, 1rem)) /* UI top padding */
+        - var(--menu-y) /* menu shifted Y position */
+        - 1rem /* additional space to balance the menu in the layout */
+        - max(var(--safe-bottom) + 1rem, var(--block-bar-space, 1rem)), /* UI bottom padding */
+      50rem
+    );
+
+  position: absolute;
+  z-index: 1;
+  inset: var(--menu-y) 0 auto auto; // menu starts `--menu-y` below its toggle button
+
+  padding: 2rem;
+
+  overflow-y: auto;
+  // scrollbar-gutter: stable; // currently creates a gap
+
+  background: var(--bg);
+  border: .1rem solid var(--grey);
+  border-radius: .4rem;
+  opacity: var(--menu-visible, 0);
+  visibility: var(--menu-visibility, hidden);
+
+  transform: translateX(calc(var(--menu-visible, 0) * -2rem + 2rem));
+
+  transition: .2s var(--in-out-quad);
+  transition-property: opacity, transform, visibility;
+}

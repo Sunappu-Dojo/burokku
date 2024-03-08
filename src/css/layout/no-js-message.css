@@ -1,0 +1,7 @@
+.noscript {
+  position: absolute;
+  inset-block-end: max(var(--safe-bottom) + 1rem, var(--block-bar-space, 1rem));
+  inset-inline-start: max(var(--safe-left) + 1rem, var(--block-bar-space, 1rem));
+
+  margin: 0;
+}

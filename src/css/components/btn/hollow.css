@@ -1,0 +1,12 @@
+// Border color is the same as the text color.
+
+.cta--hollow {
+  &:not(:hover, :focus-visible) {
+    border-color: var(--primary);
+    animation: none;
+
+    &::before {
+      content: none;
+    }
+  }
+}

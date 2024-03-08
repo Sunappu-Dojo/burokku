@@ -1,0 +1,95 @@
+.color-scheme__icon__ctn {
+  position: relative;
+  size: 4rem;
+
+  display: grid;
+  place-items: center;
+}
+
+.color-scheme__icon {
+  grid-column: -1 / 1;
+  grid-row: -1 / 1;
+
+  display: grid;
+}
+
+// ☾
+
+.color-scheme__icon--dark {
+
+  @media (--motion) {
+    transition: transform 1.6s var(--in-out-quad);
+  }
+
+  @media (--light) {
+    transform: translate3d(50%, -100%, 0) rotate(20deg) scale(0);
+
+    @media (--motion) {
+      transition-duration: .25s;
+    }
+  }
+}
+
+// ☀️
+
+.color-scheme__icon--light {
+
+  @media (--motion) {
+    transition: transform .6s var(--out-quad);
+  }
+
+  @media (--dark) {
+    transform: translateY(4rem) scale(0);
+
+    @media (--motion) {
+      transition: transform .8s var(--in-quad);
+    }
+  }
+}
+
+.sun__core {
+
+  @media (--motion) {
+    transition: transform .4s var(--in-out-quad) .15s;
+  }
+
+  @media (--dark) {
+    transform: scale(.3);
+
+    @media (--motion) {
+      transition: transform .6s var(--out-quad) .5s;
+    }
+  }
+}
+
+.sun__beam {
+
+  @media (--light) {
+    @media (--motion) {
+      transition: transform .35s var(--out-back) .5s;
+
+      // stagger the transition of the sun beams
+
+      --sun-beam-amount: 8;
+      --sun-beam-base-delay: .4;
+      --sun-beam-total-duration: .1;
+      --sun-beam-split-delay: calc(var(--sun-beam-total-duration) / var(--sun-beam-amount));
+
+      transition-delay: calc(
+        (
+          var(--sun-beam-base-delay)
+          + var(--sun-beam-index, 1) * var(--sun-beam-split-delay)
+        )
+        * 1s
+      );
+    }
+  }
+
+  @media (--dark) {
+    transform: scale(.1);
+
+    @media (--motion) {
+      transition: transform .6s var(--out-quad) .5s;
+    }
+  }
+}
