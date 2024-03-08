@@ -27,3 +27,16 @@
 @custom-media --h-before-switch (height < 45em); // 720px
 @custom-media --h-is-switch (height: 45em); // 720px
 @custom-media --h-switch (height >= 45em); // 720px
+
+// Media queries : ⍰ block size
+
+@custom-media --block-scale (width >= 10em); // 160px
+@custom-media --block-scale-h (height >= 10em); // 160px
+
+// Media queries: spacing around top bar and footer
+
+@custom-media --block-bar-scale (width >= 10em); // 160px
+@custom-media --block-bar-wide (width >= 40em); // 640px
+
+@custom-media --h-block-bar-scale (height >= 10em); // 160px
+@custom-media --h-block-bar-wide (height >= 40em); // 640px
