@@ -15,13 +15,13 @@
 
 // Height
 
-@custom-media --before-phone (height < 28.38em); // 454px
+@custom-media --h-before-phone (height < 28.38em); // 454px
 @custom-media --h-phone (height >= 28.38em); // 454px
 
-@custom-media --before-tablet-7 (height < 50em); // 900px
+@custom-media --h-before-tablet-7 (height < 50em); // 900px
 @custom-media --h-tablet-7 (height >= 50em); // 900px
 
-@custom-media --before-tablet-9 (height < 75em); // 1200px
+@custom-media --h-before-tablet-9 (height < 75em); // 1200px
 @custom-media --h-tablet-9 (height >= 75em); // 1200px
 
 @custom-media --h-before-switch (height < 45em); // 720px
