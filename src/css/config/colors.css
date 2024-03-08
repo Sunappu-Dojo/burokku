@@ -28,6 +28,8 @@
 
 // Theme:                      Basic white,        Basic black
 
+  color-scheme: light dark;
+
          --primary: light-dark(hsl(0 0% 18%),    hsl(0 0% 100%));
               --bg: light-dark(hsl(0 0% 97%),    hsl(0 0% 18%));
           --btn-bg: light-dark(hsl(0 0% 100%),   hsl(220 8% 15%));
