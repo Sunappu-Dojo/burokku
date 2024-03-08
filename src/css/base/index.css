@@ -5,6 +5,7 @@
 @import url('headings.css');
 @import url('lists.css');
 @import url('separators.css');
+@import url('links.css');
 @import url('text.css');
 @import url('images.css');
 @import url('tables.css');
@@ -22,39 +23,4 @@
 :focus-visible {
   outline: .1rem solid currentColor;
   outline-offset: .25em;
-}
-
-:where(svg) {
-  // * { transform-box: fill-box; }
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  @media (--phone) {
-    margin: 0;
-  }
-
-  em {
-    font-style: normal;
-  }
-}
-
-abbr[title] {
-  &:not(:hover) {
-    @media (--phone) {
-      border: none;
-      text-decoration: none;
-    }
-  }
-}
-
-a {
-  color: var(--primary);
-  text-decoration: none;
-
-  * { pointer-events: none; }
 }
