@@ -1,7 +1,7 @@
 // Media queries : ⍰ block size
 
 @custom-media --block-scale (width >= 10em); // 160px
-@custom-media --block-scale-h (width >= 10em); // 160px
+@custom-media --block-scale-h (height >= 10em); // 160px
 
 // Media queries: spacing around top bar and footer
 
