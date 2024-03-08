@@ -50,7 +50,7 @@
 
   @media (--light) {
     --primary: hsl(0 0% 18%);
-    --bg: hsl(0 0% 97%);;
+    --bg: hsl(0 0% 97%);
     --btn-bg: hsl(0 0% 100%);
     --accent: hsl(231 86% 57%);
     --accent-pale: hsl(224 88% 57%);

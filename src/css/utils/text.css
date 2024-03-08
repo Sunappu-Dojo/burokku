@@ -20,7 +20,7 @@
    * https://github.com/google/fonts/issues/1161
    *
    * So instead, Oxygen Mono is used (via `.monospace` utility).
-   * This is the only reason to use Oxyegn Mono for now.
+   * This is the only reason to use Oxygen Mono for now.
    */
   // font-variant-numeric: tabular-nums;
   font-family: 'Oxygen Mono', monospace;
