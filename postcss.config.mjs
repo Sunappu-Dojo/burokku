@@ -16,7 +16,10 @@ const postcssPresetEnvOptions = {
     // https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-color-functional-notation
     'color-functional-notation': false,
 
-    // https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc#options
+    // https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-light-dark-function
+    'light-dark-function': { preserve: false },
+
+    // https://github.com/csstools/postcss-plugins/tree/main/plugins/postcss-nested-calc
     'nested-calc': { preserve: false },
 
     /**
@@ -27,7 +30,7 @@ const postcssPresetEnvOptions = {
      * by specification:
      * https://www.w3.org/TR/css-nesting-1/#example-7145ff1e
      */
-    'nesting-rules': { edition: '2021' }
+    'nesting-rules': { edition: '2021' },
   },
 }
 

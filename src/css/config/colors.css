@@ -20,40 +20,18 @@
 // Initial from Sunappu
 
 :root {
-
-  // Default theme: Basic black
-
-  --primary: hsl(0 0% 100%);
-  --bg: hsl(0 0% 18%);
-  --btn-bg: hsl(220 8% 15%);
-  --accent: hsl(167 100% 50%);
-  --accent-pale: hsl(170 84% 54%);
-
   --grey: hsl(0 0% 53%);
-  --grey-separator: hsl(0 0% 92%);
   --astral: hsl(207 55% 53%);
   --dodger-blue: hsl(197 100% 55%);
   --robins-egg-blue: hsl(183 100% 39%);
   --turquoise: hsl(167 100% 50%);
 
-  // Basic black
+// Theme:                      Basic white,        Basic black
 
-  @media (--dark) {
-    --primary: hsl(0 0% 100%);
-    --bg: hsl(0 0% 18%);
-    --btn-bg: hsl(220 8% 15%);
-    --accent: hsl(167 100% 50%);
-    --grey-separator: hsl(0 0% 22%);
-  }
-
-  // Basic white
-
-  @media (--light) {
-    --primary: hsl(0 0% 18%);
-    --bg: hsl(0 0% 97%);
-    --btn-bg: hsl(0 0% 100%);
-    --accent: hsl(231 86% 57%);
-    --accent-pale: hsl(224 88% 57%);
-    --grey-separator: hsl(0 0% 100%);
-  }
+         --primary: light-dark(hsl(0 0% 18%),    hsl(0 0% 100%));
+              --bg: light-dark(hsl(0 0% 97%),    hsl(0 0% 18%));
+          --btn-bg: light-dark(hsl(0 0% 100%),   hsl(220 8% 15%));
+          --accent: light-dark(hsl(231 86% 57%), hsl(167 100% 50%));
+     --accent-pale: light-dark(hsl(224 88% 57%), hsl(170 84% 54%));
+  --grey-separator: light-dark(hsl(0 0% 100%),   hsl(0 0% 22%));
 }
