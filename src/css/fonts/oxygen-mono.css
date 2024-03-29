@@ -1,4 +1,4 @@
-/* Oxygen Mono v13, fonts.google.com, January 20, 2023
+/* Oxygen Mono v14, fonts.google.com, March 29, 2024
 
   Regular     400
 
@@ -9,7 +9,7 @@
 // Regular (400).
 @font-face {
   font-family: 'Oxygen Mono';
-  src: url('../../fonts/oxygen-mono-ciphers-and-multiply-sign.woff2') format('woff2');
+  src: url('../../fonts/oxygen-mono-subset-ciphers-and-multiply-sign.woff2') format('woff2');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
