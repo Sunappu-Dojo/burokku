@@ -2,7 +2,7 @@
  * Service worker strategy: network first, fallback on cache.
  */
 
-const SW_VERSION = '2.15'
+const SW_VERSION = '2.16'
 const NETWORK_TIMEOUT = 700
 
 const resourcesCacheKey = `cache-v${SW_VERSION}`
@@ -24,8 +24,11 @@ const resourcesToCache = [
 
   // Fonts
   'fonts/oxygen-regular.woff2',
+  'fonts/oxygen-bold.woff2',
   'fonts/oxygen-mono-ciphers-and-multiply-sign.woff2',
 
+  /* @todo: consider a better way to handle icon caching, if ever needed */
+  
   // Standard icons
   'favicon.svg',
   'favicon-original.svg',
