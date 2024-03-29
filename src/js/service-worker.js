@@ -24,11 +24,11 @@ const resourcesToCache = [
 
   // Fonts
   'fonts/oxygen-regular.woff2',
-  'fonts/oxygen-bold.woff2',
   'fonts/oxygen-mono-ciphers-and-multiply-sign.woff2',
+  'fonts/oxygen-bold-subset-auto.woff2',
 
   /* @todo: consider a better way to handle icon caching, if ever needed */
-  
+
   // Standard icons
   'favicon.svg',
   'favicon-original.svg',

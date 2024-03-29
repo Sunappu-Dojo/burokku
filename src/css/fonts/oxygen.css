@@ -1,9 +1,11 @@
-/* Oxygen, fontsquirrel.com, January 3, 2018
+/* Oxygen v15, fonts.google.com.com, March 29, 2024
 
   Light       300
   Regular     400
   Bold        700
 
+  Subsetting done using Google Fonts API. Example:
+  https://fonts.googleapis.com/css2?family=Oxygen:wght@700&display=swap&text=auto
 */
 
 /* @todo: check why PurgeCSS doesn’t exclude it (unused) */
@@ -11,6 +13,7 @@
 // // Light (300).
 // @font-face {
 //   font-family: 'Oxygen';
+//   src: url('../../fonts//oxygen-light-old.woff2') format('woff2');
 //   src: url('../../fonts//oxygen-light.woff2') format('woff2');
 //   font-weight: 300;
 //   font-style: normal;
@@ -26,12 +29,11 @@
   font-display: swap;
 }
 
-/* @todo 👇 only used for 4 characters. Consider base64 the 4 glyphs… */
 
-// Bold (700).
+// Bold (700). Subset: a t o u.
 @font-face {
   font-family: 'Oxygen';
-  src: url('../../fonts/oxygen-bold.woff2') format('woff2');
+  src: url('../../fonts/oxygen-bold-subset-auto.woff2') format('woff2');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
