@@ -10,6 +10,7 @@
 }
 
 .menu-toggle-visible {
+  --menu-ready: 1;
   --menu-toggle-opacity: .6; // same value as settings button (e.g. sound)
   --app-install-x: 0;
 }

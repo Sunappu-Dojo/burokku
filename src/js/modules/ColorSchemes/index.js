@@ -19,7 +19,9 @@ const colorSchemeNames = {
   light: 'Basic White',
 }
 
-const getColorSchemeName = (scheme, applied) => colorSchemeNames[scheme] ?? `<strong>Auto</strong> (${colorSchemeNames[applied]})`
+const getColorSchemeName = (scheme, applied) =>
+  colorSchemeNames[scheme]
+  ?? `<strong class="menu__bold">Auto</strong> (${colorSchemeNames[applied]})`
 
 class ColorSchemes {
 
