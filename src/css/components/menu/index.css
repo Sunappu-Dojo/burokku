@@ -8,6 +8,7 @@
 
 @import url(./separator.css);
 @import url(./links.css);
+@import url(./quirks.css);
 
 .menu-visible {
   --menu-visible: 1;

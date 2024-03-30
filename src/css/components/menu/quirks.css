@@ -1,0 +1,9 @@
+/**
+ * This rule prevents the bold font to be loaded until the menu is ready,
+ * since the menu is the only place need ing this `font-weight`. It is
+ * used for the color scheme when “Auto” (shown in bold) is chosen.
+ */
+
+.menu__bold {
+  font-weight: calc(400 + 300 * var(--menu-ready));
+}
