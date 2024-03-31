@@ -4,5 +4,5 @@
  * displays “Auto” (in bold) when a system color scheme is prefered.
  */
 .menu__bold {
-  font-weight: calc(400 + 300 * var(--menu-ready));
+  font-weight: calc(400 + 300 * var(--menu-ready, 0));
 }
