@@ -21,10 +21,10 @@
         "normalize.css": "^8.0"
     },
     "devDependencies": {
-        "@babel/eslint-parser": "^7.19.1",
+        "@babel/eslint-parser": "^7.24.1",
         "@babel/plugin-proposal-private-methods": "^7.14.5",
-        "@babel/preset-env": "^7.23",
-        "@fullhuman/postcss-purgecss": "^6.0.0-alpha.0",
+        "@babel/preset-env": "^7.24",
+        "@fullhuman/postcss-purgecss": "^6.0.0",
         "@playwright/test": "^1.41.2",
         "@rollup/plugin-eslint": "^9.0.5",
         "@size-limit/preset-app": "^11",
