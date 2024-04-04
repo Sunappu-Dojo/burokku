@@ -43,8 +43,7 @@ const singleFileOptions = {
 }
 
 /**
- * HTTPS, works well with Laravel Valet (macOS)
- * Laravel Valet HTTPS: https://github.com/laravel/docs/blob/master/valet.md#securing-sites-with-tls
+ * HTTPS, works well with Laravel Valet (macOS, https://github.com/laravel/docs/blob/master/valet.md#securing-sites-with-tls) and Laravel Herd (macOS, https://herd.laravel.com/docs/1/advanced-usage/securing-sites#securing-sites-with-tls).
  * Not tested with other setups.
  */
 
