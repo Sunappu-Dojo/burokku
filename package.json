@@ -33,7 +33,6 @@
         "cssnano": "^6",
         "eslint": "^8",
         "eslint-formatter-codeframe": "^7.32.1",
-        "postcss": "^8.4.31",
         "postcss-dark-theme-class": "^1.2.1",
         "postcss-preset-env": "^9",
         "postcss-scss": "^4.0.9",
