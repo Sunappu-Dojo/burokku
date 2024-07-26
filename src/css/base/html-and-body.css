@@ -3,7 +3,7 @@
 :where(:root) {
   size: 100% 100%;
 
-  font: 50% / 1.4 'Oxygen', system-ui, sans-serif;;
+  font: 50% / 1.4 'Oxygen', system-ui, sans-serif;
   text-size-adjust: 100%; // Prevent adjustments of font size after orientation changes in iOS.
   overflow-wrap: break-word;
   -webkit-font-smoothing: antialiased;
