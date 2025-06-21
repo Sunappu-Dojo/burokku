@@ -3,8 +3,7 @@
 .cta--on-hover {
   background: none;
   border-color: transparent;
-  outline: .1rem solid var(--bg);
-  outline-offset: -.5rem;
+  outline: none;
 
   animation: none;
 
