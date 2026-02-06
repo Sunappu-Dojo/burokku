@@ -83,4 +83,4 @@ Thanks to [themushroomkingdom.net](https://themushroomkingdom.net) and all the p
 
 Last deployment:
 
-[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Fb01968f7-ee1c-4f3e-9d8d-905326620747%3Fdate%3D1%26commit%3D1&style=for-the-badge)](https://forge.laravel.com)
+[![Laravel Forge Site Deployment Status](https://img.shields.io/endpoint?url=https%3A%2F%2Fforge.laravel.com%2Fsite-badges%2Fecbf930f-bc0e-407f-baf8-2e01fb79604e%3Fdate%3D1%26label%3D1%26commit%3D1&style=for-the-badge)](https://forge.laravel.com/mehdi-merah/growing-mushrooms/3032813)
