@@ -38,9 +38,9 @@
         "postcss-scss": "^4.0.9",
         "postcss-size": "^5.0.0",
         "size-limit": "^11.0.0",
-        "vite": "^5",
+        "vite": "^7",
         "vite-plugin-html": "^3.2.1",
-        "vite-plugin-singlefile": "^2.0"
+        "vite-plugin-singlefile": "^2.3"
     },
     "overrides": {
         "has": "npm:@nolyfill/has@latest",
